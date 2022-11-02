@@ -9,4 +9,18 @@ const getBoardsSuccess = createAction(
 );
 const getBoardsError = createAction(BoardsActions.GET_BOARDS_ERROR, props<{ error: string }>());
 
-export { getBoards, getBoardsSuccess, getBoardsError };
+const createBoard = createAction(BoardsActions.CREATE_BOARD, props<{ newBoard: IBoard }>());
+const createBoardSuccess = createAction(
+  BoardsActions.CREATE_BOARD_SUCCESS,
+  props<{ newBoard: IBoard }>(),
+);
+const createBoardError = createAction(BoardsActions.CREATE_BOARD_ERROR, props<{ error: string }>());
+
+export {
+  getBoards,
+  getBoardsSuccess,
+  getBoardsError,
+  createBoard,
+  createBoardSuccess,
+  createBoardError,
+};

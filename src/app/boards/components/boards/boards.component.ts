@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BoardService } from '../../services/board.service';
 import { getBoards } from '../../store/actions/boards.actions';
 import { selectAllBoards } from '../../store/selectors/boards.selectors';
 
@@ -11,7 +12,7 @@ import { selectAllBoards } from '../../store/selectors/boards.selectors';
 export class BoardsComponent {
   public boards$ = this.store.select(selectAllBoards);
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private boardService: BoardService) {
     this.store.dispatch(getBoards());
   }
 }
