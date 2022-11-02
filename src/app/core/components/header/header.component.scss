@@ -1,0 +1,41 @@
+:host {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  column-gap: 20px;
+}
+
+.logo {
+  width: 140px;
+  cursor: pointer;
+}
+
+.mat-form-field {
+  width: 500px;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.theme-wrapper,
+.auth-wrapper,
+.languages-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-wrapper,
+.auth-wrapper {
+  column-gap: 15px;
+}
+
+.account {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
