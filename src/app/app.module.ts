@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
       logOnly: environment.production,
       autoPause: true,
     }),
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

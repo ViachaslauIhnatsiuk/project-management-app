@@ -6,10 +6,20 @@ import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { BoardsComponent } from './components/boards/boards.component';
 import { StoreModule } from '@ngrx/store';
 import { boardsReducer } from './store/reducers/boards.reducers';
+import { BoardService } from './services/board.service';
+import { EffectsModule } from '@ngrx/effects';
+import { BoardsEffects } from './store/effects/boards.effects';
+import { BoardCardComponent } from './components/board-card/board-card.component';
 
 @NgModule({
-  declarations: [BoardsPageComponent, BoardsComponent],
+  declarations: [BoardsPageComponent, BoardsComponent, BoardCardComponent],
   exports: [BoardsPageComponent],
-  imports: [StoreModule.forFeature('boards', boardsReducer), CommonModule, BoardsRoutingModule],
+  imports: [
+    StoreModule.forFeature('boards', boardsReducer),
+    EffectsModule.forFeature([BoardsEffects]),
+    CommonModule,
+    BoardsRoutingModule,
+  ],
+  providers: [BoardService],
 })
 export class BoardsModule {}
