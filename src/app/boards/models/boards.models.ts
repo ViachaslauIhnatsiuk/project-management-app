@@ -1,11 +1,14 @@
-interface IBoards {
-  boards: IBoard[];
-}
-
 interface IBoard {
   id?: string;
   title: string;
   description: string;
 }
 
-export type { IBoards, IBoard };
+type TokenObj = { token: string };
+
+enum BoardApiUrls {
+  boards = 'boards',
+}
+
+export type { IBoard, TokenObj };
+export { BoardApiUrls };
