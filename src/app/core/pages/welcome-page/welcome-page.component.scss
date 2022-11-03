@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 30px 20px;
+  padding: 100px 30px;
 }
 
 .logo {
@@ -87,7 +87,7 @@
 }
 
 .customize-description {
-  max-width: 690px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -97,4 +97,62 @@
   font-size: 22px;
   font-weight: 500;
   color: #1e1b2d;
+}
+
+.rss-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 70px;
+  margin-bottom: 80px;
+}
+
+.rss-description {
+  max-width: 630px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.rss-paragraph {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1e1b2d;
+}
+
+.mat-raised-button {
+  align-self: center;
+  margin-top: 40px;
+  font-size: 22px;
+  width: 220px;
+  height: 50px;
+}
+
+.developers-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 50px;
+}
+
+.mat-card {
+  max-width: 350px;
+  padding: 30px 50px;
+}
+
+.mat-card-image {
+  max-width: 250px;
+  margin: 0 0 10px 0;
+}
+
+.mat-card-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.mat-card-content {
+  font-size: 20px;
+  text-align: center;
 }
