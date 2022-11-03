@@ -7,7 +7,7 @@ import { ThemeService } from 'src/app/core/services/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {}
 
   @HostBinding('class') get themeMode() {
     return this.themeService.isDarkTheme ? 'dark-theme' : 'light-theme';
