@@ -7,9 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, WelcomePageComponent],
   imports: [
     CommonModule,
     MatSlideToggleModule,
@@ -19,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatButtonModule,
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, WelcomePageComponent],
   providers: [],
 })
 export class CoreModule {}
