@@ -1,0 +1,19 @@
+<img class="logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
+<mat-form-field>
+  <input type="search" matInput placeholder="Search for anything" />
+  <mat-icon color="primary" matPrefix>search</mat-icon>
+</mat-form-field>
+<div class="theme-wrapper">
+  <mat-icon color="primary">brightness_7</mat-icon>
+  <mat-slide-toggle (change)="themeService.switchTheme($event)"></mat-slide-toggle>
+  <mat-icon color="primary">brightness_2</mat-icon>
+</div>
+<div class="auth-wrapper">
+  <button mat-raised-button color="primary">Sign in</button>
+  <button mat-raised-button color="accent">Sign up</button>
+</div>
+<div class="languages-wrapper">
+  <button mat-raised-button color="primary">EN</button>
+  <button mat-raised-button color="accent">RU</button>
+</div>
+<mat-icon color="primary" class="account">account_circle</mat-icon>

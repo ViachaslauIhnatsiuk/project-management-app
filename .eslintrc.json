@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -43,7 +43,7 @@
       }
     },
     {
-      "files": ["*.html"],
+      "files": ["*.component.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     },
