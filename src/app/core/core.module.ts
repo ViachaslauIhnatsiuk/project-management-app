@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthRoutingModule } from '../auth/auth-routing.module';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    AuthRoutingModule,
   ],
   exports: [HeaderComponent],
   providers: [],
