@@ -3,136 +3,83 @@
   The Best Way To Manage <br />
   Your Daily Tasks
 </h1>
-<p class="kanban-description">
-  The Kanban method is based on six basic practices to create an emerging set of positive behaviors
-  in organizations, and achieve better agility in the provision of services.
-</p>
-<section class="kanban-practices-section">
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-1.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Limit Work-In-Progress</p>
-  </div>
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-2.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Improve collaboratively, evolve experimentally</p>
-  </div>
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-3.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Make policies explicit</p>
-  </div>
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-4.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Manage flow</p>
-  </div>
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-5.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Visualize</p>
-  </div>
-  <div class="kanban-practice">
-    <img
-      class="practice-image"
-      src="../../../../assets/welcome-page/kanban-practice-6.jpg"
-      alt="kanban-practice"
-    />
-    <p class="practice-title">Implement feedback loops</p>
+<section class="kanban">
+  <h2 class="kanban__description">
+    The Kanban method is based on six basic practices to create an emerging set of positive
+    behaviors in organizations, and achieve better agility in the provision of services.
+  </h2>
+  <div class="kanban__practices">
+    <div class="kanban__practice" *ngFor="let practice of kanbanPracticeCards">
+      <img class="kanban__image" [src]="practice.src" alt="kanban-practice" />
+      <p class="kanban__title">{{ practice.title }}</p>
+    </div>
   </div>
 </section>
-<h2 class="title">
-  Increase the productivity <br />
-  of your team with <strong>Boards</strong>
-</h2>
-<section class="productivity-section">
-  <img src="../../../../assets//welcome-page/productivity.jpg" alt="productivity" />
-  <ul class="productivity-list">
-    <li class="productivity-paragraph">connect boards and visualize all work across your team</li>
-    <li class="productivity-paragraph">connect your goals to specific high-level deliverables</li>
-    <li class="productivity-paragraph">
-      achieve full traceability to ensure that everyone keeps their focus
-    </li>
-    <li class="productivity-paragraph">
-      use custom color-coded labels to organize your Kanban cards
-    </li>
-  </ul>
-</section>
-<h2 class="title">Customize your <strong>Boards</strong></h2>
-<section class="customize-section">
-  <div class="customize-description">
-    <p class="customize-paragraph">
-      Never miss a task with personalized boards. See what your team is working on and share
-      progress.
-    </p>
-    <p class="customize-paragraph">
-      Get a detailed overview of workloads, pin and follow important tasks, choose exactly what you
-      want to see to keep a close eye on progress.
-    </p>
-  </div>
-  <img src="../../../../assets//welcome-page/customize.jpg" alt="customize" />
-</section>
-<section class="rss-section">
-  <img src="../../../../assets//welcome-page/rsschool.jpg" alt="rsschool" />
-  <div class="rss-description">
-    <p class="rss-paragraph">
-      RS School is free-of-charge and community-based education program conducted by The Rolling
-      Scopes developer community since 2013.
-    </p>
-    <p class="rss-paragraph">
-      Everyone can study at RS School, regardless of age, professional employment, or place of
-      residence.
-    </p>
-    <button class="rss-button" mat-raised-button color="accent">Learn more</button>
-  </div>
-</section>
-<h2 class="title"><strong>Boards</strong> Developers</h2>
-<section class="developers-section">
-  <mat-card>
-    <img mat-card-image src="../../../../assets/welcome-page/dzmitry.jpg" alt="Dzmitry Developer" />
-    <mat-card-title>Dzmitry</mat-card-title>
-    <mat-card-content>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente,
-      culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio,
-      temporibus dolor et vitae sit.
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
+<section class="productivity">
+  <h2 class="title">
+    Increase the productivity <br />
+    of your team with <strong>Boards</strong>
+  </h2>
+  <div class="productivity__main">
     <img
-      mat-card-image
-      src="../../../../assets/welcome-page/viachaslau.jpg"
-      alt="Viachaslau Developer"
+      class="productivity__image"
+      src="../../../../assets//welcome-page/productivity.jpg"
+      alt="productivity"
     />
-    <mat-card-title>Viachaslau</mat-card-title>
-    <mat-card-content>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente,
-      culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio,
-      temporibus dolor et vitae sit.
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <img mat-card-image src="../../../../assets/welcome-page/gleb.jpg" alt="Gleb Developer" />
-    <mat-card-title>Gleb</mat-card-title>
-    <mat-card-content>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente,
-      culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio,
-      temporibus dolor et vitae sit.
-    </mat-card-content>
-  </mat-card>
+    <ul class="productivity__list">
+      <li class="productivity__paragraph" *ngFor="let productivity of productivityList">
+        {{ productivity }}
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="customize">
+  <h2 class="title">Customize your <strong>Boards</strong></h2>
+  <div class="customize__main">
+    <div class="customize__description">
+      <p class="customize__paragraph" *ngFor="let cusomizeParagraph of cusomizeParagraphs">
+        {{ cusomizeParagraph }}
+      </p>
+    </div>
+    <img
+      class="customize__image"
+      src="../../../../assets//welcome-page/customize.jpg"
+      alt="customize"
+    />
+  </div>
+</section>
+<section class="rss">
+  <h2 class="title">
+    Learn Angular with <br />
+    <strong>The Rolling Scopes School</strong>
+  </h2>
+  <div class="rss__main">
+    <img class="rss__image" src="../../../../assets//welcome-page/rsschool.jpg" alt="rsschool" />
+    <div class="rss__description">
+      <p class="rss__paragraph" *ngFor="let rssParagraph of rssParagraphs">
+        {{ rssParagraph }}
+      </p>
+      <a href="https://rs.school" class="rss__button" mat-raised-button target="_blank"
+        >Learn more</a
+      >
+    </div>
+  </div>
+</section>
+<section class="developers">
+  <h2 class="title"><strong>Boards</strong> Developers</h2>
+  <div class="developers__main">
+    <div class="developers__card" *ngFor="let developer of developers">
+      <img class="developers__image" [src]="developer.src" alt="Dzmitry Developer" />
+      <h6 class="developers__name">{{ developer.name }}</h6>
+      <p class="developers__content">{{ developer.about }}</p>
+      <a
+        class="developers__button"
+        [href]="developer.github"
+        mat-flat-button
+        color="primary"
+        target="_blank"
+        >View GitHub</a
+      >
+    </div>
+  </div>
 </section>
