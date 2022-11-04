@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { IBoard } from '../../models/boards.models';
-import { BoardModalService } from '../../services/board-modal.service';
-import { deleteBoard, setUpdatedBoard } from '../../store/actions/boards.actions';
+import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
 import { ConfirmationModalComponent } from '../../../shared/components/confirmation-modal/confirmation-modal.component';
+import { UpdateBoardModalComponent } from '../update-board-modal/update-board-modal.component';
+import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
 
 @Component({
   selector: 'app-board-card',
@@ -14,28 +15,33 @@ import { ConfirmationModalComponent } from '../../../shared/components/confirmat
 export class BoardCardComponent {
   @Input() board!: IBoard;
 
-  constructor(
-    private boardModalService: BoardModalService,
-    private store: Store,
-    public dialog: MatDialog,
-  ) {}
+  constructor(private store: Store, public dialog: MatDialog) {}
 
-  public deleteBoard(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  public deleteBoard(): void {
+    const { id: idBoard } = this.board;
+
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+      minWidth: MIN_WIDTH_MODAL,
     });
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
-      if (isConfirm && this.board.id) this.store.dispatch(deleteBoard({ idBoard: this.board.id }));
+      if (isConfirm && idBoard) this.store.dispatch(deleteBoard({ idBoard }));
     });
   }
 
   public editBoard(): void {
-    if (this.board.id) {
-      this.boardModalService.openUpdateBoardModal();
-      this.store.dispatch(setUpdatedBoard({ board: this.board }));
-    }
+    const { title, description, id } = this.board;
+
+    const dialogRef = this.dialog.open(UpdateBoardModalComponent, {
+      minWidth: MIN_WIDTH_MODAL,
+      data: { title, description },
+    });
+
+    dialogRef.afterClosed().subscribe((updatedBoard: IBoard) => {
+      if (updatedBoard) {
+        const board: IBoard = { id, ...updatedBoard };
+        this.store.dispatch(updateBoard({ board }));
+      }
+    });
   }
 }

@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { BoardModalService } from '../../services/board-modal.service';
-import { createBoard } from '../../store/actions/boards.actions';
+import { MatDialogRef } from '@angular/material/dialog';
+import {
+  INITIAL_INPUT_VALUE,
+  MAX_DESCRIPTION_LENGTH,
+  MAX_TITLE_LENGTH,
+  MIN_INPUT_VALUE_LENGTH,
+} from '../../constants/create-board-modal.constants';
 
 @Component({
   selector: 'app-create-board-modal',
@@ -12,24 +16,26 @@ import { createBoard } from '../../store/actions/boards.actions';
 export class CreateBoardModalComponent {
   public form!: FormGroup;
 
-  constructor(public boardModalService: BoardModalService, private store: Store) {
+  constructor(public dialogRef: MatDialogRef<CreateBoardModalComponent>) {
     this.initializeForm();
   }
 
   private initializeForm(): void {
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      description: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      title: new FormControl(INITIAL_INPUT_VALUE, [
+        Validators.required,
+        Validators.minLength(MIN_INPUT_VALUE_LENGTH),
+        Validators.maxLength(MAX_TITLE_LENGTH),
+      ]),
+      description: new FormControl(INITIAL_INPUT_VALUE, [
+        Validators.required,
+        Validators.minLength(MIN_INPUT_VALUE_LENGTH),
+        Validators.maxLength(MAX_DESCRIPTION_LENGTH),
+      ]),
     });
   }
 
-  public createNewBoard(): void {
-    if (this.form.status === 'VALID') {
-      const newBoard = this.form.value;
-      this.store.dispatch(createBoard({ newBoard }));
-
-      this.boardModalService.closeCreateBoardModal();
-      this.form.reset();
-    }
+  public closeModal(): void {
+    this.dialogRef.close();
   }
 }
