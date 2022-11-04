@@ -1,4 +1,4 @@
-<form *ngIf="boardService.isCreateBoardModalVisible" [formGroup]="form" (ngSubmit)="createNewBoard()">
+<form *ngIf="boardModalService.isCreateBoardModalVisible" [formGroup]="form" (ngSubmit)="createNewBoard()">
   <input type="text" placeholder="title" formControlName="title">
   <input type="text" placeholder="description" formControlName="description">
   <button type="submit">create</button>

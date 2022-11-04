@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { BoardModalService } from '../../services/board-modal.service';
 
 @Component({
   selector: 'app-boards-page',
@@ -7,5 +7,5 @@ import { BoardService } from '../../services/board.service';
   styleUrls: ['./boards-page.component.scss'],
 })
 export class BoardsPageComponent {
-  constructor(public boardService: BoardService) {}
+  constructor(public boardModalService: BoardModalService) {}
 }

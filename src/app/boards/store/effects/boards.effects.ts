@@ -6,8 +6,12 @@ import { BoardService } from '../../services/board.service';
 import {
   createBoardError,
   createBoardSuccess,
+  deleteBoardError,
+  deleteBoardSuccess,
   getBoardsError,
   getBoardsSuccess,
+  updateBoardError,
+  updateBoardSuccess,
 } from '../actions/boards.actions';
 import { BoardsActions } from '../models/boards.models';
 
@@ -32,6 +36,30 @@ export class BoardsEffects {
         return this.boardService.createBoard(newBoard).pipe(
           map((board) => createBoardSuccess({ newBoard: board })),
           catchError((error: Error) => of(createBoardError({ error: error.message }))),
+        );
+      }),
+    );
+  });
+
+  deleteBoard$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BoardsActions.DELETE_BOARD),
+      mergeMap(({ idBoard }: { idBoard: string }) => {
+        return this.boardService.deleteBoard(idBoard).pipe(
+          map(() => deleteBoardSuccess({ idBoard })),
+          catchError((error: Error) => of(deleteBoardError({ error: error.message }))),
+        );
+      }),
+    );
+  });
+
+  updateBoard$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BoardsActions.UPDATE_BOARD),
+      mergeMap(({ updatedBoard }: { updatedBoard: IBoard }) => {
+        return this.boardService.updateBoard(updatedBoard).pipe(
+          map((board) => updateBoardSuccess({ updatedBoard: board })),
+          catchError((error: Error) => of(updateBoardError({ error: error.message }))),
         );
       }),
     );

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { BoardService } from '../../services/board.service';
+import { BoardModalService } from '../../services/board-modal.service';
 import { createBoard } from '../../store/actions/boards.actions';
 
 @Component({
@@ -10,9 +10,13 @@ import { createBoard } from '../../store/actions/boards.actions';
   styleUrls: ['./create-board-modal.component.scss'],
 })
 export class CreateBoardModalComponent {
-  public form: FormGroup;
+  public form!: FormGroup;
 
-  constructor(public boardService: BoardService, private store: Store) {
+  constructor(public boardModalService: BoardModalService, private store: Store) {
+    this.initializeForm();
+  }
+
+  private initializeForm(): void {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.minLength(8)]),
       description: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -24,7 +28,7 @@ export class CreateBoardModalComponent {
       const newBoard = this.form.value;
       this.store.dispatch(createBoard({ newBoard }));
 
-      this.boardService.closeCreateBoardModal();
+      this.boardModalService.closeCreateBoardModal();
       this.form.reset();
     }
   }

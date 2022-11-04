@@ -3,9 +3,16 @@ import {
   createBoard,
   createBoardError,
   createBoardSuccess,
+  deleteBoard,
+  deleteBoardError,
+  deleteBoardSuccess,
   getBoards,
   getBoardsError,
   getBoardsSuccess,
+  setUpdatedBoard,
+  updateBoard,
+  updateBoardError,
+  updateBoardSuccess,
 } from '../actions/boards.actions';
 import { IBoardsState } from '../models/boards.models';
 import { initialBoardsState } from '../state/boards.state';
@@ -28,6 +35,36 @@ const boardsReducer = createReducer(
     return { ...state, isLoading: false, boards: [...state.boards, newBoard] };
   }),
   on(createBoardError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(deleteBoard, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(deleteBoardSuccess, (state, { idBoard }): IBoardsState => {
+    const resultedBoards = [...state.boards].filter(({ id }) => id !== idBoard);
+    return { ...state, isLoading: false, boards: resultedBoards };
+  }),
+  on(deleteBoardError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(setUpdatedBoard, (state, { board }): IBoardsState => {
+    return { ...state, isLoading: true, selectedForUpdateBoard: board };
+  }),
+  on(updateBoard, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateBoardSuccess, (state, { updatedBoard }): IBoardsState => {
+    const resultedBoards = [...state.boards].map((board) => {
+      if (board.id === updatedBoard.id) {
+        return updatedBoard;
+      }
+
+      return board;
+    });
+
+    return { ...state, isLoading: false, boards: resultedBoards };
+  }),
+  on(updateBoardError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
   }),
 );

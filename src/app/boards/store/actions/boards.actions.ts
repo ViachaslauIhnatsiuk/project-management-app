@@ -16,6 +16,24 @@ const createBoardSuccess = createAction(
 );
 const createBoardError = createAction(BoardsActions.CREATE_BOARD_ERROR, props<{ error: string }>());
 
+const deleteBoard = createAction(BoardsActions.DELETE_BOARD, props<{ idBoard: string }>());
+const deleteBoardSuccess = createAction(
+  BoardsActions.DELETE_BOARD_SUCCESS,
+  props<{ idBoard: string }>(),
+);
+const deleteBoardError = createAction(BoardsActions.DELETE_BOARD_ERROR, props<{ error: string }>());
+
+const setUpdatedBoard = createAction(
+  BoardsActions.SET_ID_UPDATED_BOARD,
+  props<{ board: IBoard }>(),
+);
+const updateBoard = createAction(BoardsActions.UPDATE_BOARD, props<{ updatedBoard: IBoard }>());
+const updateBoardSuccess = createAction(
+  BoardsActions.UPDATE_BOARD_SUCCESS,
+  props<{ updatedBoard: IBoard }>(),
+);
+const updateBoardError = createAction(BoardsActions.UPDATE_BOARD_ERROR, props<{ error: string }>());
+
 export {
   getBoards,
   getBoardsSuccess,
@@ -23,4 +41,11 @@ export {
   createBoard,
   createBoardSuccess,
   createBoardError,
+  deleteBoard,
+  deleteBoardSuccess,
+  deleteBoardError,
+  setUpdatedBoard,
+  updateBoard,
+  updateBoardSuccess,
+  updateBoardError,
 };

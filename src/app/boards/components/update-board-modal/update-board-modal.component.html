@@ -1,0 +1,6 @@
+<form *ngIf="boardModalService.isUpdateBoardModalVisible" [formGroup]="form" (ngSubmit)="updateBoard()">
+  <input type="text" placeholder="new title" formControlName="title">
+  <input type="text" placeholder="new description" formControlName="description">
+  <button type="submit">update</button>
+  <button (click)="boardModalService.closeUpdateBoardModal()">close</button>
+</form>
