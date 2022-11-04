@@ -1,13 +1,13 @@
-interface KanbanPracticeCard {
+interface IKanbanPracticeCard {
   src: string;
   title: string;
 }
 
-interface Developer {
+interface IDeveloper {
   name: string;
   src: string;
   about: string;
   github: string;
 }
 
-export { KanbanPracticeCard, Developer };
+export { IKanbanPracticeCard, IDeveloper };

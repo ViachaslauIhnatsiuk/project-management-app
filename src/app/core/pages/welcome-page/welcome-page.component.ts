@@ -5,8 +5,8 @@ import {
   cusomizeParagraphs,
   rssParagraphs,
   developers,
-} from 'src/app/core/constants/welcome-page-content.constants';
-import { KanbanPracticeCard, Developer } from 'src/app/core/models/welcome-page-content.models';
+} from 'src/app/core/constants/welcome-page.constants';
+import { IKanbanPracticeCard, IDeveloper } from 'src/app/core/models/welcome-page.models';
 import * as AOS from 'aos';
 
 @Component({
@@ -15,11 +15,11 @@ import * as AOS from 'aos';
   styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent implements OnInit {
-  public readonly kanbanPracticeCards: KanbanPracticeCard[] = kanbanPracticeCards;
+  public readonly kanbanPracticeCards: IKanbanPracticeCard[] = kanbanPracticeCards;
   public readonly productivityList: string[] = productivityList;
   public readonly cusomizeParagraphs: string[] = cusomizeParagraphs;
   public readonly rssParagraphs: string[] = rssParagraphs;
-  public readonly developers: Developer[] = developers;
+  public readonly developers: IDeveloper[] = developers;
 
   ngOnInit(): void {
     AOS.init({ disable: 'mobile', duration: 1500, startEvent: 'load' });
