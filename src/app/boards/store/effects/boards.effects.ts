@@ -56,9 +56,9 @@ export class BoardsEffects {
   updateBoard$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(BoardsActions.UPDATE_BOARD),
-      mergeMap(({ updatedBoard }: { updatedBoard: IBoard }) => {
-        return this.boardService.updateBoard(updatedBoard).pipe(
-          map((board) => updateBoardSuccess({ updatedBoard: board })),
+      mergeMap(({ board }: { board: IBoard }) => {
+        return this.boardService.updateBoard(board).pipe(
+          map((updatedBoard) => updateBoardSuccess({ updatedBoard })),
           catchError((error: Error) => of(updateBoardError({ error: error.message }))),
         );
       }),

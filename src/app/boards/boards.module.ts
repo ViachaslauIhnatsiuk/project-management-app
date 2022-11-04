@@ -11,7 +11,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { BoardsEffects } from './store/effects/boards.effects';
 import { BoardCardComponent } from './components/board-card/board-card.component';
 import { CreateBoardModalComponent } from './components/create-board-modal/create-board-modal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateBoardModalComponent } from './components/update-board-modal/update-board-modal.component';
+import { SharedModule } from '../shared/shared.module';
+import { CreateBoardComponent } from './components/create-board/create-board.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BoardsComponent,
     BoardCardComponent,
     CreateBoardModalComponent,
+    UpdateBoardModalComponent,
+    CreateBoardComponent,
   ],
   exports: [BoardsPageComponent],
   imports: [
@@ -27,7 +33,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BoardsRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
   ],
-  providers: [BoardService],
+  providers: [
+    BoardService,
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+  ],
 })
 export class BoardsModule {}

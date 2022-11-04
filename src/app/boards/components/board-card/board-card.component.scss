@@ -1,10 +1,12 @@
 :host {
   width: 20%;
+  min-width: 300px;
+  max-width: fit-content;
 }
 
-.dashboard-card {
+.card {
   position: relative;
-  height: 150px;
+  height: 100px;
 }
 
 .more-button {
@@ -13,6 +15,6 @@
   right: 2%;
 }
 
-.dashboard-card-content {
+.card-content {
   text-align: center;
 }

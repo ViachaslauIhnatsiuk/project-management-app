@@ -23,11 +23,7 @@ const deleteBoardSuccess = createAction(
 );
 const deleteBoardError = createAction(BoardsActions.DELETE_BOARD_ERROR, props<{ error: string }>());
 
-const setUpdatedBoard = createAction(
-  BoardsActions.SET_ID_UPDATED_BOARD,
-  props<{ board: IBoard }>(),
-);
-const updateBoard = createAction(BoardsActions.UPDATE_BOARD, props<{ updatedBoard: IBoard }>());
+const updateBoard = createAction(BoardsActions.UPDATE_BOARD, props<{ board: IBoard }>());
 const updateBoardSuccess = createAction(
   BoardsActions.UPDATE_BOARD_SUCCESS,
   props<{ updatedBoard: IBoard }>(),
@@ -44,7 +40,6 @@ export {
   deleteBoard,
   deleteBoardSuccess,
   deleteBoardError,
-  setUpdatedBoard,
   updateBoard,
   updateBoardSuccess,
   updateBoardError,

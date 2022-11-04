@@ -9,7 +9,6 @@ import {
   getBoards,
   getBoardsError,
   getBoardsSuccess,
-  setUpdatedBoard,
   updateBoard,
   updateBoardError,
   updateBoardSuccess,
@@ -46,9 +45,6 @@ const boardsReducer = createReducer(
   }),
   on(deleteBoardError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
-  }),
-  on(setUpdatedBoard, (state, { board }): IBoardsState => {
-    return { ...state, isLoading: true, selectedForUpdateBoard: board };
   }),
   on(updateBoard, (state): IBoardsState => {
     return { ...state, isLoading: true };
