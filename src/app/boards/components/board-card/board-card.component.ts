@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { IBoard } from '../../models/boards.models';
-import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
 import { ConfirmationModalComponent } from '../../../shared/components/confirmation-modal/confirmation-modal.component';
 import { UpdateBoardModalComponent } from '../update-board-modal/update-board-modal.component';
+import { IBoard } from '../../models/boards.models';
 import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
+import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
 
 @Component({
   selector: 'app-board-card',

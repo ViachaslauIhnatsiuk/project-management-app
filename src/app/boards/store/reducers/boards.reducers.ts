@@ -13,8 +13,8 @@ import {
   updateBoardError,
   updateBoardSuccess,
 } from '../actions/boards.actions';
-import { IBoardsState } from '../models/boards.models';
 import { initialBoardsState } from '../state/boards.state';
+import { IBoardsState } from '../models/boards.models';
 
 const boardsReducer = createReducer(
   initialBoardsState,

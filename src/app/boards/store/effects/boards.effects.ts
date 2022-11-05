@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { IBoard } from '../../models/boards.models';
 import { BoardService } from '../../services/board.service';
 import {
   createBoardError,
@@ -14,6 +13,7 @@ import {
   updateBoardSuccess,
 } from '../actions/boards.actions';
 import { BoardsActions } from '../models/boards.models';
+import { IBoard } from '../../models/boards.models';
 
 @Injectable()
 export class BoardsEffects {

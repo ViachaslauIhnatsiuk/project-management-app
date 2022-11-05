@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { CreateBoardModalComponent } from '../create-board-modal/create-board-modal.component';
 import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
 import { createBoard } from '../../store/actions/boards.actions';
-import { CreateBoardModalComponent } from '../create-board-modal/create-board-modal.component';
 
 @Component({
   selector: 'app-create-board',
