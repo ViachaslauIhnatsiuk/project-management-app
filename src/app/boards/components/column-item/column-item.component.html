@@ -3,6 +3,7 @@
     <mat-card-title *ngIf="!isEditMode" (click)="toggleEditMode()">
       {{column.title}}
     </mat-card-title>
+    <mat-icon (click)="deleteColumn()">delete_forever</mat-icon>
   </mat-card-header>
   <form *ngIf="isEditMode" [formGroup]="form" class="form">
     <mat-form-field appearance="fill">
