@@ -1,3 +1,25 @@
 <mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="headerService.isSideBarOpened"></mat-sidenav>
+  <mat-sidenav mode="side" [(opened)]="headerService.isSideBarOpened">
+    <mat-nav-list role="navigation" color="primary" *ngFor="let listItem of listItems">
+      <mat-list-item role="listitem">
+        <img class="list__icon" [src]="listItem.src" [alt]="listItem.title | lowercase" />
+        <span class="list__title">{{ listItem.title }}</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list role="navigation">
+      <div class="new-board">
+        <span class="new-board__title">My boards</span>
+        <img
+          class="new-board__icon"
+          src="../../../../assets/icons/sidebar/add-board.svg"
+          alt="add board"
+        />
+      </div>
+      <mat-list-item role="listitem">Mobile App</mat-list-item>
+      <mat-list-item role="listitem">Website Redesign</mat-list-item>
+      <mat-list-item role="listitem">Design System</mat-list-item>
+      <mat-list-item role="listitem">Wireframes</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
 </mat-sidenav-container>

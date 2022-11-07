@@ -15,6 +15,7 @@ import { BoardService } from '../boards/services/board.service';
 import { BoardsInterceptor } from './interceptors/boards.interceptor';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
@@ -29,6 +30,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatButtonModule,
     MatSidenavModule,
     MatButtonToggleModule,
+    MatListModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   providers: [
