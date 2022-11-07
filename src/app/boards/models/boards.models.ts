@@ -12,6 +12,9 @@ interface IColumn {
   id?: string;
   title: string;
   order?: number;
+}
+
+interface IColumnDetails extends IColumn {
   tasks: ITask[];
 }
 interface ITask {
@@ -33,5 +36,5 @@ enum BoardApiUrls {
   columns = 'columns',
 }
 
-export type { IBoard, IBoardDetails, IColumn, ITask, FileType };
+export type { IBoard, IBoardDetails, IColumn, IColumnDetails, ITask, FileType };
 export { BoardApiUrls };

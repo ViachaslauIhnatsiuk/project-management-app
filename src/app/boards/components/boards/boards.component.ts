@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getBoards } from '../../store/actions/boards.actions';
-import { selectAllBoards } from '../../store/selectors/boards.selectors';
+import { selectBoards } from '../../store/selectors/boards.selectors';
 
 @Component({
   selector: 'app-boards',
@@ -9,7 +9,7 @@ import { selectAllBoards } from '../../store/selectors/boards.selectors';
   styleUrls: ['./boards.component.scss'],
 })
 export class BoardsComponent {
-  public boards$ = this.store.select(selectAllBoards);
+  public boards$ = this.store.select(selectBoards);
 
   constructor(private store: Store) {
     this.store.dispatch(getBoards());
