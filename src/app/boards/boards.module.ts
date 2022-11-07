@@ -16,6 +16,10 @@ import { UpdateBoardModalComponent } from './components/update-board-modal/updat
 import { BoardService } from './services/board.service';
 import { boardsReducer } from './store/reducers/boards.reducers';
 import { BoardsEffects } from './store/effects/boards.effects';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { ColumnService } from './services/column.service';
+import { BoardsEffects } from './store/effects/boards.effects';
+import { ColumnEffects } from './store/effects/column.effects';
 
 @NgModule({
   declarations: [
@@ -25,11 +29,11 @@ import { BoardsEffects } from './store/effects/boards.effects';
     CreateBoardModalComponent,
     UpdateBoardModalComponent,
     CreateBoardComponent,
+    ProjectPageComponent,
   ],
   exports: [BoardsPageComponent],
   imports: [
-    StoreModule.forFeature('boards', boardsReducer),
-    EffectsModule.forFeature([BoardsEffects]),
+    EffectsModule.forFeature([BoardsEffects, ColumnEffects]),
     CommonModule,
     BoardsRoutingModule,
     ReactiveFormsModule,
@@ -38,6 +42,7 @@ import { BoardsEffects } from './store/effects/boards.effects';
   ],
   providers: [
     BoardService,
+    ColumnService,
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} },
   ],

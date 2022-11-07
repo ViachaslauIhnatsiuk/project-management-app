@@ -30,6 +30,7 @@ type FileType = {
 
 enum BoardApiUrls {
   boards = 'boards',
+  columns = 'columns',
 }
 
 export type { IBoard, IBoardDetails, IColumn, ITask, FileType };

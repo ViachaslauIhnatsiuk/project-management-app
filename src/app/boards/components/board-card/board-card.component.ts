@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { IBoard } from '../../models/boards.models';
+
 import { ConfirmationModalComponent } from '../../../shared/components/confirmation-modal/confirmation-modal.component';
 import { UpdateBoardModalComponent } from '../update-board-modal/update-board-modal.component';
 import { IBoard } from '../../models/boards.models';
 import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
+import { ActivatedRoute, Router } from '@angular/router';
 import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
 
 @Component({
@@ -15,7 +18,12 @@ import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
 export class BoardCardComponent {
   @Input() board!: IBoard;
 
-  constructor(private store: Store, public dialog: MatDialog) {}
+  constructor(
+    private store: Store,
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   public deleteBoard(): void {
     const { id: idBoard } = this.board;
@@ -43,5 +51,9 @@ export class BoardCardComponent {
         this.store.dispatch(updateBoard({ board }));
       }
     });
+  }
+
+  public openProjectPage(): void {
+    this.router.navigate([`${this.board.id}`], { relativeTo: this.route });
   }
 }
