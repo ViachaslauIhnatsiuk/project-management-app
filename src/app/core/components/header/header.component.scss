@@ -20,6 +20,17 @@
   vertical-align: middle;
 }
 
+.mat-button-toggle-appearance-standard {
+  background-color: #959595;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #673ab7;
+  color: #ffffff !important;
+}
+
 .theme-wrapper,
 .auth-wrapper,
 .languages-wrapper {

@@ -15,8 +15,18 @@
   <button mat-raised-button color="primary">Sign in</button>
   <button mat-raised-button color="accent">Sign up</button>
 </div>
-<div class="languages-wrapper">
-  <button mat-raised-button color="primary">EN</button>
-  <button mat-raised-button color="accent">RU</button>
-</div>
+<mat-button-toggle-group>
+  <mat-button-toggle
+    [checked]="headerService.currentLanguage.en"
+    (click)="headerService.switchLanguage()"
+    value="EN"
+    >EN</mat-button-toggle
+  >
+  <mat-button-toggle
+    [checked]="headerService.currentLanguage.ru"
+    (click)="headerService.switchLanguage()"
+    value="RU"
+    >RU</mat-button-toggle
+  >
+</mat-button-toggle-group>
 <mat-icon color="primary" class="account">account_circle</mat-icon>

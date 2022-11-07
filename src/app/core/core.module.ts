@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -13,11 +14,13 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
 import { BoardService } from '../boards/services/board.service';
 import { BoardsInterceptor } from './interceptors/boards.interceptor';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   imports: [
     CommonModule,
+    FormsModule,
     MatSlideToggleModule,
     MatCardModule,
     MatFormFieldModule,
@@ -25,6 +28,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatButtonToggleModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   providers: [
