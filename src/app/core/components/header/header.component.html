@@ -1,3 +1,6 @@
+<button mat-icon-button (click)="headerService.toggleSidebar()">
+  <mat-icon>menu</mat-icon>
+</button>
 <img class="logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
 <mat-form-field>
   <input type="search" matInput placeholder="Search for anything" />
@@ -5,7 +8,7 @@
 </mat-form-field>
 <div class="theme-wrapper">
   <mat-icon color="primary">brightness_7</mat-icon>
-  <mat-slide-toggle (change)="themeService.switchTheme($event)"></mat-slide-toggle>
+  <mat-slide-toggle (change)="headerService.switchTheme($event)"></mat-slide-toggle>
   <mat-icon color="primary">brightness_2</mat-icon>
 </div>
 <div class="auth-wrapper">

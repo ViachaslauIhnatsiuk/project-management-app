@@ -8,12 +8,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { BoardService } from '../boards/services/board.service';
 import { BoardsInterceptor } from './interceptors/boards.interceptor';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent],
+  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   imports: [
     CommonModule,
     MatSlideToggleModule,
@@ -22,8 +24,9 @@ import { BoardsInterceptor } from './interceptors/boards.interceptor';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatSidenavModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent],
+  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   providers: [
     BoardService,
     {
