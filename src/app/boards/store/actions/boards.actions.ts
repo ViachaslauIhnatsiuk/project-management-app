@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IBoard } from '../../models/boards.models';
+import { IBoard, IBoardDetails } from '../../models/boards.models';
 import { BoardsActions } from '../models/boards.models';
 
 const getBoards = createAction(BoardsActions.GET_BOARDS);
@@ -15,6 +15,16 @@ const createBoardSuccess = createAction(
   props<{ newBoard: IBoard }>(),
 );
 const createBoardError = createAction(BoardsActions.CREATE_BOARD_ERROR, props<{ error: string }>());
+
+const getBoardById = createAction(BoardsActions.GET_BOARD_BY_ID, props<{ idBoard: string }>());
+const getBoardByIdSuccess = createAction(
+  BoardsActions.GET_BOARD_BY_ID_SUCCESS,
+  props<{ board: IBoardDetails }>(),
+);
+const getBoardByIdError = createAction(
+  BoardsActions.GET_BOARD_BY_ID_ERROR,
+  props<{ error: string }>(),
+);
 
 const deleteBoard = createAction(BoardsActions.DELETE_BOARD, props<{ idBoard: string }>());
 const deleteBoardSuccess = createAction(
@@ -34,6 +44,9 @@ export {
   getBoards,
   getBoardsSuccess,
   getBoardsError,
+  getBoardById,
+  getBoardByIdSuccess,
+  getBoardByIdError,
   createBoard,
   createBoardSuccess,
   createBoardError,

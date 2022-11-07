@@ -7,6 +7,8 @@ import {
   createBoardSuccess,
   deleteBoardError,
   deleteBoardSuccess,
+  getBoardByIdError,
+  getBoardByIdSuccess,
   getBoardsError,
   getBoardsSuccess,
   updateBoardError,
@@ -24,6 +26,18 @@ export class BoardsEffects {
         return this.boardService.getBoards().pipe(
           map((boards) => getBoardsSuccess({ boards })),
           catchError((error: Error) => of(getBoardsError({ error: error.message }))),
+        );
+      }),
+    );
+  });
+
+  getBoardById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BoardsActions.GET_BOARD_BY_ID),
+      mergeMap(({ idBoard }: { idBoard: string }) => {
+        return this.boardService.getBoardById(idBoard).pipe(
+          map((board) => getBoardByIdSuccess({ board })),
+          catchError((error: Error) => of(getBoardByIdError({ error: error.message }))),
         );
       }),
     );

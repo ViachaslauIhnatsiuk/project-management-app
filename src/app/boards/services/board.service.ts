@@ -1,14 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { catchError, Observable } from 'rxjs';
 import { BoardApiUrls, IBoard } from '../models/boards.models';
 
 @Injectable()
 export class BoardService {
-  private selectedForUpdateBoard: IBoard | null = null;
-
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(private http: HttpClient) {}
 
   public getBoards(): Observable<IBoard[]> {
     return this.http.get<IBoard[]>(BoardApiUrls.boards).pipe(

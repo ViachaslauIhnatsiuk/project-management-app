@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeaderComponent } from 'src/app/core/components/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +23,8 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SettingsPageComponent,
     EditProfilePageComponent,
   ],
-
-  imports: [
+   imports: [
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot(),
     CommonModule,
     SharedModule,
     FormsModule,
@@ -69,4 +71,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     },
   ],
 })
-export class CoreModule {}
+export class CoreModule {
+  static forFeature: any;
+}

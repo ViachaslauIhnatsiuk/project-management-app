@@ -1,7 +1,9 @@
-import { IBoard } from '../../models/boards.models';
+import { IBoard, IColumn, ITask } from '../../models/boards.models';
 
 interface IBoardsState {
   boards: IBoard[];
+  columns: IColumn[];
+  tasks: ITask[];
   token: string;
   isLoading: boolean;
   error: string;
@@ -14,6 +16,9 @@ enum BoardsActions {
   CREATE_BOARD = '[Boards] Create Board',
   CREATE_BOARD_SUCCESS = '[Boards] Create Board success',
   CREATE_BOARD_ERROR = '[Boards] Create Board Boards error',
+  GET_BOARD_BY_ID = '[Boards] Get Board By Id',
+  GET_BOARD_BY_ID_SUCCESS = '[Boards] Get Board By Id success',
+  GET_BOARD_BY_ID_ERROR = '[Boards] Get Board By Id Boards error',
   DELETE_BOARD = '[Boards] Delete Board',
   DELETE_BOARD_SUCCESS = '[Boards] Delete Board success',
   DELETE_BOARD_ERROR = '[Boards] Delete Board Boards error',
