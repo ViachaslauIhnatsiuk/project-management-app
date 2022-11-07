@@ -53,6 +53,8 @@ const updateColumnError = createAction(
   props<{ error: string }>(),
 );
 
+const setColumns = createAction(ColumnActions.SET_COLUMNS, props<{ columns: IColumn[] }>());
+
 export {
   getColumns,
   getColumnsSuccess,
@@ -66,4 +68,5 @@ export {
   updateColumn,
   updateColumnSuccess,
   updateColumnError,
+  setColumns,
 };

@@ -20,6 +20,7 @@ enum ColumnActions {
   UPDATE_COLUMN = '[Project Page] Update Column',
   UPDATE_COLUMN_SUCCESS = '[Project Page] Update Column success',
   UPDATE_COLUMN_ERROR = '[Project Page] Update Column error',
+  SET_COLUMNS = '[Project Page] Set Columns',
 }
 
 type CreateColumnProps = {

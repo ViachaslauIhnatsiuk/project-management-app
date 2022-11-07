@@ -36,7 +36,7 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
     );
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initializeForm();
   }
 
@@ -81,7 +81,7 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.idBoardSubscription.unsubscribe();
   }
 }
