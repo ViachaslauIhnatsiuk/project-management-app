@@ -4,12 +4,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { updateColumn } from '../../store/actions/column.actions';
+import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
+import { deleteColumn, updateColumn } from '../../store/actions/column.actions';
 import { IColumn } from '../../models/boards.models';
 import {
   INITIAL_ID_BOARD_VALUE,
   MAX_TITLE_LENGTH,
   MIN_TITLE_LENGTH,
+  MIN_WIDTH_MODAL,
 } from '../../constants/column-item.constants';
 
 @Component({
@@ -64,6 +66,19 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
     if (this.form.valid) {
       this.toggleEditMode();
     }
+  }
+
+  public deleteColumn(): void {
+    const { id: idColumn } = this.column;
+
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      minWidth: MIN_WIDTH_MODAL,
+    });
+
+    dialogRef.afterClosed().subscribe((isConfirm) => {
+      if (isConfirm && idColumn)
+        this.store.dispatch(deleteColumn({ props: { idColumn, idBoard: this.idBoard } }));
+    });
   }
 
   ngOnDestroy(): void {
