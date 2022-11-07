@@ -26,6 +26,7 @@ import {
   getColumns,
   getColumnsError,
   getColumnsSuccess,
+  setColumns,
   updateColumn,
   updateColumnError,
   updateColumnSuccess,
@@ -135,6 +136,9 @@ const boardsReducer = createReducer(
   }),
   on(updateColumnError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
+  }),
+  on(setColumns, (state, { columns }): IBoardsState => {
+    return { ...state, isLoading: false, columns };
   }),
 );
 
