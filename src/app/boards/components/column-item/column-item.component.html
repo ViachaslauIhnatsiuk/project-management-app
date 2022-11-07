@@ -4,6 +4,13 @@
       {{column.title}}
     </mat-card-title>
   </mat-card-header>
+  <form *ngIf="isEditMode" [formGroup]="form" class="form">
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-icon (click)="toggleEditMode()">cancel</mat-icon>
+    <mat-icon (click)="updateTitle()">done</mat-icon>
+  </form>
   <mat-card-content class="card-content">
     <div>ALL TASKS HERE</div>
   </mat-card-content>
