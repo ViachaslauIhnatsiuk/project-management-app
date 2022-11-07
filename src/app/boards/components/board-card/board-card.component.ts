@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { IBoard } from '../../models/boards.models';
 
 import { ConfirmationModalComponent } from '../../../shared/components/confirmation-modal/confirmation-modal.component';
 import { UpdateBoardModalComponent } from '../update-board-modal/update-board-modal.component';
-import { IBoard } from '../../models/boards.models';
-import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
-import { ActivatedRoute, Router } from '@angular/router';
 import { deleteBoard, updateBoard } from '../../store/actions/boards.actions';
+import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
+import { IBoard } from '../../models/boards.models';
 
 @Component({
   selector: 'app-board-card',
