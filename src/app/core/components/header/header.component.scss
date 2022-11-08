@@ -1,4 +1,4 @@
-:host {
+.mat-toolbar {
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -20,16 +20,21 @@
   vertical-align: middle;
 }
 
-.theme-wrapper,
-.auth-wrapper,
-.languages-wrapper {
+.mat-button-toggle-appearance-standard {
+  background-color: #959595;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #673ab7;
+  color: #ffffff !important;
+}
+
+.btns-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.theme-wrapper,
-.auth-wrapper {
   column-gap: 15px;
 }
 
