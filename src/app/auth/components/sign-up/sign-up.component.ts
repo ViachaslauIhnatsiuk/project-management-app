@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { ISignUpRequest } from 'src/app/core/models/auth.interceptor.models';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
+  signUpForm = this.fb.group({
+    name: ['', Validators.required],
+    login: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private authServise: AuthService) {}
 
-  ngOnInit(): void {
+  onSubmit() {
+    this.authServise.signUp(this.signUpForm.value as ISignUpRequest);
   }
 
+  onCancel() {
+    this.signUpForm.reset();
+    this.authServise.closeForm();
+  }
 }
