@@ -11,9 +11,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { BoardService } from '../boards/services/board.service';
 import { BoardsInterceptor } from './interceptors/boards.interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent],
+  declarations: [HeaderComponent, WelcomePageComponent, FooterComponent],
   imports: [
     CommonModule,
     MatSlideToggleModule,
@@ -23,7 +24,7 @@ import { BoardsInterceptor } from './interceptors/boards.interceptor';
     MatIconModule,
     MatButtonModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent],
+  exports: [HeaderComponent, WelcomePageComponent, FooterComponent],
   providers: [
     BoardService,
     {
