@@ -31,16 +31,10 @@
   color: #ffffff !important;
 }
 
-.theme-wrapper,
-.auth-wrapper,
-.languages-wrapper {
+.btns-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.theme-wrapper,
-.auth-wrapper {
   column-gap: 15px;
 }
 
