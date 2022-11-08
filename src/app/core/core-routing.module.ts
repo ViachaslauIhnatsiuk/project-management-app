@@ -7,6 +7,11 @@ const routes: Routes = [
 
   // TODO: when will implement notFoundPage
   // { path: '**', redirectTo: 'notFoundPage', pathMatch: 'full' },
+  {
+    path: 'boards',
+    loadChildren: () => import('../boards/boards.module').then((m) => m.BoardsModule),
+  },
+  { path: '', redirectTo: '/boards', pathMatch: 'full' },
 ];
 
 @NgModule({

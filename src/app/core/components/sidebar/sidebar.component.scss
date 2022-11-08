@@ -1,0 +1,41 @@
+.mat-sidenav-container {
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eeeeee;
+}
+
+.mat-sidenav {
+  width: 300px;
+}
+
+.mat-list-item {
+  cursor: pointer;
+}
+
+.mat-divider {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.list__icon {
+  margin-right: 15px;
+}
+
+.new-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 20px;
+}
+
+.new-board__title {
+  font-weight: 600;
+  cursor: default;
+}
+
+.new-board__icon {
+  cursor: pointer;
+}

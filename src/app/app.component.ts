@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { ThemeService } from 'src/app/core/services/theme.service';
+import { HeaderService } from 'src/app/core/services/header.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,9 @@ import { ThemeService } from 'src/app/core/services/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private themeService: ThemeService) {}
+  constructor(private headerService: HeaderService) {}
 
   @HostBinding('class') get themeMode() {
-    return this.themeService.isDarkTheme ? 'dark-theme' : 'light-theme';
+    return this.headerService.isDarkTheme ? 'dark-theme' : 'light-theme';
   }
 }

@@ -1,0 +1,43 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 15px;
+  flex-shrink: 0;
+}
+
+.footer__year {
+  font-size: 16px;
+  color: #1e1b2d;
+  cursor: default;
+}
+
+.footer__githubs {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.footer__github {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.footer__icon {
+  width: 30px;
+}
+
+.footer__link {
+  font-size: 14px;
+  color: #1e1b2d;
+  text-decoration: none;
+}
+
+.footer__logo {
+  width: 80px;
+}
