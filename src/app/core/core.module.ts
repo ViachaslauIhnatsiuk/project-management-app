@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CoreRoutingModule } from './core-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -23,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [
     CommonModule,
     FormsModule,
+    CoreRoutingModule,
     MatSlideToggleModule,
     MatCardModule,
     MatFormFieldModule,
