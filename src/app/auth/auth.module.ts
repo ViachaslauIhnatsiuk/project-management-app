@@ -9,11 +9,13 @@ import { LogInComponent } from 'src/app/auth/components/log-in/log-in.component'
 import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [SignUpComponent, LogInComponent, AuthPageComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
