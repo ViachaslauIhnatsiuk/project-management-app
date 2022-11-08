@@ -16,6 +16,7 @@ import { BoardsInterceptor } from './interceptors/boards.interceptor';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
@@ -31,6 +32,7 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatButtonToggleModule,
     MatListModule,
+    MatToolbarModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
   providers: [
