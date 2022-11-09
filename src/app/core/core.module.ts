@@ -1,3 +1,4 @@
+import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
+  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -40,7 +41,7 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
     MatListModule,
     MatToolbarModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
+  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
   providers: [BoardService, httpInterceptorProviders],
 })
 export class CoreModule {}

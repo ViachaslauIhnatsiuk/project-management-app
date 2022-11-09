@@ -13,8 +13,8 @@
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
   <div class="btns-wrapper">
-    <button mat-raised-button color="primary" (click)="navigateToSignUp()">Sign in</button>
-    <button mat-raised-button color="accent" (click)="navigateToLogIn()">Sign up</button>
+    <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
+    <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
   </div>
   <mat-button-toggle-group>
     <mat-button-toggle
