@@ -25,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
   ): Observable<HttpEvent<ILogInResponse | ISignUpResponse | IResponseError>> {
-    const url = `${BASE_URL}${request.url}`;
+    const url = `${BASE_URL}auth/${request.url}`;
 
     const modifyRequest = request.clone({
       url,
