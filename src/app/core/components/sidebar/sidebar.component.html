@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="headerService.isSideBarOpened">
     <mat-nav-list role="navigation" color="primary" *ngFor="let listItem of listItems">
-      <mat-list-item role="listitem">
+      <mat-list-item role="listitem" [routerLink]="listItem.routerLink">
         <img class="list__icon" [src]="listItem.src" [alt]="listItem.title | lowercase" />
         <span class="list__title">{{ listItem.title }}</span>
       </mat-list-item>
