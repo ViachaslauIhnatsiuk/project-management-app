@@ -16,14 +16,14 @@ import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  signUp(fields: ISignUpRequest) {
+  public signUp(fields: ISignUpRequest): void {
     this.http.post<ISignUpResponse>('signup', fields).subscribe(({ login }) => {
       const { password } = fields;
       this.signIn({ login, password });
     });
   }
 
-  signIn(fields: ILogInRequest) {
+  public signIn(fields: ILogInRequest): void {
     this.http.post<ILogInResponse>('signin', fields).subscribe(({ token }) => {
       const { id, login } = this.getUserDataFromToken(token);
 
@@ -33,11 +33,11 @@ export class AuthService {
     });
   }
 
-  closeForm() {
+  public closeForm(): void {
     this.router.navigate(['']);
   }
 
-  isTokenExpired(): boolean {
+  public isTokenExpired(): boolean {
     const token = localStorage.getItem('token');
 
     if (!token) return false;
@@ -53,7 +53,7 @@ export class AuthService {
     }
   }
 
-  getUserDataFromToken(token: string): Pick<IJWTPayload, 'id' | 'login'> {
+  public getUserDataFromToken(token: string): Pick<IJWTPayload, 'id' | 'login'> {
     const { id, login } = jwtDecode<IJWTPayload>(token);
 
     return { id, login };
