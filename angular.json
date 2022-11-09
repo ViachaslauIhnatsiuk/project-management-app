@@ -23,13 +23,18 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "./node_modules/aos/dist/aos.css",
               "src/styles/styles.scss"
             ],
-            "scripts": ["./node_modules/aos/dist/aos.js"]
+            "scripts": [
+              "./node_modules/aos/dist/aos.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -90,25 +95,36 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "./node_modules/aos/dist/aos.css",
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": ["./node_modules/aos/dist/aos.js"]
+            "scripts": [
+              "./node_modules/aos/dist/aos.js"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*component.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*component.html"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

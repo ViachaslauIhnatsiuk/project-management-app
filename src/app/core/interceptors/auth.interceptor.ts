@@ -15,10 +15,12 @@ import {
   IResponseError,
   ISignUpRequest,
   ISignUpResponse,
-} from 'src/app/core/models/auth.interceptor.models';
+} from 'src/app/core/models/auth-interceptor.models';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  constructor(private notify: NotificationService) {}
   intercept(
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
@@ -39,7 +41,10 @@ export class AuthInterceptor implements HttpInterceptor {
           let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
             // TODO: Will be implement logic sets errors to toasterService
-            if (error.status === 409) errorMsg = `Error CONFLICT: ${error.error.message}`;
+            if (error.status === 409) {
+              errorMsg = `Error CONFLICT: ${error.error.message}`;
+              this.notify.showError(errorMsg, 'signup');
+            }
           }
           return throwError(() => errorMsg);
         }),
