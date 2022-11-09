@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     CoreRoutingModule,

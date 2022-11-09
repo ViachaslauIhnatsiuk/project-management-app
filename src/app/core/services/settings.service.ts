@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IEditUserDataRequest, IEditUserDataResponse } from '../models/settings-interceptor.models';
+import {
+  IEditUserDataRequest,
+  IEditUserDataResponse,
+} from 'src/app/core/models/settings-interceptor.models';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
-import { SettingsService } from './../../services/settings.service';
+import { SettingsService } from 'src/app/core/services/settings.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IEditUserDataRequest } from '../../models/settings-interceptor.models';
+import { IEditUserDataRequest } from 'src/app/core/models/settings-interceptor.models';
 
 @Component({
   selector: 'app-edit-profile-page',
