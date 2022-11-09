@@ -9,7 +9,7 @@ import { IEditUserDataRequest } from '../../models/settings-interceptor.models';
   styleUrls: ['./edit-profile-page.component.scss'],
 })
 export class EditProfilePageComponent {
-  editForm = this.fb.group({
+  public editForm = this.fb.group({
     name: ['', Validators.required],
     login: ['', Validators.required],
     password: ['', Validators.required],
@@ -17,12 +17,12 @@ export class EditProfilePageComponent {
 
   constructor(public fb: FormBuilder, public settingsService: SettingsService) {}
 
-  onSubmit() {
+  public onSubmit(): void {
     const fieldValues = this.editForm.value as IEditUserDataRequest;
     this.settingsService.editUserData(fieldValues);
   }
 
-  resetForm() {
+  public resetForm(): void {
     this.editForm.reset();
   }
 }
