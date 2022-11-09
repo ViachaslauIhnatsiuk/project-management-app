@@ -20,9 +20,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
+  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, SettingsPageComponent, EditProfilePageComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -40,7 +42,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatListModule,
     MatToolbarModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
+  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, SettingsPageComponent],
   providers: [
     BoardService,
     {
