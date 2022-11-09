@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ISignUpRequest, ISignUpResponse } from '../models/auth.interceptor.models';
+import { IEditUserDataRequest, IEditUserDataResponse } from '../models/settings-interceptor.models';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +10,14 @@ export class SettingsService {
 
   constructor(private http: HttpClient) {}
 
-  public editUserData(fields: ISignUpRequest): void {
-    this.http.put<ISignUpResponse>('userId', fields).subscribe((data) => {
+  public editUserData(fields: IEditUserDataRequest): void {
+    this.http.put<IEditUserDataResponse>('userId', fields).subscribe((data) => {
+      data;
+    });
+  }
+
+  public deleteUser(): void {
+    this.http.delete<IEditUserDataResponse>('userId').subscribe((data) => {
       data;
     });
   }
