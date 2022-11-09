@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ICurrentLanguage } from '../models/header.models';
+import { ICurrentLanguage } from 'src/app/core/models/header.models';
 
 @Injectable({
   providedIn: 'root',

@@ -35,6 +35,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatSelectModule,
     MatRadioModule,
     MatDialogModule,
+    ConfirmationModalComponent,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
 })

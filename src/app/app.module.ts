@@ -30,7 +30,6 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
       logOnly: environment.production,
       autoPause: true,
     }),
-    CoreModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
