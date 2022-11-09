@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HeaderService } from 'src/app/core/services/header.service';
 
 @Component({
@@ -7,5 +8,13 @@ import { HeaderService } from 'src/app/core/services/header.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(public headerService: HeaderService) {}
+  constructor(public headerService: HeaderService, private router: Router) {}
+
+  public navigateToSignUp() {
+    this.router.navigate(['auth/signUp']);
+  }
+
+  public navigateToLogIn() {
+    this.router.navigate(['auth/logIn']);
+  }
 }
