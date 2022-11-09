@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (request.url.includes('signup')) {
       return next.handle(modifyRequest).pipe(
-        catchError((error: HttpErrorResponse) => {
+        catchError((error) => {
           let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
             // TODO: Will be implement logic sets errors to toasterService
@@ -50,7 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (request.url.includes('signin')) {
       return next.handle(modifyRequest).pipe(
-        catchError((error: HttpErrorResponse) => {
+        catchError((error) => {
           let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
             // TODO: Will be implement logic sets errors to toasterService
