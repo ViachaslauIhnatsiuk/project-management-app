@@ -15,11 +15,11 @@ import { AuthModule } from '../auth/auth.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { BoardService } from '../boards/services/board.service';
-import { BoardsInterceptor } from './interceptors/boards.interceptor';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent],
@@ -41,13 +41,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent],
-  providers: [
-    BoardService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BoardsInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [BoardService, httpInterceptorProviders],
 })
 export class CoreModule {}

@@ -6,7 +6,7 @@ import {
   ILogInResponse,
   ISignUpRequest,
   ISignUpResponse,
-} from 'src/app/core/models/auth.interceptor.models';
+} from 'src/app/core/models/auth-interceptor.models';
 
 @Injectable({
   providedIn: 'root',

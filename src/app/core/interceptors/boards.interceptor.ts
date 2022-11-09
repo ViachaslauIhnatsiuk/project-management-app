@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_URL } from '../constants/core.constants';
+import { BASE_URL } from '../constants/interceptors.constants';
 
 @Injectable()
 export class BoardsInterceptor implements HttpInterceptor {
@@ -9,16 +9,18 @@ export class BoardsInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let headers = request.headers.set('Authorization', `Bearer ${this.TOKEN}`);
-    const url = `${API_URL}/${request.url}`;
+    const url = `${BASE_URL}boards/${request.url}`;
 
     switch (request.url) {
-      default:
+      case 'boards':
         return next.handle(
           request.clone({
             url,
             headers,
           }),
         );
+      default:
+        return next.handle(request);
     }
   }
 }
