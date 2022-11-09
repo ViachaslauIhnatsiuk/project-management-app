@@ -1,7 +1,7 @@
 import { SettingsService } from './../../services/settings.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ISignUpRequest } from '../../models/auth.interceptor.models';
+import { IEditUserDataRequest } from '../../models/settings-interceptor.models';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -18,7 +18,7 @@ export class EditProfilePageComponent {
   constructor(public fb: FormBuilder, public settingsService: SettingsService) {}
 
   onSubmit() {
-    const fieldValues = this.editForm.value as ISignUpRequest;
+    const fieldValues = this.editForm.value as IEditUserDataRequest;
     this.settingsService.editUserData(fieldValues);
   }
 

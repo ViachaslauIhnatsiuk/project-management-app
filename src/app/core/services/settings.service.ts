@@ -7,12 +7,11 @@ import { ISignUpRequest, ISignUpResponse } from '../models/auth.interceptor.mode
   providedIn: 'root',
 })
 export class SettingsService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   editUserData(fields: ISignUpRequest) {
-    this.http.post<ISignUpResponse>('users/', fields).subscribe((data) => {
-      localStorage.setItem('userName', fields.name);
-      this.router.navigate(['auth/logIn']);
+    this.http.put<ISignUpResponse>('userId', fields).subscribe((data) => {
+      data;
     });
   }
 }
