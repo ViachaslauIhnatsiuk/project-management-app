@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
+import { AuthModule } from '../auth/auth.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { BoardService } from '../boards/services/board.service';
@@ -31,6 +33,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    AuthModule,
+    AuthRoutingModule,
     MatSidenavModule,
     MatButtonToggleModule,
     MatListModule,
