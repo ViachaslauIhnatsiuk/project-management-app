@@ -1,33 +1,51 @@
-<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
-  <h3 class="form__title">Edit profile</h3>
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput placeholder="Enter your name" formControlName="name" />
-    <mat-hint
-      *ngIf="editForm.controls.name.errors?.['required'] && (editForm.controls.name.dirty || editForm.controls.name.touched)"
-      >Name is required.</mat-hint
-    >
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Login</mat-label>
-    <input matInput placeholder="Enter your login" formControlName="login" />
-    <mat-hint
-      *ngIf="editForm.controls.login.errors?.['required'] && (editForm.controls.login.dirty || editForm.controls.login.touched)"
-      >Login is required.</mat-hint
-    >
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput placeholder="Enter your password" formControlName="password" />
-    <mat-hint
-      *ngIf="editForm.controls.password.errors?.['required'] && (editForm.controls.password.dirty || editForm.controls.password.touched)"
-      >Password is required.</mat-hint
-    >
-  </mat-form-field>
-  <div class="form__btns">
-    <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">
-      Edit
-    </button>
-    <button mat-raised-button (click)="resetForm()">Reset form</button>
-  </div>
-</form>
+<mat-card>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+    <h3 class="form__title">Edit profile</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter your name" formControlName="name" />
+      <mat-hint
+        *ngIf="editForm.controls.name.errors?.['required'] && (editForm.controls.name.dirty || editForm.controls.name.touched)"
+        >Name is required.</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="Enter your login" formControlName="login" />
+      <mat-hint
+        *ngIf="editForm.controls.login.errors?.['required'] && (editForm.controls.login.dirty || editForm.controls.login.touched)"
+        >Login is required.</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="settingsService.passwordVisibility ? 'text' : 'password'"
+        placeholder="Enter your password"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="settingsService.changePasswordVisibility()"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="settingsService.passwordVisibility"
+      >
+        <mat-icon>{{
+          settingsService.passwordVisibility ? 'visibility' : 'visibility_off'
+        }}</mat-icon>
+      </button>
+      <mat-hint
+        *ngIf="editForm.controls.password.errors?.['required'] && (editForm.controls.password.dirty || editForm.controls.password.touched)"
+        >Password is required.</mat-hint
+      >
+    </mat-form-field>
+    <div class="form__btns">
+      <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">
+        Edit
+      </button>
+      <button mat-raised-button (click)="resetForm()">Reset form</button>
+    </div>
+  </form>
+</mat-card>
