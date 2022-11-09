@@ -18,7 +18,8 @@ export class SignUpComponent {
   constructor(private fb: FormBuilder, private authServise: AuthService) {}
 
   onSubmit() {
-    this.authServise.signUp(this.signUpForm.value as ISignUpRequest);
+    const fieldValues = this.signUpForm.value as ISignUpRequest;
+    this.authServise.signUp(fieldValues);
   }
 
   onCancel() {

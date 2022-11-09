@@ -1,5 +1,5 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form-sign">
-  <h3 class="form-title">Sign Up</h3>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form">
+  <h3 class="form__title">Sign Up</h3>
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
     <input matInput placeholder="Enter your name" formControlName="name" />
@@ -24,7 +24,7 @@
       >Password is required.</mat-hint
     >
   </mat-form-field>
-  <div class="form-buttons">
+  <div class="form__btns">
     <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
       SignUp
     </button>

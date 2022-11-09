@@ -19,8 +19,6 @@ import {
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
-
   intercept(
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
