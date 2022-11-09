@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
@@ -24,10 +24,17 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, SettingsPageComponent, EditProfilePageComponent],
+  declarations: [
+    HeaderComponent,
+    WelcomePageComponent,
+    SidebarComponent,
+    SettingsPageComponent,
+    EditProfilePageComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     CoreRoutingModule,
     MatSlideToggleModule,
     MatCardModule,
@@ -42,7 +49,13 @@ import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile
     MatListModule,
     MatToolbarModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, SettingsPageComponent],
+  exports: [
+    HeaderComponent,
+    WelcomePageComponent,
+    SidebarComponent,
+    SettingsPageComponent,
+    EditProfilePageComponent,
+  ],
   providers: [
     BoardService,
     {
