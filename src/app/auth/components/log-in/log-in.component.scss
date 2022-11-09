@@ -12,7 +12,7 @@
   bottom: 0;
 }
 
-.form-login {
+.form {
   width: 400px;
   padding: 20px;
   border-radius: 5px;
@@ -20,15 +20,15 @@
   flex-direction: column;
   gap: 10px;
   background-color: #ffffff;
-}
 
-.form-title {
-  margin: 0;
-  text-align: center;
-}
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
 
-.form-buttons {
-  align-self: flex-end;
-  display: flex;
-  gap: 10px;
+  &__btns {
+    align-self: flex-end;
+    display: flex;
+    gap: 10px;
+  }
 }

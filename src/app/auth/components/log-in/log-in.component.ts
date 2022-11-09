@@ -17,7 +17,8 @@ export class LogInComponent {
   constructor(private fb: FormBuilder, private authServise: AuthService) {}
 
   onSubmit() {
-    this.authServise.signIn(this.logInForm.value as ILogInRequest);
+    const fieldValues = this.logInForm.value as ILogInRequest;
+    this.authServise.signIn(fieldValues);
   }
 
   onCancel() {

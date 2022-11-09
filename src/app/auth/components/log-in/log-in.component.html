@@ -1,5 +1,5 @@
-<form [formGroup]="logInForm" (ngSubmit)="onSubmit()" class="form-login">
-  <h3 class="form-title">Log In</h3>
+<form [formGroup]="logInForm" (ngSubmit)="onSubmit()" class="form">
+  <h3 class="form__title">Log In</h3>
   <mat-form-field appearance="outline">
     <mat-label>Login</mat-label>
     <input matInput placeholder="Enter your login" formControlName="login" />
@@ -16,7 +16,7 @@
       >Password is required.</mat-hint
     >
   </mat-form-field>
-  <div class="form-buttons">
+  <div class="form__btns">
     <button mat-raised-button color="primary" type="submit" [disabled]="logInForm.invalid">
       Login
     </button>
