@@ -35,7 +35,6 @@ import { environment } from 'src/environments/environment';
       logOnly: environment.production,
       autoPause: true,
     }),
-    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

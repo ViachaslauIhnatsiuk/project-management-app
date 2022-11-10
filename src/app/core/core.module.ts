@@ -1,7 +1,7 @@
 import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
@@ -21,12 +21,24 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
+  declarations: [
+    HeaderComponent,
+    WelcomePageComponent,
+    SidebarComponent,
+    SettingsPageComponent,
+    EditProfilePageComponent,
+  ],
+
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     CoreRoutingModule,
     MatSlideToggleModule,
     MatCardModule,
@@ -41,7 +53,20 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
     MatListModule,
     MatToolbarModule,
   ],
-  exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
-  providers: [BoardService, httpInterceptorProviders],
+  exports: [
+    HeaderComponent,
+    WelcomePageComponent,
+    SidebarComponent,
+    SettingsPageComponent,
+    EditProfilePageComponent,
+  ],
+  providers: [
+    BoardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BoardsInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class CoreModule {}
