@@ -13,7 +13,7 @@ export interface ISignUpRequest {
 }
 
 export interface ISignUpResponse {
-  id: string;
+  _id: string;
   name: string;
   login: string;
 }

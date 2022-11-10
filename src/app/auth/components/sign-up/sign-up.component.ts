@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { ISignUpRequest } from 'src/app/core/models/auth.interceptor.models';
+import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
 
 @Component({
   selector: 'app-sign-up',

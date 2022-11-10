@@ -6,12 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { AppComponent } from 'src/app/app.component';
 import { environment } from 'src/environments/environment';
-import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +19,11 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -31,7 +36,7 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
       autoPause: true,
     }),
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

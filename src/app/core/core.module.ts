@@ -1,3 +1,4 @@
+import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,11 +16,11 @@ import { AuthModule } from '../auth/auth.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { BoardService } from '../boards/services/board.service';
-import { BoardsInterceptor } from './interceptors/boards.interceptor';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -32,6 +33,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SettingsPageComponent,
     EditProfilePageComponent,
   ],
+
   imports: [
     CommonModule,
     SharedModule,
