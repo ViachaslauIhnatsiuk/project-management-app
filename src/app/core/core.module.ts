@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +20,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
@@ -42,6 +43,6 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
     MatToolbarModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
-  providers: [BoardService, httpInterceptorProviders],
+  providers: [BoardService, NotificationService, ErrorHandlerService, httpInterceptorProviders],
 })
 export class CoreModule {}

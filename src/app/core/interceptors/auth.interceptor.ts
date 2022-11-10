@@ -16,11 +16,11 @@ import {
   ISignUpRequest,
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
-import { NotificationService } from '../services/notification.service';
+import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private notify: NotificationService) {}
+  constructor(private errorHandlerService: ErrorHandlerService) {}
   intercept(
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
@@ -38,15 +38,10 @@ export class AuthInterceptor implements HttpInterceptor {
     if (request.url.includes('signup')) {
       return next.handle(modifyRequest).pipe(
         catchError((error) => {
-          let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
-            // TODO: Will be implement logic sets errors to toasterService
-            if (error.status === 409) {
-              errorMsg = `Error CONFLICT: ${error.error.message}`;
-              this.notify.showError(errorMsg, 'signup');
-            }
+            this.errorHandlerService.handleError(error);
           }
-          return throwError(() => errorMsg);
+          return throwError(() => error);
         }),
       );
     }
@@ -54,12 +49,10 @@ export class AuthInterceptor implements HttpInterceptor {
     if (request.url.includes('signin')) {
       return next.handle(modifyRequest).pipe(
         catchError((error) => {
-          let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
-            // TODO: Will be implement logic sets errors to toasterService
-            if (error.status === 403) errorMsg = `Error FORBIDDEN: ${error.error.message}`;
+            this.errorHandlerService.handleError(error);
           }
-          return throwError(() => errorMsg);
+          return throwError(() => error);
         }),
       );
     }
