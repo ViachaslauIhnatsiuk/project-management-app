@@ -4,9 +4,9 @@ interface IBoardsState {
   boards: IBoard[];
   columns: IColumn[];
   tasks: ITask[];
-  token: string;
   isLoading: boolean;
   error: string;
+  userId: string | null;
 }
 
 enum BoardsActions {

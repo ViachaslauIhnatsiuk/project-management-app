@@ -16,9 +16,13 @@ import * as AOS from 'aos';
 })
 export class WelcomePageComponent implements OnInit {
   public readonly kanbanPracticeCards: IKanbanPracticeCard[] = kanbanPracticeCards;
+
   public readonly productivityList: string[] = productivityList;
+
   public readonly cusomizeParagraphs: string[] = cusomizeParagraphs;
+
   public readonly rssParagraphs: string[] = rssParagraphs;
+
   public readonly developers: IDeveloper[] = developers;
 
   ngOnInit(): void {

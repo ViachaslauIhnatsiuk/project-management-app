@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+
 import { CreateBoardModalComponent } from '../create-board-modal/create-board-modal.component';
 import { MIN_WIDTH_MODAL } from '../../constants/create-board-modal.constants';
 import { createBoard } from '../../store/actions/boards.actions';
+import { IBoard } from '../../models/boards.models';
 
 @Component({
   selector: 'app-create-board',
@@ -18,7 +20,7 @@ export class CreateBoardComponent {
       minWidth: MIN_WIDTH_MODAL,
     });
 
-    dialogRef.afterClosed().subscribe((newBoard) => {
+    dialogRef.afterClosed().subscribe((newBoard: IBoard) => {
       if (newBoard) {
         this.store.dispatch(createBoard({ newBoard }));
       }

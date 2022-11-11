@@ -25,6 +25,14 @@ import { ColumnService } from './services/column.service';
 import { BoardsEffects } from './store/effects/boards.effects';
 import { ColumnEffects } from './store/effects/column.effects';
 import { boardsReducer } from './store/reducers/boards.reducers';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
+import { CreateTaskModalComponent } from './components/create-task-modal/create-task-modal.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { TaskEffects } from './store/effects/task.effects';
+import { TaskService } from './services/task.service';
+import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-modal.component';
+import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -40,11 +48,17 @@ import { boardsReducer } from './store/reducers/boards.reducers';
     CreateColumnComponent,
     CreateColumnModalComponent,
     DragTestComponent,
+    TasksComponent,
+    TaskItemComponent,
+    CreateTaskModalComponent,
+    CreateTaskComponent,
+    EditTaskModalComponent,
+    ClickStopPropagationDirective,
   ],
   exports: [BoardsPageComponent],
   imports: [
     StoreModule.forFeature('boards', boardsReducer),
-    EffectsModule.forFeature([BoardsEffects, ColumnEffects]),
+    EffectsModule.forFeature([BoardsEffects, ColumnEffects, TaskEffects]),
     CommonModule,
     BoardsRoutingModule,
     ReactiveFormsModule,
@@ -57,6 +71,7 @@ import { boardsReducer } from './store/reducers/boards.reducers';
     ColumnService,
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} },
+    TaskService,
   ],
 })
 export class BoardsModule {}

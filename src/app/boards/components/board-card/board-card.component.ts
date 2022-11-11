@@ -25,34 +25,34 @@ export class BoardCardComponent {
   ) {}
 
   public deleteBoard(): void {
-    const { id: idBoard } = this.board;
+    const { _id: boardId } = this.board;
 
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       minWidth: MIN_WIDTH_MODAL,
     });
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
-      if (isConfirm && idBoard) this.store.dispatch(deleteBoard({ idBoard }));
+      if (isConfirm && boardId) this.store.dispatch(deleteBoard({ boardId }));
     });
   }
 
   public editBoard(): void {
-    const { title, description, id } = this.board;
+    const { title, _id: boardId } = this.board;
 
     const dialogRef = this.dialog.open(UpdateBoardModalComponent, {
       minWidth: MIN_WIDTH_MODAL,
-      data: { title, description },
+      data: { title },
     });
 
     dialogRef.afterClosed().subscribe((updatedBoard: IBoard) => {
       if (updatedBoard) {
-        const board: IBoard = { id, ...updatedBoard };
+        const board: IBoard = { ...updatedBoard, _id: boardId };
         this.store.dispatch(updateBoard({ board }));
       }
     });
   }
 
   public openProjectPage(): void {
-    this.router.navigate([`${this.board.id}`], { relativeTo: this.route });
+    this.router.navigate([`${this.board._id}`], { relativeTo: this.route });
   }
 }

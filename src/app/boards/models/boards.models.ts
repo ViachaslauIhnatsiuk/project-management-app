@@ -1,7 +1,8 @@
 interface IBoard {
-  id?: string;
+  _id?: string;
   title: string;
-  description: string;
+  owner: string;
+  users: string[];
 }
 
 interface IBoardDetails extends IBoard {
@@ -9,21 +10,23 @@ interface IBoardDetails extends IBoard {
 }
 
 interface IColumn {
-  id?: string;
-  title: string;
-  order?: number;
+  _id?: string;
+  title?: string;
+  order: number;
+  boardId?: string;
+  tasks?: ITask[];
 }
 
-interface IColumnDetails extends IColumn {
-  tasks: ITask[];
-}
 interface ITask {
-  id?: string;
+  _id?: string;
   title: string;
   order?: number;
   description: string;
   userId: string;
+  columnId?: string;
+  boardId?: string;
   files?: FileType[];
+  users?: string[];
 }
 
 type FileType = {
@@ -34,7 +37,10 @@ type FileType = {
 enum BoardApiUrls {
   boards = 'boards',
   columns = 'columns',
+  tasks = 'tasks',
+  columnsSet = 'columnsSet',
+  tasksSet = 'tasksSet',
 }
 
-export type { IBoard, IBoardDetails, IColumn, IColumnDetails, ITask, FileType };
+export type { IBoard, IBoardDetails, IColumn, ITask, FileType };
 export { BoardApiUrls };

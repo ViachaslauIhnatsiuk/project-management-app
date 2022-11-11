@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,16 +24,18 @@ import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     WelcomePageComponent,
+    FooterComponent,
     SidebarComponent,
     SettingsPageComponent,
     EditProfilePageComponent,
   ],
-   imports: [
+  imports: [
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
     CommonModule,
@@ -57,19 +58,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   exports: [
     HeaderComponent,
+    FooterComponent,
     WelcomePageComponent,
     SidebarComponent,
     SettingsPageComponent,
     EditProfilePageComponent,
   ],
-  providers: [
-    BoardService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BoardsInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [BoardService, httpInterceptorProviders],
 })
 export class CoreModule {
   static forFeature: any;

@@ -1,8 +1,14 @@
 <mat-card class="card" (click)="openProjectPage()">
   <mat-card-header>
     <mat-card-title>
-      {{board.title}}
-      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+      {{ board.title }}
+      <button
+        mat-icon-button
+        class="more-button"
+        [matMenuTriggerFor]="menu"
+        aria-label="Toggle menu"
+        appClickStopPropagation
+      >
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
@@ -11,7 +17,4 @@
       </mat-menu>
     </mat-card-title>
   </mat-card-header>
-  <mat-card-content class="card-content">
-    <div>{{ board.description }}</div>
-  </mat-card-content>
 </mat-card>

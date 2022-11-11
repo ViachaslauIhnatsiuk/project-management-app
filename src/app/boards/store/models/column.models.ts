@@ -1,12 +1,5 @@
 import { IColumn } from '../../models/boards.models';
 
-interface IColumnState {
-  columns: IColumn[];
-  token: string;
-  isLoading: boolean;
-  error: string;
-}
-
 enum ColumnActions {
   GET_COLUMNS = '[Project Page] Get Columns',
   GET_COLUMNS_SUCCESS = '[Project Page] Get Columns success',
@@ -20,6 +13,10 @@ enum ColumnActions {
   UPDATE_COLUMN = '[Project Page] Update Column',
   UPDATE_COLUMN_SUCCESS = '[Project Page] Update Column success',
   UPDATE_COLUMN_ERROR = '[Project Page] Update Column error',
+  UPDATE_ORDER_COLUMNS = '[Project Page] Update Order Columns',
+  UPDATE_ORDER_COLUMNS_SUCCESS = '[Project Page] Update Order Columns success',
+  UPDATE_ORDER_COLUMNS_ERROR = '[Project Page] Update Order Columns error',
+  RESET_COLUMNS = '[Project Page] Reset Columns',
   SET_COLUMNS = '[Project Page] Set Columns',
 }
 
@@ -29,7 +26,7 @@ type CreateColumnProps = {
 };
 
 type DeleteColumnProps = {
-  idColumn: string;
+  columnId: string;
   idBoard: string;
 };
 
@@ -38,5 +35,5 @@ type UpdateColumnProps = {
   idBoard: string;
 };
 
-export type { IColumnState, CreateColumnProps, DeleteColumnProps, UpdateColumnProps };
+export type { CreateColumnProps, DeleteColumnProps, UpdateColumnProps };
 export { ColumnActions };
