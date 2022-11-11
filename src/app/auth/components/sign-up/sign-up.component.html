@@ -15,6 +15,18 @@
       *ngIf="signUpForm.controls.login.errors?.['required'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
       >Login is required.</mat-hint
     >
+    <mat-hint
+      *ngIf="signUpForm.controls.login.errors?.['uniqueLogin'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
+    >
+      Login already exist
+    </mat-hint>
+    <mat-progress-spinner
+      *ngIf="signUpForm.controls.login.pending"
+      matSuffix
+      [mode]="'indeterminate'"
+      [diameter]="20"
+    >
+    </mat-progress-spinner>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
+import { signUp } from '../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,11 +17,11 @@ export class SignUpComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authServise: AuthService) {}
+  constructor(private fb: FormBuilder, private authServise: AuthService, private store: Store) {}
 
   onSubmit() {
     const fieldValues = this.signUpForm.value as ISignUpRequest;
-    this.authServise.signUp(fieldValues);
+    this.store.dispatch(signUp(fieldValues));
   }
 
   onCancel() {
