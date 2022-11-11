@@ -9,6 +9,7 @@ import {
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
 import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
+import { map, Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,21 +17,12 @@ import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  public signUp(fields: ISignUpRequest): void {
-    this.http.post<ISignUpResponse>('signup', fields).subscribe(({ login }) => {
-      const { password } = fields;
-      this.signIn({ login, password });
-    });
+  public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
+    return this.http.post<ISignUpResponse>('signup', fields);
   }
 
-  public signIn(fields: ILogInRequest): void {
-    this.http.post<ILogInResponse>('signin', fields).subscribe(({ token }) => {
-      const { id, login } = this.getUserDataFromToken(token);
-
-      localStorage.setItem('userData', JSON.stringify({ id, login, token }));
-
-      this.router.navigate(['']);
-    });
+  public signIn(fields: ILogInRequest): Observable<ILogInResponse> {
+    return this.http.post<ILogInResponse>('signin', fields);
   }
 
   public closeForm(): void {
