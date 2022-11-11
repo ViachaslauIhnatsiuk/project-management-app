@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { initialBoardsState } from '../state/boards.state';
 import { IBoardsState } from '../models/boards.models';
+import { IColumn } from '../../models/boards.models';
 import {
   createBoard,
   createBoardError,
@@ -37,7 +39,23 @@ import {
   updateOrderAllColumnsError,
   updateOrderAllColumnsSuccess,
 } from '../actions/column.actions';
-import { IColumn } from '../../models/boards.models';
+import {
+  createTask,
+  createTaskSuccess,
+  deleteTask,
+  deleteTaskError,
+  deleteTaskSuccess,
+  getTasks,
+  getTasksError,
+  getTasksSuccess,
+  setTasks,
+  updateOrderAllTasks,
+  updateOrderAllTasksError,
+  updateOrderAllTasksSuccess,
+  updateTask,
+  updateTaskError,
+  updateTaskSuccess,
+} from '../actions/task.actions';
 
 const boardsReducer = createReducer(
   initialBoardsState,
@@ -186,6 +204,106 @@ const boardsReducer = createReducer(
   }),
   on(updateColumnError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
+  }),
+  on(getTasks, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(getTasksSuccess, (state, { tasks, columnId }): IBoardsState => {
+    const resultedColumns = [...state.columns].map((column) => {
+      if (column._id === columnId) {
+        const copyCol = Object.assign({}, column);
+        copyCol.tasks = [...tasks].sort((a, b) => a.order! - b.order!);
+        return copyCol;
+      }
+      return column;
+    });
+
+    return { ...state, isLoading: false, columns: resultedColumns };
+  }),
+  on(getTasksError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(createTask, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(createTaskSuccess, (state, { newTask }): IBoardsState => {
+    const resultedColumns = [...state.columns].map((column) => {
+      if (column._id === newTask.columnId) {
+        const copyCol = Object.assign({}, column);
+        copyCol.tasks = [...copyCol.tasks!, newTask];
+        return copyCol;
+      }
+
+      return column;
+    });
+
+    return { ...state, isLoading: false, columns: resultedColumns };
+  }),
+  on(deleteTask, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(deleteTaskSuccess, (state, { idTask, columnId }): IBoardsState => {
+    const updatedColumns = [...state.columns].map((column) => {
+      if (column._id === columnId) {
+        const copyCol = Object.assign({}, column);
+        copyCol.tasks = [...copyCol.tasks!].filter(({ _id }) => _id !== idTask);
+
+        return copyCol;
+      }
+
+      return column;
+    });
+
+    return { ...state, isLoading: false, columns: updatedColumns };
+  }),
+  on(deleteTaskError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(updateTask, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateTaskSuccess, (state, { updatedTask }): IBoardsState => {
+    const resultedColumns = [...state.columns].map((column) => {
+      if (column._id === updatedTask.columnId) {
+        let copyCol = Object.assign({}, column);
+        const finalTasks = [...copyCol.tasks!].sort((a, b) => a.order! - b.order!);
+        const index = (updatedTask.order as number) - 1;
+
+        finalTasks[index] = updatedTask;
+        copyCol.tasks = finalTasks;
+        return copyCol;
+      }
+
+      return column;
+    });
+    return { ...state, isLoading: false, columns: resultedColumns };
+  }),
+  on(updateTaskError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(updateOrderAllTasks, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateOrderAllTasksSuccess, (state, { updatedTasks }): IBoardsState => {
+    return { ...state, isLoading: false, tasks: updatedTasks };
+  }),
+  on(updateOrderAllTasksError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(setTasks, (state, { tasks, columnId }): IBoardsState => {
+    const updatedColumns = [...state.columns].map((column) => {
+      if (column._id === columnId) {
+        let copyCol = { ...column };
+        const finalTasks = tasks;
+
+        copyCol.tasks = finalTasks;
+        return copyCol;
+      }
+
+      return column;
+    });
+
+    return { ...state, columns: updatedColumns };
   }),
 );
 
