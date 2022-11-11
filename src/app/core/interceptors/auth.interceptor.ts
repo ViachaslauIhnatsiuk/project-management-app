@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
 import {
   ILogInRequest,
   ILogInResponse,
@@ -21,11 +20,12 @@ import { NotificationService } from '../services/notification.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private notify: NotificationService) {}
+
   intercept(
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
   ): Observable<HttpEvent<ILogInResponse | ISignUpResponse | IResponseError>> {
-    const url = `${BASE_URL}auth/${request.url}`;
+    const url = `auth/${request.url}`;
 
     const modifyRequest = request.clone({
       url,

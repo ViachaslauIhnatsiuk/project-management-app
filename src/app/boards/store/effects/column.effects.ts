@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
+import { IColumn } from '../../models/boards.models';
 import { ColumnService } from '../../services/column.service';
+import { TaskService } from '../../services/task.service';
 import {
   createColumnError,
   createColumnSuccess,
@@ -11,6 +13,7 @@ import {
   getColumnsSuccess,
   updateColumnError,
   updateColumnSuccess,
+  updateOrderAllColumnsSuccess,
 } from '../actions/column.actions';
 import {
   ColumnActions,
@@ -21,11 +24,11 @@ import {
 
 @Injectable()
 export class ColumnEffects {
-  getColumn$ = createEffect(() => {
+  getColumns$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.GET_COLUMNS),
-      mergeMap(({ idBoard }: { idBoard: string }) => {
-        return this.columnService.getColumns(idBoard).pipe(
+      mergeMap(({ boardId }: { boardId: string }) => {
+        return this.columnService.getColumns(boardId).pipe(
           map((columns) => getColumnsSuccess({ columns })),
           catchError((error: Error) => of(getColumnsError({ error: error.message }))),
         );
@@ -48,9 +51,9 @@ export class ColumnEffects {
   deleteColumn$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.DELETE_COLUMN),
-      mergeMap(({ props: { idBoard, idColumn } }: { props: DeleteColumnProps }) => {
-        return this.columnService.deleteColumn(idColumn, idBoard).pipe(
-          map(() => deleteColumnSuccess({ idColumn })),
+      mergeMap(({ props: { idBoard, columnId } }: { props: DeleteColumnProps }) => {
+        return this.columnService.deleteColumn(columnId, idBoard).pipe(
+          map(() => deleteColumnSuccess({ columnId })),
           catchError((error: Error) => of(deleteColumnError({ error: error.message }))),
         );
       }),
@@ -60,14 +63,30 @@ export class ColumnEffects {
   updateColumn$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.UPDATE_COLUMN),
-      mergeMap(({ props: { column, idBoard } }: { props: UpdateColumnProps }) => {
-        return this.columnService.updateColumn(column, idBoard).pipe(
-          map((updatedColumn) => updateColumnSuccess({ updatedColumn })),
+      mergeMap(({ props: { column: updatedColumn, idBoard } }: { props: UpdateColumnProps }) => {
+        return this.columnService.updateColumn(updatedColumn, idBoard).pipe(
+          map(() => updateColumnSuccess({ updatedColumn })),
           catchError((error: Error) => of(updateColumnError({ error: error.message }))),
         );
       }),
     );
   });
 
-  constructor(private actions$: Actions, private columnService: ColumnService) {}
+  updateOrderAllColumns$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ColumnActions.UPDATE_ORDER_COLUMNS),
+      mergeMap(({ columns }: { columns: IColumn[] }) => {
+        return this.columnService.updateOrderAllColumns(columns).pipe(
+          map((updatedColumns) => updateOrderAllColumnsSuccess({ updatedColumns })),
+          catchError((error: Error) => of(updateColumnError({ error: error.message }))),
+        );
+      }),
+    );
+  });
+
+  constructor(
+    private actions$: Actions,
+    private columnService: ColumnService,
+    private taskService: TaskService,
+  ) {}
 }

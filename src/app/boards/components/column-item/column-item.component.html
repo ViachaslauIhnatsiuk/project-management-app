@@ -1,16 +1,17 @@
 <mat-card-header>
   <mat-card-title *ngIf="!isEditMode" (click)="toggleEditMode()">
-    {{column.title}}
+    {{ column.title }}
   </mat-card-title>
   <mat-icon (click)="deleteColumn()">delete_forever</mat-icon>
 </mat-card-header>
 <form *ngIf="isEditMode" [formGroup]="form" class="form">
   <mat-form-field appearance="fill">
-    <input matInput formControlName="title">
+    <input matInput formControlName="title" />
   </mat-form-field>
   <mat-icon (click)="toggleEditMode()">cancel</mat-icon>
   <mat-icon (click)="updateTitle()">done</mat-icon>
 </form>
 <mat-card-content class="card-content">
-  <div>ALL TASKS HERE</div>
+  <app-tasks [tasks]="column.tasks!" [idColumn]="column._id!"></app-tasks>
 </mat-card-content>
+<app-create-task [idColumn]="column._id" [amountOfTasks]="column.tasks!.length"></app-create-task>

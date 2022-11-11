@@ -3,10 +3,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { INITIAL_ID_BOARD_VALUE } from '../../constants/column-item.constants';
 import { IColumn } from '../../models/boards.models';
-import { getBoardById } from '../../store/actions/boards.actions';
-import { setColumns, updateColumn } from '../../store/actions/column.actions';
+import {
+  getColumns,
+  resetColumns,
+  setColumns,
+  updateOrderAllColumns,
+} from '../../store/actions/column.actions';
 import { selectColumns } from '../../store/selectors/boards.selectors';
 
 @Component({
@@ -15,26 +20,28 @@ import { selectColumns } from '../../store/selectors/boards.selectors';
   styleUrls: ['./columns.component.scss'],
 })
 export class ColumnsComponent implements OnInit, OnDestroy {
-  private idBoardSubscription = new Subscription();
-
-  private idActiveBoard: string = INITIAL_ID_BOARD_VALUE;
-
   private columns$ = this.store.select(selectColumns);
+
+  public columns: IColumn[] = [];
+
+  private idBoardSubscription = new Subscription();
 
   private columnsSubscription = new Subscription();
 
-  public columns: IColumn[] = [];
+  private idActiveBoard: string = INITIAL_ID_BOARD_VALUE;
 
   constructor(private route: ActivatedRoute, private store: Store) {
     this.idBoardSubscription = this.route.params.subscribe(
       (params) => (this.idActiveBoard = params['id']),
     );
-    this.columns$.subscribe((columns) => (this.columns = [...columns]));
+    this.columnsSubscription = this.columns$.subscribe((columns) => {
+      this.columns = [...columns];
+    });
   }
 
   public ngOnInit(): void {
     if (this.idActiveBoard) {
-      this.store.dispatch(getBoardById({ idBoard: this.idActiveBoard }));
+      this.store.dispatch(getColumns({ boardId: this.idActiveBoard }));
     }
   }
 
@@ -47,22 +54,24 @@ export class ColumnsComponent implements OnInit, OnDestroy {
 
     moveItemInArray(columns, previousIndex, currentIndex);
 
-    const newOrder = currentIndex + 1;
-    let movedColumn: IColumn = { ...columns[currentIndex], order: newOrder };
+    const sortedByOrderColumns = columns.map((column, index) => {
+      const updatedColumn = { ...column };
+      updatedColumn.order = index + 1;
+      return updatedColumn;
+    });
 
-    this.store.dispatch(
-      updateColumn({ props: { column: movedColumn, idBoard: this.idActiveBoard } }),
-    );
+    this.store.dispatch(setColumns({ columns: sortedByOrderColumns }));
 
-    this.updateColumnsInStore(columns);
-  }
+    const modifiedColumnsForRequest = sortedByOrderColumns.map(({ _id, order }) => {
+      return { _id, order };
+    });
 
-  private updateColumnsInStore(columns: IColumn[]): void {
-    this.store.dispatch(setColumns({ columns }));
+    this.store.dispatch(updateOrderAllColumns({ columns: modifiedColumnsForRequest }));
   }
 
   public ngOnDestroy(): void {
     this.idBoardSubscription.unsubscribe();
     this.columnsSubscription.unsubscribe();
+    this.store.dispatch(resetColumns());
   }
 }

@@ -3,15 +3,11 @@
   <form [formGroup]="form" [class]="'form'">
     <mat-form-field appearance="fill">
       <mat-label>Tilte</mat-label>
-      <input matInput formControlName="title">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input matInput formControlName="description">
+      <input matInput formControlName="title" />
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions [align]="'center'">
   <button mat-button (click)="closeModal()">Cancel</button>
-  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="form.value">Update</button>
+  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="updatedBoard">Update</button>
 </div>

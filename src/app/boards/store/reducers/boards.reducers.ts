@@ -1,4 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
+import { initialBoardsState } from '../state/boards.state';
+import { IBoardsState } from '../models/boards.models';
 import {
   createBoard,
   createBoardError,
@@ -26,13 +28,16 @@ import {
   getColumns,
   getColumnsError,
   getColumnsSuccess,
+  resetColumns,
   setColumns,
   updateColumn,
   updateColumnError,
   updateColumnSuccess,
+  updateOrderAllColumns,
+  updateOrderAllColumnsError,
+  updateOrderAllColumnsSuccess,
 } from '../actions/column.actions';
-import { initialBoardsState } from '../state/boards.state';
-import { IBoardsState } from '../models/boards.models';
+import { IColumn } from '../../models/boards.models';
 
 const boardsReducer = createReducer(
   initialBoardsState,
@@ -67,8 +72,8 @@ const boardsReducer = createReducer(
   on(deleteBoard, (state): IBoardsState => {
     return { ...state, isLoading: true };
   }),
-  on(deleteBoardSuccess, (state, { idBoard }): IBoardsState => {
-    const resultedBoards = [...state.boards].filter(({ id }) => id !== idBoard);
+  on(deleteBoardSuccess, (state, { boardId }): IBoardsState => {
+    const resultedBoards = [...state.boards].filter(({ _id }) => _id !== boardId);
     return { ...state, isLoading: false, boards: resultedBoards };
   }),
   on(deleteBoardError, (state, { error }): IBoardsState => {
@@ -79,7 +84,7 @@ const boardsReducer = createReducer(
   }),
   on(updateBoardSuccess, (state, { updatedBoard }): IBoardsState => {
     const resultedBoards = [...state.boards].map((board) => {
-      if (board.id === updatedBoard.id) {
+      if (board._id === updatedBoard._id) {
         return updatedBoard;
       }
 
@@ -105,7 +110,8 @@ const boardsReducer = createReducer(
     return { ...state, isLoading: true };
   }),
   on(createColumnSuccess, (state, { newColumn }): IBoardsState => {
-    return { ...state, isLoading: false, columns: [...state.columns, newColumn] };
+    const column: IColumn = { ...newColumn, tasks: [] };
+    return { ...state, isLoading: false, columns: [...state.columns, column] };
   }),
   on(createColumnError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
@@ -113,8 +119,8 @@ const boardsReducer = createReducer(
   on(deleteColumn, (state): IBoardsState => {
     return { ...state, isLoading: true };
   }),
-  on(deleteColumnSuccess, (state, { idColumn }): IBoardsState => {
-    const resultedColumns = [...state.columns].filter(({ id }) => id !== idColumn);
+  on(deleteColumnSuccess, (state, { columnId }): IBoardsState => {
+    const resultedColumns = [...state.columns].filter(({ _id }) => _id !== columnId);
     return { ...state, isLoading: false, columns: resultedColumns };
   }),
   on(deleteColumnError, (state, { error }): IBoardsState => {
@@ -125,7 +131,7 @@ const boardsReducer = createReducer(
   }),
   on(updateColumnSuccess, (state, { updatedColumn }): IBoardsState => {
     const resultedColumns = [...state.columns].map((column) => {
-      if (column.id === updatedColumn.id) {
+      if (column._id === updatedColumn._id) {
         return updatedColumn;
       }
 
@@ -137,8 +143,49 @@ const boardsReducer = createReducer(
   on(updateColumnError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
   }),
+  on(updateOrderAllColumns, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateOrderAllColumnsSuccess, (state): IBoardsState => {
+    return { ...state, isLoading: false };
+  }),
+  on(updateOrderAllColumnsError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(resetColumns, (state): IBoardsState => {
+    return { ...state, isLoading: false, columns: [] };
+  }),
   on(setColumns, (state, { columns }): IBoardsState => {
     return { ...state, isLoading: false, columns };
+  }),
+  on(createColumnError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(deleteColumn, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(deleteColumnSuccess, (state, { columnId }): IBoardsState => {
+    const resultedColumns = [...state.columns].filter(({ _id }) => _id !== columnId);
+    return { ...state, isLoading: false, columns: resultedColumns };
+  }),
+  on(deleteColumnError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(updateColumn, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateColumnSuccess, (state, { updatedColumn }): IBoardsState => {
+    const resultedColumns = [...state.columns].map((column) => {
+      if (column._id === updatedColumn._id) {
+        return updatedColumn;
+      }
+
+      return column;
+    });
+    return { ...state, isLoading: false, columns: resultedColumns };
+  }),
+  on(updateColumnError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
   }),
 );
 

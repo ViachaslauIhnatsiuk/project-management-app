@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { INITIAL_ID_BOARD_VALUE, MIN_WIDTH_MODAL } from '../../constants/column-item.constants';
 import { IColumn } from '../../models/boards.models';
 import { createColumn } from '../../store/actions/column.actions';
@@ -14,12 +15,14 @@ import { CreateColumnModalComponent } from '../create-column-modal/create-column
   styleUrls: ['./create-column.component.scss'],
 })
 export class CreateColumnComponent implements OnDestroy {
-  private idBoardSub = new Subscription();
+  private idBoardSubscription = new Subscription();
 
   private idActiveBoard: string = INITIAL_ID_BOARD_VALUE;
 
   constructor(public dialog: MatDialog, private store: Store, private route: ActivatedRoute) {
-    this.idBoardSub = this.route.params.subscribe((params) => (this.idActiveBoard = params['id']));
+    this.idBoardSubscription = this.route.params.subscribe(
+      (params) => (this.idActiveBoard = params['id']),
+    );
   }
 
   public createColumn(): void {
@@ -35,6 +38,6 @@ export class CreateColumnComponent implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.idBoardSub.unsubscribe();
+    this.idBoardSubscription.unsubscribe();
   }
 }

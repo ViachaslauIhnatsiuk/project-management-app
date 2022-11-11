@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
-  MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
   MIN_INPUT_VALUE_LENGTH,
 } from '../../constants/create-board-modal.constants';
+import { getUserId } from '../../helpers/boards.helpers';
 import { IBoard } from '../../models/boards.models';
 
 @Component({
@@ -30,12 +30,11 @@ export class UpdateBoardModalComponent {
         Validators.minLength(MIN_INPUT_VALUE_LENGTH),
         Validators.maxLength(MAX_TITLE_LENGTH),
       ]),
-      description: new FormControl(board.description, [
-        Validators.required,
-        Validators.minLength(MIN_INPUT_VALUE_LENGTH),
-        Validators.maxLength(MAX_DESCRIPTION_LENGTH),
-      ]),
     });
+  }
+
+  get updatedBoard(): IBoard {
+    return <IBoard>{ ...this.form.value, users: [], owner: getUserId() };
   }
 
   public closeModal(): void {

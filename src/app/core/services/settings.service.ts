@@ -14,15 +14,11 @@ export class SettingsService {
   constructor(private http: HttpClient) {}
 
   public editUserData(fields: IEditUserDataRequest): void {
-    this.http.put<IEditUserDataResponse>('userId', fields).subscribe((data) => {
-      data;
-    });
+    this.http.put<IEditUserDataResponse>('userId', fields).subscribe((data) => data);
   }
 
   public deleteUser(): void {
-    this.http.delete<IEditUserDataResponse>('userId').subscribe((data) => {
-      data;
-    });
+    this.http.delete<IEditUserDataResponse>('userId').subscribe((data) => data);
   }
 
   public changePasswordVisibility(): void {

@@ -7,7 +7,7 @@ import {
   UpdateColumnProps,
 } from '../models/column.models';
 
-const getColumns = createAction(ColumnActions.GET_COLUMNS, props<{ idBoard: string }>());
+const getColumns = createAction(ColumnActions.GET_COLUMNS, props<{ boardId: string }>());
 const getColumnsSuccess = createAction(
   ColumnActions.GET_COLUMNS_SUCCESS,
   props<{ columns: IColumn[] }>(),
@@ -33,7 +33,7 @@ const deleteColumn = createAction(
 );
 const deleteColumnSuccess = createAction(
   ColumnActions.DELETE_COLUMN_SUCCESS,
-  props<{ idColumn: string }>(),
+  props<{ columnId: string }>(),
 );
 const deleteColumnError = createAction(
   ColumnActions.DELETE_COLUMN_ERROR,
@@ -53,6 +53,19 @@ const updateColumnError = createAction(
   props<{ error: string }>(),
 );
 
+const updateOrderAllColumns = createAction(
+  ColumnActions.UPDATE_ORDER_COLUMNS,
+  props<{ columns: IColumn[] }>(),
+);
+const updateOrderAllColumnsSuccess = createAction(
+  ColumnActions.UPDATE_ORDER_COLUMNS_SUCCESS,
+  props<{ updatedColumns: IColumn[] }>(),
+);
+const updateOrderAllColumnsError = createAction(
+  ColumnActions.UPDATE_ORDER_COLUMNS_ERROR,
+  props<{ error: string }>(),
+);
+const resetColumns = createAction(ColumnActions.RESET_COLUMNS);
 const setColumns = createAction(ColumnActions.SET_COLUMNS, props<{ columns: IColumn[] }>());
 
 export {
@@ -68,5 +81,9 @@ export {
   updateColumn,
   updateColumnSuccess,
   updateColumnError,
+  updateOrderAllColumns,
+  updateOrderAllColumnsSuccess,
+  updateOrderAllColumnsError,
+  resetColumns,
   setColumns,
 };

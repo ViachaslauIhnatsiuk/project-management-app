@@ -26,10 +26,10 @@ const getBoardByIdError = createAction(
   props<{ error: string }>(),
 );
 
-const deleteBoard = createAction(BoardsActions.DELETE_BOARD, props<{ idBoard: string }>());
+const deleteBoard = createAction(BoardsActions.DELETE_BOARD, props<{ boardId: string }>());
 const deleteBoardSuccess = createAction(
   BoardsActions.DELETE_BOARD_SUCCESS,
-  props<{ idBoard: string }>(),
+  props<{ boardId: string }>(),
 );
 const deleteBoardError = createAction(BoardsActions.DELETE_BOARD_ERROR, props<{ error: string }>());
 

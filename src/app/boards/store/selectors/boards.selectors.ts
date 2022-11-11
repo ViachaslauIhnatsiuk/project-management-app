@@ -7,4 +7,6 @@ const selectBoards = createSelector(selectFeatureBoards, (state) => state.boards
 
 const selectColumns = createSelector(selectFeatureBoards, (state) => state.columns);
 
-export { selectFeatureBoards, selectBoards, selectColumns };
+const selectUserId = createSelector(selectFeatureBoards, (state) => state.userId);
+
+export { selectFeatureBoards, selectBoards, selectColumns, selectUserId };
