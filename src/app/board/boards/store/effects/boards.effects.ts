@@ -23,7 +23,7 @@ export class BoardsEffects {
       mergeMap(() => {
         return this.boardService.getBoards().pipe(
           map((boards) => getBoardsSuccess({ boards })),
-          catchError((error: Error) => of(getBoardsError({ error: error.message }))),
+          catchError(({ message }: Error) => of(getBoardsError({ error: message }))),
         );
       }),
     );
@@ -35,7 +35,7 @@ export class BoardsEffects {
       mergeMap(({ newBoard }: { newBoard: IBoard }) => {
         return this.boardService.createBoard(newBoard).pipe(
           map((board) => createBoardSuccess({ newBoard: board })),
-          catchError((error: Error) => of(createBoardError({ error: error.message }))),
+          catchError(({ message }: Error) => of(createBoardError({ error: message }))),
         );
       }),
     );
@@ -47,7 +47,7 @@ export class BoardsEffects {
       mergeMap(({ boardId }: { boardId: string }) => {
         return this.boardService.deleteBoard(boardId).pipe(
           map(() => deleteBoardSuccess({ boardId })),
-          catchError((error: Error) => of(deleteBoardError({ error: error.message }))),
+          catchError(({ message }: Error) => of(deleteBoardError({ error: message }))),
         );
       }),
     );
@@ -59,7 +59,7 @@ export class BoardsEffects {
       mergeMap(({ board }: { board: IBoard }) => {
         return this.boardService.updateBoard(board).pipe(
           map((updatedBoard) => updateBoardSuccess({ updatedBoard })),
-          catchError((error: Error) => of(updateBoardError({ error: error.message }))),
+          catchError(({ message }: Error) => of(updateBoardError({ error: message }))),
         );
       }),
     );

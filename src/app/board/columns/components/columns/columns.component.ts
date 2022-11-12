@@ -6,11 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { INITIAL_EMPTY_STRING_VALUE } from 'src/app/board/constants/board.constants';
 import { IColumn } from '../../models/columns.models';
-import {
-  getColumns,
-  resetColumns,
-  updateOrderAllColumns,
-} from '../../store/actions/columns.actions';
+import { getColumns, resetColumns, updateColumnsOrder } from '../../store/actions/columns.actions';
 import { selectColumns } from '../../store/selectors/columns.selectors';
 
 @Component({
@@ -51,11 +47,9 @@ export class ColumnsComponent implements OnInit, OnDestroy {
 
     moveItemInArray(columns, previousIndex, currentIndex);
 
-    const modifiedColumnsForRequest = columns.map(({ _id }, index) => {
-      return { _id, order: index + 1 };
-    });
+    const modifiedColumnsForRequest = columns.map(({ _id }, index) => ({ _id, order: index + 1 }));
 
-    this.store.dispatch(updateOrderAllColumns({ columns: modifiedColumnsForRequest }));
+    this.store.dispatch(updateColumnsOrder({ columns: modifiedColumnsForRequest }));
   }
 
   public ngOnDestroy(): void {

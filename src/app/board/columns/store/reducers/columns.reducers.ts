@@ -15,7 +15,7 @@ import {
   updateColumn,
   updateColumnError,
   updateColumnSuccess,
-  updateOrderAllColumns,
+  updateColumnsOrder,
   updateOrderAllColumnsError,
   updateOrderAllColumnsSuccess,
 } from '../actions/columns.actions';
@@ -70,7 +70,7 @@ const columnsReducer = createReducer(
   on(updateColumnError, (state, { error }): IColumnsState => {
     return { ...state, isLoading: false, error };
   }),
-  on(updateOrderAllColumns, (state): IColumnsState => {
+  on(updateColumnsOrder, (state): IColumnsState => {
     return { ...state, isLoading: true };
   }),
   on(updateOrderAllColumnsSuccess, (state): IColumnsState => {

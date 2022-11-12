@@ -16,7 +16,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [ConfirmationModalComponent],
@@ -36,9 +39,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     MatDialogModule,
+    MatButtonToggleModule,
+    MatListModule,
+    MatToolbarModule,
     ConfirmationModalComponent,
     ReactiveFormsModule,
-    FormsModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
 })

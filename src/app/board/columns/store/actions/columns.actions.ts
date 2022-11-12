@@ -53,7 +53,7 @@ const updateColumnError = createAction(
   props<{ error: string }>(),
 );
 
-const updateOrderAllColumns = createAction(
+const updateColumnsOrder = createAction(
   ColumnActions.UPDATE_ORDER_COLUMNS,
   props<{ columns: IColumn[] }>(),
 );
@@ -81,7 +81,7 @@ export {
   updateColumn,
   updateColumnSuccess,
   updateColumnError,
-  updateOrderAllColumns,
+  updateColumnsOrder,
   updateOrderAllColumnsSuccess,
   updateOrderAllColumnsError,
   resetColumns,

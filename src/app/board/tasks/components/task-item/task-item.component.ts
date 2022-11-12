@@ -40,11 +40,11 @@ export class TaskItemComponent {
 
     dialogRef.afterClosed().subscribe((editedTask: EditTask) => {
       if (editedTask) {
-        const finalTask: ITask = {
+        const modifiedTask: ITask = {
           ...this.task,
           ...editedTask,
         };
-        this.store.dispatch(updateTask({ updatedTask: finalTask }));
+        this.store.dispatch(updateTask({ updatedTask: modifiedTask }));
       }
     });
   }
