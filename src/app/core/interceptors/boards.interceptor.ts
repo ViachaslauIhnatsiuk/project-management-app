@@ -7,7 +7,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { getToken } from 'src/app/boards/helpers/boards.helpers';
+import { getToken } from 'src/app/board/boards/helpers/boards.helpers';
 
 @Injectable()
 export class BoardsInterceptor implements HttpInterceptor {
