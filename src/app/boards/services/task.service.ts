@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { BoardApiUrls, ITask } from '../models/boards.models';
-import { DeleteTaskProps, GetTasksProps } from '../store/models/task.models';
+import { BoardApiUrls, ITask, ModifiedTaskForRequest } from '../models/boards.models';
+import { GetTasksProps } from '../store/models/task.models';
 
 @Injectable()
 export class TaskService {
@@ -42,15 +42,10 @@ export class TaskService {
       );
   }
 
-  public deleteTask({ boardId, columnId, idTask }: DeleteTaskProps): Observable<Object> {
-    const params = new HttpParams().set('id', idTask);
-
+  public deleteTask({ _id, boardId, columnId }: ITask): Observable<ITask> {
     return this.http
-      .delete(
-        `${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}/${columnId}/${BoardApiUrls.tasks}/${idTask}`,
-        {
-          params,
-        },
+      .delete<ITask>(
+        `${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}/${columnId}/${BoardApiUrls.tasks}/${_id}`,
       )
       .pipe(
         catchError((error: Error) => {
@@ -83,7 +78,7 @@ export class TaskService {
       );
   }
 
-  public updateOrderAllTasks(tasks: ITask[]): Observable<ITask[]> {
+  public updateOrderAllTasks(tasks: ModifiedTaskForRequest[]): Observable<ITask[]> {
     return this.http.patch<ITask[]>(`${BoardApiUrls.tasksSet}`, tasks).pipe(
       catchError((error: Error) => {
         throw new Error(error.message);

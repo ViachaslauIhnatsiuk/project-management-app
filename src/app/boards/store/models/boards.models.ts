@@ -1,9 +1,8 @@
-import { IBoard, IColumn, ITask } from '../../models/boards.models';
+import { IBoard, IColumn } from '../../models/boards.models';
 
 interface IBoardsState {
   boards: IBoard[];
   columns: IColumn[];
-  tasks: ITask[];
   isLoading: boolean;
   error: string;
   userId: string | null;

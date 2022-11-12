@@ -29,6 +29,10 @@ interface ITask {
   users?: string[];
 }
 
+type ModifiedTaskForRequest = Pick<ITask, '_id' | 'order' | 'columnId'>;
+
+type EditTask = Pick<ITask, 'title' | 'description' | 'users'>;
+
 type FileType = {
   filename: string;
   fileSize: number;
@@ -42,5 +46,5 @@ enum BoardApiUrls {
   tasksSet = 'tasksSet',
 }
 
-export type { IBoard, IBoardDetails, IColumn, ITask, FileType };
+export type { IBoard, IBoardDetails, IColumn, ITask, FileType, ModifiedTaskForRequest, EditTask };
 export { BoardApiUrls };
