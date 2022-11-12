@@ -1,7 +1,6 @@
 export interface IAuthStateError {
   statusCode: string;
   message: string;
-  type: string;
 }
 export interface IAuthState {
   userId: string;

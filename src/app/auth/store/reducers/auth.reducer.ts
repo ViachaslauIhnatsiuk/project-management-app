@@ -21,8 +21,8 @@ const authReducer = createReducer(
   on(logInSuccess, (state, { token }): IAuthState => {
     return { ...state, isLoading: false, token };
   }),
-  on(logInError, (state, { statusCode, message, type }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message, type } };
+  on(logInError, (state, { statusCode, message }): IAuthState => {
+    return { ...state, isLoading: false, error: { statusCode, message } };
   }),
   on(signUp, (state): IAuthState => {
     return { ...state, isLoading: true };
@@ -30,8 +30,8 @@ const authReducer = createReducer(
   on(signUpSuccess, (state, { _id, name, login }): IAuthState => {
     return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
   }),
-  on(signUpError, (state, { statusCode, message, type }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message, type } };
+  on(signUpError, (state, { statusCode, message }): IAuthState => {
+    return { ...state, isLoading: false, error: { statusCode, message } };
   }),
   on(getUser, (state): IAuthState => {
     return { ...state, isLoading: true };
@@ -39,8 +39,8 @@ const authReducer = createReducer(
   on(getUserSuccess, (state, { _id, name, login }): IAuthState => {
     return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
   }),
-  on(getUserError, (state, { statusCode, message, type }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message, type } };
+  on(getUserError, (state, { statusCode, message }): IAuthState => {
+    return { ...state, isLoading: false, error: { statusCode, message } };
   }),
 );
 

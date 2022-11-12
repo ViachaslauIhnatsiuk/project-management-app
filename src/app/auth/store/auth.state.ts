@@ -9,7 +9,6 @@ const initialAuthState: IAuthState = {
   error: {
     statusCode: '',
     message: '',
-    type: '',
   },
 };
 

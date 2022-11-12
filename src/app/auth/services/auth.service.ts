@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import {
   ILogInRequest,
@@ -9,13 +8,13 @@ import {
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
 import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
-import { map, Observable, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
     return this.http.post<ISignUpResponse>('signup', fields);
@@ -23,10 +22,6 @@ export class AuthService {
 
   public signIn(fields: ILogInRequest): Observable<ILogInResponse> {
     return this.http.post<ILogInResponse>('signin', fields);
-  }
-
-  public closeForm(): void {
-    this.router.navigate(['']);
   }
 
   public isTokenExpired(): boolean {

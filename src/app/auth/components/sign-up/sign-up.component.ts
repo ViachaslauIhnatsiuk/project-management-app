@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthService } from 'src/app/auth/services/auth.service';
 import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
 import { signUp } from '../../store/actions/auth.actions';
 
@@ -17,7 +17,7 @@ export class SignUpComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authServise: AuthService, private store: Store) {}
+  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
   onSubmit() {
     const fieldValues = this.signUpForm.value as ISignUpRequest;
@@ -26,6 +26,6 @@ export class SignUpComponent {
 
   onCancel() {
     this.signUpForm.reset();
-    this.authServise.closeForm();
+    this.router.navigate(['']);
   }
 }

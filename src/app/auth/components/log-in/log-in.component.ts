@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthService } from 'src/app/auth/services/auth.service';
 import { ILogInRequest } from 'src/app/core/models/auth-interceptor.models';
 import { logIn } from '../../store/actions/auth.actions';
 
@@ -16,7 +16,7 @@ export class LogInComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authServise: AuthService, private store: Store) {}
+  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
   onSubmit() {
     const fieldValues = this.logInForm.value as ILogInRequest;
@@ -25,6 +25,6 @@ export class LogInComponent {
 
   onCancel() {
     this.logInForm.reset();
-    this.authServise.closeForm();
+    this.router.navigate(['']);
   }
 }
