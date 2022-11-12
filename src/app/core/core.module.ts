@@ -15,7 +15,6 @@ import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
 import { AuthModule } from '../auth/auth.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
-import { BoardService } from '../boards/services/board.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
@@ -64,7 +63,7 @@ import { HeaderComponent } from './components/header/header.component';
     SettingsPageComponent,
     EditProfilePageComponent,
   ],
-  providers: [BoardService, httpInterceptorProviders],
+  providers: [httpInterceptorProviders],
 })
 export class CoreModule {
   static forFeature: any;

@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ConfirmationModalComponent],
@@ -36,6 +37,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatRadioModule,
     MatDialogModule,
     ConfirmationModalComponent,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
 })

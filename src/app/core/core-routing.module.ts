@@ -11,7 +11,7 @@ const routes: Routes = [
   // { path: '**', redirectTo: 'notFoundPage', pathMatch: 'full' },
   {
     path: 'boards',
-    loadChildren: () => import('../boards/boards.module').then((m) => m.BoardsModule),
+    loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
   },
   {
     path: 'settings',

@@ -16,7 +16,6 @@ import {
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
 import { NotificationService } from '../services/notification.service';
-import { BASE_URL } from '../constants/interceptors.constants';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -26,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,
   ): Observable<HttpEvent<ILogInResponse | ISignUpResponse | IResponseError>> {
-    const url = `${BASE_URL}auth/${request.url}`;
+    const url = `auth/${request.url}`;
 
     const modifyRequest = request.clone({
       url,
