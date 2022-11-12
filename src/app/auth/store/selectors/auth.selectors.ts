@@ -3,6 +3,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const selectAuth = createFeatureSelector<IAuthState>('auth');
 
-// const selectAllBoards = createSelector(selectAuth, (state) => state.boards);
+const selectToken = createSelector(selectAuth, (state) => state.token);
 
-export { selectAuth };
+export { selectAuth, selectToken };

@@ -12,6 +12,9 @@ import {
   signUp,
   signUpError,
   signUpSuccess,
+  getUser,
+  getUserSuccess,
+  getUserError,
 } from '../actions/auth.actions';
 import { IAuthState } from '../models/auth.models';
 
@@ -29,7 +32,10 @@ export class AuthEffects {
       ofType(logIn),
       switchMap(({ login, password }) => {
         return this.authService.signIn({ login, password }).pipe(
-          map(({ token }) => logInSuccess({ token })),
+          map(({ token }) => {
+            localStorage.setItem('token', token);
+            return logInSuccess({ token });
+          }),
           tap(() => this.router.navigate([''])),
           catchError(({ error: { statusCode, message } }) => {
             return of(logInError({ statusCode, message }));
@@ -50,6 +56,20 @@ export class AuthEffects {
           }),
           catchError(({ error: { statusCode, message } }) =>
             of(signUpError({ statusCode, message })),
+          ),
+        );
+      }),
+    );
+  });
+
+  getUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getUser),
+      switchMap(({ userId }) => {
+        return this.authService.getUser(userId).pipe(
+          map(({ _id, name, login }) => getUserSuccess({ _id, name, login })),
+          catchError(({ error: { statusCode, message } }) =>
+            of(getUserError({ statusCode, message })),
           ),
         );
       }),
