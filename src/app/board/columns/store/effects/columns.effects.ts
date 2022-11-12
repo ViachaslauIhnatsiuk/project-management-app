@@ -29,7 +29,7 @@ export class ColumnEffects {
       mergeMap(({ boardId }: { boardId: string }) => {
         return this.columnService.getColumns(boardId).pipe(
           map((columns) => getColumnsSuccess({ columns })),
-          catchError((error: Error) => of(getColumnsError({ error: error.message }))),
+          catchError(({ message }: Error) => of(getColumnsError({ error: message }))),
         );
       }),
     );
@@ -41,7 +41,7 @@ export class ColumnEffects {
       mergeMap(({ props: { boardId, newColumn } }: { props: CreateColumnProps }) => {
         return this.columnService.createColumn(boardId, newColumn).pipe(
           map((column) => createColumnSuccess({ newColumn: column })),
-          catchError((error: Error) => of(createColumnError({ error: error.message }))),
+          catchError(({ message }: Error) => of(createColumnError({ error: message }))),
         );
       }),
     );
@@ -53,7 +53,7 @@ export class ColumnEffects {
       mergeMap(({ props: { boardId, columnId } }: { props: DeleteColumnProps }) => {
         return this.columnService.deleteColumn(columnId, boardId).pipe(
           map(() => deleteColumnSuccess({ columnId })),
-          catchError((error: Error) => of(deleteColumnError({ error: error.message }))),
+          catchError(({ message }: Error) => of(deleteColumnError({ error: message }))),
         );
       }),
     );
@@ -65,19 +65,19 @@ export class ColumnEffects {
       mergeMap(({ props: { column: updatedColumn, boardId } }: { props: UpdateColumnProps }) => {
         return this.columnService.updateColumn(updatedColumn, boardId).pipe(
           map(() => updateColumnSuccess({ updatedColumn })),
-          catchError((error: Error) => of(updateColumnError({ error: error.message }))),
+          catchError(({ message }: Error) => of(updateColumnError({ error: message }))),
         );
       }),
     );
   });
 
-  updateOrderAllColumns$ = createEffect(() => {
+  updateColumnsOrder$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.UPDATE_ORDER_COLUMNS),
       mergeMap(({ columns }: { columns: IColumn[] }) => {
-        return this.columnService.updateOrderAllColumns(columns).pipe(
+        return this.columnService.updateColumnsOrder(columns).pipe(
           map((updatedColumns) => updateOrderAllColumnsSuccess({ updatedColumns })),
-          catchError((error: Error) => of(updateColumnError({ error: error.message }))),
+          catchError(({ message }: Error) => of(updateColumnError({ error: message }))),
         );
       }),
     );

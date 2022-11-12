@@ -4,9 +4,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { INITIAL_EMPTY_STRING_VALUE } from 'src/app/board/constants/board.constants';
 
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
+import {
+  DEFAULT_MODAL_SIZE,
+  INITIAL_EMPTY_STRING_VALUE,
+} from 'src/app/board/constants/board.constants';
 import { IColumn } from '../../models/columns.models';
 import { deleteColumn, updateColumn } from '../../store/actions/columns.actions';
 
@@ -68,7 +71,7 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
     const { _id: columnId } = this.column;
 
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      minWidth: '300px',
+      minWidth: DEFAULT_MODAL_SIZE,
     });
 
     dialogRef.afterClosed().subscribe((isConfirm) => {

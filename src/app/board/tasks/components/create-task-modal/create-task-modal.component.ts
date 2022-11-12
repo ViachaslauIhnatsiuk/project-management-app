@@ -33,7 +33,7 @@ export class CreateTaskModalComponent {
         Validators.minLength(3),
         Validators.maxLength(9),
       ]),
-      userId: new FormControl(window.localStorage.getItem('id')),
+      userId: new FormControl(localStorage.getItem('id')),
     });
   }
 

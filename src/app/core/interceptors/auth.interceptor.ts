@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (error instanceof HttpErrorResponse) {
             // TODO: Will be implement logic sets errors to toasterService
             if (error.status === 409) {
-              errorMsg = `Error CONFLICT: ${error.error.message}`;
+              errorMsg = `Error CONFLICT: ${error.message}`;
               this.notify.showError(errorMsg, 'signup');
             }
           }
@@ -57,7 +57,7 @@ export class AuthInterceptor implements HttpInterceptor {
           let errorMsg = '';
           if (error instanceof HttpErrorResponse) {
             // TODO: Will be implement logic sets errors to toasterService
-            if (error.status === 403) errorMsg = `Error FORBIDDEN: ${error.error.message}`;
+            if (error.status === 403) errorMsg = `Error FORBIDDEN: ${error.message}`;
           }
           return throwError(() => errorMsg);
         }),

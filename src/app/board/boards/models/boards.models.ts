@@ -5,7 +5,7 @@ interface IBoard {
   users: string[];
 }
 
-enum BoardApiUrls {
+enum BoardApiEndpoints {
   boards = 'boards',
   columns = 'columns',
   tasks = 'tasks',
@@ -14,4 +14,4 @@ enum BoardApiUrls {
 }
 
 export type { IBoard };
-export { BoardApiUrls };
+export { BoardApiEndpoints };

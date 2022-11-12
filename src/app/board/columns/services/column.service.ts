@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 
-import { BoardApiUrls } from '../../boards/models/boards.models';
+import { BoardApiEndpoints } from '../../boards/models/boards.models';
 import { IColumn } from '../models/columns.models';
 
 @Injectable()
@@ -11,20 +11,20 @@ export class ColumnService {
 
   public getColumns(boardId: string): Observable<IColumn[]> {
     return this.http
-      .get<IColumn[]>(`${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}`)
+      .get<IColumn[]>(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}`)
       .pipe(
-        catchError((error: Error) => {
-          throw new Error(error.message);
+        catchError(({ message }: Error) => {
+          throw new Error(message);
         }),
       );
   }
 
   public createColumn(boardId: string, column: IColumn): Observable<IColumn> {
     return this.http
-      .post<IColumn>(`${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}`, column)
+      .post<IColumn>(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}`, column)
       .pipe(
-        catchError((error: Error) => {
-          throw new Error(error.message);
+        catchError(({ message }: Error) => {
+          throw new Error(message);
         }),
       );
   }
@@ -33,31 +33,33 @@ export class ColumnService {
     const params = new HttpParams().set('id', columnId);
 
     return this.http
-      .delete(`${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}/${columnId}`, { params })
+      .delete(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}/${columnId}`, {
+        params,
+      })
       .pipe(
-        catchError((error: Error) => {
-          throw new Error(error.message);
+        catchError(({ message }: Error) => {
+          throw new Error(message);
         }),
       );
   }
 
   public updateColumn({ title, _id, order }: IColumn, boardId: string): Observable<IColumn> {
     return this.http
-      .put<IColumn>(`${BoardApiUrls.boards}/${boardId}/${BoardApiUrls.columns}/${_id}`, {
+      .put<IColumn>(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}/${_id}`, {
         title,
         order,
       })
       .pipe(
-        catchError((error: Error) => {
-          throw new Error(error.message);
+        catchError(({ message }: Error) => {
+          throw new Error(message);
         }),
       );
   }
 
-  public updateOrderAllColumns(columns: IColumn[]): Observable<IColumn[]> {
-    return this.http.patch<IColumn[]>(`${BoardApiUrls.columnsSet}`, columns).pipe(
-      catchError((error: Error) => {
-        throw new Error(error.message);
+  public updateColumnsOrder(columns: IColumn[]): Observable<IColumn[]> {
+    return this.http.patch<IColumn[]>(`${BoardApiEndpoints.columnsSet}`, columns).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
       }),
     );
   }

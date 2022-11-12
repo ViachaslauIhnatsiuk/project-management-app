@@ -1,32 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { BoardApiUrls, IBoard } from '../models/boards.models';
+import { BoardApiEndpoints, IBoard } from '../models/boards.models';
 
 @Injectable()
 export class BoardService {
   constructor(private http: HttpClient) {}
 
   public getBoards(): Observable<IBoard[]> {
-    return this.http.get<IBoard[]>(BoardApiUrls.boards).pipe(
-      catchError((error: Error) => {
-        throw new Error(error.message);
+    return this.http.get<IBoard[]>(BoardApiEndpoints.boards).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
       }),
     );
   }
 
   public createBoard(newBoard: IBoard): Observable<IBoard> {
-    return this.http.post<IBoard>(BoardApiUrls.boards, newBoard).pipe(
-      catchError((error: Error) => {
-        throw new Error(error.message);
+    return this.http.post<IBoard>(BoardApiEndpoints.boards, newBoard).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
       }),
     );
   }
 
   public deleteBoard(boardId: string): Observable<Object> {
-    return this.http.delete(`${BoardApiUrls.boards}/${boardId}`).pipe(
-      catchError((error: Error) => {
-        throw new Error(error.message);
+    return this.http.delete(`${BoardApiEndpoints.boards}/${boardId}`).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
       }),
     );
   }
@@ -38,9 +38,9 @@ export class BoardService {
       users,
     };
 
-    return this.http.put<IBoard>(`${BoardApiUrls.boards}/${_id}`, updatedBoard).pipe(
-      catchError((error: Error) => {
-        throw new Error(error.message);
+    return this.http.put<IBoard>(`${BoardApiEndpoints.boards}/${_id}`, updatedBoard).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
       }),
     );
   }

@@ -30,8 +30,8 @@ export class UpdateBoardModalComponent {
     });
   }
 
-  get updatedBoard(): IBoard {
-    return <IBoard>{ ...this.form.value, users: [], owner: getUserId() };
+  public get updatedBoard(): IBoard {
+    return { ...this.form.value, users: [], owner: getUserId() } as IBoard;
   }
 
   public closeModal(): void {

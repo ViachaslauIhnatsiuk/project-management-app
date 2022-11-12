@@ -36,7 +36,7 @@ export class SettingsInterceptor implements HttpInterceptor {
         let errorMsg = '';
         if (error instanceof HttpErrorResponse) {
           // TODO: Will be implement logic sets errors to toasterService
-          if (error.status === 409) errorMsg = `Error CONFLICT: ${error.error.message}`;
+          if (error.status === 409) errorMsg = `Error CONFLICT: ${error.message}`;
         }
         return throwError(() => errorMsg);
       }),

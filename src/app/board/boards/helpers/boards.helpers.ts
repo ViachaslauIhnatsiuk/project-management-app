@@ -1,5 +1,5 @@
 const getUserId = (): string | null => {
-  const userData = window.localStorage.getItem('userData');
+  const userData = localStorage.getItem('userData');
   if (userData) {
     const userId: string | null = JSON.parse(userData).id;
     return userId;
@@ -8,7 +8,7 @@ const getUserId = (): string | null => {
 };
 
 const getToken = (): string | null => {
-  const userData = window.localStorage.getItem('userData');
+  const userData = localStorage.getItem('userData');
   if (userData) {
     const token: string | null = JSON.parse(userData).token;
     return token;

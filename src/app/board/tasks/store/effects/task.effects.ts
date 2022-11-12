@@ -25,7 +25,7 @@ export class TaskEffects {
       mergeMap(({ props }: { props: GetTasksProps }) => {
         return this.taskService.getTasks(props).pipe(
           map((tasks) => getTasksSuccess({ tasks, columnId: props.columnId })),
-          catchError((error: Error) => of(getTasksError({ error: error.message }))),
+          catchError(({ message }: Error) => of(getTasksError({ error: message }))),
         );
       }),
     );
@@ -37,7 +37,7 @@ export class TaskEffects {
       mergeMap(({ newTask }: { newTask: ITask }) => {
         return this.taskService.createTask(newTask).pipe(
           map((task) => createTaskSuccess({ newTask: task })),
-          catchError((error: Error) => of(createTaskError({ error: error.message }))),
+          catchError(({ message }: Error) => of(createTaskError({ error: message }))),
         );
       }),
     );
@@ -49,7 +49,7 @@ export class TaskEffects {
       mergeMap(({ task }: { task: ITask }) => {
         return this.taskService.deleteTask(task).pipe(
           map((deletedTask) => deleteTaskSuccess({ task: deletedTask })),
-          catchError((error: Error) => of(deleteTaskError({ error: error.message }))),
+          catchError(({ message }: Error) => of(deleteTaskError({ error: message }))),
         );
       }),
     );
@@ -61,7 +61,7 @@ export class TaskEffects {
       mergeMap(({ updatedTask }: { updatedTask: ITask }) => {
         return this.taskService.updateTask(updatedTask).pipe(
           map((task) => updateTaskSuccess({ updatedTask: task })),
-          catchError((error: Error) => of(updateTaskError({ error: error.message }))),
+          catchError(({ message }: Error) => of(updateTaskError({ error: message }))),
         );
       }),
     );
@@ -73,7 +73,7 @@ export class TaskEffects {
       mergeMap(({ tasks }: { tasks: ModifiedTaskForRequest[] }) => {
         return this.taskService.updateOrderAllTasks(tasks).pipe(
           map((responseTasks) => updateOrderAllTasksSuccess({ responseTasks })),
-          catchError((error: Error) => of(updateOrderAllTasksError({ error: error.message }))),
+          catchError(({ message }: Error) => of(updateOrderAllTasksError({ error: message }))),
         );
       }),
     );
