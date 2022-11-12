@@ -4,3 +4,8 @@ export interface IJWTPayload {
   id: string;
   login: string;
 }
+
+export enum MagicNumbers {
+  Zero = 0,
+  Thousand = 100,
+}

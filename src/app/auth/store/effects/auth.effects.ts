@@ -16,7 +16,6 @@ import {
   getUserSuccess,
   getUserError,
 } from '../actions/auth.actions';
-import { IAuthState } from '../models/auth.models';
 
 @Injectable()
 export class AuthEffects {
@@ -24,7 +23,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-    private store: Store<IAuthState>,
+    private store: Store,
   ) {}
 
   logIn$ = createEffect(() => {

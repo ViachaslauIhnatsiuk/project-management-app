@@ -19,6 +19,7 @@ export class UsersInterceptor implements HttpInterceptor {
   private TOKEN = window.localStorage.getItem('token');
 
   constructor(private responseHandlerService: ResponseHandlerService) {}
+
   intercept(
     request: HttpRequest<IGetUserRequest>,
     next: HttpHandler,

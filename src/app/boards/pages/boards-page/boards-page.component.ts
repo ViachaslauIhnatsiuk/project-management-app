@@ -11,6 +11,7 @@ import { selectToken } from 'src/app/auth/store/selectors/auth.selectors';
 })
 export class BoardsPageComponent implements OnInit {
   constructor(private authService: AuthService, private store: Store) {}
+
   ngOnInit(): void {
     this.store.select(selectToken).subscribe((token) => {
       const { id } = this.authService.getUserDataFromToken(token);

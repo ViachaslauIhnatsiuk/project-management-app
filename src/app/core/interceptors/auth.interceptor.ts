@@ -22,6 +22,7 @@ import { ResponseHandlerService } from 'src/app/core/services/response-handler.s
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private responseHandlerService: ResponseHandlerService) {}
+
   intercept(
     request: HttpRequest<ILogInRequest | ISignUpRequest>,
     next: HttpHandler,

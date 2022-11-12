@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import {
   ILogInRequest,
@@ -7,8 +8,7 @@ import {
   ISignUpRequest,
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
-import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
-import { Observable } from 'rxjs';
+import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 
 @Injectable({
   providedIn: 'root',
@@ -36,9 +36,9 @@ export class AuthService {
     const currentTime = Date.now();
     const decodedToken = jwtDecode<IJWTPayload>(token);
     if (decodedToken.exp) {
-      const tokenExpireTime = decodedToken.exp * 1000;
+      const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
       const timeDifference = tokenExpireTime - currentTime;
-      return timeDifference > 0 ? true : false;
+      return timeDifference > MagicNumbers.Zero ? true : false;
     } else {
       return false;
     }
