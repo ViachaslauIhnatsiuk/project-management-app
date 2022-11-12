@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ResponseHandlerService } from './services/response-handler.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
@@ -43,6 +44,12 @@ import { ResponseHandlerService } from './services/response-handler.service';
     MatToolbarModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
-  providers: [BoardService, NotificationService, ResponseHandlerService, httpInterceptorProviders],
+  providers: [
+    BoardService,
+    NotificationService,
+    ResponseHandlerService,
+    AuthGuard,
+    httpInterceptorProviders,
+  ],
 })
 export class CoreModule {}
