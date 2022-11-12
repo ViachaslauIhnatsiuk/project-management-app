@@ -1,18 +1,6 @@
-<div
-  cdkDropList
-  cdkDropListOrientation="horizontal"
-  [cdkDropListData]="columns"
-  class="columns"
-  (cdkDropListDropped)="dropColumn($event)"
-  cdkDropListGroup
->
-  <app-column-item
-    class="column"
-    *ngFor="let column of columns"
-    cdkDrag
-    [column]="column"
-    cdkDragBoundary=".columns"
-    cdkDragLockAxis="x"
-  >
+<div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="columns" class="columns"
+  (cdkDropListDropped)="dropColumn($event)" cdkDropListGroup>
+  <app-column-item class="column" *ngFor="let column of columns" cdkDrag [column]="column" cdkDragBoundary=".columns"
+    cdkDragLockAxis="x">
   </app-column-item>
 </div>

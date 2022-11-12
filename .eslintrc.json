@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -24,6 +24,7 @@
         "prefer-destructuring": "off",
         "no-useless-escape": "off",
         "arrow-body-style": "off",
+        "avoid-dispatching-multiple-actions-sequentially": "off",
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -43,7 +44,7 @@
       }
     },
     {
-      "files": ["*.component.html"],
+      "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     },

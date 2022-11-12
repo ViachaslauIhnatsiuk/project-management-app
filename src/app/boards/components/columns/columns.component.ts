@@ -54,15 +54,15 @@ export class ColumnsComponent implements OnInit, OnDestroy {
 
     moveItemInArray(columns, previousIndex, currentIndex);
 
-    const sortedByOrderColumns = columns.map((column, index) => {
+    const modifiedColumns = columns.map((column, index) => {
       const updatedColumn = { ...column };
       updatedColumn.order = index + 1;
       return updatedColumn;
     });
 
-    this.store.dispatch(setColumns({ columns: sortedByOrderColumns }));
+    this.store.dispatch(setColumns({ columns: modifiedColumns }));
 
-    const modifiedColumnsForRequest = sortedByOrderColumns.map(({ _id, order }) => {
+    const modifiedColumnsForRequest = modifiedColumns.map(({ _id, order }) => {
       return { _id, order };
     });
 
