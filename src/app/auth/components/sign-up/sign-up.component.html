@@ -15,13 +15,11 @@
       *ngIf="signUpForm.controls.login.errors?.['required'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
       >Login is required.</mat-hint
     >
-    <mat-hint
-      *ngIf="signUpForm.controls.login.errors?.['uniqueLogin'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
-    >
-      Login already exist
+    <mat-hint *ngIf="!(loading$ | async)">
+      <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
     </mat-hint>
     <mat-progress-spinner
-      *ngIf="signUpForm.controls.login.pending"
+      *ngIf="loading$ | async"
       matSuffix
       [mode]="'indeterminate'"
       [diameter]="20"
