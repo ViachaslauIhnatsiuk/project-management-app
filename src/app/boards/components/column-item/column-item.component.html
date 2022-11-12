@@ -12,6 +12,6 @@
   <mat-icon (click)="updateTitle()">done</mat-icon>
 </form>
 <mat-card-content class="card-content">
-  <app-tasks [tasks]="column.tasks!" [idColumn]="column._id!"></app-tasks>
+  <app-tasks [tasks]="column.tasks!" [columnId]="column._id!"></app-tasks>
 </mat-card-content>
 <app-create-task [idColumn]="column._id" [amountOfTasks]="column.tasks!.length"></app-create-task>
