@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { ITask } from '../../models/boards.models';
-import { DeleteTaskProps, GetTasksProps, TaskActions } from '../models/task.models';
+import { ITask, ModifiedTaskForRequest } from '../../models/boards.models';
+import { GetTasksProps, TaskActions } from '../models/task.models';
 
 const getTasks = createAction(TaskActions.GET_TASKS, props<{ props: GetTasksProps }>());
 const getTasksSuccess = createAction(
@@ -16,11 +16,8 @@ const createTaskSuccess = createAction(
 );
 const createTaskError = createAction(TaskActions.CREATE_TASK_ERROR, props<{ error: string }>());
 
-const deleteTask = createAction(TaskActions.DELETE_TASK, props<{ props: DeleteTaskProps }>());
-const deleteTaskSuccess = createAction(
-  TaskActions.DELETE_TASK_SUCCESS,
-  props<{ idTask: string; columnId: string }>(),
-);
+const deleteTask = createAction(TaskActions.DELETE_TASK, props<{ task: ITask }>());
+const deleteTaskSuccess = createAction(TaskActions.DELETE_TASK_SUCCESS, props<{ task: ITask }>());
 const deleteTaskError = createAction(TaskActions.DELETE_TASK_ERROR, props<{ error: string }>());
 
 const updateTask = createAction(TaskActions.UPDATE_TASK, props<{ updatedTask: ITask }>());
@@ -32,18 +29,21 @@ const updateTaskError = createAction(TaskActions.UPDATE_TASK_ERROR, props<{ erro
 
 const updateOrderAllTasks = createAction(
   TaskActions.UPDATE_ORDER_TASKS,
-  props<{ tasks: ITask[] }>(),
+  props<{ tasks: ModifiedTaskForRequest[] }>(),
 );
 const updateOrderAllTasksSuccess = createAction(
   TaskActions.UPDATE_ORDER_TASKS_SUCCESS,
-  props<{ updatedTasks: ITask[] }>(),
+  props<{ responseTasks: ITask[] }>(),
 );
 const updateOrderAllTasksError = createAction(
   TaskActions.UPDATE_ORDER_TASKS_ERROR,
   props<{ error: string }>(),
 );
 
-const setTasks = createAction(TaskActions.SET_TASKS, props<{ tasks: ITask[]; columnId: string }>());
+const setTasksById = createAction(
+  TaskActions.SET_TASKS,
+  props<{ tasks: ITask[]; columnId: string }>(),
+);
 
 export {
   getTasks,
@@ -61,5 +61,5 @@ export {
   updateOrderAllTasks,
   updateOrderAllTasksSuccess,
   updateOrderAllTasksError,
-  setTasks,
+  setTasksById,
 };

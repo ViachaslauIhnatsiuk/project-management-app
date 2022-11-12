@@ -28,13 +28,9 @@ type CreateTaskProps = GetTasksProps & {
   newTask: ITask;
 };
 
-type DeleteTaskProps = GetTasksProps & {
-  idTask: string;
-};
-
 type UpdateTaskProps = GetTasksProps & {
   column: ITask;
 };
 
-export type { CreateTaskProps, DeleteTaskProps, UpdateTaskProps, GetTasksProps };
+export type { CreateTaskProps, UpdateTaskProps, GetTasksProps };
 export { TaskActions };
