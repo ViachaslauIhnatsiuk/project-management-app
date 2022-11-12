@@ -24,6 +24,10 @@ export class AuthService {
     return this.http.post<ILogInResponse>('signin', fields);
   }
 
+  public getUser(id: string) {
+    return this.http.get<ISignUpResponse>('users', { params: { id } });
+  }
+
   public isTokenExpired(): boolean {
     const token = localStorage.getItem('token');
 
