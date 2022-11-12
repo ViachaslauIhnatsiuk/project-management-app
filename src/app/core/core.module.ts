@@ -21,7 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { httpInterceptorProviders } from 'src/app/core/interceptors/interceptors';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { ErrorHandlerService } from './services/error-handler.service';
+import { ResponseHandlerService } from './services/response-handler.service';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
@@ -43,6 +43,6 @@ import { ErrorHandlerService } from './services/error-handler.service';
     MatToolbarModule,
   ],
   exports: [HeaderComponent, WelcomePageComponent, SidebarComponent, FooterComponent],
-  providers: [BoardService, NotificationService, ErrorHandlerService, httpInterceptorProviders],
+  providers: [BoardService, NotificationService, ResponseHandlerService, httpInterceptorProviders],
 })
 export class CoreModule {}
