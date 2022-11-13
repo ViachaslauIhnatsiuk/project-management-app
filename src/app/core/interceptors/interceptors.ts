@@ -5,8 +5,8 @@ import { BoardsInterceptor } from 'src/app/core/interceptors/boards.interceptor'
 import { AppInterceptor } from './app.interceptor';
 
 export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: UsersInterceptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: BoardsInterceptor, multi: true },
 ];

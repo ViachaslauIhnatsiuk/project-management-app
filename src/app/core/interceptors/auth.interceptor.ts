@@ -10,25 +10,16 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
-import {
-  ILogInRequest,
-  ILogInResponse,
-  IResponseError,
-  ISignUpRequest,
-  ISignUpResponse,
-} from 'src/app/core/models/auth-interceptor.models';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private responseHandlerService: ResponseHandlerService) {}
 
-  intercept(
-    request: HttpRequest<ILogInRequest | ISignUpRequest>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<ILogInResponse | ISignUpResponse | IResponseError>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url.includes('signup')) {
-      return next.handle(this.getModifiedRequest(request)).pipe(
+      const url = `${BASE_URL}auth/${request.url}`;
+      return next.handle(request.clone({ url })).pipe(
         tap((data) => {
           if (data instanceof HttpResponse) {
             this.responseHandlerService.handleResponse(data.status, 'New user is created');
@@ -48,7 +39,8 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     if (request.url.includes('signin')) {
-      return next.handle(this.getModifiedRequest(request)).pipe(
+      const url = `${BASE_URL}auth/${request.url}`;
+      return next.handle(request.clone({ url })).pipe(
         tap((data) => {
           if (data instanceof HttpResponse) {
             this.responseHandlerService.handleResponse(data.status, 'Successeful login');
@@ -68,19 +60,5 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request);
-  }
-
-  private getModifiedRequest(
-    request: HttpRequest<ILogInRequest | ISignUpRequest>,
-  ): HttpRequest<ILogInRequest | ISignUpRequest> {
-    const url = `${BASE_URL}auth/${request.url}`;
-
-    return request.clone({
-      url,
-      setHeaders: {
-        accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
   }
 }

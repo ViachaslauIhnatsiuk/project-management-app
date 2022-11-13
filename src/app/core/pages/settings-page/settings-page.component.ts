@@ -15,7 +15,9 @@ export class SettingsPageComponent {
     const dialogRef = this.dialog.open(ConfirmationModalComponent);
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
-      if (isConfirm) this.settingsService.deleteUser();
+      // TODO: Here need recieve userId from store
+      const id: string = 'userId from store';
+      if (isConfirm) this.settingsService.deleteUser(id);
     });
   }
 }

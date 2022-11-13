@@ -14,16 +14,20 @@ export class BoardsInterceptor implements HttpInterceptor {
   public token = getToken();
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let headers: HttpHeaders = request.headers;
+    if (request.url.includes('boards')) {
+      let headers: HttpHeaders = request.headers;
 
-    if (this.token) {
-      headers = request.headers.set('Authorization', `Bearer ${this.token}`);
+      if (this.token) {
+        headers = request.headers.set('Authorization', `Bearer ${this.token}`);
+      }
+
+      return next.handle(
+        request.clone({
+          headers,
+        }),
+      );
     }
 
-    return next.handle(
-      request.clone({
-        headers,
-      }),
-    );
+    return next.handle(request);
   }
 }

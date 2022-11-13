@@ -19,7 +19,10 @@ export class EditProfilePageComponent {
 
   public onSubmit(): void {
     const fieldValues = this.editForm.value as IEditUserDataRequest;
-    this.settingsService.editUserData(fieldValues);
+
+    // TODO: Here need recieve userId from store
+    const id: string = 'userId from store';
+    this.settingsService.editUserData(id, fieldValues);
   }
 
   public resetForm(): void {

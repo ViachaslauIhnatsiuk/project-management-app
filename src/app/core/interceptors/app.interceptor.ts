@@ -7,10 +7,15 @@ import { BASE_URL } from '../constants/interceptors.constants';
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(
-      request.clone({
-        url: `${BASE_URL}${request.url}`,
-      }),
-    );
+    return next.handle(this.getRequestWithHeaders(request));
+  }
+
+  private getRequestWithHeaders(request: HttpRequest<unknown>): HttpRequest<unknown> {
+    return request.clone({
+      setHeaders: {
+        accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }
