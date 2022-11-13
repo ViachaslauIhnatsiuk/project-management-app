@@ -1,0 +1,21 @@
+:host {
+  width: 20%;
+  min-width: 300px;
+  max-width: fit-content;
+}
+
+.card {
+  position: relative;
+  height: 100px;
+  cursor: pointer;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 2%;
+}
+
+.card-content {
+  text-align: center;
+}
