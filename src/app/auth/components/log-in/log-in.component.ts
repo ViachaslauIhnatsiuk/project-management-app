@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ILogInRequest } from 'src/app/core/models/auth-interceptor.models';
+import { logIn } from '../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-log-in',
@@ -14,15 +16,15 @@ export class LogInComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authServise: AuthService) {}
+  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
-  onSubmit() {
+  public onSubmit(): void {
     const fieldValues = this.logInForm.value as ILogInRequest;
-    this.authServise.signIn(fieldValues);
+    this.store.dispatch(logIn(fieldValues));
   }
 
-  onCancel() {
+  public onCancel(): void {
     this.logInForm.reset();
-    this.authServise.closeForm();
+    this.router.navigate(['']);
   }
 }

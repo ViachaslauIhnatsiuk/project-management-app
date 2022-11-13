@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
+import { signUp } from '../../store/actions/auth.actions';
+import { IAuthStateError } from '../../store/models/auth.models';
+import { selectError, selectIsLoading } from '../../store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,16 +19,23 @@ export class SignUpComponent {
     login: ['', Validators.required],
     password: ['', Validators.required],
   });
+  loading$!: Observable<boolean>;
+  error$!: Observable<IAuthStateError>;
 
-  constructor(private fb: FormBuilder, private authServise: AuthService) {}
+  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
-  onSubmit() {
-    const fieldValues = this.signUpForm.value as ISignUpRequest;
-    this.authServise.signUp(fieldValues);
+  ngOnInit(): void {
+    this.loading$ = this.store.select(selectIsLoading);
+    this.error$ = this.store.select(selectError);
   }
 
-  onCancel() {
+  public onSubmit(): void {
+    const fieldValues = this.signUpForm.value as ISignUpRequest;
+    this.store.dispatch(signUp(fieldValues));
+  }
+
+  public onCancel(): void {
     this.signUpForm.reset();
-    this.authServise.closeForm();
+    this.router.navigate(['']);
   }
 }

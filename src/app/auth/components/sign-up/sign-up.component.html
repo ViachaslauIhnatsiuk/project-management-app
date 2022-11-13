@@ -15,6 +15,16 @@
       *ngIf="signUpForm.controls.login.errors?.['required'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
       >Login is required.</mat-hint
     >
+    <mat-hint *ngIf="!(loading$ | async)">
+      <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
+    </mat-hint>
+    <mat-progress-spinner
+      *ngIf="loading$ | async"
+      matSuffix
+      [mode]="'indeterminate'"
+      [diameter]="20"
+    >
+    </mat-progress-spinner>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>

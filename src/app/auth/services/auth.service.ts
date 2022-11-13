@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import {
   ILogInRequest,
@@ -8,33 +8,24 @@ import {
   ISignUpRequest,
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
-import { IJWTPayload } from 'src/app/auth/models/auth-service.models';
+import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  public signUp(fields: ISignUpRequest): void {
-    this.http.post<ISignUpResponse>('signup', fields).subscribe(({ login }) => {
-      const { password } = fields;
-      this.signIn({ login, password });
-    });
+  public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
+    return this.http.post<ISignUpResponse>('signup', fields);
   }
 
-  public signIn(fields: ILogInRequest): void {
-    this.http.post<ILogInResponse>('signin', fields).subscribe(({ token }) => {
-      const { id, login } = this.getUserDataFromToken(token);
-
-      localStorage.setItem('userData', JSON.stringify({ id, login, token }));
-
-      this.router.navigate(['']);
-    });
+  public signIn(fields: ILogInRequest): Observable<ILogInResponse> {
+    return this.http.post<ILogInResponse>('signin', fields);
   }
 
-  public closeForm(): void {
-    this.router.navigate(['']);
+  public getUser(id: string) {
+    return this.http.get<ISignUpResponse>('users', { params: { id } });
   }
 
   public isTokenExpired(): boolean {
@@ -45,9 +36,9 @@ export class AuthService {
     const currentTime = Date.now();
     const decodedToken = jwtDecode<IJWTPayload>(token);
     if (decodedToken.exp) {
-      const tokenExpireTime = decodedToken.exp * 1000;
+      const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
       const timeDifference = tokenExpireTime - currentTime;
-      return timeDifference > 0 ? true : false;
+      return timeDifference > MagicNumbers.Zero ? true : false;
     } else {
       return false;
     }
