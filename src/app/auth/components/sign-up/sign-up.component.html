@@ -15,7 +15,7 @@
       *ngIf="signUpForm.controls.login.errors?.['required'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
       >Login is required.</mat-hint
     >
-    <mat-hint *ngIf="!(loading$ | async)">
+    <mat-hint *ngIf="(loading$ | async) === false">
       <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
     </mat-hint>
     <mat-progress-spinner

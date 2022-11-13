@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -13,13 +13,15 @@ import { selectError, selectIsLoading } from '../../store/selectors/auth.selecto
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   signUpForm = this.fb.group({
     name: ['', Validators.required],
     login: ['', Validators.required],
     password: ['', Validators.required],
   });
+
   loading$!: Observable<boolean>;
+
   error$!: Observable<IAuthStateError>;
 
   constructor(private fb: FormBuilder, private router: Router, private store: Store) {}

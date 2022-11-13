@@ -7,3 +7,16 @@ export interface IGetUserResponse {
   name: 'string';
   login: 'string';
 }
+
+export enum UsersResponseMessages {
+  Default = 'Default message',
+  Founded = 'Founded user',
+  Updated = 'Updated user',
+  Deleted = 'Deleted user',
+}
+
+export enum Methods {
+  Get = 'GET',
+  Put = 'PUT',
+  Delete = 'DELETE',
+}
