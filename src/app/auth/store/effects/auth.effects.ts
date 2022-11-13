@@ -35,7 +35,7 @@ export class AuthEffects {
             localStorage.setItem('token', token);
             return logInSuccess({ token });
           }),
-          tap(() => this.router.navigate([''])),
+          tap(() => this.router.navigate(['/boards'])),
           catchError(({ error: { statusCode, message } }) => {
             return of(logInError({ statusCode, message }));
           }),

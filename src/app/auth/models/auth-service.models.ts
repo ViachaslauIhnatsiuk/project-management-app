@@ -7,5 +7,5 @@ export interface IJWTPayload {
 
 export enum MagicNumbers {
   Zero = 0,
-  Thousand = 100,
+  Thousand = 1000,
 }
