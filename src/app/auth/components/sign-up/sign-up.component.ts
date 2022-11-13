@@ -24,17 +24,17 @@ export class SignUpComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loading$ = this.store.select(selectIsLoading);
     this.error$ = this.store.select(selectError);
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     const fieldValues = this.signUpForm.value as ISignUpRequest;
     this.store.dispatch(signUp(fieldValues));
   }
 
-  onCancel() {
+  public onCancel(): void {
     this.signUpForm.reset();
     this.router.navigate(['']);
   }

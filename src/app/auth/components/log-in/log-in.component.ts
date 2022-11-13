@@ -18,12 +18,12 @@ export class LogInComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
 
-  onSubmit() {
+  public onSubmit(): void {
     const fieldValues = this.logInForm.value as ILogInRequest;
     this.store.dispatch(logIn(fieldValues));
   }
 
-  onCancel() {
+  public onCancel(): void {
     this.logInForm.reset();
     this.router.navigate(['']);
   }
