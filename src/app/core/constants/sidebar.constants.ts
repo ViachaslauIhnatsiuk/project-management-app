@@ -7,7 +7,7 @@ export const listItems = [
   {
     src: '../../../../assets/icons/sidebar/tasks.svg',
     title: 'Tasks',
-    routerLink: '/',
+    routerLink: '/boards',
   },
   {
     src: '../../../../assets/icons/sidebar/settings.svg',

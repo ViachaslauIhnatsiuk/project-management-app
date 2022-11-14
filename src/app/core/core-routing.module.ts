@@ -1,3 +1,4 @@
+import { SidebarComponent } from 'src/app/core/components/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
@@ -10,17 +11,23 @@ const routes: Routes = [
   { path: '', component: WelcomePageComponent },
   { path: 'auth', loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule) },
   {
-    path: 'boards',
-    loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'settings',
-    component: SettingsPageComponent,
-  },
-  {
-    path: 'settings/edit-profile',
-    component: EditProfilePageComponent,
+    path: '',
+    component: SidebarComponent,
+    children: [
+      {
+        path: 'boards',
+        loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'settings',
+        component: SettingsPageComponent,
+      },
+      {
+        path: 'settings/edit-profile',
+        component: EditProfilePageComponent,
+      },
+    ],
   },
   { path: 'notFoundPage', component: NotFoundPageComponent },
   { path: '**', redirectTo: 'notFoundPage' },
