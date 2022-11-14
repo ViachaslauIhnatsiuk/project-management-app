@@ -1,5 +1,5 @@
 <mat-toolbar role="heading">
-  <button mat-icon-button (click)="headerService.toggleSidebar()">
+  <button *ngIf="isAuth$ | async" mat-icon-button (click)="headerService.toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
   <img class="logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
@@ -7,15 +7,18 @@
     <input type="search" matInput placeholder="Search for anything" />
     <mat-icon color="primary" matPrefix>search</mat-icon>
   </mat-form-field>
-  <div class="btns-wrapper">
+  <div class="btns-wrapper" *ngIf="isAuth$ | async">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle (change)="headerService.switchTheme($event)"></mat-slide-toggle>
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
-  <div class="btns-wrapper">
+  <div class="btns-wrapper" *ngIf="!(isAuth$ | async)">
     <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
     <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
   </div>
+  <button (click)="authService.signOut()" *ngIf="isAuth$ | async" mat-raised-button color="primary">
+    Sign out
+  </button>
   <mat-button-toggle-group>
     <mat-button-toggle
       [checked]="headerService.currentLanguage.en"
@@ -30,5 +33,4 @@
       >RU</mat-button-toggle
     >
   </mat-button-toggle-group>
-  <mat-icon color="primary" class="account">account_circle</mat-icon>
 </mat-toolbar>

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import {
@@ -8,13 +10,14 @@ import {
   ISignUpRequest,
   ISignUpResponse,
 } from 'src/app/core/models/auth-interceptor.models';
+import { logOut } from 'src/app/auth/store/actions/auth.actions';
 import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private store: Store) {}
 
   public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
     return this.http.post<ISignUpResponse>('signup', fields);
@@ -22,6 +25,12 @@ export class AuthService {
 
   public signIn(fields: ILogInRequest): Observable<ILogInResponse> {
     return this.http.post<ILogInResponse>('signin', fields);
+  }
+
+  public signOut(): void {
+    window.localStorage.clear();
+    this.store.dispatch(logOut());
+    this.router.navigate(['']);
   }
 
   public getUser(id: string) {
