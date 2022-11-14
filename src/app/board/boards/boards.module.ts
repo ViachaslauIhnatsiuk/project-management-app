@@ -8,7 +8,6 @@ import { BoardsRoutingModule } from './boards-routing.module';
 import { ColumnsModule } from '../columns/columns.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
-import { CreateBoardComponent } from './components/create-board/create-board.component';
 import { BoardsComponent } from './components/boards/boards.component';
 import { BoardCardComponent } from './components/board-card/board-card.component';
 import { CreateBoardModalComponent } from './components/create-board-modal/create-board-modal.component';
@@ -26,7 +25,6 @@ import { ClickStopPropagationDirective } from './directives/click-stop-propagati
     BoardCardComponent,
     CreateBoardModalComponent,
     UpdateBoardModalComponent,
-    CreateBoardComponent,
     ProjectPageComponent,
     ClickStopPropagationDirective,
   ],
