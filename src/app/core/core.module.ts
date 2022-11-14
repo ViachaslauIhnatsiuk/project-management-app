@@ -18,6 +18,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SidebarComponent,
     SettingsPageComponent,
     EditProfilePageComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     StoreModule.forRoot({}, {}),
