@@ -3,6 +3,7 @@ import {
   logIn,
   logInSuccess,
   logInError,
+  logOut,
   signUp,
   signUpSuccess,
   signUpError,
@@ -23,6 +24,9 @@ const authReducer = createReducer(
   }),
   on(logInError, (state, { statusCode, message }): IAuthState => {
     return { ...state, isLoading: false, error: { statusCode, message } };
+  }),
+  on(logOut, () => {
+    return { ...initialAuthState };
   }),
   on(signUp, (state): IAuthState => {
     return { ...state, isLoading: true };
