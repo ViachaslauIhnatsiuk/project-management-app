@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthActions } from '../models/auth.models';
+import { AuthActions, IAuthState } from '../models/auth.models';
 
 const logIn = createAction(
   AuthActions.LOGIN,
@@ -16,6 +16,8 @@ const logInError = createAction(
     message: string;
   }>(),
 );
+
+const logOut = createAction(AuthActions.LOGOUT);
 
 const signUp = createAction(
   AuthActions.SIGNUP,
@@ -62,6 +64,7 @@ export {
   logIn,
   logInSuccess,
   logInError,
+  logOut,
   signUp,
   signUpSuccess,
   signUpError,
