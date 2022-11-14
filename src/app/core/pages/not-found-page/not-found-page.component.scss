@@ -1,0 +1,16 @@
+:host {
+  height: 100%;
+  display: flex;
+  font-display: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  font-size: 70px;
+  font-weight: 700;
+}
+
+.error__message {
+  font-size: 40px;
+}
