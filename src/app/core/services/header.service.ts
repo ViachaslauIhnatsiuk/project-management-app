@@ -8,7 +8,7 @@ import { ICurrentLanguage } from 'src/app/core/models/header.models';
 export class HeaderService {
   public isDarkTheme = false;
 
-  public isSideBarOpened = false;
+  public isSideBarOpened = true;
 
   public currentLanguage: ICurrentLanguage = { en: true, ru: false };
 
