@@ -12,10 +12,9 @@
         <span class="new-board__title">My boards</span>
         <app-create-board-button></app-create-board-button>
       </div>
-      <mat-list-item role="listitem">Mobile App</mat-list-item>
-      <mat-list-item role="listitem">Website Redesign</mat-list-item>
-      <mat-list-item role="listitem">Design System</mat-list-item>
-      <mat-list-item role="listitem">Wireframes</mat-list-item>
+      <mat-list-item *ngFor="let board of boards$ | async" (click)="openBoard(board)">{{
+        board.title
+      }}</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
