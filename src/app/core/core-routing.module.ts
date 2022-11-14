@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthPageComponent } from 'src/app/auth/pages/auth-page/auth-page.component';
-import { AuthGuard } from './guards/auth.guard';
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
-import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { SettingsPageComponent } from 'src/app/core/pages/settings-page/settings-page.component';
+import { EditProfilePageComponent } from 'src/app/core/pages/edit-profile-page/edit-profile-page.component';
+import { WelcomePageComponent } from 'src/app/core/pages/welcome-page/welcome-page.component';
+import { NotFoundPageComponent } from 'src/app/core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
-  // TODO: Redirect to welcome or home page
-  // { path: '', component: 'HomePage', pathMatch: 'full' },
-
-  { path: 'auth', component: AuthPageComponent },
-
-  // TODO: when will implement notFoundPage
-  // { path: '**', redirectTo: 'notFoundPage', pathMatch: 'full' },
+  { path: '', component: WelcomePageComponent },
+  { path: 'auth', loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule) },
   {
     path: 'boards',
     loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
@@ -26,6 +22,8 @@ const routes: Routes = [
     path: 'settings/edit-profile',
     component: EditProfilePageComponent,
   },
+  { path: 'notFoundPage', component: NotFoundPageComponent },
+  { path: '**', redirectTo: 'notFoundPage' },
 ];
 
 @NgModule({
