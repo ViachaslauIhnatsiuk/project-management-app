@@ -17,33 +17,19 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private responseHandlerService: ResponseHandlerService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('signup')) {
+    if (request.url.includes('signup') || request.url.includes('signin')) {
       const url = `${BASE_URL}auth/${request.url}`;
       return next.handle(request.clone({ url })).pipe(
         tap((data) => {
           if (data instanceof HttpResponse) {
-            this.responseHandlerService.handleResponse(data.status, 'New user is created');
-          }
-        }),
-        catchError((error) => {
-          if (error instanceof HttpErrorResponse) {
-            const {
-              status,
-              error: { message },
-            } = error;
-            this.responseHandlerService.handleResponse(status, message);
-          }
-          return throwError(() => error);
-        }),
-      );
-    }
-
-    if (request.url.includes('signin')) {
-      const url = `${BASE_URL}auth/${request.url}`;
-      return next.handle(request.clone({ url })).pipe(
-        tap((data) => {
-          if (data instanceof HttpResponse) {
-            this.responseHandlerService.handleResponse(data.status, 'Successeful login');
+            let message: string = '';
+            if (request.url.includes('signup')) {
+              message = 'New user is created';
+            }
+            if (request.url.includes('signin')) {
+              message = 'Successeful login';
+            }
+            this.responseHandlerService.handleResponse(data.status, message);
           }
         }),
         catchError((error) => {
