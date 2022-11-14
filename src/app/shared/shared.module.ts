@@ -20,9 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
 
 @NgModule({
-  declarations: [ConfirmationModalComponent],
+  declarations: [ConfirmationModalComponent, CreateBoardButtonComponent],
   exports: [
     CommonModule,
     DragDropModule,
@@ -51,6 +52,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    CreateBoardButtonComponent,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
 })
