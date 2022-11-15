@@ -14,17 +14,16 @@
   cursor: default;
 }
 
-.footer__githubs {
+.footer__githubs-main {
   display: flex;
   align-items: center;
-  column-gap: 40px;
+  column-gap: 30px;
 }
 
 .footer__github {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  font-size: 20px;
   color: #ffffff;
 }
 
@@ -40,4 +39,46 @@
 
 .footer__logo {
   width: 80px;
+}
+
+.footer__githubs-adaptive {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .footer__githubs-main {
+    display: none;
+  }
+
+  .footer__githubs-adaptive {
+    display: flex;
+  }
+
+  .footer__githubs {
+    line-height: 100%;
+  }
+
+  .footer__icon {
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  .footer__link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer__icon {
+    width: 30px;
+  }
+
+  .footer__logo {
+    width: 50px;
+    margin-right: 5px;
+  }
+
+  .footer__year {
+    font-size: 14px;
+  }
 }

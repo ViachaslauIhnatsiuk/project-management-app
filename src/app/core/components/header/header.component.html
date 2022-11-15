@@ -3,34 +3,36 @@
     <mat-icon>menu</mat-icon>
   </button>
   <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
-  <mat-form-field>
-    <input type="search" matInput placeholder="Search for anything" />
-    <mat-icon color="primary" matPrefix>search</mat-icon>
+  <mat-form-field
+    *ngIf="authService.isAuth()"
+    class="header__search"
+    floatLabel="never"
+    appearance="fill"
+  >
+    <input type="search" matInput placeholder="Search for anything" autocomplete="off" />
+    <mat-icon matPrefix class="header__search-icon">search</mat-icon>
   </mat-form-field>
-  <div class="header__btns-wrapper" *ngIf="authService.isAuth()">
+  <div class="header__theme-wrapper" *ngIf="authService.isAuth()">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle (change)="headerService.switchTheme($event)"></mat-slide-toggle>
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
-  <div class="header__btns-wrapper" *ngIf="!authService.isAuth()">
-    <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
-    <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
+  <div class="header__btns-wrapper">
+    <div class="header__auth-wrapper" *ngIf="!authService.isAuth()">
+      <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
+      <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
+    </div>
+    <div class="header__auth-wrapper" *ngIf="authService.isAuth()">
+      <button (click)="authService.signOut()" mat-raised-button color="primary">Sign out</button>
+    </div>
+    <mat-select [(value)]="headerService.currentLanguage" class="header__languages">
+      <mat-option
+        (click)="headerService.switchLanguage(language)"
+        *ngFor="let language of languages"
+        [value]="language"
+      >
+        {{ language }}
+      </mat-option>
+    </mat-select>
   </div>
-  <button
-    (click)="authService.signOut()"
-    *ngIf="authService.isAuth()"
-    mat-raised-button
-    color="primary"
-  >
-    Sign out
-  </button>
-  <mat-select [(value)]="headerService.currentLanguage">
-    <mat-option
-      (click)="headerService.switchLanguage(language)"
-      *ngFor="let language of languages"
-      [value]="language"
-    >
-      {{ language }}
-    </mat-option>
-  </mat-select>
 </mat-toolbar>

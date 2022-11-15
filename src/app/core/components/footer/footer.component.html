@@ -1,10 +1,20 @@
 <div class="footer__year">2022</div>
-<div class="footer__githubs">
+<div class="footer__githubs-main">
   <div class="footer__github" *ngFor="let githubAccount of githubAccounts">
     <img class="footer__icon" src="../../../../assets/icons/github.svg" alt="github" />
     <a [href]="githubAccount.link" target="_blank" class="footer__link">
       {{ githubAccount.name }}
     </a>
+  </div>
+</div>
+<div class="footer__githubs-adaptive">
+  <img class="footer__icon" src="../../../../assets/icons/github.svg" alt="github" />
+  <div class="footer__githubs">
+    <div class="footer__github-adaptive" *ngFor="let githubAccount of githubAccounts">
+      <a [href]="githubAccount.link" target="_blank" class="footer__link">
+        {{ githubAccount.name }}
+      </a>
+    </div>
   </div>
 </div>
 <a href="https://rs.school/angular/" target="_blank">
