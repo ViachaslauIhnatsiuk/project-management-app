@@ -14,6 +14,7 @@ import {
 import { logOut } from 'src/app/auth/store/actions/auth.actions';
 import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 import { getUser, logIn } from '../store/actions/auth.actions';
+import { selectUserId } from '../store/selectors/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,19 @@ export class AuthService {
     window.localStorage.clear();
     this.store.dispatch(logOut());
     this.router.navigate(['']);
+  }
+
+  public isAuth(): boolean {
+    let result = false;
+    const isUserAuthed = this.store.select(selectUserId);
+    isUserAuthed.subscribe((user) => {
+      if (user) {
+        result = true;
+      } else {
+        result = false;
+      }
+    });
+    return result;
   }
 
   public getUser(id: string) {

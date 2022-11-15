@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   public readonly listItems: IListItems[] = listItems;
+
   public boards$ = this.store.select(selectBoards);
+
   private boardId!: string;
 
   constructor(public headerService: HeaderService, private store: Store, private router: Router) {

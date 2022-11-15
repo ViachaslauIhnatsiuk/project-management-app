@@ -25,7 +25,7 @@ const authReducer = createReducer(
   on(logInError, (state, { statusCode, message }): IAuthState => {
     return { ...state, isLoading: false, error: { statusCode, message } };
   }),
-  on(logOut, () => {
+  on(logOut, (): IAuthState => {
     return { ...initialAuthState };
   }),
   on(signUp, (state): IAuthState => {

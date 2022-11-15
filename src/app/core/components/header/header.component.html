@@ -1,36 +1,36 @@
-<mat-toolbar role="heading">
-  <button *ngIf="isAuth$ | async" mat-icon-button (click)="headerService.toggleSidebar()">
+<mat-toolbar role="heading" class="header">
+  <button *ngIf="authService.isAuth()" mat-icon-button (click)="headerService.toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img class="logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
+  <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
   <mat-form-field>
     <input type="search" matInput placeholder="Search for anything" />
     <mat-icon color="primary" matPrefix>search</mat-icon>
   </mat-form-field>
-  <div class="btns-wrapper" *ngIf="isAuth$ | async">
+  <div class="header__btns-wrapper" *ngIf="authService.isAuth()">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle (change)="headerService.switchTheme($event)"></mat-slide-toggle>
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
-  <div class="btns-wrapper" *ngIf="!(isAuth$ | async)">
+  <div class="header__btns-wrapper" *ngIf="!authService.isAuth()">
     <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
     <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
   </div>
-  <button (click)="authService.signOut()" *ngIf="isAuth$ | async" mat-raised-button color="primary">
+  <button
+    (click)="authService.signOut()"
+    *ngIf="authService.isAuth()"
+    mat-raised-button
+    color="primary"
+  >
     Sign out
   </button>
-  <mat-button-toggle-group>
-    <mat-button-toggle
-      [checked]="headerService.currentLanguage.en"
-      (click)="headerService.switchLanguage()"
-      value="EN"
-      >EN</mat-button-toggle
+  <mat-select [(value)]="headerService.currentLanguage">
+    <mat-option
+      (click)="headerService.switchLanguage(language)"
+      *ngFor="let language of languages"
+      [value]="language"
     >
-    <mat-button-toggle
-      [checked]="headerService.currentLanguage.ru"
-      (click)="headerService.switchLanguage()"
-      value="RU"
-      >RU</mat-button-toggle
-    >
-  </mat-button-toggle-group>
+      {{ language }}
+    </mat-option>
+  </mat-select>
 </mat-toolbar>
