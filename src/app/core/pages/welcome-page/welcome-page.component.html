@@ -1,14 +1,9 @@
-<img
-  class="logo"
-  data-aos="fade"
-  src="../../../../assets/icons/logo-large.jpg"
-  alt="welcome page logo"
-/>
-<h1 class="motto" data-aos="fade">
+<img class="logo" src="../../../../assets/icons/logo-large.jpg" alt="welcome page logo" />
+<h1 class="motto">
   The Best Way To Manage <br />
   Your Daily Tasks
 </h1>
-<section class="kanban" data-aos="fade">
+<section class="kanban">
   <h2 class="kanban__description">
     The Kanban method is based on six basic practices to create an emerging set of positive
     behaviors in organizations, and achieve better agility in the provision of services.
@@ -27,12 +22,11 @@
   </h2>
   <div class="productivity__main">
     <img
-      data-aos="fade-right"
       class="productivity__image"
       src="../../../../assets//welcome-page/productivity.jpg"
       alt="productivity"
     />
-    <ul class="productivity__list" data-aos="fade-left">
+    <ul class="productivity__list">
       <li class="productivity__paragraph" *ngFor="let productivity of productivityList">
         {{ productivity }}
       </li>
@@ -42,13 +36,12 @@
 <section class="customize">
   <h2 class="title">Customize your <strong>Boards</strong></h2>
   <div class="customize__main">
-    <div class="customize__description" data-aos="fade-right">
+    <div class="customize__description">
       <p class="customize__paragraph" *ngFor="let cusomizeParagraph of cusomizeParagraphs">
         {{ cusomizeParagraph }}
       </p>
     </div>
     <img
-      data-aos="fade-left"
       class="customize__image"
       src="../../../../assets//welcome-page/customize.jpg"
       alt="customize"
@@ -61,13 +54,8 @@
     <strong>The Rolling Scopes School</strong>
   </h2>
   <div class="rss__main">
-    <img
-      class="rss__image"
-      data-aos="fade-right"
-      src="../../../../assets//welcome-page/rsschool.jpg"
-      alt="rsschool"
-    />
-    <div class="rss__description" data-aos="fade-left">
+    <img class="rss__image" src="../../../../assets//welcome-page/rsschool.jpg" alt="rsschool" />
+    <div class="rss__description">
       <p class="rss__paragraph" *ngFor="let rssParagraph of rssParagraphs">
         {{ rssParagraph }}
       </p>
@@ -80,7 +68,7 @@
 <section class="developers">
   <h2 class="title"><strong>Boards</strong> Developers</h2>
   <div class="developers__main">
-    <div class="developers__card" data-aos="zoom-in" *ngFor="let developer of developers">
+    <div class="developers__card" *ngFor="let developer of developers">
       <img class="developers__image" [src]="developer.src" alt="Dzmitry Developer" />
       <h6 class="developers__name">{{ developer.name }}</h6>
       <p class="developers__content">{{ developer.about }}</p>
