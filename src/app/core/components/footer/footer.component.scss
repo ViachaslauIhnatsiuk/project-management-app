@@ -1,84 +1,103 @@
 :host {
+  margin: 0 auto;
+  flex-shrink: 0;
   width: 100%;
+}
+
+.mat-list-item {
+  height: 12px !important;
+}
+
+::ng-deep {
+  .mat-list-item-content {
+    padding: 0 !important;
+  }
+}
+
+.mat-list-base {
+  padding: 0;
+}
+
+.footer {
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
   padding: 4px 15px;
-  flex-shrink: 0;
-}
 
-.footer__year {
-  font-size: 16px;
-  color: #1e1b2d;
-  cursor: default;
-}
+  &__year {
+    font-size: 16px;
+    cursor: default;
+  }
 
-.footer__githubs-main {
-  display: flex;
-  align-items: center;
-  column-gap: 30px;
-}
+  &__githubs-main {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+  }
 
-.footer__github {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  color: #ffffff;
-}
+  &__github {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
 
-.footer__icon {
-  width: 30px;
-}
+  &__link {
+    font-size: 14px;
+    text-decoration: none;
+  }
 
-.footer__link {
-  font-size: 14px;
-  color: #1e1b2d;
-  text-decoration: none;
-}
+  &__icon {
+    margin-right: 10px;
+    width: 35px;
+    height: 35px;
+  }
 
-.footer__logo {
-  width: 80px;
-}
+  &__logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.footer__githubs-adaptive {
-  display: none;
+  &__logo {
+    width: 60px;
+  }
+
+  &__githubs-adaptive {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-  .footer__githubs-main {
-    display: none;
-  }
+  .footer {
+    &__githubs-main {
+      display: none;
+    }
 
-  .footer__githubs-adaptive {
-    display: flex;
-  }
+    &__githubs-adaptive {
+      display: flex;
+      align-items: center;
+    }
 
-  .footer__githubs {
-    line-height: 100%;
-  }
+    &__githubs {
+      line-height: 100%;
+    }
 
-  .footer__icon {
-    width: 50px;
-    margin-right: 10px;
-  }
-
-  .footer__link {
-    font-size: 12px;
+    &__link {
+      font-size: 12px;
+    }
   }
 }
 
 @media (max-width: 450px) {
-  .footer__icon {
-    width: 30px;
-  }
+  .footer {
+    &__logo {
+      width: 50px;
+      margin-right: 5px;
+    }
 
-  .footer__logo {
-    width: 50px;
-    margin-right: 5px;
-  }
-
-  .footer__year {
-    font-size: 14px;
+    &__year {
+      font-size: 14px;
+    }
   }
 }

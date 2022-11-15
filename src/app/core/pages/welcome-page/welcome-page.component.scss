@@ -318,7 +318,7 @@
 
 @media (max-width: 786px) {
   :host {
-    padding: 100px 20px;
+    padding: 50px 20px 100px;
   }
 
   .logo {
@@ -425,13 +425,21 @@
 }
 
 @media (max-width: 450px) {
-  .title {
-    font-size: 21px;
+  .logo {
+    width: 230px;
+  }
+
+  .motto {
+    font-size: 19px;
     margin-bottom: 20px;
   }
 
   .kanban {
     margin-bottom: 50px;
+
+    &__description {
+      font-size: 15px;
+    }
 
     &__practices {
       grid-template-columns: repeat(1, 1fr);
