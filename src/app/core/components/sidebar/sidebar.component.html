@@ -7,11 +7,11 @@
       </mat-list-item>
     </mat-nav-list>
     <mat-divider></mat-divider>
-    <mat-nav-list role="navigation">
-      <div class="new-board">
-        <span class="new-board__title">My boards</span>
-        <app-create-board-button></app-create-board-button>
-      </div>
+    <div class="new-board">
+      <span class="new-board__title">My boards</span>
+      <app-create-board-button></app-create-board-button>
+    </div>
+    <mat-nav-list role="navigation" class="boards__list">
       <mat-list-item *ngFor="let board of boards$ | async" (click)="openBoard(board)">{{
         board.title
       }}</mat-list-item>

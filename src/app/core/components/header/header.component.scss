@@ -7,11 +7,6 @@
   column-gap: 20px;
 }
 
-.logo {
-  width: 140px;
-  cursor: pointer;
-}
-
 .mat-form-field {
   width: 500px;
 }
@@ -31,9 +26,37 @@
   color: #ffffff !important;
 }
 
-.btns-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 15px;
+.mat-select {
+  max-width: 117px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #673ab7;
+}
+
+.mat-option {
+  background-color: #7c4dff;
+  height: 36px !important;
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    transform: translateX(-10px) translateY(25px) !important;
+    min-width: 70px !important;
+  }
+}
+
+.header {
+  &__logo {
+    width: 140px;
+    cursor: pointer;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
 }
