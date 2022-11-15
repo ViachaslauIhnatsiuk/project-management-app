@@ -25,14 +25,17 @@
     <div class="header__auth-wrapper" *ngIf="authService.isAuth()">
       <button (click)="authService.signOut()" mat-raised-button color="primary">Sign out</button>
     </div>
-    <mat-select [(value)]="headerService.currentLanguage" class="header__languages">
-      <mat-option
-        (click)="headerService.switchLanguage(language)"
-        *ngFor="let language of languages"
-        [value]="language"
-      >
-        {{ language }}
-      </mat-option>
-    </mat-select>
+    <div class="header__select">
+      <mat-icon class="header__select-icon">language</mat-icon>
+      <mat-select [(value)]="headerService.currentLanguage" class="header__languages">
+        <mat-option
+          (click)="headerService.switchLanguage(language)"
+          *ngFor="let language of languages"
+          [value]="language"
+        >
+          {{ language }}
+        </mat-option>
+      </mat-select>
+    </div>
   </div>
 </mat-toolbar>

@@ -1,10 +1,9 @@
 .mat-sidenav-container {
   position: absolute;
   top: 80px;
-  bottom: 40px;
+  bottom: 50px;
   left: 0;
   right: 0;
-  background: #eeeeee;
 }
 
 .mat-sidenav {
@@ -14,6 +13,10 @@
 .mat-list-item {
   height: 40px !important;
   cursor: pointer;
+}
+
+.list__icon {
+  padding-left: 20px;
 }
 
 .mat-divider {
@@ -51,4 +54,10 @@
 .boards__list::-webkit-scrollbar-thumb {
   background: #b3b3b3;
   border-radius: 3px 0 0 3px;
+}
+
+@media (max-width: 768px) {
+  .mat-sidenav-container {
+    top: 90px;
+  }
 }
