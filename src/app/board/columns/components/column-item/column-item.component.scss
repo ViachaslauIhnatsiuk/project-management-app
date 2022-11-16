@@ -1,6 +1,6 @@
 .mat-card {
   position: relative;
-  width: 300px;
+  width: 280px;
   max-height: 100%;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
   max-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  padding: 5px 15px;
   overflow: auto;
 }
 
@@ -47,4 +47,26 @@
 .mat-card-content::-webkit-scrollbar-thumb {
   background: #b3b3b3;
   border-radius: 3px 0 0 3px;
+}
+
+.form {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  top: 7px;
+  left: 6px;
+  background-color: #ffffff;
+}
+
+.mat-form-field {
+  width: 200px;
+}
+
+.input {
+  font-size: 18px;
+}
+
+::ng-deep .cdk-drag-preview {
+  background-color: #fff !important;
 }
