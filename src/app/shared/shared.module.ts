@@ -46,7 +46,6 @@ import { CreateBoardButtonComponent } from './components/create-board-button/cre
     ConfirmationModalComponent,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,

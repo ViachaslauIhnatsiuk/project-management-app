@@ -23,7 +23,8 @@ export class SettingsService {
     this.http.delete<IEditUserDataResponse>('users', { params: { id } }).subscribe((data) => data);
   }
 
-  public changePasswordVisibility(): void {
+  public changePasswordVisibility(event: Event): void {
+    event.preventDefault();
     this.passwordVisibility = !this.passwordVisibility;
   }
 }

@@ -18,6 +18,8 @@ import { selectUserId } from '../store/selectors/auth.selectors';
   providedIn: 'root',
 })
 export class AuthService {
+  public passwordVisibility = false;
+
   constructor(private http: HttpClient, private router: Router, private store: Store) {}
 
   public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
@@ -71,5 +73,10 @@ export class AuthService {
     const { id, login } = jwtDecode<IJWTPayload>(token);
 
     return { id, login };
+  }
+
+  public changePasswordVisibility(event: Event): void {
+    event.preventDefault();
+    this.passwordVisibility = !this.passwordVisibility;
   }
 }
