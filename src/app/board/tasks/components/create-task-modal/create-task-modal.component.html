@@ -1,13 +1,21 @@
 <h1 mat-dialog-title>Create task</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
+      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">Title is too long</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['required']">Enter some title</mat-hint>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" />
+      <mat-hint *ngIf="form.controls['description'].errors?.['maxlength']"
+        >Description is too long</mat-hint
+      >
+      <mat-hint *ngIf="form.controls['description'].errors?.['required']"
+        >Enter some description</mat-hint
+      >
     </mat-form-field>
   </form>
 </div>
