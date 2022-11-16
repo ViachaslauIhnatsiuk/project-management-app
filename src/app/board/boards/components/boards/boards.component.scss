@@ -1,7 +1,57 @@
 :host {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  padding: 50px;
+}
+
+.mat-card {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 2rem;
-  row-gap: 2rem;
-  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+@media (max-width: 1500px) {
+  :host {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1300px) {
+  :host {
+    padding: 50px 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  :host {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  :host {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .mat-card {
+    width: 380px;
+  }
+}
+
+@media (max-width: 450px) {
+  .mat-card {
+    width: 260px;
+  }
 }
