@@ -11,6 +11,7 @@ import { ColumnsComponent } from './components/columns/columns.component';
 import { ColumnService } from './services/column.service';
 import { columnsReducer } from './store/reducers/columns.reducers';
 import { ColumnEffects } from './store/effects/columns.effects';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,10 @@ import { ColumnEffects } from './store/effects/columns.effects';
     TasksModule,
   ],
   exports: [ColumnsComponent],
-  providers: [ColumnService],
+  providers: [
+    ColumnService,
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+  ],
 })
 export class ColumnsModule {}

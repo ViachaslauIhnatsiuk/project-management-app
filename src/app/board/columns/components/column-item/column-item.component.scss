@@ -1,8 +1,50 @@
-:host {
-  display: block;
-  padding: 40px 10px;
-  height: max-content;
-  min-width: 300px;
-  border: solid 1px #777777;
-  background: #ffffff;
+.mat-card {
+  position: relative;
+  width: 300px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.mat-card-title {
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+}
+
+.more {
+  transition: 0.5s;
+}
+
+.more:hover {
+  background-color: #f5f5f5;
+  transition: 0.5s;
+}
+
+.mat-card-content {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  overflow: auto;
+}
+
+.mat-card-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.mat-card-content::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
 }
