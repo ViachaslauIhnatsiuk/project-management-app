@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ILogInRequest } from 'src/app/core/models/auth-interceptor.models';
+import { AuthService } from '../../services/auth.service';
 import { logIn } from '../../store/actions/auth.actions';
 
 @Component({
@@ -16,7 +17,12 @@ export class LogInComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
+  constructor(
+    public authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store,
+  ) {}
 
   public onSubmit(): void {
     const fieldValues = this.logInForm.value as ILogInRequest;

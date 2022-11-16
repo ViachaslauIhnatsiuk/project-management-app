@@ -28,7 +28,7 @@
       <button
         mat-icon-button
         matSuffix
-        (click)="settingsService.changePasswordVisibility()"
+        (click)="settingsService.changePasswordVisibility($event)"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="settingsService.passwordVisibility"
       >

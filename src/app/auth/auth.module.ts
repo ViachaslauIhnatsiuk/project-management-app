@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 import { AuthPageComponent } from 'src/app/auth/pages/auth-page/auth-page.component';
 import { SignUpComponent } from 'src/app/auth/components/sign-up/sign-up.component';
 import { LogInComponent } from 'src/app/auth/components/log-in/log-in.component';
@@ -15,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [SignUpComponent, LogInComponent, AuthPageComponent],
@@ -24,6 +24,7 @@ import { AuthEffects } from './store/effects/auth.effects';
     EffectsModule.forFeature([AuthEffects]),
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,

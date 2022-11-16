@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
-import { signUp } from '../../store/actions/auth.actions';
-import { IAuthStateError } from '../../store/models/auth.models';
-import { selectError, selectIsLoading } from '../../store/selectors/auth.selectors';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { signUp } from 'src/app/auth/store/actions/auth.actions';
+import { IAuthStateError } from 'src/app/auth/store/models/auth.models';
+import { selectError, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,7 +25,12 @@ export class SignUpComponent implements OnInit {
 
   error$!: Observable<IAuthStateError>;
 
-  constructor(private fb: FormBuilder, private router: Router, private store: Store) {}
+  constructor(
+    public authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store,
+  ) {}
 
   ngOnInit(): void {
     this.loading$ = this.store.select(selectIsLoading);

@@ -1,19 +1,16 @@
 :host {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #d8d8d8d2;
-  height: 100%;
+  flex: 1 1 100%;
 }
 
 .form {
   width: 400px;
-  padding: 20px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #ffffff;
 
   &__title {
     margin: 0;
@@ -24,5 +21,15 @@
     align-self: flex-end;
     display: flex;
     gap: 10px;
+  }
+}
+
+.mat-hint {
+  color: #f44336;
+}
+
+@media (max-width: 450px) {
+  .form {
+    width: 270px;
   }
 }
