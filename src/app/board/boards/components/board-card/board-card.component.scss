@@ -1,13 +1,14 @@
-:host {
-  width: 20%;
-  min-width: 300px;
-  max-width: fit-content;
-}
-
 .card {
   position: relative;
-  height: 100px;
-  cursor: pointer;
+  display: flex;
+  min-height: 100px;
+  max-width: 300px;
+  cursor: default;
+}
+
+.mat-card-title {
+  padding-right: 15px;
+  font-size: 18px;
 }
 
 .more-button {
@@ -18,4 +19,34 @@
 
 .card-content {
   text-align: center;
+}
+
+.more {
+  transition: 0.5s;
+}
+
+.more:hover {
+  background-color: #f5f5f5;
+  transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+  :host {
+    width: 380px;
+  }
+
+  .card {
+    width: 380px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  :host {
+    width: 260px;
+  }
+
+  .card {
+    width: 260px;
+  }
 }
