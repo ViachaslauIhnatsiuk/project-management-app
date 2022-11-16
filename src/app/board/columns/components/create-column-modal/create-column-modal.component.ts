@@ -32,8 +32,8 @@ export class CreateColumnModalComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(INITIAL_EMPTY_STRING_VALUE, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
+        Validators.minLength(1),
+        Validators.maxLength(30),
       ]),
     });
   }

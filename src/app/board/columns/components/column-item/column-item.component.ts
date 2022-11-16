@@ -48,8 +48,8 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
     this.form = new FormGroup({
       title: new FormControl(this.column.title, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
+        Validators.minLength(1),
+        Validators.maxLength(30),
       ]),
     });
   }
