@@ -1,2 +1,9 @@
-<h5 (click)="editTask()">{{ task.title }}</h5>
-<mat-icon (click)="deleteTask()">delete_forever</mat-icon>
+<mat-card>
+  <mat-card-content>
+    <h5 class="task__title" (click)="editTask()">{{ task.title }}</h5>
+    <p class="task__description">{{ task.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-icon class="task__delete-btn" (click)="deleteTask()">delete_outline</mat-icon>
+  </mat-card-actions>
+</mat-card>

@@ -23,13 +23,13 @@ export class EditTaskModalComponent {
     this.form = new FormGroup({
       title: new FormControl(task.title, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
+        Validators.minLength(1),
+        Validators.maxLength(50),
       ]),
       description: new FormControl(task.description, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
+        Validators.minLength(1),
+        Validators.maxLength(200),
       ]),
     });
   }
