@@ -1,9 +1,11 @@
 <h1 mat-dialog-title>Create board</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
+      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">Title is too long</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['required']">Enter some title</mat-hint>
     </mat-form-field>
   </form>
 </div>

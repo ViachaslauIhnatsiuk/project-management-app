@@ -8,7 +8,7 @@
   height: 12px !important;
 }
 
-::ng-deep {
+:host ::ng-deep {
   .mat-list-item-content {
     padding: 0 !important;
   }
