@@ -29,21 +29,15 @@
   margin-right: 15px;
 }
 
-.new-board {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px 20px;
-}
-
-.new-board__title {
+.boards__title {
+  padding: 0 0 20px 20px;
   font-weight: 600;
   cursor: default;
 }
 
 .boards__list {
   padding: 0 0 0 20px;
-  max-height: 200px;
+  max-height: 320px;
   overflow: auto;
 }
 

@@ -9,7 +9,9 @@
         aria-label="Toggle menu"
         appClickStopPropagation
       >
-        <mat-icon>more_vert</mat-icon>
+        <button class="more" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
         <button mat-menu-item (click)="editBoard()">Edit</button>
