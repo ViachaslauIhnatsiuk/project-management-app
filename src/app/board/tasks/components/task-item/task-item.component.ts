@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { EditTaskModalComponent } from '../edit-task-modal/edit-task-modal.component';
 import { deleteTask, updateTask } from '../../store/actions/task.actions';
-import { EditTask, ITask } from '../../models/tasks.models';
+import { ITask } from '../../models/tasks.models';
 import { DEFAULT_MODAL_SIZE, INITIAL_EMPTY_STRING_VALUE } from '../../../constants/board.constants';
 
 @Component({
@@ -32,18 +32,17 @@ export class TaskItemComponent {
   }
 
   public editTask(): void {
-    const { description, title } = this.task;
-
     const dialogRef = this.dialog.open(EditTaskModalComponent, {
-      data: { title, description },
+      data: this.task,
     });
 
-    dialogRef.afterClosed().subscribe((editedTask: EditTask) => {
+    dialogRef.afterClosed().subscribe((editedTask: ITask) => {
       if (editedTask) {
         const modifiedTask: ITask = {
           ...this.task,
           ...editedTask,
         };
+
         this.store.dispatch(updateTask({ updatedTask: modifiedTask }));
       }
     });

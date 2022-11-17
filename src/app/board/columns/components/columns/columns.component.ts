@@ -19,15 +19,15 @@ export class ColumnsComponent implements OnInit, OnDestroy {
 
   public columns: IColumn[] = [];
 
-  private idBoardSubscription = new Subscription();
+  private boardIdSubscription = new Subscription();
 
   private columnsSubscription = new Subscription();
 
-  private idActiveBoard: string = INITIAL_EMPTY_STRING_VALUE;
+  private boardId: string = INITIAL_EMPTY_STRING_VALUE;
 
   constructor(private route: ActivatedRoute, private store: Store) {
-    this.idBoardSubscription = this.route.params.subscribe(
-      (params) => (this.idActiveBoard = params['id']),
+    this.boardIdSubscription = this.route.params.subscribe(
+      (params) => (this.boardId = params['id']),
     );
     this.columnsSubscription = this.columns$.subscribe((columns) => {
       this.columns = [...columns];
@@ -35,7 +35,7 @@ export class ColumnsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(getColumns({ boardId: this.idActiveBoard }));
+    this.store.dispatch(getColumns({ boardId: this.boardId }));
   }
 
   public dropColumn({
@@ -53,7 +53,7 @@ export class ColumnsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.idBoardSubscription.unsubscribe();
+    this.boardIdSubscription.unsubscribe();
     this.columnsSubscription.unsubscribe();
     this.store.dispatch(resetColumns());
   }

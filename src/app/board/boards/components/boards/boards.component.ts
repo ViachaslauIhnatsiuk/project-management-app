@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { getUsers } from 'src/app/users/store/actions/users.actions';
+import { selectUser } from 'src/app/users/store/selectors/users.selectors';
 
-import { getBoards } from '../../store/actions/boards.actions';
+import { getBoardsByUserId } from '../../store/actions/boards.actions';
 import { selectBoards } from '../../store/selectors/boards.selectors';
 
 @Component({
@@ -9,10 +12,27 @@ import { selectBoards } from '../../store/selectors/boards.selectors';
   templateUrl: './boards.component.html',
   styleUrls: ['./boards.component.scss'],
 })
-export class BoardsComponent {
+export class BoardsComponent implements OnDestroy {
   public boards$ = this.store.select(selectBoards);
 
+  public user$ = this.store.select(selectUser);
+
+  private userSubscription = new Subscription();
+
   constructor(private store: Store) {
-    this.store.dispatch(getBoards());
+    this.getBoardsByUserId();
+    this.store.dispatch(getUsers());
+  }
+
+  private getBoardsByUserId(): void {
+    this.user$.subscribe((user) => {
+      if (user && user._id) {
+        this.store.dispatch(getBoardsByUserId({ userId: user._id }));
+      }
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 }

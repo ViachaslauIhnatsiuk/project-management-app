@@ -20,7 +20,7 @@ export class UsersInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url.includes('users')) {
       const TOKEN = window.localStorage.getItem('token');
-      const url = `${BASE_URL}users/${request.params.get('id')}`;
+      const url = `${BASE_URL}${request.url}`;
       return next
         .handle(
           request.clone({
