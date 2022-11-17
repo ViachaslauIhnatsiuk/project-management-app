@@ -7,6 +7,11 @@
   cursor: default;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
 .form {
   width: 400px;
   padding: 20px;
@@ -24,5 +29,15 @@
     align-self: flex-end;
     display: flex;
     gap: 10px;
+  }
+}
+
+.mat-hint {
+  color: #f44336;
+}
+
+@media (max-width: 450px) {
+  .form {
+    width: 270px;
   }
 }
