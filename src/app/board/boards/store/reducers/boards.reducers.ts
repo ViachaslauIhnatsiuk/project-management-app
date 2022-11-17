@@ -9,7 +9,13 @@ import {
   deleteBoard,
   deleteBoardError,
   deleteBoardSuccess,
+  getBoardById,
+  getBoardByIdError,
+  getBoardByIdSuccess,
   getBoards,
+  getBoardsByUserId,
+  getBoardsByUserIdError,
+  getBoardsByUserIdSuccess,
   getBoardsError,
   getBoardsSuccess,
   updateBoard,
@@ -26,6 +32,24 @@ const boardsReducer = createReducer(
     return { ...state, isLoading: false, boards };
   }),
   on(getBoardsError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(getBoardById, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(getBoardByIdSuccess, (state, { board }): IBoardsState => {
+    return { ...state, isLoading: false, selectedBoard: board };
+  }),
+  on(getBoardByIdError, (state, { error }): IBoardsState => {
+    return { ...state, isLoading: false, error };
+  }),
+  on(getBoardsByUserId, (state): IBoardsState => {
+    return { ...state, isLoading: true };
+  }),
+  on(getBoardsByUserIdSuccess, (state, { boards }): IBoardsState => {
+    return { ...state, isLoading: false, boards };
+  }),
+  on(getBoardsByUserIdError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
   }),
   on(createBoard, (state): IBoardsState => {

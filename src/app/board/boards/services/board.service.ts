@@ -15,6 +15,22 @@ export class BoardService {
     );
   }
 
+  public getBoardById(boardId: string): Observable<IBoard> {
+    return this.http.get<IBoard>(`${BoardApiEndpoints.boards}/${boardId}`).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
+      }),
+    );
+  }
+
+  public getBoardsByUserId(userId: string): Observable<IBoard[]> {
+    return this.http.get<IBoard[]>(`${BoardApiEndpoints.boardsSet}/${userId}`).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
+      }),
+    );
+  }
+
   public createBoard(newBoard: IBoard): Observable<IBoard> {
     return this.http.post<IBoard>(BoardApiEndpoints.boards, newBoard).pipe(
       catchError(({ message }: Error) => {

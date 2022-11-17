@@ -9,6 +9,7 @@ enum BoardApiEndpoints {
   boards = 'boards',
   columns = 'columns',
   tasks = 'tasks',
+  boardsSet = 'boardsSet',
   columnsSet = 'columnsSet',
   tasksSet = 'tasksSet',
 }

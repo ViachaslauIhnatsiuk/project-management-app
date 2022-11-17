@@ -9,6 +9,7 @@
     </mat-form-field>
   </form>
 </div>
+<app-select-board-users (boardUsersChange)="onBoardUsersChange($event)"></app-select-board-users>
 <div mat-dialog-actions [align]="'center'">
   <button mat-button (click)="closeModal()">Cancel</button>
   <button [disabled]="form.invalid" mat-button [mat-dialog-close]="newBoard">Create</button>

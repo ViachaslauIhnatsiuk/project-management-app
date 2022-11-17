@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { getUserId } from '../../helpers/boards.helpers';
 import { IBoard } from '../../models/boards.models';
 
 @Component({
@@ -22,12 +21,22 @@ export class UpdateBoardModalComponent {
 
   private initializeForm(board: IBoard): void {
     this.form = new FormGroup({
-      title: new FormControl(board.title, [Validators.required, Validators.maxLength(30)]),
+      title: new FormControl(board.title, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(20),
+      ]),
+      owner: new FormControl(board.owner),
+      users: new FormControl<string[]>(board.users),
     });
   }
 
   public get updatedBoard(): IBoard {
-    return { ...this.form.value, users: [], owner: getUserId() } as IBoard;
+    return this.form.value;
+  }
+
+  public onBoardUsersChange(userIdList: string[] | null): void {
+    if (userIdList) this.form.get('users')?.setValue(userIdList);
   }
 
   public closeModal(): void {

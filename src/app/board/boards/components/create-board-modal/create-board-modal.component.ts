@@ -4,9 +4,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { INITIAL_EMPTY_STRING_VALUE } from 'src/app/board/constants/board.constants';
+import { selectUser } from 'src/app/users/store/selectors/users.selectors';
 
 import { IBoard } from '../../models/boards.models';
-import { selectUserId } from '../../store/selectors/boards.selectors';
 
 @Component({
   selector: 'app-create-board-modal',
@@ -16,18 +16,22 @@ import { selectUserId } from '../../store/selectors/boards.selectors';
 export class CreateBoardModalComponent implements OnInit, OnDestroy {
   public form!: FormGroup;
 
-  private userId$ = this.store.select(selectUserId);
+  private user$ = this.store.select(selectUser);
 
   private userId: string | null = INITIAL_EMPTY_STRING_VALUE;
 
   private userIdSubscription = new Subscription();
 
-  constructor(public dialogRef: MatDialogRef<CreateBoardModalComponent>, private store: Store) {
-    this.userIdSubscription = this.userId$.subscribe((userId) => (this.userId = userId));
-  }
+  constructor(public dialogRef: MatDialogRef<CreateBoardModalComponent>, private store: Store) {}
 
   public ngOnInit(): void {
     this.initializeForm();
+
+    this.userIdSubscription = this.user$.subscribe((user) => {
+      if (user) {
+        this.form.get('owner')?.setValue(user._id);
+      }
+    });
   }
 
   private initializeForm(): void {
@@ -36,11 +40,17 @@ export class CreateBoardModalComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.maxLength(30),
       ]),
+      owner: new FormControl(''),
+      users: new FormControl<string[]>([]),
     });
   }
 
   public get newBoard(): IBoard {
-    return { ...this.form.value, owner: this.userId, users: [] };
+    return this.form.value;
+  }
+
+  public onBoardUsersChange(userIdList: string[] | null): void {
+    if (userIdList) this.form.get('users')?.setValue(userIdList);
   }
 
   public closeModal(): void {
