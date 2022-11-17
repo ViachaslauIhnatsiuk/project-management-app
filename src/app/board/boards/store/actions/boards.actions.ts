@@ -9,6 +9,29 @@ const getBoardsSuccess = createAction(
 );
 const getBoardsError = createAction(BoardsActions.GET_BOARDS_ERROR, props<{ error: string }>());
 
+const getBoardById = createAction(BoardsActions.GET_BOARD_BY_ID, props<{ boardId: string }>());
+const getBoardByIdSuccess = createAction(
+  BoardsActions.GET_BOARD_BY_ID_SUCCESS,
+  props<{ board: IBoard }>(),
+);
+const getBoardByIdError = createAction(
+  BoardsActions.GET_BOARD_BY_ID_ERROR,
+  props<{ error: string }>(),
+);
+
+const getBoardsByUserId = createAction(
+  BoardsActions.GET_BOARDS_BY_USER_ID,
+  props<{ userId: string }>(),
+);
+const getBoardsByUserIdSuccess = createAction(
+  BoardsActions.GET_BOARDS_BY_USER_ID_SUCCESS,
+  props<{ boards: IBoard[] }>(),
+);
+const getBoardsByUserIdError = createAction(
+  BoardsActions.GET_BOARDS_BY_USER_ID_ERROR,
+  props<{ error: string }>(),
+);
+
 const createBoard = createAction(BoardsActions.CREATE_BOARD, props<{ newBoard: IBoard }>());
 const createBoardSuccess = createAction(
   BoardsActions.CREATE_BOARD_SUCCESS,
@@ -34,6 +57,12 @@ export {
   getBoards,
   getBoardsSuccess,
   getBoardsError,
+  getBoardById,
+  getBoardByIdSuccess,
+  getBoardByIdError,
+  getBoardsByUserId,
+  getBoardsByUserIdSuccess,
+  getBoardsByUserIdError,
   createBoard,
   createBoardSuccess,
   createBoardError,

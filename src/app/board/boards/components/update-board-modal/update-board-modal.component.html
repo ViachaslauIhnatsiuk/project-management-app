@@ -9,6 +9,8 @@
     </mat-form-field>
   </form>
 </div>
+<app-select-board-users [boardUsers]="data.users" (boardUsersChange)="onBoardUsersChange($event)">
+</app-select-board-users>
 <div mat-dialog-actions [align]="'center'">
   <button mat-button (click)="closeModal()">Cancel</button>
   <button mat-button [disabled]="form.invalid" [mat-dialog-close]="updatedBoard">Update</button>
