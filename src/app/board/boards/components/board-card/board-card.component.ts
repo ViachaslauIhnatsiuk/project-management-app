@@ -37,11 +37,11 @@ export class BoardCardComponent {
   }
 
   public editBoard(): void {
-    const { title, _id: boardId } = this.board;
+    const { _id: boardId } = this.board;
 
     const dialogRef = this.dialog.open(UpdateBoardModalComponent, {
       minWidth: DEFAULT_MODAL_SIZE,
-      data: { title },
+      data: this.board,
     });
 
     dialogRef.afterClosed().subscribe((updatedBoard: IBoard) => {
