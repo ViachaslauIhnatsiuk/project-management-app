@@ -11,6 +11,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskService } from './services/task.service';
 import { tasksReducer } from './store/reducers/tasks.reducers';
 import { TaskEffects } from './store/effects/task.effects';
+import { UsersModule } from 'src/app/users/users.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TaskEffects } from './store/effects/task.effects';
     SharedModule,
     StoreModule.forFeature('tasks', tasksReducer),
     EffectsModule.forFeature([TaskEffects]),
+    UsersModule,
   ],
   exports: [TasksComponent],
   providers: [TaskService],
