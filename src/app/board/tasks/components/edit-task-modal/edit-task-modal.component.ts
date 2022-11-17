@@ -21,14 +21,9 @@ export class EditTaskModalComponent {
 
   private initializeForm(task: EditTask): void {
     this.form = new FormGroup({
-      title: new FormControl(task.title, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(50),
-      ]),
+      title: new FormControl(task.title, [Validators.required, Validators.maxLength(50)]),
       description: new FormControl(task.description, [
         Validators.required,
-        Validators.minLength(1),
         Validators.maxLength(200),
       ]),
     });

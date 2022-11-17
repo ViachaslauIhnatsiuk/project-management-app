@@ -25,12 +25,10 @@ export class CreateTaskModalComponent {
     this.form = new FormGroup({
       title: new FormControl(INITIAL_EMPTY_STRING_VALUE, [
         Validators.required,
-        Validators.minLength(1),
         Validators.maxLength(50),
       ]),
       description: new FormControl(INITIAL_EMPTY_STRING_VALUE, [
         Validators.required,
-        Validators.minLength(1),
         Validators.maxLength(200),
       ]),
       userId: new FormControl(localStorage.getItem('id')),
