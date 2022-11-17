@@ -68,6 +68,10 @@ export class AuthService {
     return this.http.get<ISignUpResponse>('users', { params: { id } });
   }
 
+  public deleteUser(id: string) {
+    return this.http.delete<ISignUpResponse>('users', { params: { id } });
+  }
+
   public isTokenExpired(): boolean {
     const token = localStorage.getItem('token');
 

@@ -14,6 +14,9 @@ import {
   getUser,
   getUserSuccess,
   getUserError,
+  deleteUser,
+  deleteUserSuccess,
+  deleteUserError,
 } from '../actions/auth.actions';
 
 @Injectable()
@@ -63,6 +66,21 @@ export class AuthEffects {
           tap(() => this.router.navigate(['/boards'])),
           catchError(({ error: { statusCode, message } }) =>
             of(getUserError({ statusCode, message })),
+          ),
+        );
+      }),
+    );
+  });
+
+  deleteUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(deleteUser),
+      mergeMap(({ userId }) => {
+        return this.authService.deleteUser(userId).pipe(
+          map(({ _id, name, login }) => deleteUserSuccess({ _id, name, login })),
+          tap(() => this.router.navigate([''])),
+          catchError(({ error: { statusCode, message } }) =>
+            of(deleteUserError({ statusCode, message })),
           ),
         );
       }),
