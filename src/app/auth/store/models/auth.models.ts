@@ -22,4 +22,7 @@ export enum AuthActions {
   GET_USER = '[Auth] Get user',
   GET_USER_SUCCESS = '[Auth] Get user success',
   GET_USER_ERROR = '[Auth] Get user error',
+  DELETE_USER = '[Auth] Delete user',
+  DELETE_USER_SUCCESS = '[Auth] Delete user success',
+  DELETE_USER_ERROR = '[Auth] Delete user error',
 }
