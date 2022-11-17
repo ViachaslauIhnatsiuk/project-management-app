@@ -4,17 +4,21 @@
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput placeholder="Enter your name" formControlName="name" />
-      <mat-hint
-        *ngIf="editForm.controls.name.errors?.['required'] && (editForm.controls.name.dirty || editForm.controls.name.touched)"
+      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)"
         >Name is required.</mat-hint
+      >
+      <mat-hint *ngIf="name?.errors?.['minlength']"
+        >Name must contain at least three characters.</mat-hint
       >
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Login</mat-label>
       <input matInput placeholder="Enter your login" formControlName="login" />
-      <mat-hint
-        *ngIf="editForm.controls.login.errors?.['required'] && (editForm.controls.login.dirty || editForm.controls.login.touched)"
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)"
         >Login is required.</mat-hint
+      >
+      <mat-hint *ngIf="login?.errors?.['minlength']"
+        >Login must contain at least three characters.</mat-hint
       >
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -36,10 +40,9 @@
           settingsService.passwordVisibility ? 'visibility' : 'visibility_off'
         }}</mat-icon>
       </button>
-      <mat-hint
-        *ngIf="editForm.controls.password.errors?.['required'] && (editForm.controls.password.dirty || editForm.controls.password.touched)"
-        >Password is required.</mat-hint
-      >
+      <mat-hint *ngIf="password?.errors?.['passwordStrength']">
+        {{password?.errors?.['passwordStrength']}}
+      </mat-hint>
     </mat-form-field>
     <div class="form__btns">
       <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">

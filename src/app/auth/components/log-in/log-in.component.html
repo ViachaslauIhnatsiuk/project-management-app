@@ -4,9 +4,11 @@
     <mat-form-field appearance="outline">
       <mat-label>Login</mat-label>
       <input matInput placeholder="Enter your login" formControlName="login" autocomplete="off" />
-      <mat-hint
-        *ngIf="logInForm.controls.login.errors?.['required'] && (logInForm.controls.login.dirty || logInForm.controls.login.touched)"
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)"
         >Login is required.</mat-hint
+      >
+      <mat-hint *ngIf="login?.errors?.['minlength']"
+        >Login must contain at least three characters.</mat-hint
       >
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -27,16 +29,15 @@
       >
         <mat-icon>{{ authService.passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
       </button>
-      <mat-hint
-        *ngIf="logInForm.controls.password.errors?.['required'] && (logInForm.controls.password.dirty || logInForm.controls.password.touched)"
-        >Password is required.</mat-hint
-      >
+      <mat-hint *ngIf="password?.errors?.['passwordStrength']">
+        {{password?.errors?.['passwordStrength']}}
+      </mat-hint>
     </mat-form-field>
     <div class="form__btns">
       <button mat-raised-button color="primary" type="submit" [disabled]="logInForm.invalid">
         Login
       </button>
-      <button mat-raised-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button (click)="resetForm()">Reset form</button>
     </div>
   </form>
 </mat-card>

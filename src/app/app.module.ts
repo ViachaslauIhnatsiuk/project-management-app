@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 4000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),

@@ -4,17 +4,21 @@
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput placeholder="Enter your name" formControlName="name" />
-      <mat-hint
-        *ngIf="signUpForm.controls.name.errors?.['required'] && (signUpForm.controls.name.dirty || signUpForm.controls.name.touched)"
+      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)"
         >Name is required.</mat-hint
+      >
+      <mat-hint *ngIf="name?.errors?.['minlength']"
+        >Name must contain at least three characters.</mat-hint
       >
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Login</mat-label>
       <input matInput placeholder="Enter your login" formControlName="login" autocomplete="off" />
-      <mat-hint
-        *ngIf="signUpForm.controls.login.errors?.['required'] && (signUpForm.controls.login.dirty || signUpForm.controls.login.touched)"
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)"
         >Login is required.</mat-hint
+      >
+      <mat-hint *ngIf="login?.errors?.['minlength']"
+        >Login must contain at least three characters.</mat-hint
       >
       <mat-hint *ngIf="(loading$ | async) === false">
         <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
@@ -45,16 +49,15 @@
       >
         <mat-icon>{{ authService.passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
       </button>
-      <mat-hint
-        *ngIf="signUpForm.controls.password.errors?.['required'] && (signUpForm.controls.password.dirty || signUpForm.controls.password.touched)"
-        >Password is required.</mat-hint
-      >
+      <mat-hint *ngIf="password?.errors?.['passwordStrength']">
+        {{password?.errors?.['passwordStrength']}}
+      </mat-hint>
     </mat-form-field>
     <div class="form__btns">
       <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
         SignUp
       </button>
-      <button mat-raised-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button (click)="resetForm()">Reset form</button>
     </div>
   </form>
 </mat-card>
