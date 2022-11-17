@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
 
 @NgModule({
@@ -51,6 +52,7 @@ import { CreateBoardButtonComponent } from './components/create-board-button/cre
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     CreateBoardButtonComponent,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
