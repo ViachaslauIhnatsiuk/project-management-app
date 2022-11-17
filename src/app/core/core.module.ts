@@ -19,7 +19,6 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { IsFalsyPipe } from './pipes/is-falsy.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { IsFalsyPipe } from './pipes/is-falsy.pipe';
     SettingsPageComponent,
     EditProfilePageComponent,
     NotFoundPageComponent,
-    IsFalsyPipe,
   ],
   imports: [
     StoreModule.forRoot({}, {}),

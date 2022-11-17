@@ -48,7 +48,7 @@ export class AuthService {
   public signOut(): void {
     window.localStorage.clear();
     this.store.dispatch(logOut());
-    this.router.navigate(['']);
+    this.router.navigate(['/welcome']);
   }
 
   public isAuth(): boolean {

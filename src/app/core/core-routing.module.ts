@@ -8,16 +8,15 @@ import { WelcomePageComponent } from 'src/app/core/pages/welcome-page/welcome-pa
 import { NotFoundPageComponent } from 'src/app/core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomePageComponent },
   { path: 'auth', loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule) },
   {
     path: '',
     component: SidebarComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'boards',
         loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
-        canActivate: [AuthGuard],
       },
       {
         path: 'settings',
@@ -29,6 +28,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'welcome', component: WelcomePageComponent },
   { path: 'notFoundPage', component: NotFoundPageComponent },
   { path: '**', redirectTo: 'notFoundPage' },
 ];
