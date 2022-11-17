@@ -31,16 +31,17 @@ export class CreateTaskModalComponent {
         Validators.required,
         Validators.maxLength(200),
       ]),
-      userId: new FormControl(localStorage.getItem('id')),
+      userId: new FormControl(getUserId()),
+      users: new FormControl<string[]>([]),
     });
   }
 
+  public onTasksUsersChange(userIdList: string[] | null): void {
+    if (userIdList) this.form.get('users')?.setValue(userIdList);
+  }
+
   public get newTask(): ITask {
-    return <ITask>{
-      ...this.form.value,
-      userId: getUserId(),
-      users: [],
-    };
+    return this.form.value;
   }
 
   public closeModal(): void {

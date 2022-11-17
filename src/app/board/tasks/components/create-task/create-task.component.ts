@@ -23,13 +23,13 @@ export class CreateTaskComponent implements OnDestroy {
 
   @Input() amountOfTasks: number = INITIAL_EMPTY_NUMBER_VALUE;
 
-  private idBoardSubscription = new Subscription();
+  private boardIdSubscription = new Subscription();
 
-  private idActiveBoard: string = INITIAL_EMPTY_STRING_VALUE;
+  private boardId: string = INITIAL_EMPTY_STRING_VALUE;
 
   constructor(public dialog: MatDialog, private store: Store, private route: ActivatedRoute) {
-    this.idBoardSubscription = this.route.params.subscribe(
-      (params) => (this.idActiveBoard = params['id']),
+    this.boardIdSubscription = this.route.params.subscribe(
+      (params) => (this.boardId = params['id']),
     );
   }
 
@@ -42,18 +42,17 @@ export class CreateTaskComponent implements OnDestroy {
     dialogRef.afterClosed().subscribe((newTask: ITask) => {
       if (newTask && this.columnId) {
         const finalTask: ITask = {
-          boardId: this.idActiveBoard,
+          boardId: this.boardId,
           columnId: this.columnId,
           order: this.amountOfTasks + 1,
           ...newTask,
         };
-
         this.store.dispatch(createTask({ newTask: finalTask }));
       }
     });
   }
 
   public ngOnDestroy(): void {
-    this.idBoardSubscription.unsubscribe();
+    this.boardIdSubscription.unsubscribe();
   }
 }
