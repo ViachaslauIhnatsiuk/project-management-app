@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 
-import { EditTask } from '../../models/tasks.models';
+import { ITask } from '../../models/tasks.models';
 
 @Component({
   selector: 'app-edit-task-modal',
@@ -14,26 +15,29 @@ export class EditTaskModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<EditTaskModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: EditTask,
+    @Inject(MAT_DIALOG_DATA) public data: ITask,
+    private store: Store,
   ) {
     this.initializeForm(data);
   }
 
-  private initializeForm(task: EditTask): void {
+  private initializeForm(task: ITask): void {
     this.form = new FormGroup({
       title: new FormControl(task.title, [Validators.required, Validators.maxLength(50)]),
       description: new FormControl(task.description, [
         Validators.required,
         Validators.maxLength(200),
       ]),
+      users: new FormControl<string[]>(task.users as string[]),
     });
   }
 
-  public get editedTask(): EditTask {
-    return <EditTask>{
-      ...this.form.value,
-      users: [],
-    };
+  public get editedTask(): ITask {
+    return this.form.value;
+  }
+
+  public onTasksUsersChange(userIdList: string[] | null): void {
+    if (userIdList) this.form.get('users')?.setValue(userIdList);
   }
 
   public closeModal(): void {
