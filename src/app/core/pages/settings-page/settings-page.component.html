@@ -5,5 +5,14 @@
   <mat-card-actions>
     <button mat-raised-button routerLink="edit-profile">Edit profile</button>
     <button mat-raised-button color="warn" (click)="deleteUserWithConfirm()">Delete user</button>
+    <div class="settings__theme-wrapper">
+      <mat-icon *ngIf="!headerService.sliderIsChecked" color="primary">brightness_7</mat-icon>
+      <mat-icon *ngIf="headerService.sliderIsChecked" color="primary">brightness_2</mat-icon>
+      <span class="settings__theme-title">Theme</span>
+      <mat-slide-toggle
+        [(ngModel)]="headerService.sliderIsChecked"
+        (change)="headerService.switchTheme($event)"
+      ></mat-slide-toggle>
+    </div>
   </mat-card-actions>
 </mat-card>
