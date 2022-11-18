@@ -1,3 +1,5 @@
+import { PointCreate } from 'src/app/points/models/points.models';
+
 interface ITasks {
   [key: string]: ITask[];
 }
@@ -12,6 +14,7 @@ interface ITask {
   boardId?: string;
   files?: FileType[];
   users?: string[];
+  points?: PointCreate;
 }
 
 type ModifiedTaskForRequest = Pick<ITask, '_id' | 'order' | 'columnId'>;

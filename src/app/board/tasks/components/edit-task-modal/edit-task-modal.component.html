@@ -20,6 +20,8 @@
   </form>
 </div>
 <app-select-task-users [taskUsers]="data.users!" (taskUsersChange)="onTasksUsersChange($event)"></app-select-task-users>
+<app-points [taskId]="data._id!"></app-points>
+<app-create-point [taskId]="data._id!"></app-create-point>
 <div mat-dialog-actions [align]="'center'">
   <button mat-button (click)="closeModal()">Cancel</button>
   <button mat-button [disabled]="form.invalid" [mat-dialog-close]="editedTask">Update</button>
