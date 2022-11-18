@@ -20,8 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
 
 @NgModule({
@@ -54,6 +54,7 @@ import { CreateBoardButtonComponent } from './components/create-board-button/cre
     MatButtonModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     CreateBoardButtonComponent,
     MatCheckboxModule,
     FormsModule,
