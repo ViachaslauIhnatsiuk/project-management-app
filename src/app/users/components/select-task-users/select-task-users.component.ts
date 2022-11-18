@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IBoard } from 'src/app/board/boards/models/boards.models';
-import { selectSelectedBoard } from 'src/app/board/boards/store/selectors/boards.selectors';
+import { selectActiveBoard } from 'src/app/board/boards/store/selectors/boards.selectors';
 
 import { IUser } from '../../store/models/users.models';
 import { selectUsers } from '../../store/selectors/users.selectors';
@@ -23,7 +23,7 @@ export class SelectTaskUsersComponent implements OnInit, OnDestroy {
   private usersSubscription = new Subscription();
   private users: IUser[] = [];
 
-  private board$ = this.store.select(selectSelectedBoard);
+  private board$ = this.store.select(selectActiveBoard);
   private boardSubscription = new Subscription();
   private board!: IBoard;
 

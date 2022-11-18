@@ -12,6 +12,7 @@ import { TaskService } from './services/task.service';
 import { tasksReducer } from './store/reducers/tasks.reducers';
 import { TaskEffects } from './store/effects/task.effects';
 import { UsersModule } from 'src/app/users/users.module';
+import { PointsModule } from 'src/app/points/points.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UsersModule } from 'src/app/users/users.module';
     StoreModule.forFeature('tasks', tasksReducer),
     EffectsModule.forFeature([TaskEffects]),
     UsersModule,
+    PointsModule,
   ],
   exports: [TasksComponent],
   providers: [TaskService],
