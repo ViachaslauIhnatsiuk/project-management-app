@@ -21,11 +21,7 @@ export class UpdateBoardModalComponent {
 
   private initializeForm(board: IBoard): void {
     this.form = new FormGroup({
-      title: new FormControl(board.title, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(20),
-      ]),
+      title: new FormControl(board.title, [Validators.required, Validators.maxLength(20)]),
       owner: new FormControl(board.owner),
       users: new FormControl<string[]>(board.users),
     });

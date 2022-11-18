@@ -25,7 +25,7 @@ export class BoardsComponent implements OnDestroy {
   }
 
   private getBoardsByUserId(): void {
-    this.user$.subscribe((user) => {
+    this.userSubscription = this.user$.subscribe((user) => {
       if (user && user._id) {
         this.store.dispatch(getBoardsByUserId({ userId: user._id }));
       }

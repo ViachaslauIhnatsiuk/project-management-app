@@ -14,7 +14,6 @@ export class PointFormComponent {
   @Input() taskId: string = '';
 
   private activeBoard$ = this.store.select(selectActiveBoard);
-
   private boardId: string = '';
 
   public pointTitle: string = '';
