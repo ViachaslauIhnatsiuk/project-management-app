@@ -2,9 +2,9 @@ import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angu
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { IBoard } from 'src/app/board/boards/models/boards.models';
 import { selectActiveBoard } from 'src/app/board/boards/store/selectors/boards.selectors';
-
 import { IUser } from '../../store/models/users.models';
 import { selectUsers } from '../../store/selectors/users.selectors';
 

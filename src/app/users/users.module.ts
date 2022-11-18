@@ -4,10 +4,10 @@ import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from '../shared/shared.module';
-import { usersReducer } from './store/reducers/users.reducers';
-import { UsersEffects } from './store/effects/users.effects';
 import { SelectBoardUsersComponent } from './components/select-board-users/select-board-users.component';
 import { SelectTaskUsersComponent } from './components/select-task-users/select-task-users.component';
+import { usersReducer } from './store/reducers/users.reducers';
+import { UsersEffects } from './store/effects/users.effects';
 import { getUserId } from '../board/boards/helpers/boards.helpers';
 import { getUserById } from './store/actions/users.actions';
 
