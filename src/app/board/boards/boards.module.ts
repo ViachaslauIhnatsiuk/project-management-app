@@ -18,6 +18,7 @@ import { BoardsEffects } from './store/effects/boards.effects';
 import { boardsReducer } from './store/reducers/boards.reducers';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 import { UsersModule } from 'src/app/users/users.module';
+import { PointsModule } from 'src/app/points/points.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UsersModule } from 'src/app/users/users.module';
     SharedModule,
     ColumnsModule,
     UsersModule,
+    PointsModule,
   ],
   providers: [
     BoardService,

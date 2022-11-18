@@ -16,10 +16,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
 
@@ -54,6 +55,8 @@ import { CreateBoardButtonComponent } from './components/create-board-button/cre
     MatSidenavModule,
     MatProgressSpinnerModule,
     CreateBoardButtonComponent,
+    MatCheckboxModule,
+    FormsModule,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
 })
