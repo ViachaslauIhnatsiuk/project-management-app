@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { SharedModule } from '../shared/shared.module';
 import { CreatePointComponent } from './components/create-point/create-point.component';
 import { PointsComponent } from './components/points/points.component';
+import { PointFormComponent } from './components/point-form/point-form.component';
 import { PointComponent } from './components/point/point.component';
 import { PointService } from './services/point.service';
-import { SharedModule } from '../shared/shared.module';
-import { StoreModule } from '@ngrx/store';
 import { pointsReducer } from './store/reducers/points.reducers';
-import { EffectsModule } from '@ngrx/effects';
 import { PointsEffects } from './store/effects/points.effects';
-import { PointFormComponent } from './components/point-form/point-form.component';
 
 @NgModule({
   declarations: [CreatePointComponent, PointsComponent, PointComponent, PointFormComponent],

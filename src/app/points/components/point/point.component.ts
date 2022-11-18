@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { DEFAULT_MODAL_SIZE } from 'src/app/board/constants/board.constants';
+
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
+import { DEFAULT_MODAL_SIZE } from 'src/app/board/constants/board.constants';
 import { IPoint, PointUpdate } from '../../models/points.models';
 import { deletePoint, updatePoint } from '../../store/actions/points.actions';
 

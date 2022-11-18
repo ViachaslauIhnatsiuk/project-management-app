@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { IPoint } from '../../models/points.models';
 import { selectPoints } from '../../store/selectors/points.selectors';
 

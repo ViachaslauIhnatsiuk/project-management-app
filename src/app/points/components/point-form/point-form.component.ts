@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { selectActiveBoard } from 'src/app/board/boards/store/selectors/boards.selectors';
 import { PointCreate } from '../../models/points.models';
 import { createPoint } from '../../store/actions/points.actions';
