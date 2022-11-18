@@ -10,6 +10,9 @@ import {
   getUser,
   getUserSuccess,
   getUserError,
+  updateUser,
+  updateUserSuccess,
+  updateUserError,
   deleteUser,
   deleteUserSuccess,
   deleteUserError,
@@ -47,6 +50,15 @@ const authReducer = createReducer(
     return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
   }),
   on(getUserError, (state, { statusCode, message }): IAuthState => {
+    return { ...state, isLoading: false, error: { statusCode, message } };
+  }),
+  on(updateUser, (state): IAuthState => {
+    return { ...state, isLoading: true };
+  }),
+  on(updateUserSuccess, (state, { _id, name, login }): IAuthState => {
+    return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
+  }),
+  on(updateUserError, (state, { statusCode, message }): IAuthState => {
     return { ...state, isLoading: false, error: { statusCode, message } };
   }),
   on(deleteUser, (state): IAuthState => {

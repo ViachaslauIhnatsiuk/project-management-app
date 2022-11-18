@@ -15,6 +15,7 @@ import { logOut } from 'src/app/auth/store/actions/auth.actions';
 import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 import { getUser, logIn } from '../store/actions/auth.actions';
 import { selectUserId } from '../store/selectors/auth.selectors';
+import { getUserId } from 'src/app/board/boards/helpers/boards.helpers';
 
 @Injectable({
   providedIn: 'root',
@@ -66,6 +67,11 @@ export class AuthService {
 
   public getUser(id: string) {
     return this.http.get<ISignUpResponse>('users', { params: { id } });
+  }
+
+  public updateUser(name: string, login: string, password: string) {
+    const id = getUserId() as string;
+    return this.http.put<ISignUpResponse>('users', { name, login, password }, { params: { id } });
   }
 
   public deleteUser(id: string) {

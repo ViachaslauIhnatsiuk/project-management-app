@@ -1,8 +1,10 @@
+import { Store } from '@ngrx/store';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IEditUserDataRequest } from 'src/app/core/models/settings-interceptor.models';
 import { passwordValidator } from 'src/app/shared/validators/password.validator';
+import { updateUser } from 'src/app/auth/store/actions/auth.actions';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -16,7 +18,11 @@ export class EditProfilePageComponent {
     password: ['', [passwordValidator]],
   });
 
-  constructor(public fb: FormBuilder, public settingsService: SettingsService) {}
+  constructor(
+    public fb: FormBuilder,
+    public settingsService: SettingsService,
+    private store: Store,
+  ) {}
 
   get name() {
     return this.editForm.get('name');
@@ -32,10 +38,7 @@ export class EditProfilePageComponent {
 
   public onSubmit(): void {
     const fieldValues = this.editForm.value as IEditUserDataRequest;
-
-    // TODO: Here need recieve userId from store
-    const id: string = 'userId from store';
-    this.settingsService.editUserData(id, fieldValues);
+    this.store.dispatch(updateUser(fieldValues));
   }
 
   public resetForm(): void {

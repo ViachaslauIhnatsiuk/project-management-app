@@ -60,6 +60,30 @@ const getUserError = createAction(
   }>(),
 );
 
+const updateUser = createAction(
+  AuthActions.UPDATE_USER,
+  props<{
+    name: string;
+    login: string;
+    password: string;
+  }>(),
+);
+const updateUserSuccess = createAction(
+  AuthActions.UPDATE_USER_SUCCESS,
+  props<{
+    _id: string;
+    name: string;
+    login: string;
+  }>(),
+);
+const updateUserError = createAction(
+  AuthActions.UPDATE_USER_ERROR,
+  props<{
+    statusCode: string;
+    message: string;
+  }>(),
+);
+
 const deleteUser = createAction(AuthActions.DELETE_USER, props<{ userId: string }>());
 const deleteUserSuccess = createAction(
   AuthActions.DELETE_USER_SUCCESS,
@@ -88,6 +112,9 @@ export {
   getUser,
   getUserSuccess,
   getUserError,
+  updateUser,
+  updateUserSuccess,
+  updateUserError,
   deleteUser,
   deleteUserSuccess,
   deleteUserError,

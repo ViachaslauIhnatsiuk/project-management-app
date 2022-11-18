@@ -40,7 +40,7 @@
           settingsService.passwordVisibility ? 'visibility' : 'visibility_off'
         }}</mat-icon>
       </button>
-      <mat-hint *ngIf="password?.errors?.['passwordStrength']">
+      <mat-hint *ngIf="password?.errors?.['passwordStrength'] && password?.touched">
         {{password?.errors?.['passwordStrength']}}
       </mat-hint>
     </mat-form-field>
