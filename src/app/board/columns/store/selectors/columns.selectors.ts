@@ -1,8 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { IColumnsState } from '../models/columns.models';
 
-const selectFeatureBoards = createFeatureSelector<IColumnsState>('columns');
+const selectFeatureColumns = createFeatureSelector<IColumnsState>('columns');
 
-const selectColumns = createSelector(selectFeatureBoards, (state) => state.columns);
+const selectColumns = createSelector(selectFeatureColumns, (state) => state.columns);
 
-export { selectFeatureBoards, selectColumns };
+const selectColumnsIsLoading = createSelector(selectFeatureColumns, (state) => state.isLoading);
+
+export { selectColumns, selectColumnsIsLoading };

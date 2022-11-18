@@ -1,3 +1,9 @@
+.mat-progress-bar {
+  top: -511px;
+  z-index: 3;
+  height: 2px;
+}
+
 .mat-sidenav-container {
   position: absolute;
   top: 80px;
@@ -51,6 +57,10 @@
 }
 
 @media (max-width: 768px) {
+  .mat-progress-bar {
+    top: -501px;
+  }
+
   .mat-sidenav-container {
     top: 90px;
   }

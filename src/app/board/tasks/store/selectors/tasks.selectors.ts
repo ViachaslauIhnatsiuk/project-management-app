@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ITasksState } from '../models/task.models';
 
-const selectFeatureBoards = createFeatureSelector<ITasksState>('tasks');
+const selectFeatureTasks = createFeatureSelector<ITasksState>('tasks');
 
-const selectTasks = createSelector(selectFeatureBoards, (state) => state.tasks);
+const selectTasks = createSelector(selectFeatureTasks, (state) => state.tasks);
 
-export { selectFeatureBoards, selectTasks };
+export { selectTasks };

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { languages } from 'src/app/core/constants/header.constants';
+import { selectAuthIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -11,5 +13,11 @@ import { languages } from 'src/app/core/constants/header.constants';
 export class HeaderComponent {
   public readonly languages: string[] = languages;
 
-  constructor(public headerService: HeaderService, public authService: AuthService) {}
+  public authIsLoading$ = this.store.select(selectAuthIsLoading);
+
+  constructor(
+    public headerService: HeaderService,
+    public authService: AuthService,
+    private store: Store,
+  ) {}
 }

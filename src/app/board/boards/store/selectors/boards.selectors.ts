@@ -9,4 +9,4 @@ const selectUserId = createSelector(selectFeatureBoards, (state) => state.userId
 
 const selectActiveBoard = createSelector(selectFeatureBoards, (state) => state.selectedBoard);
 
-export { selectFeatureBoards, selectBoards, selectUserId, selectActiveBoard };
+export { selectBoards, selectUserId, selectActiveBoard };
