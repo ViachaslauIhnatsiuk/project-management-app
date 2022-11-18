@@ -14,6 +14,9 @@ import {
   getUser,
   getUserSuccess,
   getUserError,
+  updateUser,
+  updateUserSuccess,
+  updateUserError,
   deleteUser,
   deleteUserSuccess,
   deleteUserError,
@@ -66,6 +69,23 @@ export class AuthEffects {
           tap(() => this.router.navigate(['/boards'])),
           catchError(({ error: { statusCode, message } }) =>
             of(getUserError({ statusCode, message })),
+          ),
+        );
+      }),
+    );
+  });
+
+  updateUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateUser),
+      mergeMap(({ name, login, password }) => {
+        return this.authService.updateUser(name, login, password).pipe(
+          map((response) =>
+            updateUserSuccess({ _id: response._id, name: response.name, login: response.login }),
+          ),
+          tap(() => this.router.navigate(['/settings'])),
+          catchError(({ error: { statusCode, message } }) =>
+            of(updateUserError({ statusCode, message })),
           ),
         );
       }),
