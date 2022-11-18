@@ -7,12 +7,15 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 export class HeaderService {
   public isDarkTheme = false;
 
+  public sliderIsChecked = false;
+
   public isSideBarOpened = true;
 
   public currentLanguage: string = 'English';
 
   public switchTheme({ checked }: MatSlideToggleChange): void {
     this.isDarkTheme = checked;
+    this.sliderIsChecked = checked;
   }
 
   public toggleSidebar(): void {

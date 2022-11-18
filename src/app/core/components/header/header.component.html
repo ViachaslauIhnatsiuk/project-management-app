@@ -14,7 +14,10 @@
   </mat-form-field>
   <div class="header__theme-wrapper" *ngIf="authService.isAuth()">
     <mat-icon color="primary">brightness_7</mat-icon>
-    <mat-slide-toggle (change)="headerService.switchTheme($event)"></mat-slide-toggle>
+    <mat-slide-toggle
+      [(ngModel)]="headerService.sliderIsChecked"
+      (change)="headerService.switchTheme($event)"
+    ></mat-slide-toggle>
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
   <div class="header__btns-wrapper">
