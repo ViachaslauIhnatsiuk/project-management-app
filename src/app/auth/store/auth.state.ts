@@ -1,10 +1,8 @@
 import { IAuthState } from './models/auth.models';
 
 const initialAuthState: IAuthState = {
-  userId: '',
-  userName: '',
-  userLogin: '',
   token: '',
+  isAuth: false,
   isLoading: false,
   error: {
     statusCode: '',

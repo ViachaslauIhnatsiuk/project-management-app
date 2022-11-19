@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { IUser, IUserError, UsersActions } from '../models/users.models';
+import { IUpdatedUserData, IUser, IUserError, UsersActions } from '../models/users.models';
 
 const getUsers = createAction(UsersActions.GET_USERS);
 const getUsersSuccess = createAction(UsersActions.GET_USERS_SUCCESS, props<{ users: IUser[] }>());
 const getUsersError = createAction(UsersActions.GET_USERS_ERROR, props<{ error: IUserError }>());
 
-const getUserById = createAction(UsersActions.GET_USER_BY_ID, props<{ userId: string }>());
+const getUserById = createAction(UsersActions.GET_USER_BY_ID);
 const getUserByIdSuccess = createAction(
   UsersActions.GET_USER_BY_ID_SUCCESS,
   props<{ user: IUser }>(),
@@ -17,7 +17,7 @@ const getUserByIdError = createAction(
 
 const updateUserById = createAction(
   UsersActions.UPDATE_USER_BY_ID,
-  props<{ userId: string; updatedUser: IUser }>(),
+  props<{ updatedUserData: IUpdatedUserData }>(),
 );
 const updateUserByIdSuccess = createAction(
   UsersActions.UPDATE_USER_BY_ID_SUCCESS,
@@ -28,7 +28,7 @@ const updateUserByIdError = createAction(
   props<{ error: IUserError }>(),
 );
 
-const deleteUserById = createAction(UsersActions.DELETE_USER_BY_ID, props<{ userId: string }>());
+const deleteUserById = createAction(UsersActions.DELETE_USER_BY_ID);
 const deleteUserByIdSuccess = createAction(
   UsersActions.DELETE_USER_BY_ID_SUCCESS,
   props<{ deletedUser: IUser }>(),

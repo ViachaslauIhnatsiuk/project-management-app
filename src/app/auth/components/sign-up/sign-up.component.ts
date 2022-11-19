@@ -6,7 +6,7 @@ import { ISignUpRequest } from 'src/app/core/models/auth-interceptor.models';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { signUp } from 'src/app/auth/store/actions/auth.actions';
 import { IAuthStateError } from 'src/app/auth/store/models/auth.models';
-import { selectError, selectAuthIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
+import { selectError, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 import { passwordValidator } from 'src/app/shared/validators/password.validator';
 
 @Component({
@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
   constructor(public authService: AuthService, private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
-    this.loading$ = this.store.select(selectAuthIsLoading);
+    this.loading$ = this.store.select(selectIsLoading);
     this.error$ = this.store.select(selectError);
   }
 

@@ -11,6 +11,12 @@ interface IUser {
   login: string;
 }
 
+interface IUpdatedUserData {
+  name: string;
+  login: string;
+  password: string;
+}
+
 enum UsersActions {
   GET_USERS = '[Users] Get Users',
   GET_USERS_SUCCESS = '[Users] Get Users success',
@@ -32,4 +38,4 @@ interface IUserError {
 }
 
 export { UsersActions };
-export type { IUsersState, IUser, IUserError };
+export type { IUsersState, IUser, IUpdatedUserData, IUserError };

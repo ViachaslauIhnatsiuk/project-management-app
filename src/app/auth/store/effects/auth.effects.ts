@@ -11,15 +11,15 @@ import {
   signUp,
   signUpError,
   signUpSuccess,
-  getUser,
-  getUserSuccess,
-  getUserError,
-  updateUser,
-  updateUserSuccess,
-  updateUserError,
-  deleteUser,
-  deleteUserSuccess,
-  deleteUserError,
+  // getUser,
+  // getUserSuccess,
+  // getUserError,
+  // updateUser,
+  // updateUserSuccess,
+  // updateUserError,
+  // deleteUser,
+  // deleteUserSuccess,
+  // deleteUserError,
 } from '../actions/auth.actions';
 
 @Injectable()
@@ -60,50 +60,50 @@ export class AuthEffects {
     );
   });
 
-  getUser$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(getUser),
-      mergeMap(({ userId }) => {
-        return this.authService.getUser(userId).pipe(
-          map(({ _id, name, login }) => getUserSuccess({ _id, name, login })),
-          tap(() => this.router.navigate(['/boards'])),
-          catchError(({ error: { statusCode, message } }) =>
-            of(getUserError({ statusCode, message })),
-          ),
-        );
-      }),
-    );
-  });
+  // getUser$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(getUser),
+  //     mergeMap(({ userId }) => {
+  //       return this.authService.getUser(userId).pipe(
+  //         map(({ _id, name, login }) => getUserSuccess({ _id, name, login })),
+  //         tap(() => this.router.navigate(['/boards'])),
+  //         catchError(({ error: { statusCode, message } }) =>
+  //           of(getUserError({ statusCode, message })),
+  //         ),
+  //       );
+  //     }),
+  //   );
+  // });
 
-  updateUser$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(updateUser),
-      mergeMap(({ name, login, password }) => {
-        return this.authService.updateUser(name, login, password).pipe(
-          map((response) =>
-            updateUserSuccess({ _id: response._id, name: response.name, login: response.login }),
-          ),
-          tap(() => this.router.navigate(['/settings'])),
-          catchError(({ error: { statusCode, message } }) =>
-            of(updateUserError({ statusCode, message })),
-          ),
-        );
-      }),
-    );
-  });
+  // updateUser$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(updateUser),
+  //     mergeMap(({ name, login, password }) => {
+  //       return this.authService.updateUser(name, login, password).pipe(
+  //         map((response) =>
+  //           updateUserSuccess({ _id: response._id, name: response.name, login: response.login }),
+  //         ),
+  //         tap(() => this.router.navigate(['/settings'])),
+  //         catchError(({ error: { statusCode, message } }) =>
+  //           of(updateUserError({ statusCode, message })),
+  //         ),
+  //       );
+  //     }),
+  //   );
+  // });
 
-  deleteUser$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(deleteUser),
-      mergeMap(({ userId }) => {
-        return this.authService.deleteUser(userId).pipe(
-          map(({ _id, name, login }) => deleteUserSuccess({ _id, name, login })),
-          tap(() => this.router.navigate([''])),
-          catchError(({ error: { statusCode, message } }) =>
-            of(deleteUserError({ statusCode, message })),
-          ),
-        );
-      }),
-    );
-  });
+  // deleteUser$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(deleteUser),
+  //     mergeMap(({ userId }) => {
+  //       return this.authService.deleteUser(userId).pipe(
+  //         map(({ _id, name, login }) => deleteUserSuccess({ _id, name, login })),
+  //         tap(() => this.router.navigate([''])),
+  //         catchError(({ error: { statusCode, message } }) =>
+  //           of(deleteUserError({ statusCode, message })),
+  //         ),
+  //       );
+  //     }),
+  //   );
+  // });
 }

@@ -1,10 +1,10 @@
 <mat-toolbar role="heading" class="header">
-  <button *ngIf="authService.isAuth()" mat-icon-button (click)="headerService.toggleSidebar()">
+  <button *ngIf="isAuth$ | async" mat-icon-button (click)="headerService.toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
   <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
   <mat-form-field
-    *ngIf="authService.isAuth()"
+    *ngIf="isAuth$ | async"
     class="header__search"
     floatLabel="never"
     appearance="fill"
@@ -12,7 +12,7 @@
     <input type="search" matInput placeholder="Search for anything" autocomplete="off" />
     <mat-icon matPrefix class="header__search-icon">search</mat-icon>
   </mat-form-field>
-  <div class="header__theme-wrapper" *ngIf="authService.isAuth()">
+  <div class="header__theme-wrapper" *ngIf="isAuth$ | async">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle
       [(ngModel)]="headerService.sliderIsChecked"
@@ -21,11 +21,11 @@
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
   <div class="header__btns-wrapper">
-    <div class="header__auth-wrapper" *ngIf="!authService.isAuth()">
+    <div class="header__auth-wrapper" *ngIf="!(isAuth$ | async)">
       <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
       <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
     </div>
-    <div class="header__auth-wrapper" *ngIf="authService.isAuth()">
+    <div class="header__auth-wrapper" *ngIf="isAuth$ | async">
       <button (click)="authService.signOut()" mat-raised-button color="primary">Sign out</button>
     </div>
     <div class="header__select">
@@ -42,4 +42,4 @@
     </div>
   </div>
 </mat-toolbar>
-<mat-progress-bar *ngIf="authIsLoading$ | async" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>

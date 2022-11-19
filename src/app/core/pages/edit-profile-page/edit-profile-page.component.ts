@@ -2,9 +2,9 @@ import { Store } from '@ngrx/store';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IEditUserDataRequest } from 'src/app/core/models/settings-interceptor.models';
 import { passwordValidator } from 'src/app/shared/validators/password.validator';
-import { updateUser } from 'src/app/auth/store/actions/auth.actions';
+import { updateUserById } from 'src/app/users/store/actions/users.actions';
+import { IUpdatedUserData } from 'src/app/users/store/models/users.models';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -37,8 +37,9 @@ export class EditProfilePageComponent {
   }
 
   public onSubmit(): void {
-    const fieldValues = this.editForm.value as IEditUserDataRequest;
-    this.store.dispatch(updateUser(fieldValues));
+    const fieldValues = this.editForm.value as IUpdatedUserData;
+
+    this.store.dispatch(updateUserById({ updatedUserData: fieldValues }));
   }
 
   public resetForm(): void {
