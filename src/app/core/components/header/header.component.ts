@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { languages } from 'src/app/core/constants/header.constants';
-import { selectAuthIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
+import { selectIsAuth, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,9 @@ import { selectAuthIsLoading } from 'src/app/auth/store/selectors/auth.selectors
 export class HeaderComponent {
   public readonly languages: string[] = languages;
 
-  public authIsLoading$ = this.store.select(selectAuthIsLoading);
+  public isLoading$ = this.store.select(selectIsLoading);
+
+  public isAuth$ = this.store.select(selectIsAuth);
 
   constructor(
     public headerService: HeaderService,

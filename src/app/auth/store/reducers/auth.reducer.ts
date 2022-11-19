@@ -7,15 +7,6 @@ import {
   signUp,
   signUpSuccess,
   signUpError,
-  getUser,
-  getUserSuccess,
-  getUserError,
-  updateUser,
-  updateUserSuccess,
-  updateUserError,
-  deleteUser,
-  deleteUserSuccess,
-  deleteUserError,
 } from '../actions/auth.actions';
 import { initialAuthState } from '../auth.state';
 import { IAuthState } from '../models/auth.models';
@@ -26,10 +17,10 @@ const authReducer = createReducer(
     return { ...state, isLoading: true };
   }),
   on(logInSuccess, (state, { token }): IAuthState => {
-    return { ...state, isLoading: false, token };
+    return { ...state, isLoading: false, isAuth: true, token };
   }),
   on(logInError, (state, { statusCode, message }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message } };
+    return { ...state, isLoading: false, isAuth: false, error: { statusCode, message } };
   }),
   on(logOut, (): IAuthState => {
     return { ...initialAuthState };
@@ -37,37 +28,10 @@ const authReducer = createReducer(
   on(signUp, (state): IAuthState => {
     return { ...state, isLoading: true };
   }),
-  on(signUpSuccess, (state, { _id, name, login }): IAuthState => {
-    return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
+  on(signUpSuccess, (state): IAuthState => {
+    return { ...state, isLoading: false };
   }),
   on(signUpError, (state, { statusCode, message }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message } };
-  }),
-  on(getUser, (state): IAuthState => {
-    return { ...state, isLoading: true };
-  }),
-  on(getUserSuccess, (state, { _id, name, login }): IAuthState => {
-    return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
-  }),
-  on(getUserError, (state, { statusCode, message }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message } };
-  }),
-  on(updateUser, (state): IAuthState => {
-    return { ...state, isLoading: true };
-  }),
-  on(updateUserSuccess, (state, { _id, name, login }): IAuthState => {
-    return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
-  }),
-  on(updateUserError, (state, { statusCode, message }): IAuthState => {
-    return { ...state, isLoading: false, error: { statusCode, message } };
-  }),
-  on(deleteUser, (state): IAuthState => {
-    return { ...state, isLoading: true };
-  }),
-  on(deleteUserSuccess, (state, { _id, name, login }): IAuthState => {
-    return { ...state, isLoading: false, userId: _id, userName: name, userLogin: login };
-  }),
-  on(deleteUserError, (state, { statusCode, message }): IAuthState => {
     return { ...state, isLoading: false, error: { statusCode, message } };
   }),
 );

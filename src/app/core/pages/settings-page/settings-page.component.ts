@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
-import { SettingsService } from 'src/app/core/services/settings.service';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { deleteUser } from 'src/app/auth/store/actions/auth.actions';
-import { getUserId } from 'src/app/board/boards/helpers/boards.helpers';
+import { deleteUserById } from 'src/app/users/store/actions/users.actions';
 
 @Component({
   selector: 'app-settings-page',
@@ -14,7 +12,6 @@ import { getUserId } from 'src/app/board/boards/helpers/boards.helpers';
 })
 export class SettingsPageComponent {
   constructor(
-    public settingsService: SettingsService,
     public headerService: HeaderService,
     public dialog: MatDialog,
     private store: Store,
@@ -22,10 +19,9 @@ export class SettingsPageComponent {
 
   public deleteUserWithConfirm(): void {
     const dialogRef = this.dialog.open(ConfirmationModalComponent);
-    const id = getUserId() as string;
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
-      if (isConfirm) this.store.dispatch(deleteUser({ userId: id }));
+      if (isConfirm) this.store.dispatch(deleteUserById());
     });
   }
 }

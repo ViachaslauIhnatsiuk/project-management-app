@@ -7,13 +7,10 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { getToken } from 'src/app/board/boards/helpers/boards.helpers';
 import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
 
 @Injectable()
 export class BoardsInterceptor implements HttpInterceptor {
-  public token = getToken();
-
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (
       request.url.includes('boards') ||

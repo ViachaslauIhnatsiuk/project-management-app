@@ -8,7 +8,6 @@ import { SelectBoardUsersComponent } from './components/select-board-users/selec
 import { SelectTaskUsersComponent } from './components/select-task-users/select-task-users.component';
 import { usersReducer } from './store/reducers/users.reducers';
 import { UsersEffects } from './store/effects/users.effects';
-import { getUserId } from '../board/boards/helpers/boards.helpers';
 import { getUserById } from './store/actions/users.actions';
 
 @NgModule({
@@ -27,7 +26,6 @@ export class UsersModule {
   }
 
   private getUserById(): void {
-    const id = getUserId() as string;
-    this.store.dispatch(getUserById({ userId: id }));
+    this.store.dispatch(getUserById());
   }
 }

@@ -1,8 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { getUser } from './auth/store/actions/auth.actions';
-import { getUserId } from './board/boards/helpers/boards.helpers';
+import { getUserById } from './users/store/actions/users.actions';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = getUserId() as string;
-    this.store.dispatch(getUser({ userId: id }));
+    this.store.dispatch(getUserById());
   }
 }

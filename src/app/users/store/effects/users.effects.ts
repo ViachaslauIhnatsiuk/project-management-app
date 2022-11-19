@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import {
   deleteUserByIdSuccess,
@@ -10,10 +11,16 @@ import {
   getUsersSuccess,
   updateUserByIdSuccess,
 } from '../actions/users.actions';
-import { IUser, IUserError, UsersActions } from '../models/users.models';
+import { IUpdatedUserData, IUserError, UsersActions } from '../models/users.models';
 
 @Injectable()
 export class UsersEffects {
+  constructor(
+    private actions$: Actions,
+    private userService: UserService,
+    private router: Router,
+  ) {}
+
   getUsers$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.GET_USERS),
@@ -29,9 +36,10 @@ export class UsersEffects {
   getUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.GET_USER_BY_ID),
-      mergeMap(({ userId }: { userId: string }) => {
-        return this.userService.getUserById(userId).pipe(
+      mergeMap(() => {
+        return this.userService.getUserById().pipe(
           map((user) => getUserByIdSuccess({ user })),
+          tap(() => this.router.navigate(['/boards'])),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
       }),
@@ -41,8 +49,8 @@ export class UsersEffects {
   updateUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.UPDATE_USER_BY_ID),
-      mergeMap(({ user, userId }: { userId: string; user: IUser }) => {
-        return this.userService.updateUserById(userId, user).pipe(
+      mergeMap((updatedUserData: IUpdatedUserData) => {
+        return this.userService.updateUserById(updatedUserData).pipe(
           map((updatedUser) => updateUserByIdSuccess({ updatedUser })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
@@ -53,14 +61,12 @@ export class UsersEffects {
   deleteUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.DELETE_USER_BY_ID),
-      mergeMap(({ userId }: { userId: string }) => {
-        return this.userService.deleteUserById(userId).pipe(
+      mergeMap(() => {
+        return this.userService.deleteUserById().pipe(
           map((deletedUser) => deleteUserByIdSuccess({ deletedUser })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
       }),
     );
   });
-
-  constructor(private actions$: Actions, private userService: UserService) {}
 }
