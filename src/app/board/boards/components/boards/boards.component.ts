@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { logInSuccess } from 'src/app/auth/store/actions/auth.actions';
 import { getUsers } from 'src/app/users/store/actions/users.actions';
 import { selectUser } from 'src/app/users/store/selectors/users.selectors';
 
@@ -22,6 +23,10 @@ export class BoardsComponent implements OnDestroy {
   constructor(private store: Store) {
     this.getBoardsByUserId();
     this.store.dispatch(getUsers());
+
+    // TODO: Next two lines is specially done. Need think Login logic after guard work.
+    const token = window.localStorage.getItem('token') as string;
+    this.store.dispatch(logInSuccess({ token }));
   }
 
   private getBoardsByUserId(): void {

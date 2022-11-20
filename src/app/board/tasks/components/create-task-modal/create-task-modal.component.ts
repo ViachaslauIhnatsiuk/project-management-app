@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { getUserId } from 'src/app/board/boards/helpers/boards.helpers';
 
 import { INITIAL_EMPTY_STRING_VALUE } from '../../../constants/board.constants';
 import { ITask } from '../../models/tasks.models';
@@ -31,7 +30,7 @@ export class CreateTaskModalComponent {
         Validators.required,
         Validators.maxLength(200),
       ]),
-      userId: new FormControl(getUserId()),
+      userId: new FormControl<string | null>(null),
       users: new FormControl<string[]>([]),
     });
   }
