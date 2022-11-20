@@ -17,7 +17,8 @@ export interface ISignUpResponse {
   name: string;
   login: string;
 }
-export interface IResponseError {
-  statusCode: number;
-  message: string;
+
+export enum AuthResponseMessages {
+  Signup = 'New user is created',
+  Signin = 'Successeful login',
 }

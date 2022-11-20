@@ -11,23 +11,30 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { ApiEndpointActions, ApiEndpoints } from '../models/interceptors.models';
+import { AuthResponseMessages } from '../models/auth-interceptor.models';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private responseHandlerService: ResponseHandlerService) {}
+  constructor(
+    private responseHandlerService: ResponseHandlerService,
+    private authService: AuthService,
+  ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('signup') || request.url.includes('signin')) {
-      const url = `${BASE_URL}auth/${request.url}`;
+    const [endpoint, endpointAction] = request.url.split('/');
+    if (endpoint === ApiEndpoints.Auth) {
+      const url = `${BASE_URL}${endpoint}/${endpointAction}`;
       return next.handle(request.clone({ url })).pipe(
         tap((data) => {
           if (data instanceof HttpResponse) {
             let message: string = '';
-            if (request.url.includes('signup')) {
-              message = 'New user is created';
+            if (endpointAction === ApiEndpointActions.Signup) {
+              message = AuthResponseMessages.Signup;
             }
-            if (request.url.includes('signin')) {
-              message = 'Successeful login';
+            if (endpointAction === ApiEndpointActions.Signin) {
+              message = AuthResponseMessages.Signin;
             }
             this.responseHandlerService.handleResponse(data.status, message);
           }
@@ -43,6 +50,11 @@ export class AuthInterceptor implements HttpInterceptor {
           return throwError(() => error);
         }),
       );
+    }
+
+    if (this.authService.isTokenExpired()) {
+      const TOKEN = window.localStorage.getItem('token');
+      request = request.clone({ headers: request.headers.set('Authorization', `Bearer ${TOKEN}`) });
     }
 
     return next.handle(request);
