@@ -9,8 +9,24 @@
     floatLabel="never"
     appearance="fill"
   >
-    <input type="search" matInput placeholder="Search for anything" autocomplete="off" />
+    <input
+      type="text"
+      matInput
+      placeholder="Search for anything"
+      [matAutocomplete]="auto"
+      (input)="onInput($event)"
+      autocomplete="off"
+    />
     <mat-icon matPrefix class="header__search-icon">search</mat-icon>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option class="search__option" *ngFor="let item of searchedItems$ | async" [value]="item">
+        <span class="search__option-title">Title: {{ item.title }}</span>
+        <span class="search__option-users" *ngIf="item.users.length"
+          >Users: {{ users$ | async | getUserNameById: item.users }}</span
+        >
+        <span class="search__option-description">description: {{ item.description }}</span>
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <div class="header__theme-wrapper" *ngIf="isAuth$ | async">
     <mat-icon color="primary">brightness_7</mat-icon>

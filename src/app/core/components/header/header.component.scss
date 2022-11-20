@@ -121,6 +121,32 @@
   }
 }
 
+::ng-deep .mat-option-text {
+  height: 36px !important;
+  display: flex !important;
+  padding: 2px !important;
+  flex-wrap: wrap;
+}
+
+.search__option-title {
+  font-size: 16px;
+  line-height: 16px;
+  min-width: 50%;
+}
+
+.search__option-users {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.search__option-description {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 10px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
 @media (max-width: 1330px) {
   .header {
     &__search {
@@ -192,6 +218,7 @@
   }
 
   :host ::ng-deep {
+
     .mat-form-field-flex,
     .mat-form-field-infix {
       height: 28px;

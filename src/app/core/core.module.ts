@@ -19,6 +19,10 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { UsersModule } from '../users/users.module';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { GlobalSearchService } from './services/global-search.service';
+import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
 
 @NgModule({
   declarations: [
@@ -29,19 +33,23 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     SettingsPageComponent,
     EditProfilePageComponent,
     NotFoundPageComponent,
+    GetUserNameByIdPipe,
   ],
   imports: [
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
     CommonModule,
+    UsersModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     CoreRoutingModule,
     AuthModule,
     AuthRoutingModule,
   ],
   providers: [
+    GlobalSearchService,
     BoardService,
     NotificationService,
     ResponseHandlerService,
