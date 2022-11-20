@@ -10,7 +10,7 @@ export class GetUserNameByIdPipe implements PipeTransform {
       const usersStr = users.flatMap((userId) =>
         usersFromStore
           .filter((userFromStore) => userFromStore._id === userId)
-          .map((usersFromStore) => usersFromStore.name),
+          .map((user) => user.name),
       );
       return usersStr.join(', ');
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -14,7 +14,7 @@ import { ISearchResponseItem } from '../../models/global-search.models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public readonly languages: string[] = languages;
 
   public users$ = this.store.select(selectUsers);

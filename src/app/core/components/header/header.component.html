@@ -37,7 +37,7 @@
     <mat-icon color="primary">brightness_2</mat-icon>
   </div>
   <div class="header__btns-wrapper">
-    <div class="header__auth-wrapper" *ngIf="!(isAuth$ | async)">
+    <div class="header__auth-wrapper" *ngIf="(isAuth$ | async) === false">
       <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
       <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
     </div>

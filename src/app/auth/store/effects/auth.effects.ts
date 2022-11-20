@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, tap, mergeMap } from 'rxjs/operators';
+import { map, catchError, mergeMap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import {
   logIn,
@@ -11,24 +10,11 @@ import {
   signUp,
   signUpError,
   signUpSuccess,
-  // getUser,
-  // getUserSuccess,
-  // getUserError,
-  // updateUser,
-  // updateUserSuccess,
-  // updateUserError,
-  // deleteUser,
-  // deleteUserSuccess,
-  // deleteUserError,
 } from '../actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private actions$: Actions, private authService: AuthService) {}
 
   logIn$ = createEffect(() => {
     return this.actions$.pipe(
