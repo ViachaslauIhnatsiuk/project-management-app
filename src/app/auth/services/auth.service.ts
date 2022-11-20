@@ -25,7 +25,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router, private store: Store) {}
 
   public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
-    return this.http.post<ISignUpResponse>('signup', fields).pipe(
+    return this.http.post<ISignUpResponse>('auth/signup', fields).pipe(
       map((response) => {
         const { login, password } = fields;
         this.store.dispatch(logIn({ login, password }));
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   public signIn(fields: ILogInRequest): Observable<ILogInResponse> {
-    return this.http.post<ILogInResponse>('signin', fields).pipe(
+    return this.http.post<ILogInResponse>('auth/signin', fields).pipe(
       map((response) => {
         localStorage.setItem('token', response.token);
         this.store.dispatch(getUserById());

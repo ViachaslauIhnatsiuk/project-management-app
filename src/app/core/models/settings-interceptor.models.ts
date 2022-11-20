@@ -10,9 +10,4 @@ interface IEditUserDataResponse {
   login: string;
 }
 
-interface IEditUserDataError {
-  statusCode: number;
-  message: string;
-}
-
-export { IEditUserDataRequest, IEditUserDataResponse, IEditUserDataError };
+export { IEditUserDataRequest, IEditUserDataResponse };

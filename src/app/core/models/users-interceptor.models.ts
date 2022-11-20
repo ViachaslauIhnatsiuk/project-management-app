@@ -14,9 +14,3 @@ export enum UsersResponseMessages {
   Updated = 'Updated user',
   Deleted = 'Deleted user',
 }
-
-export enum Methods {
-  Get = 'GET',
-  Put = 'PUT',
-  Delete = 'DELETE',
-}
