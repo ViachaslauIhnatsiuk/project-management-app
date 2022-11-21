@@ -47,6 +47,7 @@
     },
     "github": "View GitHub"
   },
+  "notFoundPage": "Page not found",
   "loginForm": {
     "title": "Log In",
     "loginLabel": "Login",
@@ -89,6 +90,18 @@
     "editProfileButton": "Edit profile",
     "deleteUserButton": "Delete user",
     "theme": "Theme"
+  },
+  "editProfileForm": {
+    "title": "Edit profile",
+    "nameLabel": "Name",
+    "nameRequiredHint": "Name is required",
+    "nameLengthHint": "Name must contain at least three characters",
+    "loginLabel": "Login",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
+    "passwordLabel": "Password",
+    "editButton": "Edit",
+    "editResetButton": "Reset Form"
   },
   "boards": {
     "create": "Create new board",
