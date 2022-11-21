@@ -104,7 +104,14 @@
     "editResetButton": "Очистить форму"
   },
   "boards": {
-    "create": "Создать новую доску",
-    "modalCreate": "Создать доску"
+    "createBoard": "Создать новую доску",
+    "createBoardModal": {
+      "title": "Создать доску",
+      "titleLabel": "Название",
+      "titleRequiredHint": "Требуется название",
+      "titleLengthHint": "Название должно содержать не менее трех символов",
+      "cancelButton": "Отмена",
+      "createButton": "Создать"
+    }
   }
 }

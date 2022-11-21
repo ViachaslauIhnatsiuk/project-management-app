@@ -1,16 +1,24 @@
-<h1 mat-dialog-title>{{ 'boards.modalCreate' | translate }}</h1>
+<h1 mat-dialog-title>{{ 'boards.createBoardModal.title' | translate }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form">
     <mat-form-field appearance="outline">
-      <mat-label>Title</mat-label>
+      <mat-label>{{ 'boards.createBoardModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
-      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">Title is too long</mat-hint>
-      <mat-hint *ngIf="form.controls['title'].errors?.['required']">Enter some title</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
+        'boards.createBoardModal.titleRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
+        'boards.createBoardModal.titleLengthHint' | translate
+      }}</mat-hint>
     </mat-form-field>
   </form>
 </div>
 <app-select-board-users (boardUsersChange)="onBoardUsersChange($event)"></app-select-board-users>
 <div mat-dialog-actions [align]="'center'">
-  <button mat-button (click)="closeModal()">Cancel</button>
-  <button [disabled]="form.invalid" mat-button [mat-dialog-close]="newBoard">Create</button>
+  <button mat-button (click)="closeModal()">
+    {{ 'boards.createBoardModal.cancelButton' | translate }}
+  </button>
+  <button [disabled]="form.invalid" mat-button [mat-dialog-close]="newBoard">
+    {{ 'boards.createBoardModal.createButton' | translate }}
+  </button>
 </div>
