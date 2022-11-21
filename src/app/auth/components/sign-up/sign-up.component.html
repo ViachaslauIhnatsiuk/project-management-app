@@ -1,24 +1,24 @@
 <mat-card>
   <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form">
-    <h3 class="form__title">Sign Up</h3>
+    <h3 class="form__title">{{ 'signupForm.title' | translate }}</h3>
     <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
+      <mat-label>{{ 'signupForm.nameLabel' | translate }}</mat-label>
       <input matInput placeholder="Enter your name" formControlName="name" />
-      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)"
-        >Name is required.</mat-hint
-      >
-      <mat-hint *ngIf="name?.errors?.['minlength']"
-        >Name must contain at least three characters.</mat-hint
-      >
+      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">{{
+        'signupForm.nameRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="name?.errors?.['minlength']">{{
+        'signupForm.nameLengthHint' | translate
+      }}</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Login</mat-label>
+      <mat-label>{{ 'signupForm.loginLabel' | translate }}</mat-label>
       <input matInput placeholder="Enter your login" formControlName="login" autocomplete="off" />
-      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)"
-        >Login is required.</mat-hint
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">
+        {{ 'signupForm.loginRequiredHint' | translate }}</mat-hint
       >
-      <mat-hint *ngIf="login?.errors?.['minlength']"
-        >Login must contain at least three characters.</mat-hint
+      <mat-hint *ngIf="login?.errors?.['minlength']">
+        {{ 'signupForm.loginLengthHint' | translate }}</mat-hint
       >
       <mat-error *ngIf="(loading$ | async) === false">
         <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
@@ -32,7 +32,7 @@
       </mat-progress-spinner>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
+      <mat-label>{{ 'signupForm.passwordLabel' | translate }}</mat-label>
       <input
         matInput
         [type]="authService.passwordVisibility ? 'text' : 'password'"
@@ -55,9 +55,11 @@
     </mat-form-field>
     <div class="form__btns">
       <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
-        SignUp
+        {{ 'signupForm.signupButton' | translate }}
       </button>
-      <button mat-raised-button (click)="resetForm()">Reset form</button>
+      <button mat-raised-button (click)="resetForm()">
+        {{ 'signupForm.signupResetButton' | translate }}
+      </button>
     </div>
   </form>
 </mat-card>

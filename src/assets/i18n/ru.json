@@ -48,13 +48,25 @@
     "github": "Посмотреть GitHub"
   },
   "loginForm": {
-    "title": "Войти",
+    "title": "Вход",
     "loginLabel": "Логин",
     "passwordLabel": "Пароль",
     "loginRequiredHint": "Требуется логин",
-    "loginLengthHint": "Логин должен содержать не менее трех символов.",
+    "loginLengthHint": "Логин должен содержать не менее трех символов",
     "loginButton": "Войти",
     "loginResetButton": "Очистить форму"
+  },
+  "signupForm": {
+    "title": "Регистрация",
+    "nameLabel": "Имя",
+    "nameRequiredHint": "Требуется имя",
+    "nameLengthHint": "Имя должно содержать не менее трех символов",
+    "loginLabel": "Логин",
+    "loginRequiredHint": "Требуется логин",
+    "loginLengthHint": "Логин должен содержать не менее трех символов",
+    "passwordLabel": "Пароль",
+    "signupButton": "Зарегистрироваться",
+    "signupResetButton": "Очистить форму"
   },
   "button": {
     "signin": "Войти",
