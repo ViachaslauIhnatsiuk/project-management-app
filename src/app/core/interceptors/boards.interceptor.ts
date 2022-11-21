@@ -12,7 +12,7 @@ export class BoardsInterceptor implements HttpInterceptor {
       request.url.includes(ApiEndpoints.Columns) ||
       (request.url.includes(ApiEndpoints.Tasks) && !request.url.includes(ApiEndpoints.TasksSet)) ||
       request.url.includes(ApiEndpoints.ColumnsSet) ||
-      (request.url === ApiEndpoints.TasksSet && request.method === Methods.Patch)
+      (request.url.includes(ApiEndpoints.TasksSet) && request.method === Methods.Patch)
     ) {
       const url = `${BASE_URL}${request.url}`;
       return next.handle(request.clone({ url }));
