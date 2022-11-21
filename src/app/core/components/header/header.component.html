@@ -3,31 +3,34 @@
     <mat-icon>menu</mat-icon>
   </button>
   <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
-  <mat-form-field
-    *ngIf="isAuth$ | async"
-    class="header__search"
-    floatLabel="never"
-    appearance="fill"
-  >
-    <input
-      type="text"
-      matInput
-      placeholder="Search for anything"
-      [matAutocomplete]="auto"
-      (input)="onInput($event)"
-      autocomplete="off"
-    />
-    <mat-icon matPrefix class="header__search-icon">search</mat-icon>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option class="search__option" *ngFor="let item of searchedItems$ | async" [value]="item">
-        <span class="search__option-title">Title: {{ item.title }}</span>
-        <span class="search__option-users" *ngIf="item.users.length"
-          >Users: {{ users$ | async | getUserNameById: item.users }}</span
+
+  <form [formGroup]="searchForm" class="header__search" *ngIf="isAuth$ | async">
+    <mat-form-field class="header__search-field" floatLabel="never" appearance="fill">
+      <input
+        type="text"
+        matInput
+        placeholder="Search for anything"
+        [matAutocomplete]="auto"
+        formControlName="searchInput"
+        (input)="onInput($event)"
+        autocomplete="off"
+      />
+      <mat-icon matPrefix class="header__search-icon">search</mat-icon>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="openFoundBoard($event)">
+        <mat-option
+          class="search__option"
+          *ngFor="let item of searchedItems$ | async"
+          [value]="item"
         >
-        <span class="search__option-description">description: {{ item.description }}</span>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+          <span class="search__option-title">Title: {{ item.title }}</span>
+          <span class="search__option-users" *ngIf="item.users.length"
+            >Users: {{ users$ | async | getUserNameById: item.users }}</span
+          >
+          <span class="search__option-description">description: {{ item.description }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
   <div class="header__theme-wrapper" *ngIf="isAuth$ | async">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle
