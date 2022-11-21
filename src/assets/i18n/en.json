@@ -50,11 +50,23 @@
   "loginForm": {
     "title": "Log In",
     "loginLabel": "Login",
-    "loginRequiredHint": "Login is required.",
-    "loginLengthHint": "Login must contain at least three characters.",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
     "passwordLabel": "Password",
     "loginButton": "Login",
     "loginResetButton": "Reset Form"
+  },
+  "signupForm": {
+    "title": "Sign Up",
+    "nameLabel": "Name",
+    "nameRequiredHint": "Name is required",
+    "nameLengthHint": "Name must contain at least three characters",
+    "loginLabel": "Login",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
+    "passwordLabel": "Password",
+    "signupButton": "SignUp",
+    "signupResetButton": "Reset Form"
   },
   "button": {
     "signin": "Sign In",
