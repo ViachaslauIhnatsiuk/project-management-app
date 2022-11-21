@@ -14,8 +14,12 @@
         </button>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="editBoard()">Edit</button>
-        <button mat-menu-item (click)="deleteBoard()">Delete</button>
+        <button mat-menu-item (click)="editBoard()">
+          {{ 'boards.editBoard.edit' | translate }}
+        </button>
+        <button mat-menu-item (click)="deleteBoard()">
+          {{ 'boards.editBoard.delete' | translate }}
+        </button>
       </mat-menu>
     </mat-card-title>
   </mat-card-header>
