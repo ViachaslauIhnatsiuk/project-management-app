@@ -84,6 +84,12 @@
     },
     "title": "My boards"
   },
+  "settings": {
+    "title": "Settings",
+    "editProfileButton": "Edit profile",
+    "deleteUserButton": "Delete user",
+    "theme": "Theme"
+  },
   "boards": {
     "create": "Create new board",
     "modalCreate": "Create board"

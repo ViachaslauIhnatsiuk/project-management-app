@@ -84,6 +84,12 @@
     },
     "title": "Мои доски"
   },
+  "settings": {
+    "title": "Настройки",
+    "editProfileButton": "Редактировать профиль",
+    "deleteUserButton": "Удалить пользователя",
+    "theme": "Тема"
+  },
   "boards": {
     "create": "Создать новую доску",
     "modalCreate": "Создать доску"
