@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [SignUpComponent, LogInComponent, AuthPageComponent],
@@ -20,6 +21,7 @@ import { AuthEffects } from './store/effects/auth.effects';
     EffectsModule.forFeature([AuthEffects]),
     ReactiveFormsModule,
     AuthRoutingModule,
+    TranslateModule,
   ],
   exports: [AuthPageComponent],
 })
