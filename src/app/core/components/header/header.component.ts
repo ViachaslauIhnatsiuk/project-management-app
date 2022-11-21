@@ -12,6 +12,9 @@ import { GlobalSearchService } from '../../services/global-search.service';
 import { debounceTime, filter, Observable, Subscription } from 'rxjs';
 import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { ISearchResponseItem } from '../../models/global-search.models';
+import { Router } from '@angular/router';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -31,15 +34,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private searchTermSubscription = new Subscription();
 
+  searchForm = this.fb.group({
+    searchInput: [''],
+  });
+
   constructor(
     public headerService: HeaderService,
     public authService: AuthService,
     private store: Store,
     private globalSearchService: GlobalSearchService,
+    private router: Router,
+    private fb: FormBuilder,
   ) {}
 
   public onInput(event: Event): void {
     this.globalSearchService.searchTerm.next((event.target as HTMLInputElement).value);
+  }
+
+  public openFoundBoard(event: MatAutocompleteSelectedEvent): void {
+    const boardId = event.option.value.boardId;
+    this.router.navigate([`boards/${boardId}`]);
+    this.searchForm.reset();
   }
 
   ngOnInit() {

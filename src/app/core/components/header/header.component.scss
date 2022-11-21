@@ -89,6 +89,11 @@
     padding: 0 100px;
   }
 
+  &__search-field {
+    width: 100%;
+    padding: 0 100px;
+  }
+
   &__search-icon {
     font-size: 25px;
   }
@@ -121,11 +126,13 @@
   }
 }
 
-:host ::ng-deep .mat-option-text {
-  height: 36px !important;
-  display: flex !important;
-  padding: 2px !important;
-  flex-wrap: wrap;
+:host ::ng-deep {
+  .mat-option-text {
+    height: 36px !important;
+    display: flex !important;
+    padding: 2px !important;
+    flex-wrap: wrap;
+  }
 }
 
 .search__option-title {
