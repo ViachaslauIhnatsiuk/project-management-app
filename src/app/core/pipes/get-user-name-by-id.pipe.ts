@@ -7,12 +7,11 @@ import { IUser } from 'src/app/users/store/models/users.models';
 export class GetUserNameByIdPipe implements PipeTransform {
   transform(usersFromStore: IUser[] | null, users: string[]): string | null {
     if (usersFromStore) {
-      const usersStr = users.flatMap((userId) =>
-        usersFromStore
-          .filter((userFromStore) => userFromStore._id === userId)
-          .map((user) => user.name),
-      );
-      return usersStr.join(', ');
+      return users
+        .flatMap((userId) =>
+          usersFromStore.filter(({ _id }) => _id === userId).map(({ name }) => name),
+        )
+        .join(', ');
     }
     return null;
   }
