@@ -68,15 +68,20 @@
     "signupButton": "Зарегистрироваться",
     "signupResetButton": "Очистить форму"
   },
-  "button": {
-    "signin": "Войти",
-    "signup": "Зарегистрироваться",
-    "signout": "Выйти"
+  "header": {
+    "button": {
+      "signin": "Войти",
+      "signup": "Зарегистрироваться",
+      "signout": "Выйти"
+    },
+    "searchPlaceholder": "Искать задачу"
   },
-  "Home": "Главная",
-  "Boards": "Доски",
-  "Settings": "Настройки",
   "sidebar": {
+    "menuList": {
+      "home": "Главная",
+      "boards": "Доски",
+      "settings": "Настройки"
+    },
     "title": "Мои доски"
   },
   "boards": {

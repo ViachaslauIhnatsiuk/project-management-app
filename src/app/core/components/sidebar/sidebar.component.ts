@@ -2,8 +2,6 @@ import { IBoard } from 'src/app/board/boards/models/boards.models';
 import { AfterContentChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { listItems } from 'src/app/core/constants/sidebar.constants';
-import { IListItems } from 'src/app/core/models/sidebar.models';
 import { selectBoards } from 'src/app/board/boards/store/selectors/boards.selectors';
 import { getBoards } from 'src/app/board/boards/store/actions/boards.actions';
 import { Router } from '@angular/router';
@@ -15,8 +13,6 @@ import { selectColumnsIsLoading } from 'src/app/board/columns/store/selectors/co
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements AfterContentChecked {
-  public readonly listItems: IListItems[] = listItems;
-
   public columnsIsLoading$ = this.store.select(selectColumnsIsLoading);
 
   public boards$ = this.store.select(selectBoards);

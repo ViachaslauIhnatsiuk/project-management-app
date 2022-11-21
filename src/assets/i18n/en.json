@@ -68,15 +68,20 @@
     "signupButton": "SignUp",
     "signupResetButton": "Reset Form"
   },
-  "button": {
-    "signin": "Sign In",
-    "signup": "Sign Up",
-    "signout": "Sign Out"
+  "header": {
+    "button": {
+      "signin": "Sign In",
+      "signup": "Sign Up",
+      "signout": "Sign Out"
+    },
+    "searchPlaceholder": "Search task"
   },
-  "Home": "Home",
-  "Boards": "Boards",
-  "Settings": "Settings",
   "sidebar": {
+    "menuList": {
+      "home": "Home",
+      "boards": "Boards",
+      "settings": "Settings"
+    },
     "title": "My boards"
   },
   "boards": {
