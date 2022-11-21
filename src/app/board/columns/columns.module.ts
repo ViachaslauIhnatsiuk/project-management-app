@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TasksModule } from '../tasks/tasks.module';
 import { ColumnItemComponent } from './components/column-item/column-item.component';
@@ -25,6 +25,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     StoreModule.forFeature('columns', columnsReducer),
     EffectsModule.forFeature([ColumnEffects]),
     TasksModule,
+    TranslateModule,
   ],
   exports: [ColumnsComponent],
   providers: [
