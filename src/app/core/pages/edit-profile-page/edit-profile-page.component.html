@@ -1,28 +1,28 @@
 <mat-card>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
-    <h3 class="form__title">Edit profile</h3>
+    <h3 class="form__title">{{ 'editProfileForm.title' | translate }}</h3>
     <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
+      <mat-label>{{ 'editProfileForm.nameLabel' | translate }}</mat-label>
       <input matInput placeholder="Enter your name" formControlName="name" />
-      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)"
-        >Name is required.</mat-hint
-      >
-      <mat-hint *ngIf="name?.errors?.['minlength']"
-        >Name must contain at least three characters.</mat-hint
-      >
+      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">{{
+        'editProfileForm.nameRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="name?.errors?.['minlength']">{{
+        'editProfileForm.nameLengthHint' | translate
+      }}</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Login</mat-label>
+      <mat-label>{{ 'editProfileForm.loginLabel' | translate }}</mat-label>
       <input matInput placeholder="Enter your login" formControlName="login" />
-      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)"
-        >Login is required.</mat-hint
-      >
-      <mat-hint *ngIf="login?.errors?.['minlength']"
-        >Login must contain at least three characters.</mat-hint
-      >
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">{{
+        'editProfileForm.loginRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="login?.errors?.['minlength']">{{
+        'editProfileForm.loginLengthHint' | translate
+      }}</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
+      <mat-label>{{ 'editProfileForm.passwordLabel' | translate }}</mat-label>
       <input
         matInput
         [type]="settingsService.passwordVisibility ? 'text' : 'password'"
@@ -46,9 +46,11 @@
     </mat-form-field>
     <div class="form__btns">
       <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">
-        Edit
+        {{ 'editProfileForm.editButton' | translate }}
       </button>
-      <button mat-raised-button (click)="resetForm()">Reset form</button>
+      <button mat-raised-button (click)="resetForm()">
+        {{ 'editProfileForm.editResetButton' | translate }}
+      </button>
     </div>
   </form>
 </mat-card>

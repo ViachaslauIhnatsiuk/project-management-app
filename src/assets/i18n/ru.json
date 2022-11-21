@@ -47,6 +47,7 @@
     },
     "github": "Посмотреть GitHub"
   },
+  "notFoundPage": "Страница не найдена",
   "loginForm": {
     "title": "Вход",
     "loginLabel": "Логин",
@@ -89,6 +90,18 @@
     "editProfileButton": "Редактировать профиль",
     "deleteUserButton": "Удалить пользователя",
     "theme": "Тема"
+  },
+  "editProfileForm": {
+    "title": "Редактировать профиль",
+    "nameLabel": "Имя",
+    "nameRequiredHint": "Требуется имя",
+    "nameLengthHint": "Имя должно содержать не менее трех символов",
+    "loginLabel": "Логин",
+    "loginRequiredHint": "Требуется логин",
+    "loginLengthHint": "Логин должен содержать не менее трех символов",
+    "passwordLabel": "Пароль",
+    "editButton": "Редактировать",
+    "editResetButton": "Очистить форму"
   },
   "boards": {
     "create": "Создать новую доску",
