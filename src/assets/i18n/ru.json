@@ -109,9 +109,27 @@
       "title": "Создать доску",
       "titleLabel": "Название",
       "titleRequiredHint": "Требуется название",
-      "titleLengthHint": "Название должно содержать не менее трех символов",
+      "titleLengthHint": "Название слишком длинное",
       "cancelButton": "Отмена",
       "createButton": "Создать"
+    },
+    "updateBoardModal": {
+      "title": "Обновить доску",
+      "titleLabel": "Название",
+      "titleRequiredHint": "Требуется название",
+      "titleLengthHint": "Название слишком длинное",
+      "cancelButton": "Отмена",
+      "updateButton": "Обновить"
+    },
+    "editBoard": {
+      "edit": "Редактировать",
+      "delete": "Удалить"
+    },
+    "confirmationModal": {
+      "title": "Подтверждение",
+      "question": "Вы действительно хотите это сделать?",
+      "no": "Да",
+      "yes": "Нет"
     }
   }
 }

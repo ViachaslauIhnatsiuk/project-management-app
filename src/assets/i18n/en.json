@@ -109,9 +109,27 @@
       "title": "Create board",
       "titleLabel": "Title",
       "titleRequiredHint": "Title is required",
-      "titleLengthHint": "Title must contain at least three characters",
+      "titleLengthHint": "Title is too long",
       "cancelButton": "Cancel",
       "createButton": "Create"
+    },
+    "updateBoardModal": {
+      "title": "Update board",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "cancelButton": "Cancel",
+      "updateButton": "Update"
+    },
+    "editBoard": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "confirmationModal": {
+      "title": "Confirmation",
+      "question": "Would you like to do this?",
+      "no": "No",
+      "yes": "Yes"
     }
   }
 }
