@@ -137,13 +137,44 @@
       "delete": "Удалить"
     },
     "createColumn": "Создать новую колонку",
-    "createBoardModal": {
+    "createColumnModal": {
       "title": "Создать колонку",
       "titleLabel": "Название",
       "titleRequiredHint": "Требуется название",
       "titleLengthHint": "Название слишком длинное",
       "cancelButton": "Отмена",
       "createButton": "Создать"
+    }
+  },
+  "tasks": {
+    "createTask": "Создать новое задание",
+    "createTaskModal": {
+      "title": "Создать задание",
+      "titleLabel": "Название",
+      "titleRequiredHint": "Требуется название",
+      "titleLengthHint": "Название слишком длинное",
+      "descriptionLabel": "Описание",
+      "descriptionRequiredHint": "Требуется описание",
+      "descriptionLengthHint": "Описание слишком длинное",
+      "cancelButton": "Отмена",
+      "createButton": "Создать"
+    },
+    "editTaskModal": {
+      "title": "Редактировать задание",
+      "titleLabel": "Название",
+      "titleRequiredHint": "Требуется название",
+      "titleLengthHint": "Название слишком длинное",
+      "descriptionLabel": "Описание",
+      "descriptionRequiredHint": "Требуется описание",
+      "descriptionLengthHint": "Описание слишком длинное",
+      "cancelButton": "Отмена",
+      "updateButton": "Обновить"
+    }
+  },
+  "points": {
+    "createPoint": "Создать отметку",
+    "createPointForm": {
+      "title": "Название"
     }
   }
 }

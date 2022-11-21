@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
 import { CreatePointComponent } from './components/create-point/create-point.component';
 import { PointsComponent } from './components/points/points.component';
@@ -17,6 +17,7 @@ import { PointsEffects } from './store/effects/points.effects';
     SharedModule,
     StoreModule.forFeature('points', pointsReducer),
     EffectsModule.forFeature([PointsEffects]),
+    TranslateModule,
   ],
   exports: [PointsComponent, CreatePointComponent],
   providers: [PointService],

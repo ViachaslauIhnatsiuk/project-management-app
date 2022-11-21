@@ -137,13 +137,44 @@
       "delete": "Delete"
     },
     "createColumn": "Сreate new column",
-    "createBoardModal": {
+    "createColumnModal": {
       "title": "Create column",
       "titleLabel": "Title",
       "titleRequiredHint": "Title is required",
       "titleLengthHint": "Title is too long",
       "cancelButton": "Cancel",
       "createButton": "Create"
+    }
+  },
+  "tasks": {
+    "createTask": "Сreate new task",
+    "createTaskModal": {
+      "title": "Create task",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "descriptionLabel": "Description",
+      "descriptionRequiredHint": "Description is required",
+      "descriptionLengthHint": "Description is too long",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    },
+    "editTaskModal": {
+      "title": "Edit task",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "descriptionLabel": "Description",
+      "descriptionRequiredHint": "Description is required",
+      "descriptionLengthHint": "Description is too long",
+      "cancelButton": "Cancel",
+      "updateButton": "Update"
+    }
+  },
+  "points": {
+    "createPoint": "Сreate point",
+    "createPointForm": {
+      "title": "Title"
     }
   }
 }
