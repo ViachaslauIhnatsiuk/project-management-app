@@ -1,17 +1,25 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="headerService.isSideBarOpened">
     <mat-nav-list role="navigation" color="primary">
-      <mat-list-item
-        role="listitem"
-        [routerLink]="listItem.routerLink"
-        *ngFor="let listItem of listItems"
-      >
-        <img class="list__icon" [src]="listItem.src" [alt]="listItem.title | lowercase" />
-        <span class="list__title">{{ listItem.title }}</span>
+      <mat-list-item role="listitem" routerLink="/">
+        <img class="list__icon" src="../../../../assets/icons/sidebar/home.svg" alt="home" />
+        <span class="list__title">{{ 'sidebar.menuList.home' | translate }}</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/boards">
+        <img class="list__icon" src="../../../../assets/icons/sidebar/boards.svg" alt="boards" />
+        <span class="list__title">{{ 'sidebar.menuList.boards' | translate }}</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/settings">
+        <img
+          class="list__icon"
+          src="../../../../assets/icons/sidebar/settings.svg"
+          alt="settings"
+        />
+        <span class="list__title">{{ 'sidebar.menuList.settings' | translate }}</span>
       </mat-list-item>
     </mat-nav-list>
     <mat-divider></mat-divider>
-    <h3 class="boards__title">My boards</h3>
+    <h3 class="boards__title">{{ 'sidebar.title' | translate }}</h3>
     <mat-nav-list role="navigation" class="boards__list">
       <mat-list-item *ngFor="let board of boards$ | async" (click)="openBoard(board)">{{
         board.title
