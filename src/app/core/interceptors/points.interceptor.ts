@@ -7,7 +7,7 @@ import { ApiEndpoints } from '../models/interceptors.models';
 @Injectable()
 export class PointsInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url === ApiEndpoints.Points) {
+    if (request.url.includes(ApiEndpoints.Points)) {
       const url = `${BASE_URL}${request.url}`;
       return next.handle(request.clone({ url }));
     }
