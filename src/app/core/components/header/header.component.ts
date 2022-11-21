@@ -19,7 +19,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public currentLanguage: string = 'English';
+  public currentLanguage: string = 'En';
 
   public users$ = this.store.select(selectUsers);
 
