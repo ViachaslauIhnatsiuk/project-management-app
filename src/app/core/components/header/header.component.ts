@@ -1,12 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import {
-  DEBOUNCE_TIME,
-  languages,
-  MIN_QUERY_LENGTH,
-} from 'src/app/core/constants/header.constants';
+import { DEBOUNCE_TIME, MIN_QUERY_LENGTH } from 'src/app/core/constants/header.constants';
 import { selectIsAuth, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 import { GlobalSearchService } from '../../services/global-search.service';
 import { debounceTime, filter, Observable, Subscription } from 'rxjs';
@@ -22,7 +19,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public readonly languages: string[] = languages;
+  public currentLanguage: string = 'English';
 
   public users$ = this.store.select(selectUsers);
 
@@ -42,6 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public headerService: HeaderService,
     public authService: AuthService,
     private store: Store,
+    private translate: TranslateService,
     private globalSearchService: GlobalSearchService,
     private router: Router,
     private fb: FormBuilder,
@@ -72,5 +70,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchTermSubscription.unsubscribe();
+  }
+
+  public switchLanguage(value: string): void {
+    this.currentLanguage = value;
+    this.translate.use(value.toLowerCase());
   }
 }

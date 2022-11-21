@@ -1,0 +1,65 @@
+{
+  "welcomePage": {
+    "motto": "The Best Way To Manage Your Daily Tasks",
+    "kanbanDescription": "The Kanban method is based on six basic practices to create an emerging set of positive behaviors in organizations, and achieve better agility in the provision of services.",
+    "kanbanPractices": {
+      "limit": "Limit Work-In-Progress",
+      "improve": "Improve collaboratively, evolve experimentally",
+      "make": "Make policies explicit",
+      "manage": "Manage flow",
+      "visualize": "Visualize",
+      "implement": "Implement feedback loops"
+    },
+    "titles": {
+      "productivity": "Increase the productivity of your team with Boards",
+      "customize": "Customize your Boards",
+      "rss": "Learn Angular with The Rolling Scopes School",
+      "developers": "Boards Developers"
+    },
+    "productivityList": {
+      "first": "connect boards and visualize all work across your team",
+      "second": "connect your goals to specific high-level deliverables",
+      "third": "achieve full traceability to ensure that everyone keeps their focus",
+      "fourth": "use custom color-coded labels to organize your Kanban cards"
+    },
+    "customizeList": {
+      "first": "Never miss a task with personalized boards. See what your team is working on and share progress.",
+      "second": "Get a detailed overview of workloads, pin and follow important tasks, choose exactly what you want to see to keep a close eye on progress."
+    },
+    "rssList": {
+      "first": "The Rolling Scopes School is free-of-charge and community-based education program conducted by developer community since 2013.",
+      "second": "Everyone can study at RS School, regardless of age, professional employment, or place of residence."
+    },
+    "learnMore": "Learn More",
+    "developers": {
+      "dzmitry": {
+        "name": "Dzmitry",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      },
+      "viachaslau": {
+        "name": "Viachaslau",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      },
+      "gleb": {
+        "name": "Gleb",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      }
+    },
+    "github": "View GitHub"
+  },
+  "button": {
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "signout": "Sign Out"
+  },
+  "Home": "Home",
+  "Boards": "Boards",
+  "Settings": "Settings",
+  "sidebar": {
+    "title": "My boards"
+  },
+  "boards": {
+    "create": "Create new board",
+    "modalCreate": "Create board"
+  }
+}

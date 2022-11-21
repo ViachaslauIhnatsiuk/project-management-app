@@ -5,6 +5,7 @@ import { CreateBoardModalComponent } from 'src/app/board/boards/components/creat
 import { createBoard } from 'src/app/board/boards/store/actions/boards.actions';
 import { IBoard } from 'src/app/board/boards/models/boards.models';
 import { DEFAULT_MODAL_SIZE } from 'src/app/board/constants/board.constants';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-board-button',
@@ -12,7 +13,7 @@ import { DEFAULT_MODAL_SIZE } from 'src/app/board/constants/board.constants';
   styleUrls: ['./create-board-button.component.scss'],
 })
 export class CreateBoardButtonComponent {
-  constructor(public dialog: MatDialog, private store: Store) {}
+  constructor(public dialog: MatDialog, private store: Store, public translate: TranslateService) {}
 
   public createBoard(): void {
     const dialogRef = this.dialog.open(CreateBoardModalComponent, {

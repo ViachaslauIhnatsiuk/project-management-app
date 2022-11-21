@@ -3,13 +3,12 @@
     <mat-icon>menu</mat-icon>
   </button>
   <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
-
   <form [formGroup]="searchForm" class="header__search" *ngIf="isAuth$ | async">
     <mat-form-field class="header__search-field" floatLabel="never" appearance="fill">
       <input
         type="text"
         matInput
-        placeholder="Search for anything"
+        placeholder="{{ 'header.searchPlaceholder' | translate }}"
         [matAutocomplete]="auto"
         formControlName="searchInput"
         (input)="onInput($event)"
@@ -41,24 +40,26 @@
   </div>
   <div class="header__btns-wrapper">
     <div class="header__auth-wrapper" *ngIf="(isAuth$ | async) === false">
-      <button mat-raised-button color="primary" routerLink="auth/logIn">Sign in</button>
-      <button mat-raised-button color="accent" routerLink="auth/signUp">Sign up</button>
+      <button mat-raised-button color="primary" routerLink="auth/logIn">
+        {{ 'header.button.signin' | translate }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="auth/signUp">
+        {{ 'header.button.signup' | translate }}
+      </button>
     </div>
     <div class="header__auth-wrapper" *ngIf="isAuth$ | async">
-      <button (click)="authService.signOut()" mat-raised-button color="primary">Sign out</button>
+      <button (click)="authService.signOut()" mat-raised-button color="primary">
+        {{ 'header.button.signout' | translate }}
+      </button>
     </div>
-    <div class="header__select">
-      <mat-icon class="header__select-icon">language</mat-icon>
-      <mat-select [(value)]="headerService.currentLanguage" class="header__languages">
-        <mat-option
-          (click)="headerService.switchLanguage(language)"
-          *ngFor="let language of languages"
-          [value]="language"
-        >
-          {{ language }}
-        </mat-option>
-      </mat-select>
-    </div>
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      [value]="currentLanguage"
+      (change)="switchLanguage(group.value)"
+    >
+      <mat-button-toggle value="En">En</mat-button-toggle>
+      <mat-button-toggle value="Ru">Ru</mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
 </mat-toolbar>
 <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>

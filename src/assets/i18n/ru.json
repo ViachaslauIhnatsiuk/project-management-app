@@ -1,0 +1,65 @@
+{
+  "welcomePage": {
+    "motto": "Лучший способ управлять вашими ежедневными задачами",
+    "kanbanDescription": "Канбан-метод основан на шести основных методах создания нового набора позитивных моделей поведения в организациях и достижения большей гибкости в предоставлении услуг.",
+    "kanbanPractices": {
+      "limit": "Ограничивайте незавершенное производство",
+      "improve": "Совершенствуйтесь совместно, развивайтесь экспериментально",
+      "make": "Сделайте политики явными",
+      "manage": "Управляйте потоком",
+      "visualize": "Визуализируйте",
+      "implement": "Реализуйте цикл обратной связи"
+    },
+    "titles": {
+      "productivity": "Повысьте продуктивность своей команды с помощью Boards",
+      "customize": "Настройте ваши Boards",
+      "rss": "Изучайте Angular вместе с The Rolling Scopes School",
+      "developers": "Разработчики Boards"
+    },
+    "productivityList": {
+      "first": "подключите boards и визуализируйте всю работу в вашей команде",
+      "second": "свяжите свои цели с конкретными результатами высокого уровня",
+      "third": "достигните полной прослеживаемости, чтобы каждый мог сосредоточиться",
+      "fourth": "используйте специальные цветные карточки для организации своих карточек Канбан"
+    },
+    "customizeList": {
+      "first": "Никогда не пропускайте задачу с помощью персонализированных досок. Посмотрите, над чем работает ваша команда, и поделитесь прогрессом.",
+      "second": "Получите подробный обзор рабочих нагрузок, отметьте и отслеживайте важные задачи, выберите именно то, что вы хотите видеть, чтобы внимательно следить за прогрессом."
+    },
+    "rssList": {
+      "first": "The Rolling Scopes School — это бесплатная образовательная программа, проводимая сообществом разработчиков с 2013 года.",
+      "second": "Учиться в RS School может каждый, независимо от возраста, профессиональной занятости и места жительства."
+    },
+    "learnMore": "Узнать больше",
+    "developers": {
+      "dzmitry": {
+        "name": "Дмитрий",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      },
+      "viachaslau": {
+        "name": "Вячеслав",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      },
+      "gleb": {
+        "name": "Глеб",
+        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+      }
+    },
+    "github": "Посмотреть GitHub"
+  },
+  "button": {
+    "signin": "Войти",
+    "signup": "Зарегистрироваться",
+    "signout": "Выйти"
+  },
+  "Home": "Главная",
+  "Boards": "Доски",
+  "Settings": "Настройки",
+  "sidebar": {
+    "title": "Мои доски"
+  },
+  "boards": {
+    "create": "Создать новую доску",
+    "modalCreate": "Создать доску"
+  }
+}

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-
 import { EffectsModule } from '@ngrx/effects';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { ColumnsModule } from '../columns/columns.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -39,6 +38,7 @@ import { PointsModule } from 'src/app/points/points.module';
     ColumnsModule,
     UsersModule,
     PointsModule,
+    TranslateModule,
   ],
   providers: [
     BoardService,
