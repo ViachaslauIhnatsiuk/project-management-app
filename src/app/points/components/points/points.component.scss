@@ -16,3 +16,23 @@
   background: #b3b3b3 !important;
   border-radius: 3px 0 0 3px !important;
 }
+
+.progress {
+  position: absolute;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 330px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.percentage {
+  font-size: 12px;
+}
+
+.progress-bar {
+  width: 85%;
+  border-radius: 5px;
+}
