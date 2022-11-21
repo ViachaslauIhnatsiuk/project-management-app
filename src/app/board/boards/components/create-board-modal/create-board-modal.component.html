@@ -5,10 +5,10 @@
       <mat-label>{{ 'boards.createBoardModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
       <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
-        'boards.createBoardModal.titleRequiredHint' | translate
+        'boards.createBoardModal.titleLengthHint' | translate
       }}</mat-hint>
       <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
-        'boards.createBoardModal.titleLengthHint' | translate
+        'boards.createBoardModal.titleRequiredHint' | translate
       }}</mat-hint>
     </mat-form-field>
   </form>

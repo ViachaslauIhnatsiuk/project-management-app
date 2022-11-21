@@ -131,5 +131,19 @@
       "no": "No",
       "yes": "Yes"
     }
+  },
+  "columns": {
+    "editColumn": {
+      "delete": "Delete"
+    },
+    "createColumn": "Сreate new column",
+    "createBoardModal": {
+      "title": "Create column",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    }
   }
 }
