@@ -1,24 +1,65 @@
 <img class="logo" src="../../../../assets/icons/logo-large.jpg" alt="welcome page logo" />
 <h1 class="motto">
-  The Best Way To Manage <br />
-  Your Daily Tasks
+  {{ 'welcomePage.motto' | translate }}
 </h1>
 <section class="kanban">
   <h2 class="kanban__description">
-    The Kanban method is based on six basic practices to create an emerging set of positive
-    behaviors in organizations, and achieve better agility in the provision of services.
+    {{ 'welcomePage.kanbanDescription' | translate }}
   </h2>
   <div class="kanban__practices">
-    <div class="kanban__practice" *ngFor="let practice of kanbanPracticeCards">
-      <img class="kanban__image" [src]="practice.src" alt="kanban-practice" />
-      <p class="kanban__title">{{ practice.title }}</p>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-1.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.limit' | translate }}</p>
+    </div>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-2.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.improve' | translate }}</p>
+    </div>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-3.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.make' | translate }}</p>
+    </div>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-4.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.manage' | translate }}</p>
+    </div>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-5.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.visualize' | translate }}</p>
+    </div>
+    <div class="kanban__practice">
+      <img
+        class="kanban__image"
+        src="../../../../assets/welcome-page/kanban-practice-6.jpg"
+        alt="kanban-practice"
+      />
+      <p class="kanban__title">{{ 'welcomePage.kanbanPractices.implement' | translate }}</p>
     </div>
   </div>
 </section>
 <section class="productivity">
   <h2 class="title">
-    Increase the productivity <br />
-    of your team with <strong>Boards</strong>
+    {{ 'welcomePage.titles.productivity' | translate }}
   </h2>
   <div class="productivity__main">
     <img
@@ -27,18 +68,30 @@
       alt="productivity"
     />
     <ul class="productivity__list">
-      <li class="productivity__paragraph" *ngFor="let productivity of productivityList">
-        {{ productivity }}
+      <li class="productivity__paragraph">
+        {{ 'welcomePage.productivityList.first' | translate }}
+      </li>
+      <li class="productivity__paragraph">
+        {{ 'welcomePage.productivityList.second' | translate }}
+      </li>
+      <li class="productivity__paragraph">
+        {{ 'welcomePage.productivityList.third' | translate }}
+      </li>
+      <li class="productivity__paragraph">
+        {{ 'welcomePage.productivityList.fourth' | translate }}
       </li>
     </ul>
   </div>
 </section>
 <section class="customize">
-  <h2 class="title">Customize your <strong>Boards</strong></h2>
+  <h2 class="title">{{ 'welcomePage.titles.customize' | translate }}</h2>
   <div class="customize__main">
     <div class="customize__description">
-      <p class="customize__paragraph" *ngFor="let cusomizeParagraph of cusomizeParagraphs">
-        {{ cusomizeParagraph }}
+      <p class="customize__paragraph">
+        {{ 'welcomePage.customizeList.first' | translate }}
+      </p>
+      <p class="customize__paragraph">
+        {{ 'welcomePage.customizeList.second' | translate }}
       </p>
     </div>
     <img
@@ -50,35 +103,75 @@
 </section>
 <section class="rss">
   <h2 class="title">
-    Learn Angular with <br />
-    <strong>The Rolling Scopes School</strong>
+    {{ 'welcomePage.titles.rss' | translate }}
   </h2>
   <div class="rss__main">
     <img class="rss__image" src="../../../../assets//welcome-page/rsschool.jpg" alt="rsschool" />
     <div class="rss__description">
-      <p class="rss__paragraph" *ngFor="let rssParagraph of rssParagraphs">
-        {{ rssParagraph }}
+      <p class="rss__paragraph">
+        {{ 'welcomePage.rssList.first' | translate }}
       </p>
-      <a href="https://rs.school" class="rss__button" mat-raised-button target="_blank"
-        >Learn more</a
-      >
+      <p class="rss__paragraph">
+        {{ 'welcomePage.rssList.second' | translate }}
+      </p>
+      <a href="https://rs.school" class="rss__button" mat-raised-button target="_blank">{{
+        'welcomePage.learnMore' | translate
+      }}</a>
     </div>
   </div>
 </section>
 <section class="developers">
-  <h2 class="title"><strong>Boards</strong> Developers</h2>
+  <h2 class="title">{{ 'welcomePage.titles.developers' | translate }}</h2>
   <div class="developers__main">
-    <div class="developers__card" *ngFor="let developer of developers">
-      <img class="developers__image" [src]="developer.src" alt="Dzmitry Developer" />
-      <h6 class="developers__name">{{ developer.name }}</h6>
-      <p class="developers__content">{{ developer.about }}</p>
+    <div class="developers__card">
+      <img
+        class="developers__image"
+        src="../../../../assets/welcome-page/dzmitry.jpg"
+        alt="Dzmitry Developer"
+      />
+      <h6 class="developers__name">{{ 'welcomePage.developers.dzmitry.name' | translate }}</h6>
+      <p class="developers__content">{{ 'welcomePage.developers.dzmitry.about' | translate }}</p>
       <a
         class="developers__button"
-        [href]="developer.github"
+        href="https://github.com/Dauhaliavets"
         mat-flat-button
         color="primary"
         target="_blank"
-        >View GitHub</a
+        >{{ 'welcomePage.github' | translate }}</a
+      >
+    </div>
+    <div class="developers__card">
+      <img
+        class="developers__image"
+        src="../../../../assets/welcome-page/viachaslau.jpg"
+        alt="Viachaslau Developer"
+      />
+      <h6 class="developers__name">{{ 'welcomePage.developers.viachaslau.name' | translate }}</h6>
+      <p class="developers__content">{{ 'welcomePage.developers.viachaslau.about' | translate }}</p>
+      <a
+        class="developers__button"
+        href="https://github.com/ViachaslauIhnatsiuk"
+        mat-flat-button
+        color="primary"
+        target="_blank"
+        >{{ 'welcomePage.github' | translate }}</a
+      >
+    </div>
+    <div class="developers__card">
+      <img
+        class="developers__image"
+        src="../../../../assets/welcome-page/gleb.jpg"
+        alt="Gleb Developer"
+      />
+      <h6 class="developers__name">{{ 'welcomePage.developers.gleb.name' | translate }}</h6>
+      <p class="developers__content">{{ 'welcomePage.developers.gleb.about' | translate }}</p>
+      <a
+        class="developers__button"
+        href="https://github.com/GlebKolyano"
+        mat-flat-button
+        color="primary"
+        target="_blank"
+        >{{ 'welcomePage.github' | translate }}</a
       >
     </div>
   </div>

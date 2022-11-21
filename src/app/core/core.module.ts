@@ -3,6 +3,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { CoreRoutingModule } from './core-routing.module';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
 import { StoreModule } from '@ngrx/store';
@@ -47,6 +48,7 @@ import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
     CoreRoutingModule,
     AuthModule,
     AuthRoutingModule,
+    TranslateModule,
   ],
   providers: [
     GlobalSearchService,

@@ -23,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ConfirmationModalComponent, CreateBoardButtonComponent],
@@ -59,6 +60,6 @@ import { CreateBoardButtonComponent } from './components/create-board-button/cre
     MatCheckboxModule,
     FormsModule,
   ],
-  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, TranslateModule],
 })
 export class SharedModule {}

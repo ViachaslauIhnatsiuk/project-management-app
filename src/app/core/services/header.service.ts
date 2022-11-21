@@ -11,8 +11,6 @@ export class HeaderService {
 
   public isSideBarOpened = true;
 
-  public currentLanguage: string = 'English';
-
   public switchTheme({ checked }: MatSlideToggleChange): void {
     this.isDarkTheme = checked;
     this.sliderIsChecked = checked;
@@ -20,9 +18,5 @@ export class HeaderService {
 
   public toggleSidebar(): void {
     this.isSideBarOpened = !this.isSideBarOpened;
-  }
-
-  public switchLanguage(value: string): void {
-    this.currentLanguage = value;
   }
 }
