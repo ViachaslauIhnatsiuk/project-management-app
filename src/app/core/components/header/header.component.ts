@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { languages } from 'src/app/core/constants/header.constants';
+import {
+  DEBOUNCE_TIME,
+  languages,
+  MIN_QUERY_LENGTH,
+} from 'src/app/core/constants/header.constants';
 import { selectIsAuth, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 import { GlobalSearchService } from '../../services/global-search.service';
-import { debounceTime, filter, Observable } from 'rxjs';
+import { debounceTime, filter, Observable, Subscription } from 'rxjs';
 import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { ISearchResponseItem } from '../../models/global-search.models';
 
@@ -14,7 +18,7 @@ import { ISearchResponseItem } from '../../models/global-search.models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public readonly languages: string[] = languages;
 
   public users$ = this.store.select(selectUsers);
@@ -25,6 +29,8 @@ export class HeaderComponent implements OnInit {
 
   public searchedItems$!: Observable<ISearchResponseItem[]>;
 
+  private searchTermSubscription = new Subscription();
+
   constructor(
     public headerService: HeaderService,
     public authService: AuthService,
@@ -32,20 +38,24 @@ export class HeaderComponent implements OnInit {
     private globalSearchService: GlobalSearchService,
   ) {}
 
-  public onInput(event: any) {
-    this.globalSearchService.searchTerm.next(event.target.value);
+  public onInput(event: Event): void {
+    this.globalSearchService.searchTerm.next((event.target as HTMLInputElement).value);
   }
 
   ngOnInit() {
-    this.globalSearchService.searchTerm
+    this.searchTermSubscription = this.globalSearchService.searchTerm
       .pipe(
-        debounceTime(1000),
-        filter((query) => query.length > 2),
+        debounceTime(DEBOUNCE_TIME),
+        filter((query) => query.length > MIN_QUERY_LENGTH),
       )
       .subscribe((newValue: string) => {
         this.globalSearchService
           .getSearchResponse(newValue)
           .pipe((response) => (this.searchedItems$ = response));
       });
+  }
+
+  ngOnDestroy(): void {
+    this.searchTermSubscription.unsubscribe();
   }
 }

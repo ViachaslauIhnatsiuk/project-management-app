@@ -121,7 +121,7 @@
   }
 }
 
-::ng-deep .mat-option-text {
+:host ::ng-deep .mat-option-text {
   height: 36px !important;
   display: flex !important;
   padding: 2px !important;
