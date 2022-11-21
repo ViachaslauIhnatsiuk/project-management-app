@@ -1,2 +1,4 @@
-<button mat-stroked-button color="accent" (click)="toggleVisibilityForm()">Сreate point</button>
+<button mat-stroked-button color="accent" (click)="toggleVisibilityForm()">
+  {{ 'points.createPoint' | translate }}
+</button>
 <app-point-form *ngIf="isFormVisible" [taskId]="taskId"></app-point-form>
