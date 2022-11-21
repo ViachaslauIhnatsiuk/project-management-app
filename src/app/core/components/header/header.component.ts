@@ -14,7 +14,7 @@ import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { ISearchResponseItem } from '../../models/global-search.models';
 import { Router } from '@angular/router';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-header',

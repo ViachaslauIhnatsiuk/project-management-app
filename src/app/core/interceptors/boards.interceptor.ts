@@ -8,10 +8,10 @@ import { ApiEndpoints, Methods } from '../models/interceptors.models';
 export class BoardsInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (
-      request.url === ApiEndpoints.Boards ||
-      request.url === ApiEndpoints.Columns ||
-      request.url === ApiEndpoints.Tasks ||
-      request.url === ApiEndpoints.ColumnsSet ||
+      request.url.includes(ApiEndpoints.Boards) ||
+      request.url.includes(ApiEndpoints.Columns) ||
+      (request.url.includes(ApiEndpoints.Tasks) && !request.url.includes(ApiEndpoints.TasksSet)) ||
+      request.url.includes(ApiEndpoints.ColumnsSet) ||
       (request.url === ApiEndpoints.TasksSet && request.method === Methods.Patch)
     ) {
       const url = `${BASE_URL}${request.url}`;
