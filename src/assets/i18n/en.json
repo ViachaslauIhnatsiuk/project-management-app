@@ -104,7 +104,14 @@
     "editResetButton": "Reset Form"
   },
   "boards": {
-    "create": "Create new board",
-    "modalCreate": "Create board"
+    "createBoard": "Create new board",
+    "createBoardModal": {
+      "title": "Create board",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title must contain at least three characters",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    }
   }
 }
