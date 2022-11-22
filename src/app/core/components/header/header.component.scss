@@ -135,15 +135,22 @@
       height: 20px !important;
     }
   }
+}
 
-  .mat-option {
-    #mat-option-6>span {
-      height: 36px !important;
-      display: flex !important;
-      padding: 2px !important;
-      flex-wrap: wrap;
-    }
-  }
+::ng-deep .search__option .mat-option-text {
+  height: 36px !important;
+  display: flex !important;
+  padding: 2px !important;
+  flex-wrap: wrap;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
 }
 
 

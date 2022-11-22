@@ -29,11 +29,11 @@
             *ngFor="let item of searchedItems$ | async"
             [value]="item"
           >
-            <span class="search__option-title">T: {{ item.title }}, </span>
-            <span class="search__option-users" *ngIf="item.users.length"
-              >U: {{ users$ | async | getUserNameById: item.users }},
-            </span>
-            <span class="search__option-description">D: {{ item.description }}</span>
+            <span class="search__option-title">{{ item.title }}</span>
+            <span class="search__option-users" *ngIf="item.users.length">{{
+              users$ | async | getUserNameById: item.users
+            }}</span>
+            <span class="search__option-description">{{ item.description }}</span>
           </mat-option>
         </ng-container>
         <ng-container *ngIf="(searchedItems$ | async)?.length === 0">
