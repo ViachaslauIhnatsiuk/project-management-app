@@ -1,6 +1,6 @@
 <mat-card>
-  <mat-card-content>
-    <h5 class="task__title" (click)="editTask()">{{ task.title }}</h5>
+  <mat-card-content (click)="editTask()">
+    <h5 class="task__title">{{ task.title }}</h5>
     <p class="task__description">{{ task.description }}</p>
   </mat-card-content>
   <mat-card-actions>
