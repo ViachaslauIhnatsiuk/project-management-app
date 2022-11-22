@@ -15,18 +15,32 @@
         autocomplete="off"
       />
       <mat-icon matPrefix class="header__search-icon">search</mat-icon>
+      <mat-progress-spinner
+        *ngIf="isSearched$ | async"
+        matSuffix
+        [mode]="'indeterminate'"
+        [diameter]="20"
+      >
+      </mat-progress-spinner>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="openFoundBoard($event)">
-        <mat-option
-          class="search__option"
-          *ngFor="let item of searchedItems$ | async"
-          [value]="item"
-        >
-          <span class="search__option-title">Title: {{ item.title }}</span>
-          <span class="search__option-users" *ngIf="item.users.length"
-            >Users: {{ users$ | async | getUserNameById: item.users }}</span
+        <ng-container *ngIf="(searchedItems$ | async)?.length !== 0">
+          <mat-option
+            class="search__option"
+            *ngFor="let item of searchedItems$ | async"
+            [value]="item"
           >
-          <span class="search__option-description">description: {{ item.description }}</span>
-        </mat-option>
+            <span class="search__option-title">T: {{ item.title }}, </span>
+            <span class="search__option-users" *ngIf="item.users.length"
+              >U: {{ users$ | async | getUserNameById: item.users }},
+            </span>
+            <span class="search__option-description">D: {{ item.description }}</span>
+          </mat-option>
+        </ng-container>
+        <ng-container *ngIf="(searchedItems$ | async)?.length === 0">
+          <mat-option class="search__option" disabled="true">
+            <span class="search__option-title">{{ 'header.searchNothingResult' | translate }}</span>
+          </mat-option>
+        </ng-container>
       </mat-autocomplete>
     </mat-form-field>
   </form>

@@ -75,7 +75,8 @@
       "signup": "Зарегистрироваться",
       "signout": "Выйти"
     },
-    "searchPlaceholder": "Искать задачу"
+    "searchPlaceholder": "Искать задачу",
+    "searchNothingResult": "Ничего не найдено"
   },
   "sidebar": {
     "menuList": {
