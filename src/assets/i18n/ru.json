@@ -51,21 +51,26 @@
   "loginForm": {
     "title": "Вход",
     "loginLabel": "Логин",
-    "passwordLabel": "Пароль",
+    "loginPlaceholder": "Введите логин",
     "loginRequiredHint": "Требуется логин",
     "loginLengthHint": "Логин должен содержать не менее трех символов",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
     "loginButton": "Войти",
     "loginResetButton": "Очистить форму"
   },
   "signupForm": {
     "title": "Регистрация",
     "nameLabel": "Имя",
+    "namePlaceholder": "Введите имя",
     "nameRequiredHint": "Требуется имя",
     "nameLengthHint": "Имя должно содержать не менее трех символов",
     "loginLabel": "Логин",
+    "loginPlaceholder": "Введите логин",
     "loginRequiredHint": "Требуется логин",
     "loginLengthHint": "Логин должен содержать не менее трех символов",
     "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
     "signupButton": "Зарегистрироваться",
     "signupResetButton": "Очистить форму"
   },
@@ -95,12 +100,15 @@
   "editProfileForm": {
     "title": "Редактировать профиль",
     "nameLabel": "Имя",
+    "namePlaceholder": "Введите имя",
     "nameRequiredHint": "Требуется имя",
     "nameLengthHint": "Имя должно содержать не менее трех символов",
     "loginLabel": "Логин",
+    "loginPlaceholder": "Введите логин",
     "loginRequiredHint": "Требуется логин",
     "loginLengthHint": "Логин должен содержать не менее трех символов",
     "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
     "editButton": "Редактировать",
     "editResetButton": "Очистить форму"
   },

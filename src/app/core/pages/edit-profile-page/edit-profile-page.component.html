@@ -3,7 +3,11 @@
     <h3 class="form__title">{{ 'editProfileForm.title' | translate }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'editProfileForm.nameLabel' | translate }}</mat-label>
-      <input matInput placeholder="Enter your name" formControlName="name" />
+      <input
+        matInput
+        placeholder="{{ 'editProfileForm.namePlaceholder' | translate }}"
+        formControlName="name"
+      />
       <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">{{
         'editProfileForm.nameRequiredHint' | translate
       }}</mat-hint>
@@ -13,7 +17,11 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'editProfileForm.loginLabel' | translate }}</mat-label>
-      <input matInput placeholder="Enter your login" formControlName="login" />
+      <input
+        matInput
+        placeholder="{{ 'editProfileForm.loginPlaceholder' | translate }}"
+        formControlName="login"
+      />
       <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">{{
         'editProfileForm.loginRequiredHint' | translate
       }}</mat-hint>
@@ -26,7 +34,7 @@
       <input
         matInput
         [type]="settingsService.passwordVisibility ? 'text' : 'password'"
-        placeholder="Enter your password"
+        placeholder="{{ 'editProfileForm.passwordPlaceholder' | translate }}"
         formControlName="password"
       />
       <button
