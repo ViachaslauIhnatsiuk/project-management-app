@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'notFoundPage', component: NotFoundPageComponent },
-  { path: '**', redirectTo: 'notFoundPage', pathMatch: 'full' },
+  { path: '**', redirectTo: 'notFoundPage' },
 ];
 
 @NgModule({
