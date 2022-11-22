@@ -27,7 +27,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <mat-progress-bar *ngIf="columnsIsLoading$ | async" mode="indeterminate"></mat-progress-bar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<mat-progress-bar *ngIf="columnsIsLoading$ | async" mode="indeterminate"></mat-progress-bar>
