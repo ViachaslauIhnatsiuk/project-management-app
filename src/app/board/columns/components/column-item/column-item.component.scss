@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+::ng-deep .cdk-drag-preview {
+  height: fit-content !important;
+}
+
 .title {
   cursor: pointer;
 }
