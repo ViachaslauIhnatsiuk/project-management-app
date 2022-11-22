@@ -75,7 +75,8 @@
       "signup": "Sign Up",
       "signout": "Sign Out"
     },
-    "searchPlaceholder": "Search task"
+    "searchPlaceholder": "Search task",
+    "searchNothingResult": "Nothing found"
   },
   "sidebar": {
     "menuList": {

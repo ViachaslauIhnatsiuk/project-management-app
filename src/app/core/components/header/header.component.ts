@@ -6,12 +6,13 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { DEBOUNCE_TIME, MIN_QUERY_LENGTH } from 'src/app/core/constants/header.constants';
 import { selectIsAuth, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
 import { GlobalSearchService } from '../../services/global-search.service';
-import { debounceTime, filter, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, debounceTime, filter, Observable, Subscription, tap } from 'rxjs';
 import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { ISearchResponseItem } from '../../models/global-search.models';
 import { Router } from '@angular/router';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormBuilder } from '@angular/forms';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public searchedItems$!: Observable<ISearchResponseItem[]>;
 
+  public isSearched$ = new BehaviorSubject(false);
+
   private searchTermSubscription = new Subscription();
+
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   searchForm = this.fb.group({
     searchInput: [''],
@@ -60,11 +65,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .pipe(
         debounceTime(DEBOUNCE_TIME),
         filter((query) => query.length > MIN_QUERY_LENGTH),
+        tap(() => this.isSearched$.next(true)),
       )
       .subscribe((newValue: string) => {
-        this.globalSearchService
-          .getSearchResponse(newValue)
-          .pipe((response) => (this.searchedItems$ = response));
+        return this.globalSearchService.getSearchResponse(newValue).pipe(
+          tap(() => this.isSearched$.next(false)),
+          (response) => (this.searchedItems$ = response),
+        );
       });
   }
 
