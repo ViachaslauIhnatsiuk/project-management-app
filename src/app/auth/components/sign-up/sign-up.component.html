@@ -3,7 +3,12 @@
     <h3 class="form__title">{{ 'signupForm.title' | translate }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'signupForm.nameLabel' | translate }}</mat-label>
-      <input matInput placeholder="Enter your name" formControlName="name" />
+      <input
+        matInput
+        placeholder="{{ 'signupForm.namePlaceholder' | translate }}"
+        formControlName="name"
+        autocomplete="off"
+      />
       <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">{{
         'signupForm.nameRequiredHint' | translate
       }}</mat-hint>
@@ -13,10 +18,15 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'signupForm.loginLabel' | translate }}</mat-label>
-      <input matInput placeholder="Enter your login" formControlName="login" autocomplete="off" />
-      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">
-        {{ 'signupForm.loginRequiredHint' | translate }}</mat-hint
-      >
+      <input
+        matInput
+        placeholder="{{ 'signupForm.loginPlaceholder' | translate }}"
+        formControlName="login"
+        autocomplete="off"
+      />
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">{{
+        'signupForm.loginRequiredHint' | translate
+      }}</mat-hint>
       <mat-hint *ngIf="login?.errors?.['minlength']">
         {{ 'signupForm.loginLengthHint' | translate }}</mat-hint
       >
@@ -36,7 +46,7 @@
       <input
         matInput
         [type]="authService.passwordVisibility ? 'text' : 'password'"
-        placeholder="Enter your password"
+        placeholder="{{ 'signupForm.passwordPlaceholder' | translate }}"
         formControlName="password"
         autocomplete="off"
       />

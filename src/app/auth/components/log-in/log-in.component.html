@@ -3,7 +3,12 @@
     <h3 class="form__title">{{ 'loginForm.title' | translate }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'loginForm.loginLabel' | translate }}</mat-label>
-      <input matInput placeholder="Enter your login" formControlName="login" autocomplete="off" />
+      <input
+        matInput
+        placeholder="{{ 'loginForm.loginPlaceholder' | translate }}"
+        formControlName="login"
+        autocomplete="off"
+      />
       <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">{{
         'loginForm.loginRequiredHint' | translate
       }}</mat-hint>
@@ -16,7 +21,7 @@
       <input
         matInput
         [type]="authService.passwordVisibility ? 'text' : 'password'"
-        placeholder="Enter your password"
+        placeholder="{{ 'loginForm.passwordPlaceholder' | translate }}"
         formControlName="password"
         autocomplete="off"
       />
@@ -29,7 +34,7 @@
       >
         <mat-icon>{{ authService.passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
       </button>
-      <mat-hint *ngIf="password?.errors?.['passwordStrength']">
+      <mat-hint *ngIf="password?.errors?.['passwordStrength'] && password?.touched">
         {{password?.errors?.['passwordStrength']}}
       </mat-hint>
     </mat-form-field>

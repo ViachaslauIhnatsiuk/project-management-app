@@ -51,21 +51,26 @@
   "loginForm": {
     "title": "Log In",
     "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
     "loginRequiredHint": "Login is required",
     "loginLengthHint": "Login must contain at least three characters",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
     "loginButton": "Login",
     "loginResetButton": "Reset Form"
   },
   "signupForm": {
     "title": "Sign Up",
     "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
     "nameRequiredHint": "Name is required",
     "nameLengthHint": "Name must contain at least three characters",
     "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
     "loginRequiredHint": "Login is required",
     "loginLengthHint": "Login must contain at least three characters",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
     "signupButton": "SignUp",
     "signupResetButton": "Reset Form"
   },
@@ -95,12 +100,15 @@
   "editProfileForm": {
     "title": "Edit profile",
     "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
     "nameRequiredHint": "Name is required",
     "nameLengthHint": "Name must contain at least three characters",
     "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
     "loginRequiredHint": "Login is required",
     "loginLengthHint": "Login must contain at least three characters",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
     "editButton": "Edit",
     "editResetButton": "Reset Form"
   },
