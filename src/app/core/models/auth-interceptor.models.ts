@@ -21,4 +21,5 @@ export interface ISignUpResponse {
 export enum AuthResponseMessages {
   Signup = 'New user is created',
   Signin = 'Successeful login',
+  Signout = 'Successeful logout',
 }

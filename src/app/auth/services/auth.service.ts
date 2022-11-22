@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import jwtDecode from 'jwt-decode';
 import {
+  AuthResponseMessages,
   ILogInRequest,
   ILogInResponse,
   ISignUpRequest,
@@ -15,6 +16,7 @@ import { logOut } from 'src/app/auth/store/actions/auth.actions';
 import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 import { logIn } from '../store/actions/auth.actions';
 import { getUserById } from 'src/app/users/store/actions/users.actions';
+import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +24,12 @@ import { getUserById } from 'src/app/users/store/actions/users.actions';
 export class AuthService {
   public passwordVisibility = false;
 
-  constructor(private http: HttpClient, private router: Router, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private store: Store,
+    private responseHandlerService: ResponseHandlerService,
+  ) {}
 
   public signUp(fields: ISignUpRequest): Observable<ISignUpResponse> {
     return this.http.post<ISignUpResponse>('auth/signup', fields).pipe(
@@ -48,6 +55,7 @@ export class AuthService {
     window.localStorage.clear();
     this.store.dispatch(logOut());
     this.router.navigate(['/welcome']);
+    this.responseHandlerService.handleResponse(200, AuthResponseMessages.Signout);
   }
 
   public isTokenExpired(): boolean {

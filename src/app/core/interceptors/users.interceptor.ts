@@ -25,22 +25,14 @@ export class UsersInterceptor implements HttpInterceptor {
         tap((data) => {
           if (data instanceof HttpResponse) {
             const { status } = data;
-            let message: string;
-            switch (request.method) {
-              case Methods.Get:
-                message = UsersResponseMessages.Founded;
-                break;
-              case Methods.Put:
-                message = UsersResponseMessages.Updated;
-                break;
-              case Methods.Delete:
-                message = UsersResponseMessages.Deleted;
-                break;
-              default:
-                message = UsersResponseMessages.Default;
-                break;
+            if (request.method === Methods.Put) {
+              const message = UsersResponseMessages.Updated;
+              this.responseHandlerService.handleResponse(status, message);
             }
-            this.responseHandlerService.handleResponse(status, message);
+            if (request.url === Methods.Delete) {
+              const message = UsersResponseMessages.Deleted;
+              this.responseHandlerService.handleResponse(status, message);
+            }
           }
         }),
         catchError((error) => {
