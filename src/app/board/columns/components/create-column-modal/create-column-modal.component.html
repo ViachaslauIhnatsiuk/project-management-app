@@ -4,12 +4,14 @@
     <mat-form-field appearance="outline">
       <mat-label>{{ 'columns.createColumnModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
-      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
-        'columns.createColumnModal.titleRequiredHint' | translate
-      }}</mat-hint>
-      <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
-        'columns.createColumnModal.titleLengthHint' | translate
-      }}</mat-hint>
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['maxlength'] && form.controls['title'].touched"
+        >{{ 'columns.createColumnModal.titleLengthHint' | translate }}</mat-hint
+      >
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
+        >{{ 'columns.createColumnModal.titleRequiredHint' | translate }}</mat-hint
+      >
     </mat-form-field>
   </form>
 </div>

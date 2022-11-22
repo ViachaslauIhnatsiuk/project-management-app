@@ -4,22 +4,26 @@
     <mat-form-field appearance="outline">
       <mat-label>{{ 'tasks.createTaskModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
-      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
-        'tasks.createTaskModal.titleLengthHint' | translate
-      }}</mat-hint>
-      <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
-        'tasks.createTaskModal.titleRequiredHint' | translate
-      }}</mat-hint>
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['maxlength'] && form.controls['title'].touched"
+        >{{ 'tasks.createTaskModal.titleLengthHint' | translate }}</mat-hint
+      >
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
+        >{{ 'tasks.createTaskModal.titleRequiredHint' | translate }}</mat-hint
+      >
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{ 'tasks.createTaskModal.descriptionLabel' | translate }}</mat-label>
       <input matInput formControlName="description" />
-      <mat-hint *ngIf="form.controls['description'].errors?.['maxlength']">{{
-        'tasks.createTaskModal.descriptionLengthHint' | translate
-      }}</mat-hint>
-      <mat-hint *ngIf="form.controls['description'].errors?.['required']">{{
-        'tasks.createTaskModal.descriptionRequiredHint' | translate
-      }}</mat-hint>
+      <mat-hint
+        *ngIf="form.controls['description'].errors?.['maxlength'] && form.controls['description'].touched"
+        >{{ 'tasks.createTaskModal.descriptionLengthHint' | translate }}</mat-hint
+      >
+      <mat-hint
+        *ngIf="form.controls['description'].errors?.['required'] && form.controls['description'].touched"
+        >{{ 'tasks.createTaskModal.descriptionRequiredHint' | translate }}</mat-hint
+      >
     </mat-form-field>
   </form>
 </div>
