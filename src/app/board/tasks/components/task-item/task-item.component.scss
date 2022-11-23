@@ -10,25 +10,38 @@
   width: 100%;
 }
 
-.task__title {
-  padding-right: 50px;
-  margin-bottom: 10px;
-  font-size: 17px;
-  word-break: break-word;
-}
+.task {
+  &__title {
+    padding-right: 50px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    word-break: break-word;
+  }
 
-.task__description {
-  padding-right: 30px;
-  word-break: break-word;
-  font-size: 14px;
-}
+  &__description {
+    padding-right: 30px;
+    word-break: break-word;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
 
-.task__delete-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  opacity: 0;
-  transition: 0.5s;
+  &__delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  &__points-done {
+    display: flex;
+    align-items: center;
+    margin: -5px;
+  }
+
+  &__icon {
+    transform: scale(0.6);
+  }
 }
 
 .mat-card:hover .task__delete-btn {
