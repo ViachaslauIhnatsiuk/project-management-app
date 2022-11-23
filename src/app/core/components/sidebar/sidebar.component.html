@@ -10,20 +10,16 @@
         <span class="list__title">{{ 'sidebar.menuList.boards' | translate }}</span>
       </mat-list-item>
       <mat-list-item role="listitem" routerLink="/settings">
-        <img
-          class="list__icon"
-          src="../../../../assets/icons/sidebar/settings.svg"
-          alt="settings"
-        />
+        <img class="list__icon" src="../../../../assets/icons/sidebar/settings.svg" alt="settings" />
         <span class="list__title">{{ 'sidebar.menuList.settings' | translate }}</span>
       </mat-list-item>
     </mat-nav-list>
     <mat-divider></mat-divider>
     <h3 class="boards__title">{{ 'sidebar.title' | translate }}</h3>
     <mat-nav-list role="navigation" class="boards__list">
-      <mat-list-item *ngFor="let board of boards$ | async" (click)="openBoard(board)">{{
+      <mat-list-item *ngFor="let board of boards$ | async" [routerLink]="['/boards', board._id]">{{
         board.title
-      }}</mat-list-item>
+        }}</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

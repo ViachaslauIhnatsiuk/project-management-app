@@ -45,5 +45,6 @@ import { PointsModule } from 'src/app/points/points.module';
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} },
   ],
+  bootstrap: [BoardsPageComponent],
 })
 export class BoardsModule {}

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from 'src/app/users/services/user.service';
 
 import { INITIAL_EMPTY_STRING_VALUE } from '../../../constants/board.constants';
 import { ITask } from '../../models/tasks.models';
@@ -16,6 +17,7 @@ export class CreateTaskModalComponent {
   constructor(
     public dialogRef: MatDialogRef<CreateTaskModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { amountOfTasks: number },
+    private userService: UserService,
   ) {
     this.initializeForm();
   }
@@ -30,7 +32,7 @@ export class CreateTaskModalComponent {
         Validators.required,
         Validators.maxLength(200),
       ]),
-      userId: new FormControl<string | null>(null),
+      userId: new FormControl<string | null>(this.userService.getUserIdFromToken() as string),
       users: new FormControl<string[]>([]),
     });
   }

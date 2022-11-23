@@ -23,7 +23,9 @@ export class UserService {
   public getUserById(): Observable<IUser> {
     const id = this.getUserIdFromToken();
     if (id) {
-      return this.http.get<IUser>('users', { params: { id } });
+      return this.http.get<IUser>(
+        `https://project-management-app-backend-production.up.railway.app/users/${id}`,
+      );
     }
     return this.http.get<IUser>('');
   }
