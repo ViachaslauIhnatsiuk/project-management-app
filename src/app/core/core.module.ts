@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CoreRoutingModule } from './core-routing.module';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
 import { AuthModule } from '../auth/auth.module';
@@ -25,6 +25,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { GlobalSearchService } from './services/global-search.service';
 import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
 import { BoardsModule } from '../board/boards/boards.module';
+import { logInSuccess } from '../auth/store/actions/auth.actions';
 
 @NgModule({
   declarations: [
@@ -69,4 +70,11 @@ import { BoardsModule } from '../board/boards/boards.module';
     EditProfilePageComponent,
   ],
 })
-export class CoreModule {}
+export class CoreModule {
+  constructor(private store: Store) {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      this.store.dispatch(logInSuccess({ token }));
+    }
+  }
+}

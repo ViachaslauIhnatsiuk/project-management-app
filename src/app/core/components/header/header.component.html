@@ -1,9 +1,17 @@
 <mat-toolbar role="heading" class="header">
-  <button *ngIf="isAuth$ | async" mat-icon-button (click)="headerService.toggleSidebar()">
+  <button
+    *ngIf="(isAuth$ | async) && isNotWelcomePage"
+    mat-icon-button
+    (click)="headerService.toggleSidebar()"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <img class="header__logo" routerLink="/" src="../../../../assets/icons/logo.svg" alt="app logo" />
-  <form [formGroup]="searchForm" class="header__search" *ngIf="isAuth$ | async">
+  <form
+    [formGroup]="searchForm"
+    class="header__search"
+    *ngIf="(isAuth$ | async) && isNotWelcomePage"
+  >
     <mat-form-field class="header__search-field" floatLabel="never" appearance="fill">
       <input
         type="text"
@@ -44,7 +52,7 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
-  <div class="header__theme-wrapper" *ngIf="isAuth$ | async">
+  <div class="header__theme-wrapper" *ngIf="(isAuth$ | async) && isNotWelcomePage">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle
       [(ngModel)]="headerService.sliderIsChecked"
