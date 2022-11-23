@@ -2,7 +2,7 @@
   <button *ngIf="isAuth$ | async" mat-icon-button (click)="headerService.toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img class="header__logo" src="../../../../assets/icons/logo.svg" alt="app logo" />
+  <img class="header__logo" routerLink="/" src="../../../../assets/icons/logo.svg" alt="app logo" />
   <form [formGroup]="searchForm" class="header__search" *ngIf="isAuth$ | async">
     <mat-form-field class="header__search-field" floatLabel="never" appearance="fill">
       <input
