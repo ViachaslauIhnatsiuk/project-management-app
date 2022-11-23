@@ -34,15 +34,15 @@
     "developers": {
       "dzmitry": {
         "name": "Dzmitry",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Created pages for user authorization and registration, implemented a global search, developed logic for module interaction with the backend and error handling, wrote functionality for working with NgRX"
       },
       "viachaslau": {
         "name": "Viachaslau",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Developed the overall design of the project, the main page and the welcome page, wrote styles for components, configured the routing of the application, implemented a page with settings, switching the theme and language"
       },
       "gleb": {
         "name": "Gleb",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Implemented modules for the work and interaction of boards, columns, tasks and checklists, wrote logic for interacting with the backend, logic for the ability to move columns and tasks, connected and configured NgRX data stores"
       }
     },
     "github": "View GitHub"

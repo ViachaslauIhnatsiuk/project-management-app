@@ -34,15 +34,15 @@
     "developers": {
       "dzmitry": {
         "name": "Дмитрий",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Создал страницы для авторизации и регистрации пользователя, реализовал глобальный поиск, разработал логику для взаимодействия модуля с бэкендом и обработки ошибок, написал функционал для работы с NgRX"
       },
       "viachaslau": {
         "name": "Вячеслав",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Разработал общий дизайн проекта, главную страницу и страницу приветствия, написал стили для компонентов, настроил роутинг приложения, реализовал страницу с настройками, переключение темы и языка"
       },
       "gleb": {
         "name": "Глеб",
-        "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nulla enim delectus sapiente, culpa, nemo, voluptas debitis incidunt esse ad tempora! Porro exercitationem culpa optio, temporibus dolor et vitae sit."
+        "about": "Реализовал модули для работы и взаимодействия досок, колонок, задач и чек-листов, написал логику для взаимодействия с бэкендом, логику для возможности перемещения колонок и заданий, подключил и настроил хранилища данных NgRX"
       }
     },
     "github": "Посмотреть GitHub"
