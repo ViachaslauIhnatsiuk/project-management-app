@@ -6,6 +6,7 @@ import { SettingsPageComponent } from 'src/app/core/pages/settings-page/settings
 import { EditProfilePageComponent } from 'src/app/core/pages/edit-profile-page/edit-profile-page.component';
 import { WelcomePageComponent } from 'src/app/core/pages/welcome-page/welcome-page.component';
 import { NotFoundPageComponent } from 'src/app/core/pages/not-found-page/not-found-page.component';
+import { HomePageComponent } from 'src/app/core/pages/home-page/home-page.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule) },
@@ -14,6 +15,10 @@ const routes: Routes = [
     component: SidebarComponent,
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        component: HomePageComponent,
+      },
       {
         path: 'boards',
         loadChildren: () => import('../board/boards/boards.module').then((m) => m.BoardsModule),
