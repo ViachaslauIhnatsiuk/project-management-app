@@ -1,15 +1,20 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="headerService.isSideBarOpened">
     <mat-nav-list role="navigation" color="primary">
-      <mat-list-item role="listitem" routerLink="/">
+      <mat-list-item
+        role="listitem"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <img class="list__icon" src="../../../../assets/icons/sidebar/home.svg" alt="home" />
         <span class="list__title">{{ 'sidebar.menuList.home' | translate }}</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/boards">
+      <mat-list-item role="listitem" routerLink="/boards" routerLinkActive="active">
         <img class="list__icon" src="../../../../assets/icons/sidebar/boards.svg" alt="boards" />
         <span class="list__title">{{ 'sidebar.menuList.boards' | translate }}</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/settings">
+      <mat-list-item role="listitem" routerLink="/settings" routerLinkActive="active">
         <img
           class="list__icon"
           src="../../../../assets/icons/sidebar/settings.svg"
@@ -21,7 +26,12 @@
     <mat-divider></mat-divider>
     <h3 class="boards__title">{{ 'sidebar.title' | translate }}</h3>
     <mat-nav-list role="navigation" class="boards__list">
-      <mat-list-item *ngFor="let board of boards$ | async" [routerLink]="['/boards', board._id]">
+      <mat-list-item
+        *ngFor="let board of boards$ | async"
+        routerLinkActive="active"
+        [routerLink]="['/boards', board._id]"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <div class="list__dot" appGenerateColor></div>
         {{ board.title }}
       </mat-list-item>

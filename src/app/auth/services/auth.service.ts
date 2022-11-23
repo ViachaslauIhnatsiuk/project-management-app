@@ -46,7 +46,7 @@ export class AuthService {
       map((response) => {
         localStorage.setItem('token', response.token);
         this.store.dispatch(getUserById());
-        this.router.navigate(['/boards']);
+        this.router.navigate(['/']);
         return response;
       }),
     );

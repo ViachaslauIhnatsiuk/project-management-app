@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterContentChecked } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { HeaderService } from 'src/app/core/services/header.service';
@@ -19,7 +19,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
   public currentLanguage: string = 'En';
 
   public users$ = this.store.select(selectUsers);
@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isLoading$ = this.store.select(selectIsLoading);
 
   public isAuth$ = this.store.select(selectIsAuth);
+
+  public isNotWelcomePage!: boolean;
 
   public searchedItems$!: Observable<ISearchResponseItem[]>;
 
@@ -73,6 +75,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
           (response) => (this.searchedItems$ = response),
         );
       });
+  }
+
+  ngAfterContentChecked() {
+    this.isNotWelcomePage = !this.router.url.includes('welcome');
   }
 
   ngOnDestroy(): void {
