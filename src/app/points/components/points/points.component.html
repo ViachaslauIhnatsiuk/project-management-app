@@ -1,7 +1,7 @@
 <div class="progress">
-  <span class="percentage" *ngIf="checkedPointsPercentage">{{ checkedPointsPercentage }}%</span>
+  <span class="percentage" *ngIf="points?.length">{{ checkedPointsPercentage }}%</span>
   <mat-progress-bar
-    *ngIf="checkedPointsPercentage"
+    *ngIf="points?.length"
     class="progress-bar"
     mode="determinate"
     [value]="checkedPointsPercentage"
