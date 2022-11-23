@@ -13,8 +13,19 @@
   right: 0;
 }
 
+.mat-nav-list {
+  padding-left: 10px !important;
+}
+
 .mat-sidenav {
   width: 250px;
+}
+
+.list__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .mat-list-item {

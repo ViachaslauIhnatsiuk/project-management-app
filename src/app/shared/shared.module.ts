@@ -24,9 +24,10 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CreateBoardButtonComponent } from './components/create-board-button/create-board-button.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { GenerateColorDirective } from './directives/generate-color.directive';
 
 @NgModule({
-  declarations: [ConfirmationModalComponent, CreateBoardButtonComponent],
+  declarations: [ConfirmationModalComponent, CreateBoardButtonComponent, GenerateColorDirective],
   exports: [
     CommonModule,
     DragDropModule,
@@ -59,6 +60,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CreateBoardButtonComponent,
     MatCheckboxModule,
     FormsModule,
+    GenerateColorDirective,
   ],
   imports: [CommonModule, MatDialogModule, MatButtonModule, TranslateModule],
 })
