@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
@@ -25,17 +25,27 @@ export class ColumnsComponent implements OnInit, OnDestroy {
 
   private boardId: string = INITIAL_EMPTY_STRING_VALUE;
 
-  constructor(private route: ActivatedRoute, private store: Store) {
-    this.boardIdSubscription = this.route.params.subscribe(
-      (params) => (this.boardId = params['id']),
-    );
-    this.columnsSubscription = this.columns$.subscribe((columns) => {
-      this.columns = [...columns];
-    });
+  constructor(private route: ActivatedRoute, private store: Store, private router: Router) {
+    this.getBoardId();
+    this.getColumns();
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   public ngOnInit(): void {
     this.store.dispatch(getColumns({ boardId: this.boardId }));
+  }
+
+  private getBoardId(): void {
+    this.boardIdSubscription = this.route.params.subscribe(
+      (params) => (this.boardId = params['id']),
+    );
+  }
+
+  private getColumns(): void {
+    this.columnsSubscription = this.columns$.subscribe((columns) => {
+      this.columns = [...columns];
+    });
   }
 
   public dropColumn({

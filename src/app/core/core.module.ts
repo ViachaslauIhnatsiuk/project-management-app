@@ -24,6 +24,7 @@ import { UsersModule } from '../users/users.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { GlobalSearchService } from './services/global-search.service';
 import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
+import { BoardsModule } from '../board/boards/boards.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
     CoreRoutingModule,
     AuthModule,
     AuthRoutingModule,
+    BoardsModule,
     TranslateModule,
   ],
   providers: [

@@ -22,7 +22,10 @@ export class ProjectPageComponent implements OnDestroy {
   constructor(private store: Store, private route: ActivatedRoute) {
     this.getBoardById();
     this.store.dispatch(getUsers());
+    this.getPointsByUserId();
+  }
 
+  private getPointsByUserId(): void {
     this.userSubscription = this.users$.subscribe((user) => {
       if (user && user._id) {
         this.store.dispatch(getPointsByUserId({ userId: user._id }));
