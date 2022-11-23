@@ -9,8 +9,9 @@ export class GenerateColorDirective {
   }
 
   public generateRandomColor(element: ElementRef): void {
-    element.nativeElement.style.backgroundColor = `#${Math.floor(Math.random() * 2 ** 24)
+    const generatedColor = `#${Math.floor(Math.random() * 2 ** 24)
       .toString(16)
       .padStart(6, '0')}`;
+    element.nativeElement.style.backgroundColor = generatedColor;
   }
 }

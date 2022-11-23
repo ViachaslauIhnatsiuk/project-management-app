@@ -25,7 +25,7 @@
     <mat-icon (click)="updateTitle()">check icon</mat-icon>
     <mat-icon (click)="toggleEditMode()">close</mat-icon>
   </form>
-  <mat-divider></mat-divider>
+  <mat-divider appGenerateColor #ref></mat-divider>
   <mat-card-content>
     <app-tasks [columnId]="column._id!"></app-tasks>
   </mat-card-content>
