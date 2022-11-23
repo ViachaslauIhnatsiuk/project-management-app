@@ -47,6 +47,16 @@
     },
     "github": "View GitHub"
   },
+  "homePage": {
+    "title": "Get started with Boards",
+    "about": "Welcome to Boards - visual work management tool that empowers teams to plan, manage and celebrate their work together in a collaborative, productive and organized way",
+    "description": "Whether you and your team are starting something new or trying to get more organized with your existing work, Boards adapts to any project. It helps you simplify and standardize your team’s work process in an intuitive way",
+    "columnsTitles": {
+      "menu": "Simple menu",
+      "projects": "Easy projects managment",
+      "tasks": "Intuitive organization of work process"
+    }
+  },
   "notFoundPage": "Page not found",
   "loginForm": {
     "title": "Log In",
