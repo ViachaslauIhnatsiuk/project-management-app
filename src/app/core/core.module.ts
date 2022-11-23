@@ -26,6 +26,7 @@ import { GlobalSearchService } from './services/global-search.service';
 import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
 import { BoardsModule } from '../board/boards/boards.module';
 import { logInSuccess } from '../auth/store/actions/auth.actions';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { logInSuccess } from '../auth/store/actions/auth.actions';
     EditProfilePageComponent,
     NotFoundPageComponent,
     GetUserNameByIdPipe,
+    HomePageComponent,
   ],
   imports: [
     StoreModule.forRoot({}, {}),
