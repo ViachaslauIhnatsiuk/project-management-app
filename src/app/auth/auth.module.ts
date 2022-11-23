@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthPageComponent } from 'src/app/auth/pages/auth-page/auth-page.component';
 import { SignUpComponent } from 'src/app/auth/components/sign-up/sign-up.component';
 import { LogInComponent } from 'src/app/auth/components/log-in/log-in.component';
 import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
@@ -13,7 +12,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [SignUpComponent, LogInComponent, AuthPageComponent],
+  declarations: [SignUpComponent, LogInComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -23,6 +22,6 @@ import { TranslateModule } from '@ngx-translate/core';
     AuthRoutingModule,
     TranslateModule,
   ],
-  exports: [AuthPageComponent],
+  exports: [],
 })
 export class AuthModule {}
