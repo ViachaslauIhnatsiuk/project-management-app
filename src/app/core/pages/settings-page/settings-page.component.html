@@ -3,12 +3,6 @@
     <mat-card-title>{{ 'settings.title' | translate }}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-raised-button routerLink="edit-profile">
-      {{ 'settings.editProfileButton' | translate }}
-    </button>
-    <button mat-raised-button color="warn" (click)="deleteUserWithConfirm()">
-      {{ 'settings.deleteUserButton' | translate }}
-    </button>
     <div class="settings__theme-wrapper">
       <mat-icon *ngIf="!headerService.sliderIsChecked" color="primary">brightness_7</mat-icon>
       <mat-icon *ngIf="headerService.sliderIsChecked" color="primary">brightness_2</mat-icon>
@@ -18,5 +12,24 @@
         (change)="headerService.switchTheme($event)"
       ></mat-slide-toggle>
     </div>
+    <button class="settings__edit" color="accent" mat-raised-button routerLink="edit-profile">
+      {{ 'settings.editProfileButton' | translate }}
+    </button>
+    <button
+      class="settings__signout"
+      (click)="authService.signOut()"
+      mat-raised-button
+      color="primary"
+    >
+      {{ 'header.button.signout' | translate }}
+    </button>
+    <button
+      class="settings__delete"
+      mat-raised-button
+      color="warn"
+      (click)="deleteUserWithConfirm()"
+    >
+      {{ 'settings.deleteUserButton' | translate }}
+    </button>
   </mat-card-actions>
 </mat-card>
