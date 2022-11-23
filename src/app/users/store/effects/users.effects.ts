@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, map, mergeMap, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import {
   deleteUserByIdSuccess,
@@ -39,7 +39,6 @@ export class UsersEffects {
       mergeMap(() => {
         return this.userService.getUserById().pipe(
           map((user) => getUserByIdSuccess({ user })),
-          tap(() => this.router.navigate(['/boards'])),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
       }),
