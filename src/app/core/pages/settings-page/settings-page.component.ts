@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-settings-page',
@@ -13,6 +14,7 @@ import { deleteUserById } from 'src/app/users/store/actions/users.actions';
 export class SettingsPageComponent {
   constructor(
     public headerService: HeaderService,
+    public authService: AuthService,
     public dialog: MatDialog,
     private store: Store,
   ) {}
