@@ -1,22 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { EditTaskModalComponent } from '../edit-task-modal/edit-task-modal.component';
 import { deleteTask, updateTask } from '../../store/actions/task.actions';
-import { ITask } from '../../models/tasks.models';
+import { ITask, ITaskPointsInfo } from '../../models/tasks.models';
 import { DEFAULT_MODAL_SIZE, INITIAL_EMPTY_STRING_VALUE } from '../../../constants/board.constants';
+import { selectPoints } from 'src/app/points/store/selectors/points.selectors';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss'],
 })
-export class TaskItemComponent {
+export class TaskItemComponent implements OnInit, OnDestroy {
   @Input() task!: ITask;
 
   @Input() columnId: string = INITIAL_EMPTY_STRING_VALUE;
+
+  private taskPointsSubscription = new Subscription();
+
+  private taskPoints$ = this.store.select(selectPoints);
+
+  public taskPointsInfo: ITaskPointsInfo = { amount: null, done: null };
 
   constructor(private store: Store, public dialog: MatDialog) {}
 
@@ -46,5 +54,18 @@ export class TaskItemComponent {
         this.store.dispatch(updateTask({ updatedTask: modifiedTask }));
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.taskPointsSubscription = this.taskPoints$.subscribe((points) => {
+      if (points[this.task._id!]) {
+        this.taskPointsInfo.amount = points[this.task._id!].length;
+        this.taskPointsInfo.done = points[this.task._id!].filter((point) => point.done).length;
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.taskPointsSubscription.unsubscribe();
   }
 }

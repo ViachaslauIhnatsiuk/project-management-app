@@ -17,6 +17,11 @@ interface ITask {
   points?: PointCreate;
 }
 
+interface ITaskPointsInfo {
+  amount: number | null;
+  done: number | null;
+}
+
 type ModifiedTaskForRequest = Pick<ITask, '_id' | 'order' | 'columnId'>;
 
 type EditTask = Pick<ITask, 'title' | 'description' | 'users'>;
@@ -26,4 +31,4 @@ type FileType = {
   fileSize: number;
 };
 
-export type { ITask, ModifiedTaskForRequest, EditTask, ITasks };
+export type { ITask, ITaskPointsInfo, ModifiedTaskForRequest, EditTask, ITasks };
