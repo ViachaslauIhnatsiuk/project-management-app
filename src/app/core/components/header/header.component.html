@@ -37,11 +37,15 @@
             *ngFor="let task of tasksByQuery$ | async"
             [value]="task"
           >
-            <span class="search__option-title">{{ task.title }}</span>
-            <span class="search__option-users" *ngIf="task.users?.length">{{
-              users$ | async | getUserNameById: task.users!
-            }}</span>
-            <span class="search__option-description">{{ task.description }}</span>
+            <p class="search__option-title">
+              {{ task.title }} -
+              <span class="search__option-description">{{ task.description }}</span>
+            </p>
+            <p class="search__option-users">
+              Users: owner<span *ngIf="task.users?.length">,</span>
+              <span *ngIf="task.users?.length"></span>
+              {{ users$ | async | getUserNameById: task.users! }}
+            </p>
           </mat-option>
         </ng-container>
         <ng-container *ngIf="(tasksByQuery$ | async)?.length === 0">
@@ -70,7 +74,15 @@
       </button>
     </div>
     <div class="header__auth-wrapper" *ngIf="isAuth$ | async">
-      <button (click)="authService.signOut()" mat-raised-button color="primary">
+      <button
+        (click)="
+          authService.signOut();
+          headerService.isDarkTheme = false;
+          headerService.sliderIsChecked = false
+        "
+        mat-raised-button
+        color="primary"
+      >
         {{ 'header.button.signout' | translate }}
       </button>
     </div>

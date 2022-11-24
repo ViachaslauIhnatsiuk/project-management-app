@@ -26,7 +26,7 @@ export class CreateTaskModalComponent {
     this.form = new FormGroup({
       title: new FormControl(INITIAL_EMPTY_STRING_VALUE, [
         Validators.required,
-        Validators.maxLength(50),
+        Validators.maxLength(40),
       ]),
       description: new FormControl(INITIAL_EMPTY_STRING_VALUE, [
         Validators.required,
