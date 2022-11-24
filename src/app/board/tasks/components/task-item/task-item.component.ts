@@ -56,13 +56,17 @@ export class TaskItemComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
+  private getTaskPointsData(): void {
     this.taskPointsSubscription = this.taskPoints$.subscribe((points) => {
       if (points[this.task._id!]) {
         this.taskPointsInfo.amount = points[this.task._id!].length;
         this.taskPointsInfo.done = points[this.task._id!].filter((point) => point.done).length;
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.getTaskPointsData();
   }
 
   ngOnDestroy(): void {
