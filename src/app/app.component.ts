@@ -1,19 +1,21 @@
-import { Component, HostBinding } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/header.service';
+import { Themes } from './core/models/core.models';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(private headerService: HeaderService, private translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
-  }
+export class AppComponent implements OnInit {
+  constructor(private headerService: HeaderService) {}
 
   @HostBinding('class') get themeMode() {
-    return this.headerService.isDarkTheme ? 'dark-theme' : 'light-theme';
+    return this.headerService.isDarkTheme ? Themes.Dark : Themes.Light;
+  }
+
+  ngOnInit() {
+    this.headerService.getCurrentLanguage();
+    this.headerService.getCurrentTheme();
   }
 }
