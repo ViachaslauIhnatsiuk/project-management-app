@@ -49,7 +49,6 @@ const usersReducer = createReducer(
     return { ...state, isLoading: true };
   }),
   on(deleteUserByIdSuccess, (): IUsersState => {
-    window.localStorage.clear();
     return { ...initialUsersState, isLoading: false, user: null };
   }),
   on(deleteUserByIdError, (state, { error }): IUsersState => {

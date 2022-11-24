@@ -54,6 +54,7 @@ export class AuthService {
 
   public signOut(): void {
     this.store.dispatch(logOut());
+    window.localStorage.clear();
     this.router.navigate(['/welcome']);
     this.responseHandlerService.handleResponse(200, AuthResponseMessages.Signout);
   }
