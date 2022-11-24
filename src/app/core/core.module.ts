@@ -22,11 +22,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { UsersModule } from '../users/users.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { GlobalSearchService } from './services/global-search.service';
 import { GetUserNameByIdPipe } from './pipes/get-user-name-by-id.pipe';
 import { BoardsModule } from '../board/boards/boards.module';
 import { logInSuccess } from '../auth/store/actions/auth.actions';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { getUserById } from '../users/store/actions/users.actions';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,6 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     TranslateModule,
   ],
   providers: [
-    GlobalSearchService,
     BoardService,
     NotificationService,
     ResponseHandlerService,
@@ -77,6 +76,11 @@ export class CoreModule {
     const token = window.localStorage.getItem('token');
     if (token) {
       this.store.dispatch(logInSuccess({ token }));
+      this.getUserById();
     }
+  }
+
+  private getUserById(): void {
+    this.store.dispatch(getUserById());
   }
 }
