@@ -44,7 +44,8 @@ export class EditProfilePageComponent {
 
   public resetForm(): void {
     this.editForm.reset();
-    this.editForm.markAsUntouched();
-    this.editForm.markAsPristine();
+    this.editForm.controls.name.setErrors(null);
+    this.editForm.controls.login.setErrors(null);
+    this.editForm.controls.password.setErrors(null);
   }
 }
