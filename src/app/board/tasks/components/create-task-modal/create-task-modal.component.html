@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ 'tasks.createTaskModal.title' | translate }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" color="accent">
       <mat-label>{{ 'tasks.createTaskModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
       <mat-hint
@@ -13,7 +13,7 @@
         >{{ 'tasks.createTaskModal.titleRequiredHint' | translate }}</mat-hint
       >
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" color="accent">
       <mat-label>{{ 'tasks.createTaskModal.descriptionLabel' | translate }}</mat-label>
       <input matInput formControlName="description" />
       <mat-hint
