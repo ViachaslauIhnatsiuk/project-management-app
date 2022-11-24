@@ -26,32 +26,17 @@ export class UserService {
 
   public getUserById(): Observable<IUser> {
     const id = this.getUserIdFromToken();
-
-    if (id) {
-      return this.http.get<IUser>(`${BASE_URL}users/${id}`);
-    }
-
-    return this.http.get<IUser>('');
+    return this.http.get<IUser>(`${BASE_URL}users/${id}`);
   }
 
   public updateUserById(updatedUserData: IUpdatedUserData): Observable<IUser> {
     const id = this.getUserIdFromToken();
-
-    if (id) {
-      return this.http.put<IUser>(`${BASE_URL}users/${id}`, updatedUserData);
-    }
-
-    return this.http.put<IUser>('', { params: { id } });
+    return this.http.put<IUser>(`${BASE_URL}users/${id}`, updatedUserData);
   }
 
   public deleteUserById(): Observable<IUser> {
     const id = this.getUserIdFromToken();
-
-    if (id) {
-      return this.http.delete<IUser>(`${BASE_URL}users/${id}`);
-    }
-
-    return this.http.delete<IUser>('');
+    return this.http.delete<IUser>(`${BASE_URL}users/${id}`);
   }
 
   public deleteUser(): void {
