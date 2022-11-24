@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable } from 'rxjs';
 import { BoardApiEndpoints } from '../../boards/models/boards.models';
 import { ITask, ModifiedTaskForRequest } from '../models/tasks.models';
 import { GetTasksProps } from '../store/models/task.models';
 
 @Injectable()
 export class TaskService {
+  public searchTerm = new BehaviorSubject<string>('');
+
   constructor(private http: HttpClient) {}
 
   public getTasks({ boardId, columnId }: GetTasksProps): Observable<ITask[]> {
@@ -19,6 +21,14 @@ export class TaskService {
           throw new Error(message);
         }),
       );
+  }
+
+  public getTasksByQuery(query: string): Observable<ITask[]> {
+    return this.http.get<ITask[]>('tasksSet', { params: { query } }).pipe(
+      catchError(({ message }: Error) => {
+        throw new Error(message);
+      }),
+    );
   }
 
   public createTask(task: ITask): Observable<ITask> {

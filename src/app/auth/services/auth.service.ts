@@ -15,8 +15,8 @@ import {
 import { logOut } from 'src/app/auth/store/actions/auth.actions';
 import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.models';
 import { logIn } from '../store/actions/auth.actions';
-import { getUserById } from 'src/app/users/store/actions/users.actions';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
+import { getUserById } from 'src/app/users/store/actions/users.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -46,14 +46,13 @@ export class AuthService {
       map((response) => {
         localStorage.setItem('token', response.token);
         this.store.dispatch(getUserById());
-        this.router.navigate(['/']);
+        this.router.navigate(['/boards']);
         return response;
       }),
     );
   }
 
   public signOut(): void {
-    window.localStorage.clear();
     this.store.dispatch(logOut());
     this.router.navigate(['/welcome']);
     this.responseHandlerService.handleResponse(200, AuthResponseMessages.Signout);

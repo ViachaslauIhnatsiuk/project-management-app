@@ -2,10 +2,9 @@
   <mat-card-content (click)="editTask()">
     <h5 class="task__title">{{ task.title }}</h5>
     <p class="task__description">{{ task.description }}</p>
-    <div class="task__points-done">
-      <mat-icon *ngIf="taskPointsInfo.amount" class="task__icon">check_circle_outline</mat-icon>
-      {{ taskPointsInfo.done }}<span *ngIf="taskPointsInfo.amount">/</span
-      >{{ taskPointsInfo.amount }}
+    <div class="task__points-done" *ngIf="taskPointsInfo.amount">
+      <mat-icon class="task__icon">check_circle_outline</mat-icon>
+      {{ taskPointsInfo.done }}<span>/</span>{{ taskPointsInfo.amount }}
     </div>
   </mat-card-content>
   <mat-card-actions>

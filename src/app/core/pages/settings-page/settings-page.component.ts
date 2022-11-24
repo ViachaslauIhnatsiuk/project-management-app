@@ -5,6 +5,7 @@ import { ConfirmationModalComponent } from 'src/app/shared/components/confirmati
 import { HeaderService } from 'src/app/core/services/header.service';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-page',
@@ -17,13 +18,17 @@ export class SettingsPageComponent {
     public authService: AuthService,
     public dialog: MatDialog,
     private store: Store,
+    private router: Router,
   ) {}
 
   public deleteUserWithConfirm(): void {
     const dialogRef = this.dialog.open(ConfirmationModalComponent);
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
-      if (isConfirm) this.store.dispatch(deleteUserById());
+      if (isConfirm) {
+        this.store.dispatch(deleteUserById());
+        this.router.navigate(['/welcome']);
+      }
     });
   }
 }

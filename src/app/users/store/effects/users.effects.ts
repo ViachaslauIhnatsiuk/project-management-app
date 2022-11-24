@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -15,11 +14,7 @@ import { IUpdatedUserData, IUserError, UsersActions } from '../models/users.mode
 
 @Injectable()
 export class UsersEffects {
-  constructor(
-    private actions$: Actions,
-    private userService: UserService,
-    private router: Router,
-  ) {}
+  constructor(private actions$: Actions, private userService: UserService) {}
 
   getUsers$ = createEffect(() => {
     return this.actions$.pipe(
@@ -48,7 +43,7 @@ export class UsersEffects {
   updateUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.UPDATE_USER_BY_ID),
-      mergeMap((updatedUserData: IUpdatedUserData) => {
+      mergeMap(({ updatedUserData }: { updatedUserData: IUpdatedUserData }) => {
         return this.userService.updateUserById(updatedUserData).pipe(
           map((updatedUser) => updateUserByIdSuccess({ updatedUser })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),

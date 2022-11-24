@@ -38,11 +38,13 @@ export class EditProfilePageComponent {
 
   public onSubmit(): void {
     const fieldValues = this.editForm.value as IUpdatedUserData;
-
     this.store.dispatch(updateUserById({ updatedUserData: fieldValues }));
+    this.resetForm();
   }
 
   public resetForm(): void {
     this.editForm.reset();
+    this.editForm.markAsUntouched();
+    this.editForm.markAsPristine();
   }
 }

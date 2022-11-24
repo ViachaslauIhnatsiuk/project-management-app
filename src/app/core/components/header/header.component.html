@@ -31,20 +31,20 @@
       >
       </mat-progress-spinner>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="openFoundBoard($event)">
-        <ng-container *ngIf="(searchedItems$ | async)?.length !== 0">
+        <ng-container *ngIf="(tasksByQuery$ | async)?.length !== 0">
           <mat-option
             class="search__option"
-            *ngFor="let item of searchedItems$ | async"
-            [value]="item"
+            *ngFor="let task of tasksByQuery$ | async"
+            [value]="task"
           >
-            <span class="search__option-title">{{ item.title }}</span>
-            <span class="search__option-users" *ngIf="item.users.length">{{
-              users$ | async | getUserNameById: item.users
+            <span class="search__option-title">{{ task.title }}</span>
+            <span class="search__option-users" *ngIf="task.users?.length">{{
+              users$ | async | getUserNameById: task.users!
             }}</span>
-            <span class="search__option-description">{{ item.description }}</span>
+            <span class="search__option-description">{{ task.description }}</span>
           </mat-option>
         </ng-container>
-        <ng-container *ngIf="(searchedItems$ | async)?.length === 0">
+        <ng-container *ngIf="(tasksByQuery$ | async)?.length === 0">
           <mat-option class="search__option" disabled="true">
             <span class="search__option-title">{{ 'header.searchNothingResult' | translate }}</span>
           </mat-option>

@@ -23,6 +23,7 @@ const authReducer = createReducer(
     return { ...state, isLoading: false, isAuth: false, error: { statusCode, message } };
   }),
   on(logOut, (): IAuthState => {
+    window.localStorage.clear();
     return { ...initialAuthState };
   }),
   on(signUp, (state): IAuthState => {
