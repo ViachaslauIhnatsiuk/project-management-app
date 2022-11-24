@@ -13,6 +13,7 @@ import { FormBuilder } from '@angular/forms';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { TaskService } from 'src/app/board/tasks/services/task.service';
 import { ITask } from 'src/app/board/tasks/models/tasks.models';
+import { Languages } from '../../models/core.models';
 
 @Component({
   selector: 'app-header',
@@ -20,8 +21,9 @@ import { ITask } from 'src/app/board/tasks/models/tasks.models';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
-  public currentLanguage: string = 'En';
   public isNotWelcomePage!: boolean;
+
+  public currentLanguage = window.localStorage.getItem('language') || Languages.En;
 
   public users$ = this.store.select(selectUsers);
   public isLoading$ = this.store.select(selectIsLoading);
@@ -87,5 +89,6 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
   public switchLanguage(value: string): void {
     this.currentLanguage = value;
     this.translate.use(value.toLowerCase());
+    window.localStorage.setItem('language', value);
   }
 }
