@@ -56,6 +56,7 @@ export class UserService {
 
   public deleteUser(): void {
     this.store.dispatch(deleteUserById());
-    window.localStorage.clear();
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('theme');
   }
 }
