@@ -55,7 +55,9 @@
       "menu": "Simple menu",
       "projects": "Easy projects managment",
       "tasks": "Intuitive organization of work process"
-    }
+    },
+    "linkText": "To learn more about Boards visit out",
+    "link": "Welcome page"
   },
   "notFoundPage": "Page not found",
   "loginForm": {
