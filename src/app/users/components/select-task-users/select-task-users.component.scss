@@ -1,6 +1,5 @@
 :host {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .mat-form-field {
@@ -8,8 +7,8 @@
 }
 
 ::ng-deep .mat-select-panel {
-  min-width: 232px !important;
-  max-width: 232px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
   transform: translateX(28px) translateY(45px) !important;
   border-radius: 0 0 5px 5px !important;
 }
