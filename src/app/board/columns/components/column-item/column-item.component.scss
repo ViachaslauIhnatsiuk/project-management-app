@@ -5,20 +5,22 @@
   display: flex;
   flex-direction: column;
   padding: 10px 0 50px;
-  cursor: pointer;
+  cursor: grab;
 }
 
 ::ng-deep .cdk-drag-preview {
   height: fit-content !important;
 }
 
-.title {
+.icon {
+  margin-top: -8px;
   cursor: pointer;
 }
 
 .mat-card-title {
   font-size: 18px;
   padding: 5px 0;
+  cursor: default;
 }
 
 .mat-divider {
