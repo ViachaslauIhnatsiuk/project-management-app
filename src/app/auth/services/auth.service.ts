@@ -18,6 +18,7 @@ import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.mode
 import { logIn } from '../store/actions/auth.actions';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 import { getUserById } from 'src/app/users/store/actions/users.actions';
+import { CustomMessages } from 'src/app/core/models/response-handler.models';
 
 @Injectable({
   providedIn: 'root',
@@ -80,7 +81,7 @@ export class AuthService {
         return false;
       }
     } catch (error) {
-      this.responseHandlerService.handleResponse(401, 'Please refresh page');
+      this.responseHandlerService.handleResponse(401, CustomMessages.Invalid);
       return false;
     }
   }

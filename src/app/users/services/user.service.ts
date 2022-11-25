@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { IUpdatedUserData, IUser } from 'src/app/users/store/models/users.models';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
+import { CustomMessages } from 'src/app/core/models/response-handler.models';
 
 @Injectable()
 export class UserService {
@@ -23,7 +24,7 @@ export class UserService {
         const { id } = jwtDecode<{ id: string }>(TOKEN);
         return id;
       } catch (error) {
-        this.responseHandlerService.handleResponse(401, 'Please refresh page');
+        this.responseHandlerService.handleResponse(401, CustomMessages.Invalid);
       }
     }
   }

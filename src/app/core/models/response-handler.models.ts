@@ -6,3 +6,7 @@ export enum CustomTitles {
   Conflict = 'CONFLICT',
   Default = 'UNEXPECTED ERROR',
 }
+
+export enum CustomMessages {
+  Invalid = 'Invalid Token',
+}
