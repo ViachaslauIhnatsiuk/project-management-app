@@ -20,4 +20,6 @@ const selectActiveBoard = createSelector(selectFeatureBoards, (state) => state.s
 
 const selectBoardSortType = createSelector(selectFeatureBoards, (state) => state.sortType);
 
-export { selectBoards, selectActiveBoard, selectBoardSortType };
+const selectBoardFilters = createSelector(selectFeatureBoards, (state) => state.filters);
+
+export { selectBoards, selectActiveBoard, selectBoardSortType, selectBoardFilters };

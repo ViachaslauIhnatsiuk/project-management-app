@@ -18,7 +18,7 @@ import {
   getBoardsByUserIdSuccess,
   getBoardsError,
   getBoardsSuccess,
-  setBoardFilterByTitle,
+  setBoardFilters,
   setBoardSortType,
   updateBoard,
   updateBoardError,
@@ -90,11 +90,8 @@ const boardsReducer = createReducer(
   on(updateBoardError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
   }),
-  on(setBoardFilterByTitle, (state, { value }): IBoardsState => {
-    const updatedFilters = { ...state.filters };
-    updatedFilters.byTitle = value;
-
-    return { ...state, filters: updatedFilters };
+  on(setBoardFilters, (state, { filters }): IBoardsState => {
+    return { ...state, filters };
   }),
   on(setBoardSortType, (state, { sortType }): IBoardsState => {
     return { ...state, sortType };

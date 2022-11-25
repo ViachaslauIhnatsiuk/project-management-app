@@ -34,7 +34,7 @@ enum BoardsActions {
   UPDATE_BOARD_SUCCESS = '[Boards] Update Board success',
   UPDATE_BOARD_ERROR = '[Boards] Update Board Boards error',
   SET_TOKEN = '[Boards] Set Token',
-  SET_FILTER_BY_TITLE = '[Boards] Set Filter By Title',
+  SET_FILTERs = '[Boards] Set Filters',
   SET_SORT_TYPE = '[Boards] Set Sort Type',
 }
 
