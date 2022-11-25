@@ -90,7 +90,16 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
             .pipe(tap(() => this.isSearched$.next(false))),
         ),
         switchMap((tasks) =>
-          this.user$.pipe(map((user) => tasks.filter((task) => task.userId === user?._id))),
+          this.user$.pipe(
+            map((user) =>
+              tasks.filter((task) => {
+                if (user) {
+                  return task.userId === user._id || task.users?.includes(user._id);
+                }
+                return false;
+              }),
+            ),
+          ),
         ),
       )
       .subscribe((tasks) => (this.tasksByQuery$ = of(tasks)));
