@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { IUpdatedUserData, IUser } from 'src/app/users/store/models/users.models';
-import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
 
 @Injectable()
@@ -25,15 +24,15 @@ export class UserService {
   }
 
   public getUserById(id: string): Observable<IUser> {
-    return this.http.get<IUser>(`${BASE_URL}users/${id}`);
+    return this.http.get<IUser>(`users/${id}`);
   }
 
   public updateUserById(id: string, updatedUserData: IUpdatedUserData): Observable<IUser> {
-    return this.http.put<IUser>(`${BASE_URL}users/${id}`, updatedUserData);
+    return this.http.put<IUser>(`users/${id}`, updatedUserData);
   }
 
   public deleteUserById(id: string): Observable<IUser> {
-    return this.http.delete<IUser>(`${BASE_URL}users/${id}`);
+    return this.http.delete<IUser>(`users/${id}`);
   }
 
   public deleteUser(): void {
