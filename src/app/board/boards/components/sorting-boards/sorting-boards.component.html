@@ -1,3 +1,6 @@
-<button (click)="toggleSortType()">Sort <mat-icon *ngIf="setVisibilityBySortType('title_asc')">keyboard_arrow_down</mat-icon>
-  <mat-icon  *ngIf="setVisibilityBySortType('title_desc')">keyboard_arrow_up</mat-icon>
+<button class="filter__button" mat-raised-button (click)="toggleSortType()">
+  <mat-icon class="filter__icon">filter_list</mat-icon>
+  {{ sortType === 'title_asc' ? 'A-Z' : 'Z-A' }}
+  <mat-icon *ngIf="setVisibilityBySortType('title_asc')">keyboard_arrow_down</mat-icon>
+  <mat-icon *ngIf="setVisibilityBySortType('title_desc')">keyboard_arrow_up</mat-icon>
 </button>

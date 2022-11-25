@@ -1,8 +1,19 @@
 :host {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px 50px;
+  row-gap: 30px;
+}
+
+.board-wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
-  padding: 70px 50px 50px;
+}
+
+.btns-wrapper {
+  display: flex;
+  column-gap: 15px;
 }
 
 .mat-card {
@@ -15,33 +26,33 @@
 }
 
 @media (max-width: 1500px) {
-  :host {
+  .board-wrapper {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 1300px) {
-  :host {
+  .board-wrapper {
     padding: 50px 30px;
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 1000px) {
-  :host {
+  .board-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  :host {
+  .board-wrapper {
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
   }
 }
 
 @media (max-width: 600px) {
-  :host {
+  .board-wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
 

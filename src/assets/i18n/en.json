@@ -92,7 +92,7 @@
       "signup": "Sign Up",
       "signout": "Sign Out"
     },
-    "searchPlaceholder": "Search task",
+    "searchPlaceholder": "Find task",
     "searchNothingResult": "Nothing found"
   },
   "sidebar": {
@@ -125,6 +125,7 @@
     "editResetButton": "Reset Form"
   },
   "boards": {
+    "filterPlaceholder": "Find board",
     "createBoard": "Create new board",
     "createBoardModal": {
       "title": "Create board",
