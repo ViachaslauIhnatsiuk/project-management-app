@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/users/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -28,6 +29,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private store: Store,
+    private userService: UserService,
     private responseHandlerService: ResponseHandlerService,
   ) {}
 
@@ -45,7 +47,8 @@ export class AuthService {
     return this.http.post<ILogInResponse>('auth/signin', fields).pipe(
       map((response) => {
         localStorage.setItem('token', response.token);
-        this.store.dispatch(getUserById());
+        const id = this.userService.getUserIdFromToken() as string;
+        this.store.dispatch(getUserById({ id }));
         this.router.navigate(['/boards']);
         return response;
       }),
