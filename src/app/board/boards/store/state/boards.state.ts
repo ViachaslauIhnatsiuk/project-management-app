@@ -1,11 +1,12 @@
-import { IBoardsState } from '../models/boards.models';
+import { IBoardsState, BoardSortTypes } from '../models/boards.models';
 
 const initialBoardsState: IBoardsState = {
   boards: [],
   selectedBoard: null,
+  sortType: BoardSortTypes.INITIAL,
+  filters: { byTitle: '', byOwner: '' },
   isLoading: false,
   error: '',
-  userId: null,
 };
 
 export { initialBoardsState };

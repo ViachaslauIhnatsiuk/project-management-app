@@ -18,6 +18,8 @@ import { boardsReducer } from './store/reducers/boards.reducers';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 import { UsersModule } from 'src/app/users/users.module';
 import { PointsModule } from 'src/app/points/points.module';
+import { SortingBoardsComponent } from './components/sorting-boards/sorting-boards.component';
+import { SearchBoardsComponent } from './components/search-boards/search-boards.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { PointsModule } from 'src/app/points/points.module';
     UpdateBoardModalComponent,
     ProjectPageComponent,
     ClickStopPropagationDirective,
+    SortingBoardsComponent,
+    SearchBoardsComponent,
   ],
   exports: [BoardsPageComponent],
   imports: [
