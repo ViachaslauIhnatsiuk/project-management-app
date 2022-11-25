@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { IBoard } from '../../models/boards.models';
-import { BoardsActions, BoardSortTypes } from '../models/boards.models';
+import { BoardFilters, BoardsActions, BoardSortTypes } from '../models/boards.models';
 
 const getBoards = createAction(BoardsActions.GET_BOARDS);
 const getBoardsSuccess = createAction(
@@ -53,10 +53,7 @@ const updateBoardSuccess = createAction(
 );
 const updateBoardError = createAction(BoardsActions.UPDATE_BOARD_ERROR, props<{ error: string }>());
 
-const setBoardFilterByTitle = createAction(
-  BoardsActions.SET_FILTER_BY_TITLE,
-  props<{ value: string }>(),
-);
+const setBoardFilters = createAction(BoardsActions.SET_FILTERs, props<{ filters: BoardFilters }>());
 
 const setBoardSortType = createAction(
   BoardsActions.SET_SORT_TYPE,
@@ -82,6 +79,6 @@ export {
   updateBoard,
   updateBoardSuccess,
   updateBoardError,
-  setBoardFilterByTitle,
+  setBoardFilters,
   setBoardSortType,
 };

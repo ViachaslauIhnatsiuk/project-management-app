@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { setBoardSortType } from '../../store/actions/boards.actions';
 import { BoardSortTypes } from '../../store/models/boards.models';
 import { selectBoardSortType } from '../../store/selectors/boards.selectors';
@@ -25,6 +26,8 @@ export class SortingBoardsComponent implements OnInit, OnDestroy {
     const { TITLE_ASC, TITLE_DESC, INITIAL } = BoardSortTypes;
 
     const sortType = this.sortType === TITLE_DESC || INITIAL ? TITLE_ASC : TITLE_DESC;
+
+    LocalStorageService.set<string>('sortType', sortType);
 
     this.store.dispatch(setBoardSortType({ sortType }));
   }

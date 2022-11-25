@@ -1,10 +1,11 @@
-import { IBoardsState, BoardSortTypes } from '../models/boards.models';
+import { getInitialStateFilters, getInitialStateSortType } from '../helpers/boards.helpers';
+import { IBoardsState } from '../models/boards.models';
 
 const initialBoardsState: IBoardsState = {
   boards: [],
   selectedBoard: null,
-  sortType: BoardSortTypes.INITIAL,
-  filters: { byTitle: '', byOwner: '' },
+  sortType: getInitialStateSortType(),
+  filters: getInitialStateFilters(),
   isLoading: false,
   error: '',
 };

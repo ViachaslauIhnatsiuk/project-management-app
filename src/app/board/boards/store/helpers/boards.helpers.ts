@@ -1,3 +1,4 @@
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { IBoard } from '../../models/boards.models';
 import { BoardFilters, BoardSortTypes } from '../models/boards.models';
 
@@ -34,4 +35,10 @@ const filterBoards = (boards: IBoard[], { byTitle, byOwner }: BoardFilters): IBo
   return filteredBoards;
 };
 
-export { sortBoardsBySortType, filterBoards };
+const getInitialStateSortType = (): BoardSortTypes =>
+  BoardSortTypes.INITIAL || LocalStorageService.get<BoardSortTypes>('sortType');
+
+const getInitialStateFilters = (): BoardFilters =>
+  LocalStorageService.get<BoardFilters>('filters') || { byTitle: '', byOwner: '' };
+
+export { sortBoardsBySortType, filterBoards, getInitialStateSortType, getInitialStateFilters };

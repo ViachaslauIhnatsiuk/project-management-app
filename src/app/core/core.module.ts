@@ -28,6 +28,7 @@ import { logInSuccess } from '../auth/store/actions/auth.actions';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { getUserById } from '../users/store/actions/users.actions';
 import { UserService } from '../users/services/user.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { UserService } from '../users/services/user.service';
     ResponseHandlerService,
     AuthGuard,
     httpInterceptorProviders,
+    LocalStorageService,
   ],
   exports: [
     HeaderComponent,
