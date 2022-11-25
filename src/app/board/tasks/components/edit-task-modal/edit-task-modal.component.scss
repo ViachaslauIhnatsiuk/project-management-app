@@ -25,3 +25,12 @@
 .mat-hint {
   color: #f44336;
 }
+
+.textarea::-webkit-scrollbar {
+  width: 3px;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
+}

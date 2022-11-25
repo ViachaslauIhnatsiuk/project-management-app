@@ -15,7 +15,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" color="accent">
       <mat-label>{{ 'tasks.createTaskModal.descriptionLabel' | translate }}</mat-label>
-      <input matInput formControlName="description" />
+      <textarea class="textarea" matInput formControlName="description" rows="5"></textarea>
       <mat-hint
         *ngIf="form.controls['description'].errors?.['maxlength'] && form.controls['description'].touched"
         >{{ 'tasks.createTaskModal.descriptionLengthHint' | translate }}</mat-hint

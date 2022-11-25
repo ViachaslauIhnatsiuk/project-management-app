@@ -1,8 +1,10 @@
 <h1 mat-dialog-title>{{ 'boards.confirmationModal.title' | translate }}</h1>
 <div mat-dialog-content>{{ 'boards.confirmationModal.question' | translate }}</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>{{ 'boards.confirmationModal.no' | translate }}</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+  <button mat-button mat-dialog-close cdkFocusInitial>
+    {{ 'boards.confirmationModal.no' | translate }}
+  </button>
+  <button mat-button [mat-dialog-close]="true">
     {{ 'boards.confirmationModal.yes' | translate }}
   </button>
 </div>
