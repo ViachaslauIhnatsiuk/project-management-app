@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 import { TReturnValue } from 'src/app/shared/models/validator-return-value.models';
-import { ErrorMessages } from 'src/app/shared/models/password-validator.models';
+import { ErrorMessagesEn, ErrorMessagesRu } from 'src/app/shared/models/password-validator.models';
 
 export const passwordValidator = (control: AbstractControl): TReturnValue => {
   const value = control.value;
@@ -10,25 +10,39 @@ export const passwordValidator = (control: AbstractControl): TReturnValue => {
   const checkForNumberAndLetterCharacters = /(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/;
   const checkForOneSpecialCharacter = /(?=.*?[#?!@$%^&*-])/;
 
+  const currentLanguage = window.localStorage.getItem('language') || 'En';
+
   switch (true) {
     case !checkForEightCharacters.test(value):
       return {
-        passwordStrength: ErrorMessages.eightCharacters,
+        passwordStrength:
+          currentLanguage === 'En'
+            ? ErrorMessagesEn.eightCharacters
+            : ErrorMessagesRu.eightCharacters,
       };
 
     case !checkForUpperAndLowerCaseCharacters.test(value):
       return {
-        passwordStrength: ErrorMessages.upperAndLowerCaseCharacters,
+        passwordStrength:
+          currentLanguage === 'En'
+            ? ErrorMessagesEn.upperAndLowerCaseCharacters
+            : ErrorMessagesRu.upperAndLowerCaseCharacters,
       };
 
     case !checkForNumberAndLetterCharacters.test(value):
       return {
-        passwordStrength: ErrorMessages.numberAndLetterCharacters,
+        passwordStrength:
+          currentLanguage === 'En'
+            ? ErrorMessagesEn.numberAndLetterCharacters
+            : ErrorMessagesRu.numberAndLetterCharacters,
       };
 
     case !checkForOneSpecialCharacter.test(value):
       return {
-        passwordStrength: ErrorMessages.oneSpecialCharacter,
+        passwordStrength:
+          currentLanguage === 'En'
+            ? ErrorMessagesEn.oneSpecialCharacter
+            : ErrorMessagesRu.oneSpecialCharacter,
       };
 
     default:
