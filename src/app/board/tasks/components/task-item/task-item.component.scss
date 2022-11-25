@@ -29,8 +29,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    opacity: 0;
-    transition: 0.5s;
+    transform: scale(0.8);
   }
 
   &__points-done {
@@ -42,9 +41,4 @@
   &__icon {
     transform: scale(0.6);
   }
-}
-
-.mat-card:hover .task__delete-btn {
-  transition: 0.5s;
-  opacity: 1;
 }
