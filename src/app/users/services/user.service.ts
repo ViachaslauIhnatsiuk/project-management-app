@@ -5,17 +5,26 @@ import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { IUpdatedUserData, IUser } from 'src/app/users/store/models/users.models';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
+import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+    private responseHandlerService: ResponseHandlerService,
+  ) {}
 
   public getUserIdFromToken(): string | void {
     const TOKEN = window.localStorage.getItem('token');
 
     if (TOKEN) {
-      const { id } = jwtDecode<{ id: string }>(TOKEN);
-      return id;
+      try {
+        const { id } = jwtDecode<{ id: string }>(TOKEN);
+        return id;
+      } catch (error) {
+        this.responseHandlerService.handleResponse(401, 'Please refresh page');
+      }
     }
   }
 

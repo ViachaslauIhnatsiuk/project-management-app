@@ -69,12 +69,18 @@ export class AuthService {
     if (!token) return false;
 
     const currentTime = Date.now();
-    const decodedToken = jwtDecode<IJWTPayload>(token);
-    if (decodedToken.exp) {
-      const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
-      const timeDifference = tokenExpireTime - currentTime;
-      return timeDifference > MagicNumbers.Zero ? true : false;
-    } else {
+
+    try {
+      const decodedToken = jwtDecode<IJWTPayload>(token);
+      if (decodedToken.exp) {
+        const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
+        const timeDifference = tokenExpireTime - currentTime;
+        return timeDifference > MagicNumbers.Zero ? true : false;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      this.responseHandlerService.handleResponse(401, 'Please refresh page');
       return false;
     }
   }
