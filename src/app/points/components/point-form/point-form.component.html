@@ -1,6 +1,6 @@
 <mat-form-field class="example-form-field" color="accent">
   <mat-label>{{ 'points.createPointForm.title' | translate }}</mat-label>
-  <input matInput type="text" [(ngModel)]="pointTitle" />
+  <input matInput type="text" maxlength="20" [(ngModel)]="pointTitle" />
   <button
     *ngIf="pointTitle"
     matSuffix
