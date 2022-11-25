@@ -24,23 +24,21 @@ export class UserService {
     return this.http.get<IUser[]>('users');
   }
 
-  public getUserById(): Observable<IUser> {
-    const id = this.getUserIdFromToken();
+  public getUserById(id: string): Observable<IUser> {
     return this.http.get<IUser>(`${BASE_URL}users/${id}`);
   }
 
-  public updateUserById(updatedUserData: IUpdatedUserData): Observable<IUser> {
-    const id = this.getUserIdFromToken();
+  public updateUserById(id: string, updatedUserData: IUpdatedUserData): Observable<IUser> {
     return this.http.put<IUser>(`${BASE_URL}users/${id}`, updatedUserData);
   }
 
-  public deleteUserById(): Observable<IUser> {
-    const id = this.getUserIdFromToken();
+  public deleteUserById(id: string): Observable<IUser> {
     return this.http.delete<IUser>(`${BASE_URL}users/${id}`);
   }
 
   public deleteUser(): void {
-    this.store.dispatch(deleteUserById());
+    const id = this.getUserIdFromToken() as string;
+    this.store.dispatch(deleteUserById({ id }));
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('theme');
   }

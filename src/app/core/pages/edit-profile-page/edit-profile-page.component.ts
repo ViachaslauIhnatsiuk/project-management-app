@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { passwordValidator } from 'src/app/shared/validators/password.validator';
 import { updateUserById } from 'src/app/users/store/actions/users.actions';
 import { IUpdatedUserData } from 'src/app/users/store/models/users.models';
+import { UserService } from 'src/app/users/services/user.service';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -22,6 +23,7 @@ export class EditProfilePageComponent {
     public fb: FormBuilder,
     public settingsService: SettingsService,
     private store: Store,
+    private userService: UserService,
   ) {}
 
   get name() {
@@ -38,7 +40,8 @@ export class EditProfilePageComponent {
 
   public onSubmit(): void {
     const fieldValues = this.editForm.value as IUpdatedUserData;
-    this.store.dispatch(updateUserById({ updatedUserData: fieldValues }));
+    const id = this.userService.getUserIdFromToken() as string;
+    this.store.dispatch(updateUserById({ id, updatedUserData: fieldValues }));
     this.resetForm();
   }
 

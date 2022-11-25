@@ -27,6 +27,7 @@ import { BoardsModule } from '../board/boards/boards.module';
 import { logInSuccess } from '../auth/store/actions/auth.actions';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { getUserById } from '../users/store/actions/users.actions';
+import { UserService } from '../users/services/user.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { getUserById } from '../users/store/actions/users.actions';
   ],
 })
 export class CoreModule {
-  constructor(private store: Store) {
+  constructor(private store: Store, private userService: UserService) {
     const token = window.localStorage.getItem('token');
     if (token) {
       this.store.dispatch(logInSuccess({ token }));
@@ -81,6 +82,7 @@ export class CoreModule {
   }
 
   private getUserById(): void {
-    this.store.dispatch(getUserById());
+    const id = this.userService.getUserIdFromToken() as string;
+    this.store.dispatch(getUserById({ id }));
   }
 }

@@ -31,8 +31,8 @@ export class UsersEffects {
   getUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.GET_USER_BY_ID),
-      mergeMap(() => {
-        return this.userService.getUserById().pipe(
+      mergeMap(({ id }: { id: string }) => {
+        return this.userService.getUserById(id).pipe(
           map((user) => getUserByIdSuccess({ user })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
@@ -43,8 +43,8 @@ export class UsersEffects {
   updateUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.UPDATE_USER_BY_ID),
-      mergeMap(({ updatedUserData }: { updatedUserData: IUpdatedUserData }) => {
-        return this.userService.updateUserById(updatedUserData).pipe(
+      mergeMap(({ id, updatedUserData }: { id: string; updatedUserData: IUpdatedUserData }) => {
+        return this.userService.updateUserById(id, updatedUserData).pipe(
           map((updatedUser) => updateUserByIdSuccess({ updatedUser })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );
@@ -55,8 +55,8 @@ export class UsersEffects {
   deleteUserById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.DELETE_USER_BY_ID),
-      mergeMap(() => {
-        return this.userService.deleteUserById().pipe(
+      mergeMap(({ id }: { id: string }) => {
+        return this.userService.deleteUserById(id).pipe(
           map((deletedUser) => deleteUserByIdSuccess({ deletedUser })),
           catchError((error: IUserError) => of(getUserByIdError({ error }))),
         );

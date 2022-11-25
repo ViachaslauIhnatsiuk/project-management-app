@@ -5,7 +5,7 @@ const getUsers = createAction(UsersActions.GET_USERS);
 const getUsersSuccess = createAction(UsersActions.GET_USERS_SUCCESS, props<{ users: IUser[] }>());
 const getUsersError = createAction(UsersActions.GET_USERS_ERROR, props<{ error: IUserError }>());
 
-const getUserById = createAction(UsersActions.GET_USER_BY_ID);
+const getUserById = createAction(UsersActions.GET_USER_BY_ID, props<{ id: string }>());
 const getUserByIdSuccess = createAction(
   UsersActions.GET_USER_BY_ID_SUCCESS,
   props<{ user: IUser }>(),
@@ -17,7 +17,7 @@ const getUserByIdError = createAction(
 
 const updateUserById = createAction(
   UsersActions.UPDATE_USER_BY_ID,
-  props<{ updatedUserData: IUpdatedUserData }>(),
+  props<{ id: string; updatedUserData: IUpdatedUserData }>(),
 );
 const updateUserByIdSuccess = createAction(
   UsersActions.UPDATE_USER_BY_ID_SUCCESS,
@@ -28,7 +28,7 @@ const updateUserByIdError = createAction(
   props<{ error: IUserError }>(),
 );
 
-const deleteUserById = createAction(UsersActions.DELETE_USER_BY_ID);
+const deleteUserById = createAction(UsersActions.DELETE_USER_BY_ID, props<{ id: string }>());
 const deleteUserByIdSuccess = createAction(
   UsersActions.DELETE_USER_BY_ID_SUCCESS,
   props<{ deletedUser: IUser }>(),
