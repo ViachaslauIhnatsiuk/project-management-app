@@ -26,7 +26,7 @@ export class UsersInterceptor implements HttpInterceptor {
               const message = UsersResponseMessages.Updated;
               this.responseHandlerService.handleResponse(status, message);
             }
-            if (request.url === Methods.Delete) {
+            if (request.method === Methods.Delete) {
               const message = UsersResponseMessages.Deleted;
               this.responseHandlerService.handleResponse(status, message);
             }

@@ -5,8 +5,18 @@ import { HeaderService } from 'src/app/core/services/header.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { DEBOUNCE_TIME, MIN_QUERY_LENGTH } from 'src/app/core/constants/header.constants';
 import { selectIsAuth, selectIsLoading } from 'src/app/auth/store/selectors/auth.selectors';
-import { BehaviorSubject, debounceTime, filter, Observable, Subscription, tap } from 'rxjs';
-import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
+import {
+  BehaviorSubject,
+  debounceTime,
+  filter,
+  map,
+  Observable,
+  of,
+  Subscription,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { selectUser, selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { Router } from '@angular/router';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormBuilder } from '@angular/forms';
@@ -26,6 +36,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
   public currentLanguage = window.localStorage.getItem('language') || Languages.En;
 
   public users$ = this.store.select(selectUsers);
+  public user$ = this.store.select(selectUser);
   public isLoading$ = this.store.select(selectIsLoading);
   public isAuth$ = this.store.select(selectIsAuth);
 
@@ -73,13 +84,16 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
         debounceTime(DEBOUNCE_TIME),
         filter((query) => query.length > MIN_QUERY_LENGTH),
         tap(() => this.isSearched$.next(true)),
+        switchMap((searchQuery) =>
+          this.taskService
+            .getTasksByQuery(searchQuery)
+            .pipe(tap(() => this.isSearched$.next(false))),
+        ),
+        switchMap((tasks) =>
+          this.user$.pipe(map((user) => tasks.filter((task) => task.userId === user?._id))),
+        ),
       )
-      .subscribe((query: string) => {
-        return this.taskService.getTasksByQuery(query).pipe(
-          tap(() => this.isSearched$.next(false)),
-          (tasks) => (this.tasksByQuery$ = tasks),
-        );
-      });
+      .subscribe((tasks) => (this.tasksByQuery$ = of(tasks)));
   }
 
   public ngOnDestroy(): void {
