@@ -1,12 +1,25 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { filterBoards, sortBoardsBySortType } from '../helpers/boards.helpers';
 import { IBoardsState } from '../models/boards.models';
 
 const selectFeatureBoards = createFeatureSelector<IBoardsState>('boards');
 
-const selectBoards = createSelector(selectFeatureBoards, (state) => state.boards);
+const selectBoards = createSelector(selectFeatureBoards, ({ boards, sortType, filters }) => {
+  let resultedBoards = [...boards];
 
-const selectUserId = createSelector(selectFeatureBoards, (state) => state.userId);
+  if (sortType) {
+    resultedBoards = sortBoardsBySortType(resultedBoards, sortType);
+  }
+
+  resultedBoards = filterBoards(resultedBoards, filters);
+
+  return resultedBoards;
+});
 
 const selectActiveBoard = createSelector(selectFeatureBoards, (state) => state.selectedBoard);
 
-export { selectBoards, selectUserId, selectActiveBoard };
+const selectBoardSortType = createSelector(selectFeatureBoards, (state) => state.sortType);
+
+const selectBoardFilters = createSelector(selectFeatureBoards, (state) => state.filters);
+
+export { selectBoards, selectActiveBoard, selectBoardSortType, selectBoardFilters };

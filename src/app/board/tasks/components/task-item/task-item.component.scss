@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+  cursor: grab;
 }
 
 .mat-card-content {
@@ -16,6 +17,7 @@
     margin-bottom: 10px;
     font-size: 17px;
     word-break: break-word;
+    cursor: default;
   }
 
   &__description {
@@ -23,14 +25,15 @@
     word-break: break-word;
     font-size: 14px;
     margin-bottom: 10px;
+    cursor: default;
   }
 
   &__delete-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    opacity: 0;
-    transition: 0.5s;
+    transform: scale(0.8);
+    cursor: pointer;
   }
 
   &__points-done {
@@ -42,9 +45,4 @@
   &__icon {
     transform: scale(0.6);
   }
-}
-
-.mat-card:hover .task__delete-btn {
-  transition: 0.5s;
-  opacity: 1;
 }

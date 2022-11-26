@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <mat-form-field floatLabel="never" appearance="fill">
+    <input
+      matInput
+      autocomplete="off"
+      class="input"
+      type="text"
+      formControlName="searchInput"
+      placeholder="{{ 'boards.filterPlaceholder' | translate }}"
+    />
+  </mat-form-field>
+</form>

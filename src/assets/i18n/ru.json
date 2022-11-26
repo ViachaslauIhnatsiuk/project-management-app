@@ -92,7 +92,7 @@
       "signup": "Зарегистрироваться",
       "signout": "Выйти"
     },
-    "searchPlaceholder": "Искать задачу",
+    "searchPlaceholder": "Найти задачу",
     "searchNothingResult": "Ничего не найдено"
   },
   "sidebar": {
@@ -125,6 +125,7 @@
     "editResetButton": "Очистить форму"
   },
   "boards": {
+    "filterPlaceholder": "Найти доску",
     "createBoard": "Создать новую доску",
     "createBoardModal": {
       "title": "Создать доску",

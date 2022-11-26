@@ -1,6 +1,9 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title (click)="toggleEditMode()">
+    <mat-card-title
+      [ngStyle]="isEditMode ? { opacity: 0 } : { opacity: 1 }"
+      (click)="toggleEditMode()"
+    >
       {{ column.title }}
     </mat-card-title>
     <button
@@ -18,12 +21,12 @@
       </button>
     </mat-menu>
   </mat-card-header>
-  <form *ngIf="isEditMode" [formGroup]="form" class="form">
+  <form *ngIf="isEditMode" [formGroup]="form" class="form" (mousedown)="$event.stopPropagation()">
     <mat-form-field appearance="legacy">
-      <input matInput formControlName="title" class="input" />
+      <input maxlength="20" matInput autofocus formControlName="title" class="input" />
     </mat-form-field>
-    <mat-icon (click)="updateTitle()">check icon</mat-icon>
-    <mat-icon (click)="toggleEditMode()">close</mat-icon>
+    <mat-icon class="icon" (click)="updateTitle()">check icon</mat-icon>
+    <mat-icon class="icon" (click)="toggleEditMode()">close</mat-icon>
   </form>
   <mat-divider appGenerateColor #ref></mat-divider>
   <mat-card-content>

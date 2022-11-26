@@ -3,11 +3,17 @@ import { IBoard } from '../../models/boards.models';
 interface IBoardsState {
   boards: IBoard[];
   selectedBoard: IBoard | null;
+  sortType: BoardSortTypes;
+  filters: BoardFilters;
   isLoading: boolean;
   error: string;
-  userId: string | null;
 }
 
+enum BoardSortTypes {
+  TITLE_ASC = 'title_asc',
+  TITLE_DESC = 'title_desc',
+  INITIAL = '',
+}
 enum BoardsActions {
   GET_BOARDS = '[Boards] Get Boards',
   GET_BOARDS_SUCCESS = '[Boards] Get Boards success',
@@ -28,7 +34,14 @@ enum BoardsActions {
   UPDATE_BOARD_SUCCESS = '[Boards] Update Board success',
   UPDATE_BOARD_ERROR = '[Boards] Update Board Boards error',
   SET_TOKEN = '[Boards] Set Token',
+  SET_FILTERs = '[Boards] Set Filters',
+  SET_SORT_TYPE = '[Boards] Set Sort Type',
 }
 
-export type { IBoardsState };
-export { BoardsActions };
+type BoardFilters = {
+  byTitle: string;
+  byOwner: string;
+};
+
+export type { IBoardsState, BoardFilters };
+export { BoardsActions, BoardSortTypes };

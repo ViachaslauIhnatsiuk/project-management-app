@@ -18,6 +18,8 @@ import {
   getBoardsByUserIdSuccess,
   getBoardsError,
   getBoardsSuccess,
+  setBoardFilters,
+  setBoardSortType,
   updateBoard,
   updateBoardError,
   updateBoardSuccess,
@@ -87,6 +89,12 @@ const boardsReducer = createReducer(
   }),
   on(updateBoardError, (state, { error }): IBoardsState => {
     return { ...state, isLoading: false, error };
+  }),
+  on(setBoardFilters, (state, { filters }): IBoardsState => {
+    return { ...state, filters };
+  }),
+  on(setBoardSortType, (state, { sortType }): IBoardsState => {
+    return { ...state, sortType };
   }),
 );
 

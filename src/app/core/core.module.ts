@@ -29,6 +29,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { getUserById } from '../users/store/actions/users.actions';
 import { UserService } from '../users/services/user.service';
 import { AuthService } from '../auth/services/auth.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AuthService } from '../auth/services/auth.service';
     ResponseHandlerService,
     AuthGuard,
     httpInterceptorProviders,
+    LocalStorageService,
   ],
   exports: [
     HeaderComponent,
