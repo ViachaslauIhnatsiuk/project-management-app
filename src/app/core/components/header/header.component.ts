@@ -16,7 +16,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { selectUser, selectUsers } from 'src/app/users/store/selectors/users.selectors';
+import { selectUsers } from 'src/app/users/store/selectors/users.selectors';
 import { Router } from '@angular/router';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormBuilder } from '@angular/forms';
@@ -24,6 +24,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { TaskService } from 'src/app/board/tasks/services/task.service';
 import { ITask } from 'src/app/board/tasks/models/tasks.models';
 import { Languages } from '../../models/core.models';
+import { selectBoards } from 'src/app/board/boards/store/selectors/boards.selectors';
 
 @Component({
   selector: 'app-header',
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
   public currentLanguage = window.localStorage.getItem('language') || Languages.En;
 
   public users$ = this.store.select(selectUsers);
-  public user$ = this.store.select(selectUser);
+  public boards$ = this.store.select(selectBoards);
   public isLoading$ = this.store.select(selectIsLoading);
   public isAuth$ = this.store.select(selectIsAuth);
 
@@ -90,15 +91,11 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
             .pipe(tap(() => this.isSearched$.next(false))),
         ),
         switchMap((tasks) =>
-          this.user$.pipe(
-            map((user) =>
-              tasks.filter((task) => {
-                if (user) {
-                  return task.userId === user._id || task.users?.includes(user._id);
-                }
-                return false;
-              }),
-            ),
+          this.boards$.pipe(
+            map((userboards) => {
+              const userBoardIds = userboards.map((board) => board._id);
+              return tasks.filter((task) => userBoardIds.includes(task.boardId));
+            }),
           ),
         ),
       )
