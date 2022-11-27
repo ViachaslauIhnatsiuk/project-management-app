@@ -20,6 +20,7 @@
         [matAutocomplete]="auto"
         formControlName="searchInput"
         (input)="onInput($event)"
+        (blur)="onBlur()"
         autocomplete="off"
       />
       <mat-icon matPrefix class="header__search-icon">search</mat-icon>
