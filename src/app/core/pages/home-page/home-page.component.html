@@ -1,0 +1,25 @@
+<h1 class="home__title">{{ 'homePage.title' | translate }}</h1>
+<p class="home__about">
+  {{ 'homePage.about' | translate }}
+</p>
+<p class="home__description">
+  {{ 'homePage.description' | translate }}
+</p>
+<div class="home__images">
+  <div class="home__image-column">
+    <h4 class="home__image-title">{{ 'homePage.columnsTitles.menu' | translate }}</h4>
+    <img class="home__image" src="../../../../assets/home-page/first.jpg" alt="first" />
+  </div>
+  <div class="home__image-column">
+    <h4 class="home__image-title">{{ 'homePage.columnsTitles.projects' | translate }}</h4>
+    <img class="home__image" src="../../../../assets/home-page/second.jpg" alt="second" />
+  </div>
+  <div class="home__image-column">
+    <h4 class="home__image-title">{{ 'homePage.columnsTitles.tasks' | translate }}</h4>
+    <img class="home__image" src="../../../../assets/home-page/third.jpg" alt="third" />
+  </div>
+</div>
+<div class="home__link-text">
+  {{ 'homePage.linkText' | translate }}
+  <span class="home__link" routerLink="/welcome">{{ 'homePage.link' | translate }}</span>
+</div>

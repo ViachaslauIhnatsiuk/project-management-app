@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  cursor: default;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 430px;
+  min-width: 280px;
+  height: 440px;
+}
+
+.mat-card-title {
+  font-size: 28px;
+}
+
+.mat-card-actions {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+.mat-icon {
+  margin-right: 10px;
+}
+
+.settings {
+  &__edit,
+  &__delete,
+  &__signout {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  &__theme-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__theme-title {
+    flex-grow: 1;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mat-card-actions {
+    width: 80%;
+  }
+}

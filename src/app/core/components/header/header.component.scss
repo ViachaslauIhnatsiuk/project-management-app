@@ -1,0 +1,297 @@
+.mat-progress-bar {
+  top: 80px;
+  z-index: 3;
+  height: 2px;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+:host ::ng-deep {
+  .mat-form-field-wrapper {
+    padding: 0 !important;
+  }
+
+  .mat-button-toggle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+  }
+
+  .mat-button-toggle-label-content {
+    height: 36px !important;
+    line-height: 36px !important;
+  }
+
+  .mat-form-field-flex {
+    align-items: center !important;
+    height: 40px;
+    column-gap: 10px;
+    padding: 0 10px !important;
+    border-radius: 5px !important;
+  }
+
+  .mat-form-field-infix {
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-progress-spinner {
+    width: 20px !important;
+    height: 20px !important;
+
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+
+    circle {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+}
+
+.search__option {
+  box-shadow: 0px 2px 2px -2px rgba(255, 255, 255, 0.2);
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
+}
+
+.mat-input-element {
+  font-size: 16px;
+}
+
+.mat-input-element::placeholder {
+  color: #787486;
+  font-size: 16px;
+}
+
+.mat-button-toggle-appearance-standard {
+  background-color: #959595;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #673ab7;
+  color: #ffffff !important;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  column-gap: 30px;
+
+  &__logo {
+    width: 140px;
+    cursor: pointer;
+  }
+
+  &__search {
+    flex: 1 1 auto;
+    padding: 0 100px;
+  }
+
+  &__search-field {
+    width: 100%;
+    padding: 0 100px;
+  }
+
+  &__search-icon {
+    font-size: 25px;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    margin-left: auto;
+  }
+
+  &__auth-wrapper,
+  &__theme-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__select {
+    position: relative;
+    display: flex;
+  }
+
+  &__select-icon {
+    position: absolute;
+    color: #ffffff;
+    top: 6px;
+    right: 8px;
+  }
+}
+
+.search__option-title {
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.search__option-description {
+  font-size: 14px;
+}
+
+.search__option-users {
+  font-size: 12px;
+  line-height: 12px;
+  color: #69f0ae;
+}
+
+@media (max-width: 1600px) {
+  .header {
+    &__search {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 1330px) {
+  .header {
+    &__search-field {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .header {
+    column-gap: 20px;
+
+    &__logo {
+      width: 120px;
+    }
+
+    &__theme-wrapper {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    height: 90px;
+
+    &__search {
+      order: 1;
+      flex: 1 1 100%;
+    }
+
+    &__search-icon {
+      font-size: 20px;
+    }
+
+    &__select-icon {
+      top: 4px;
+      right: 6px;
+    }
+  }
+
+  .mat-progress-bar {
+    top: 90px;
+  }
+
+  .mat-input-element,
+  .mat-input-element::placeholder {
+    font-size: 13px;
+  }
+
+  .mat-raised-button {
+    height: auto;
+    width: auto;
+    padding: 0 8px;
+    line-height: 30px;
+    font-size: 12px;
+  }
+
+  :host ::ng-deep {
+    .mat-form-field-flex,
+    .mat-form-field-infix {
+      height: 28px;
+    }
+
+    .mat-button-toggle-button {
+      height: 30px;
+    }
+
+    .mat-button-toggle-label-content {
+      height: 30px !important;
+      line-height: 30px !important;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    padding: 0 15px;
+
+    &__logo {
+      width: 100px;
+    }
+
+    &__btns-wrapper {
+      column-gap: 10px;
+    }
+
+    &__auth-wrapper {
+      column-gap: 5px;
+    }
+
+    &__select-icon {
+      top: 1px;
+      right: 4px;
+    }
+
+    &__logout {
+      display: none;
+    }
+  }
+
+  .mat-raised-button {
+    line-height: 26px;
+    font-size: 11px;
+  }
+
+  :host ::ng-deep {
+    .mat-button-toggle-button {
+      height: 26px;
+    }
+
+    .mat-button-toggle-label-content {
+      height: 26px !important;
+      line-height: 26px !important;
+      font-size: 11px;
+    }
+  }
+}

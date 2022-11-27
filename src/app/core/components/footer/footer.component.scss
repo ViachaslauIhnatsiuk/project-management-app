@@ -1,0 +1,103 @@
+:host {
+  margin: 0 auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.mat-list-item {
+  height: 12px !important;
+}
+
+:host ::ng-deep {
+  .mat-list-item-content {
+    padding: 0 !important;
+  }
+}
+
+.mat-list-base {
+  padding: 0;
+}
+
+.footer {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 15px;
+
+  &__year {
+    font-size: 16px;
+    cursor: default;
+  }
+
+  &__githubs-main {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+  }
+
+  &__github {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__link {
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  &__icon {
+    margin-right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 60px;
+  }
+
+  &__githubs-adaptive {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &__githubs-main {
+      display: none;
+    }
+
+    &__githubs-adaptive {
+      display: flex;
+      align-items: center;
+    }
+
+    &__githubs {
+      line-height: 100%;
+    }
+
+    &__link {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .footer {
+    &__logo {
+      width: 50px;
+      margin-right: 5px;
+    }
+
+    &__year {
+      font-size: 14px;
+    }
+  }
+}

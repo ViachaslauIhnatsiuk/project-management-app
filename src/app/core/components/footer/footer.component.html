@@ -1,0 +1,24 @@
+<mat-toolbar role="footer" class="footer">
+  <div class="footer__year">2022</div>
+  <mat-list role="list" class="footer__githubs-main">
+    <mat-list-item class="footer__github" *ngFor="let githubAccount of githubAccounts">
+      <mat-icon svgIcon="githubIcon" class="footer__icon"></mat-icon>
+      <a mat-list-item [href]="githubAccount.link" target="_blank" class="footer__link">
+        {{ githubAccount.name }}
+      </a>
+    </mat-list-item>
+  </mat-list>
+  <div class="footer__githubs-adaptive">
+    <mat-icon svgIcon="githubIcon" class="footer__icon"></mat-icon>
+    <mat-list role="list" class="footer__githubs">
+      <mat-list-item class="footer__github-adaptive" *ngFor="let githubAccount of githubAccounts">
+        <a mat-list-item [href]="githubAccount.link" target="_blank" class="footer__link">
+          {{ githubAccount.name }}
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <a href="https://rs.school/angular/" target="_blank" class="footer__logo-wrapper">
+    <mat-icon svgIcon="rssLogo" class="footer__logo"></mat-icon>
+  </a>
+</mat-toolbar>

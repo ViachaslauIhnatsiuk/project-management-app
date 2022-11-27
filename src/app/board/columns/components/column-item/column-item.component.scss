@@ -1,0 +1,78 @@
+.mat-card {
+  position: relative;
+  width: 280px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 50px;
+  cursor: grab;
+}
+
+::ng-deep .cdk-drag-preview {
+  height: fit-content !important;
+}
+
+.icon {
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+.mat-card-title {
+  font-size: 18px;
+  padding: 5px 0;
+  cursor: default;
+}
+
+.mat-divider {
+  height: 2px;
+  border-radius: 5px;
+  top: 50px;
+  left: 14px;
+  width: 90%;
+  border-top-color: transparent;
+}
+
+.more-button {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
+
+.mat-card-content {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 0;
+  padding: 10px 15px;
+  overflow: auto;
+}
+
+.mat-card-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.mat-card-content::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
+}
+
+.form {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  top: -4px;
+  left: 16px;
+}
+
+.mat-form-field {
+  width: 150px;
+}
+
+.input {
+  font-size: 18px;
+}
+
+:host ::ng-deep .mat-form-field-underline {
+  display: none;
+}

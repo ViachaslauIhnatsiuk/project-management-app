@@ -1,0 +1,9 @@
+<div class="wrapper" cdkDropList [cdkDropListData]="tasks" (cdkDropListDropped)="dropTask($event)">
+  <app-task-item
+    *ngFor="let task of tasks"
+    [task]="task"
+    [columnId]="columnId"
+    cdkDrag
+  ></app-task-item>
+  <app-create-task [columnId]="columnId" [amountOfTasks]="amountOfTasks"></app-create-task>
+</div>

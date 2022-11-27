@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title [ngStyle]="isEditMode ? { opacity: 0 } : { opacity: 1 }" (click)="toggleEditMode()">
+      {{ currentColumn.title }}
+    </mat-card-title>
+    <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu"
+      appClickStopPropagation>
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="deleteColumn()">
+        {{ 'columns.editColumn.delete' | translate }}
+      </button>
+    </mat-menu>
+  </mat-card-header>
+  <form *ngIf="isEditMode" [formGroup]="form" class="form" (mousedown)="$event.stopPropagation()">
+    <mat-form-field appearance="legacy">
+      <input maxlength="20" matInput autofocus formControlName="title" class="input" #titleInput />
+    </mat-form-field>
+    <mat-icon class="icon" (click)="updateTitle()">check icon</mat-icon>
+    <mat-icon class="icon" (click)="toggleEditMode()">close</mat-icon>
+  </form>
+  <mat-divider appGenerateColor #ref></mat-divider>
+  <mat-card-content>
+    <app-tasks [columnId]="currentColumn._id!"></app-tasks>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+</mat-card>

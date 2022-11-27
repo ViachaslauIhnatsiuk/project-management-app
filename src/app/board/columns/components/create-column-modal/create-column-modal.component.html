@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{ 'columns.createColumnModal.title' | translate }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>{{ 'columns.createColumnModal.titleLabel' | translate }}</mat-label>
+      <input matInput formControlName="title" />
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['maxlength'] && form.controls['title'].touched"
+        >{{ 'columns.createColumnModal.titleLengthHint' | translate }}</mat-hint
+      >
+      <mat-hint
+        *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
+        >{{ 'columns.createColumnModal.titleRequiredHint' | translate }}</mat-hint
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'center'">
+  <button mat-button (click)="closeModal()">
+    {{ 'columns.createColumnModal.cancelButton' | translate }}
+  </button>
+  <button [disabled]="form.invalid" mat-button [mat-dialog-close]="newColumn">
+    {{ 'columns.createColumnModal.createButton' | translate }}
+  </button>
+</div>

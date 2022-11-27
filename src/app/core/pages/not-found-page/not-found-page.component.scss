@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+  cursor: default;
+}
+
+.error__code {
+  font-size: 70px;
+  font-weight: 700;
+}
+
+.error__message {
+  font-size: 40px;
+}
+
+@media (max-width: 768px) {
+  .error__code {
+    font-size: 50px;
+    font-weight: 700;
+  }
+
+  .error__message {
+    font-size: 35px;
+  }
+}

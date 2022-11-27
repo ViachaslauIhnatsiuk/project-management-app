@@ -1,0 +1,26 @@
+<mat-card class="card" (click)="openProjectPage()">
+  <mat-card-header>
+    <mat-card-title>
+      {{ board.title }}
+      <button
+        mat-icon-button
+        class="more-button"
+        [matMenuTriggerFor]="menu"
+        aria-label="Toggle menu"
+        appClickStopPropagation
+      >
+        <button class="more" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="editBoard()">
+          {{ 'boards.editBoard.edit' | translate }}
+        </button>
+        <button mat-menu-item (click)="deleteBoard()">
+          {{ 'boards.editBoard.delete' | translate }}
+        </button>
+      </mat-menu>
+    </mat-card-title>
+  </mat-card-header>
+</mat-card>

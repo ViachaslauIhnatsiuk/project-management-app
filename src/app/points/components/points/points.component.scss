@@ -1,0 +1,39 @@
+:host {
+  width: 100%;
+  max-height: 110px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  padding: 5px;
+  row-gap: 5px;
+  overflow: auto;
+}
+
+:host::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+:host::-webkit-scrollbar-thumb {
+  background: #b3b3b3 !important;
+  border-radius: 3px 0 0 3px !important;
+}
+
+.progress {
+  position: absolute;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 375px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.percentage {
+  font-size: 12px;
+}
+
+.progress-bar {
+  width: 85%;
+  border-radius: 5px;
+}

@@ -1,0 +1,76 @@
+<mat-card>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form">
+    <h3 class="form__title">{{ 'signupForm.title' | translate }}</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'signupForm.nameLabel' | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'signupForm.namePlaceholder' | translate }}"
+        formControlName="name"
+        autocomplete="off"
+      />
+      <mat-hint *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">{{
+        'signupForm.nameRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="name?.errors?.['minlength']">{{
+        'signupForm.nameLengthHint' | translate
+      }}</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'signupForm.loginLabel' | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'signupForm.loginPlaceholder' | translate }}"
+        formControlName="login"
+        autocomplete="off"
+      />
+      <mat-hint *ngIf="login?.errors?.['required'] && (login?.dirty || login?.touched)">{{
+        'signupForm.loginRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="login?.errors?.['minlength']">
+        {{ 'signupForm.loginLengthHint' | translate }}</mat-hint
+      >
+      <mat-error *ngIf="(loading$ | async) === false">
+        <div *ngIf="(error$ | async)?.statusCode">{{ (error$ | async)?.message }}</div>
+      </mat-error>
+      <mat-progress-spinner
+        *ngIf="loading$ | async"
+        matSuffix
+        [mode]="'indeterminate'"
+        [diameter]="20"
+      >
+      </mat-progress-spinner>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'signupForm.passwordLabel' | translate }}</mat-label>
+      <input
+        matInput
+        [type]="authService.passwordVisibility ? 'text' : 'password'"
+        placeholder="{{ 'signupForm.passwordPlaceholder' | translate }}"
+        formControlName="password"
+        autocomplete="off"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="authService.changePasswordVisibility($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="authService.passwordVisibility"
+      >
+        <mat-icon>{{ authService.passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
+      </button>
+      <mat-hint *ngIf="password?.errors?.['passwordStrength'] && password?.touched">
+        {{password?.errors?.['passwordStrength']}}
+      </mat-hint>
+    </mat-form-field>
+    <div class="form__btns">
+      <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
+        {{ 'signupForm.signupButton' | translate }}
+      </button>
+      <button mat-raised-button type="button" (click)="resetForm()">
+        {{ 'signupForm.signupResetButton' | translate }}
+      </button>
+    </div>
+  </form>
+</mat-card>

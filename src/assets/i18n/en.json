@@ -1,0 +1,202 @@
+{
+  "welcomePage": {
+    "motto": "The Best Way To Manage Your Daily Tasks",
+    "kanbanDescription": "The Kanban method is based on six basic practices to create an emerging set of positive behaviors in organizations, and achieve better agility in the provision of services.",
+    "kanbanPractices": {
+      "limit": "Limit Work-In-Progress",
+      "improve": "Improve collaboratively, evolve experimentally",
+      "make": "Make policies explicit",
+      "manage": "Manage flow",
+      "visualize": "Visualize",
+      "implement": "Implement feedback loops"
+    },
+    "titles": {
+      "productivity": "Increase the productivity of your team with Boards",
+      "customize": "Customize your Boards",
+      "rss": "Learn Angular with The Rolling Scopes School",
+      "developers": "Boards Developers"
+    },
+    "productivityList": {
+      "first": "connect boards and visualize all work across your team",
+      "second": "connect your goals to specific high-level deliverables",
+      "third": "achieve full traceability to ensure that everyone keeps their focus",
+      "fourth": "use custom color-coded labels to organize your Kanban cards"
+    },
+    "customizeList": {
+      "first": "Never miss a task with personalized boards. See what your team is working on and share progress.",
+      "second": "Get a detailed overview of workloads, pin and follow important tasks, choose exactly what you want to see to keep a close eye on progress."
+    },
+    "rssList": {
+      "first": "The Rolling Scopes School is free-of-charge and community-based education program conducted by developer community since 2013.",
+      "second": "Everyone can study at RS School, regardless of age, professional employment, or place of residence."
+    },
+    "learnMore": "Learn More",
+    "developers": {
+      "dzmitry": {
+        "name": "Dzmitry",
+        "about": "Created pages for user authorization and registration, implemented a global search, developed logic for module interaction with the backend and error handling, wrote functionality for working with NgRX"
+      },
+      "viachaslau": {
+        "name": "Viachaslau",
+        "about": "Developed the overall design of the project, the main page and the welcome page, wrote styles for components, configured the routing of the application, implemented a page with settings, switching the theme and language"
+      },
+      "gleb": {
+        "name": "Gleb",
+        "about": "Implemented modules for the work and interaction of boards, columns, tasks and checklists, wrote logic for interacting with the backend, logic for the ability to move columns and tasks, connected and configured NgRX data stores"
+      }
+    },
+    "github": "View GitHub"
+  },
+  "homePage": {
+    "title": "Get started with Boards",
+    "about": "Welcome to Boards - visual work management tool that empowers teams to plan, manage and celebrate their work together in a collaborative, productive and organized way",
+    "description": "Whether you and your team are starting something new or trying to get more organized with your existing work, Boards adapts to any project. It helps you simplify and standardize your team’s work process in an intuitive way",
+    "columnsTitles": {
+      "menu": "Simple menu",
+      "projects": "Easy projects managment",
+      "tasks": "Intuitive organization of work process"
+    },
+    "linkText": "To learn more about Boards visit out",
+    "link": "Welcome page"
+  },
+  "notFoundPage": "Page not found",
+  "loginForm": {
+    "title": "Log In",
+    "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Login",
+    "loginResetButton": "Reset Form"
+  },
+  "signupForm": {
+    "title": "Sign Up",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "nameRequiredHint": "Name is required",
+    "nameLengthHint": "Name must contain at least three characters",
+    "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "signupButton": "SignUp",
+    "signupResetButton": "Reset Form"
+  },
+  "header": {
+    "button": {
+      "signin": "Sign In",
+      "signup": "Sign Up",
+      "signout": "Sign Out"
+    },
+    "searchPlaceholder": "Find task",
+    "searchNothingResult": "Nothing found"
+  },
+  "sidebar": {
+    "menuList": {
+      "home": "Home",
+      "boards": "Boards",
+      "settings": "Settings"
+    },
+    "title": "My boards"
+  },
+  "settings": {
+    "title": "Settings",
+    "editProfileButton": "Edit profile",
+    "deleteUserButton": "Delete user",
+    "theme": "Theme"
+  },
+  "editProfileForm": {
+    "title": "Edit profile",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "nameRequiredHint": "Name is required",
+    "nameLengthHint": "Name must contain at least three characters",
+    "loginLabel": "Login",
+    "loginPlaceholder": "Enter your login",
+    "loginRequiredHint": "Login is required",
+    "loginLengthHint": "Login must contain at least three characters",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "editButton": "Edit",
+    "editResetButton": "Reset Form"
+  },
+  "boards": {
+    "filterPlaceholder": "Find board",
+    "createBoard": "Create new board",
+    "createBoardModal": {
+      "title": "Create board",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    },
+    "updateBoardModal": {
+      "title": "Update board",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "cancelButton": "Cancel",
+      "updateButton": "Update"
+    },
+    "editBoard": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "confirmationModal": {
+      "title": "Confirmation",
+      "question": "Would you like to do this?",
+      "no": "No",
+      "yes": "Yes"
+    }
+  },
+  "columns": {
+    "editColumn": {
+      "delete": "Delete"
+    },
+    "createColumn": "Сreate new column",
+    "createColumnModal": {
+      "title": "Create column",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    }
+  },
+  "tasks": {
+    "createTask": "Сreate new task",
+    "createTaskModal": {
+      "title": "Create task",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "descriptionLabel": "Description",
+      "descriptionRequiredHint": "Description is required",
+      "descriptionLengthHint": "Description is too long",
+      "cancelButton": "Cancel",
+      "createButton": "Create"
+    },
+    "editTaskModal": {
+      "title": "Edit task",
+      "titleLabel": "Title",
+      "titleRequiredHint": "Title is required",
+      "titleLengthHint": "Title is too long",
+      "descriptionLabel": "Description",
+      "descriptionRequiredHint": "Description is required",
+      "descriptionLengthHint": "Description is too long",
+      "cancelButton": "Cancel",
+      "updateButton": "Update"
+    }
+  },
+  "points": {
+    "createPoint": "Сreate point",
+    "createPointForm": {
+      "title": "Title"
+    }
+  }
+}

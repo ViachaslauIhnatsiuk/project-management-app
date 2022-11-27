@@ -1,0 +1,32 @@
+.input {
+  width: 160px;
+  margin-top: 1px;
+  height: 29px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+}
+
+:host ::ng-deep {
+  .mat-form-field-wrapper {
+    padding: 0 !important;
+    width: 160px !important;
+  }
+
+  .mat-form-field-flex {
+    align-items: center !important;
+    height: 29px;
+    padding: 0 10px !important;
+    border-radius: 5px !important;
+  }
+
+  .mat-form-field-infix {
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+}

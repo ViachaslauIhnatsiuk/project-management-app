@@ -1,0 +1,43 @@
+.card {
+  position: relative;
+  display: flex;
+  min-height: 100px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.mat-card-title {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 2%;
+}
+
+.card-content {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  :host {
+    width: 380px;
+  }
+
+  .card {
+    width: 380px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  :host {
+    width: 260px;
+  }
+
+  .card {
+    width: 260px;
+  }
+}

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{ 'boards.updateBoardModal.title' | translate }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>{{ 'boards.updateBoardModal.titleLabel' | translate }}</mat-label>
+      <input matInput formControlName="title" />
+      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
+        'boards.updateBoardModal.titleRequiredHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
+        'boards.updateBoardModal.titleLengthHint' | translate
+      }}</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+<app-select-board-users [boardUsers]="data.users" (boardUsersChange)="onBoardUsersChange($event)">
+</app-select-board-users>
+<div mat-dialog-actions [align]="'center'">
+  <button mat-button (click)="closeModal()">
+    {{ 'boards.updateBoardModal.cancelButton' | translate }}
+  </button>
+  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="updatedBoard">
+    {{ 'boards.updateBoardModal.updateButton' | translate }}
+  </button>
+</div>

@@ -1,0 +1,11 @@
+<div class="progress">
+  <span class="percentage" *ngIf="points?.length">{{ checkedPointsPercentage }}%</span>
+  <mat-progress-bar
+    color="accent"
+    *ngIf="points?.length"
+    class="progress-bar"
+    mode="determinate"
+    [value]="checkedPointsPercentage"
+  ></mat-progress-bar>
+</div>
+<app-point *ngFor="let point of points" [point]="point"></app-point>

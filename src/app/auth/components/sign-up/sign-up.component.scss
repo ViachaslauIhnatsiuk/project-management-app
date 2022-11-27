@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
+
+  &__btns {
+    align-self: flex-end;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+}
+
+.mat-hint {
+  color: #f44336;
+}
+
+@media (max-width: 450px) {
+  .form {
+    width: 270px;
+  }
+
+  .mat-raised-button {
+    height: auto;
+    width: auto;
+    padding: 0 9px;
+    line-height: 30px;
+    font-size: 13px;
+  }
+}

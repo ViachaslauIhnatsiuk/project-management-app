@@ -1,0 +1,85 @@
+.mat-progress-bar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  height: 2px;
+}
+
+.mat-sidenav-container {
+  position: absolute;
+  top: 80px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+}
+
+.active {
+  background-color: #673ab733;
+}
+
+.mat-nav-list {
+  padding-left: 10px !important;
+}
+
+.mat-sidenav {
+  width: 250px;
+}
+
+.list__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.mat-list-item {
+  height: 40px !important;
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.mat-divider {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.list__icon {
+  height: 22px;
+  margin-right: 15px;
+}
+
+.boards__title {
+  padding: 0 0 20px 20px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.boards__list {
+  padding: 0 0 0 20px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.boards__list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.boards__list::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
+}
+
+.mat-sidenav-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.mat-sidenav-content::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 3px 0 0 3px;
+}
+
+@media (max-width: 768px) {
+  .mat-sidenav-container {
+    top: 90px;
+  }
+}

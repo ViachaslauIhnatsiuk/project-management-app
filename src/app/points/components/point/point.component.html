@@ -1,0 +1,14 @@
+<div class="point">
+  <div class="point__checkbox">
+    <mat-checkbox [checked]="point.done" (change)="onChangeCheckbox($event)"></mat-checkbox>
+    <span class="point__title" *ngIf="!isEditMode" (click)="enableEditMode()">{{
+      point.title
+    }}</span>
+    <div class="point__input-wrapper" *ngIf="isEditMode">
+      <input maxlength="20" class="point__input" type="text" [(ngModel)]="pointTitle" />
+      <mat-icon (click)="disableEditMode()">close</mat-icon>
+      <mat-icon (click)="editPoint()">done</mat-icon>
+    </div>
+  </div>
+</div>
+<mat-icon class="delete-btn" (click)="deletePoint()">delete</mat-icon>

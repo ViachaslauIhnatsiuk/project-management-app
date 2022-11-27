@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-select-panel {
+  min-width: 232px !important;
+  max-width: 232px !important;
+  transform: translateX(28px) translateY(45px) !important;
+  border-radius: 0 0 5px 5px !important;
+}
+
+::ng-deep .mat-select-panel::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+::ng-deep .mat-select-panel::-webkit-scrollbar-thumb {
+  background: #b3b3b3 !important;
+  border-radius: 3px 0 0 3px !important;
+}

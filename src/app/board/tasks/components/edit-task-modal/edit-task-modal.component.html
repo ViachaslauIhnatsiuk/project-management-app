@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>{{ 'tasks.editTaskModal.title' | translate }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>{{ 'tasks.editTaskModal.titleLabel' | translate }}</mat-label>
+      <input matInput formControlName="title" />
+      <mat-hint *ngIf="form.controls['title'].errors?.['maxlength']">{{
+        'tasks.editTaskModal.titleLengthHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="form.controls['title'].errors?.['required']">{{
+        'tasks.editTaskModal.titleRequiredHint' | translate
+      }}</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>{{ 'tasks.editTaskModal.descriptionLabel' | translate }}</mat-label>
+      <textarea class="textarea" matInput formControlName="description" rows="5"></textarea>
+      <mat-hint *ngIf="form.controls['description'].errors?.['maxlength']">{{
+        'tasks.editTaskModal.descriptionLengthHint' | translate
+      }}</mat-hint>
+      <mat-hint *ngIf="form.controls['description'].errors?.['required']">{{
+        'tasks.editTaskModal.descriptionRequiredHint' | translate
+      }}</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+<app-select-task-users
+  [taskUsers]="data.users!"
+  (taskUsersChange)="onTasksUsersChange($event)"
+></app-select-task-users>
+<app-points [taskId]="data._id!"></app-points>
+<app-create-point [taskId]="data._id!"></app-create-point>
+<div mat-dialog-actions [align]="'center'">
+  <button mat-button (click)="closeModal()">
+    {{ 'tasks.editTaskModal.cancelButton' | translate }}
+  </button>
+  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="editedTask">
+    {{ 'tasks.editTaskModal.updateButton' | translate }}
+  </button>
+</div>

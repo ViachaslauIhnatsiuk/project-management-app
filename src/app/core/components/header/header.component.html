@@ -1,0 +1,102 @@
+<mat-toolbar role="heading" class="header">
+  <button
+    *ngIf="(isAuth$ | async) && isNotWelcomePage"
+    mat-icon-button
+    (click)="headerService.toggleSidebar()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img class="header__logo" routerLink="/" src="../../../../assets/icons/logo.svg" alt="app logo" />
+  <form
+    [formGroup]="searchForm"
+    class="header__search"
+    *ngIf="(isAuth$ | async) && isNotWelcomePage"
+  >
+    <mat-form-field class="header__search-field" floatLabel="never" appearance="fill">
+      <input
+        type="text"
+        matInput
+        placeholder="{{ 'header.searchPlaceholder' | translate }}"
+        [matAutocomplete]="auto"
+        formControlName="searchInput"
+        (input)="onInput($event)"
+        (blur)="onBlur()"
+        autocomplete="off"
+      />
+      <mat-icon matPrefix class="header__search-icon">search</mat-icon>
+      <mat-progress-spinner
+        *ngIf="isSearched$ | async"
+        matSuffix
+        [mode]="'indeterminate'"
+        [diameter]="20"
+      >
+      </mat-progress-spinner>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="openFoundBoard($event)">
+        <ng-container *ngIf="(tasksByQuery$ | async)?.length !== 0">
+          <mat-option
+            class="search__option"
+            *ngFor="let task of tasksByQuery$ | async"
+            [value]="task"
+          >
+            <p class="search__option-title">
+              {{ task.title }} -
+              <span class="search__option-description">{{ task.description }}</span>
+            </p>
+            <p class="search__option-users">
+              Users: owner<span *ngIf="task.users?.length">,</span>
+              <span *ngIf="task.users?.length"></span>
+              {{ users$ | async | getUserNameById: task.users! }}
+            </p>
+          </mat-option>
+        </ng-container>
+        <ng-container *ngIf="(tasksByQuery$ | async)?.length === 0">
+          <mat-option class="search__option" disabled="true">
+            <span class="search__option-title">{{ 'header.searchNothingResult' | translate }}</span>
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <div class="header__theme-wrapper" *ngIf="(isAuth$ | async) && isNotWelcomePage">
+    <mat-icon color="primary">brightness_7</mat-icon>
+    <mat-slide-toggle
+      color="primary"
+      [(ngModel)]="headerService.sliderIsChecked"
+      (change)="headerService.switchTheme($event)"
+    ></mat-slide-toggle>
+    <mat-icon color="primary">brightness_2</mat-icon>
+  </div>
+  <div class="header__btns-wrapper">
+    <div class="header__auth-wrapper" *ngIf="(isAuth$ | async) === false">
+      <button mat-raised-button color="primary" routerLink="auth/logIn">
+        {{ 'header.button.signin' | translate }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="auth/signUp">
+        {{ 'header.button.signup' | translate }}
+      </button>
+    </div>
+    <div class="header__auth-wrapper" *ngIf="isAuth$ | async">
+      <button
+        class="header__logout"
+        (click)="
+          authService.signOut();
+          headerService.theme = 'light-theme';
+          headerService.sliderIsChecked = false
+        "
+        mat-raised-button
+        color="primary"
+      >
+        {{ 'header.button.signout' | translate }}
+      </button>
+    </div>
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      [value]="currentLanguage"
+      (change)="switchLanguage(group.value)"
+    >
+      <mat-button-toggle value="En">En</mat-button-toggle>
+      <mat-button-toggle value="Ru">Ru</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
