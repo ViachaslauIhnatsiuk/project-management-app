@@ -59,6 +59,7 @@
   <div class="header__theme-wrapper" *ngIf="(isAuth$ | async) && isNotWelcomePage">
     <mat-icon color="primary">brightness_7</mat-icon>
     <mat-slide-toggle
+      color="primary"
       [(ngModel)]="headerService.sliderIsChecked"
       (change)="headerService.switchTheme($event)"
     ></mat-slide-toggle>
