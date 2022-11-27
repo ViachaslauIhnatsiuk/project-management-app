@@ -18,6 +18,7 @@ import { IJWTPayload, MagicNumbers } from 'src/app/auth/models/auth-service.mode
 import { logIn } from '../store/actions/auth.actions';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 import { getUserById } from 'src/app/users/store/actions/users.actions';
+import { CustomMessages } from 'src/app/core/models/response-handler.models';
 
 @Injectable({
   providedIn: 'root',
@@ -69,12 +70,18 @@ export class AuthService {
     if (!token) return false;
 
     const currentTime = Date.now();
-    const decodedToken = jwtDecode<IJWTPayload>(token);
-    if (decodedToken.exp) {
-      const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
-      const timeDifference = tokenExpireTime - currentTime;
-      return timeDifference > MagicNumbers.Zero ? true : false;
-    } else {
+
+    try {
+      const decodedToken = jwtDecode<IJWTPayload>(token);
+      if (decodedToken.exp) {
+        const tokenExpireTime = decodedToken.exp * MagicNumbers.Thousand;
+        const timeDifference = tokenExpireTime - currentTime;
+        return timeDifference > MagicNumbers.Zero ? true : false;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      this.responseHandlerService.handleResponse(401, CustomMessages.Invalid);
       return false;
     }
   }

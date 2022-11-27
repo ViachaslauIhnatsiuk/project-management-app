@@ -28,6 +28,7 @@ import { logInSuccess } from '../auth/store/actions/auth.actions';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { getUserById } from '../users/store/actions/users.actions';
 import { UserService } from '../users/services/user.service';
+import { AuthService } from '../auth/services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
@@ -75,9 +76,14 @@ import { LocalStorageService } from './services/local-storage.service';
   ],
 })
 export class CoreModule {
-  constructor(private store: Store, private userService: UserService) {
+  constructor(
+    private store: Store,
+    private userService: UserService,
+    private authService: AuthService,
+  ) {
     const token = window.localStorage.getItem('token');
-    if (token) {
+    const isTokenExpired = this.authService.isTokenExpired();
+    if (token && isTokenExpired) {
       this.store.dispatch(logInSuccess({ token }));
       this.getUserById();
     }

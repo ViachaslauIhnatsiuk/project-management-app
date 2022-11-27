@@ -4,19 +4,28 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { IUpdatedUserData, IUser } from 'src/app/users/store/models/users.models';
-import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
 import { deleteUserById } from 'src/app/users/store/actions/users.actions';
+import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
+import { CustomMessages } from 'src/app/core/models/response-handler.models';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+    private responseHandlerService: ResponseHandlerService,
+  ) {}
 
   public getUserIdFromToken(): string | void {
     const TOKEN = window.localStorage.getItem('token');
 
     if (TOKEN) {
-      const { id } = jwtDecode<{ id: string }>(TOKEN);
-      return id;
+      try {
+        const { id } = jwtDecode<{ id: string }>(TOKEN);
+        return id;
+      } catch (error) {
+        this.responseHandlerService.handleResponse(401, CustomMessages.Invalid);
+      }
     }
   }
 
@@ -25,15 +34,15 @@ export class UserService {
   }
 
   public getUserById(id: string): Observable<IUser> {
-    return this.http.get<IUser>(`${BASE_URL}users/${id}`);
+    return this.http.get<IUser>(`users/${id}`);
   }
 
   public updateUserById(id: string, updatedUserData: IUpdatedUserData): Observable<IUser> {
-    return this.http.put<IUser>(`${BASE_URL}users/${id}`, updatedUserData);
+    return this.http.put<IUser>(`users/${id}`, updatedUserData);
   }
 
   public deleteUserById(id: string): Observable<IUser> {
-    return this.http.delete<IUser>(`${BASE_URL}users/${id}`);
+    return this.http.delete<IUser>(`users/${id}`);
   }
 
   public deleteUser(): void {

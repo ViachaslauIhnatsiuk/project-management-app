@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable } from 'rxjs';
+import { UserService } from 'src/app/users/services/user.service';
 import { BoardApiEndpoints } from '../../boards/models/boards.models';
 import { ITask, ModifiedTaskForRequest } from '../models/tasks.models';
 import { GetTasksProps } from '../store/models/task.models';
@@ -9,7 +10,7 @@ import { GetTasksProps } from '../store/models/task.models';
 export class TaskService {
   public searchTerm = new BehaviorSubject<string>('');
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   public getTasks({ boardId, columnId }: GetTasksProps): Observable<ITask[]> {
     return this.http
@@ -24,7 +25,9 @@ export class TaskService {
   }
 
   public getTasksByQuery(query: string): Observable<ITask[]> {
-    return this.http.get<ITask[]>('tasksSet', { params: { query } }).pipe(
+    const id = this.userService.getUserIdFromToken() as string;
+
+    return this.http.get<ITask[]>('tasksSet', { params: { userId: id, search: query } }).pipe(
       catchError(({ message }: Error) => {
         throw new Error(message);
       }),

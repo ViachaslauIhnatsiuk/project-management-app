@@ -4,12 +4,10 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse,
   HttpResponse,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { BASE_URL } from 'src/app/core/constants/interceptors.constants';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ResponseHandlerService } from 'src/app/core/services/response-handler.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ApiEndpointActions, ApiEndpoints } from '../models/interceptors.models';
@@ -25,8 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const [endpoint, endpointAction] = request.url.split('/');
     if (endpoint === ApiEndpoints.Auth) {
-      const url = `${BASE_URL}${endpoint}/${endpointAction}`;
-      return next.handle(request.clone({ url })).pipe(
+      return next.handle(request.clone()).pipe(
         tap((data) => {
           if (data instanceof HttpResponse) {
             let message: string = '';
@@ -38,16 +35,6 @@ export class AuthInterceptor implements HttpInterceptor {
             }
             this.responseHandlerService.handleResponse(data.status, message);
           }
-        }),
-        catchError((error) => {
-          if (error instanceof HttpErrorResponse) {
-            const {
-              status,
-              error: { message },
-            } = error;
-            this.responseHandlerService.handleResponse(status, message);
-          }
-          return throwError(() => error);
         }),
       );
     }
