@@ -12,7 +12,7 @@ input:-webkit-autofill:focus {
 }
 
 .form {
-  width: 400px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -26,7 +26,7 @@ input:-webkit-autofill:focus {
     align-self: flex-end;
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 }
 
@@ -37,5 +37,13 @@ input:-webkit-autofill:focus {
 @media (max-width: 450px) {
   .form {
     width: 270px;
+  }
+
+  .mat-raised-button {
+    height: auto;
+    width: auto;
+    padding: 0 9px;
+    line-height: 30px;
+    font-size: 13px;
   }
 }

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ 'boards.createBoardModal.title' | translate }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" color="accent">
       <mat-label>{{ 'boards.createBoardModal.titleLabel' | translate }}</mat-label>
       <input matInput formControlName="title" />
       <mat-hint
