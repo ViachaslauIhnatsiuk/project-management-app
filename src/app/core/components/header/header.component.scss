@@ -168,9 +168,17 @@
   color: #69f0ae;
 }
 
-@media (max-width: 1330px) {
+@media (max-width: 1600px) {
   .header {
     &__search {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 1330px) {
+  .header {
+    &__search-field {
       padding: 0;
     }
   }
@@ -254,7 +262,7 @@
     }
 
     &__btns-wrapper {
-      column-gap: 5px;
+      column-gap: 10px;
     }
 
     &__auth-wrapper {
@@ -265,10 +273,26 @@
       top: 1px;
       right: 4px;
     }
+
+    &__logout {
+      display: none;
+    }
   }
 
   .mat-raised-button {
     line-height: 26px;
     font-size: 11px;
+  }
+
+  :host ::ng-deep {
+    .mat-button-toggle-button {
+      height: 26px;
+    }
+
+    .mat-button-toggle-label-content {
+      height: 26px !important;
+      line-height: 26px !important;
+      font-size: 11px;
+    }
   }
 }

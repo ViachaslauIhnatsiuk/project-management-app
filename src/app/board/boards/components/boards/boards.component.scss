@@ -45,24 +45,33 @@
 }
 
 @media (max-width: 768px) {
+  :host {
+    padding: 10px 20px 50px;
+  }
+
   .board-wrapper {
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
   }
+
+  .mat-card {
+    min-width: 380px;
+  }
 }
 
 @media (max-width: 600px) {
-  .board-wrapper {
-    grid-template-columns: repeat(1, 1fr);
+  :host {
+    padding: 10px 0 50px;
+    align-items: center;
   }
 
-  .mat-card {
-    width: 380px;
+  .board-wrapper {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
 @media (max-width: 450px) {
   .mat-card {
-    width: 260px;
+    min-width: 260px;
   }
 }
