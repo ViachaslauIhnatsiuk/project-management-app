@@ -78,7 +78,7 @@
         class="header__logout"
         (click)="
           authService.signOut();
-          headerService.isDarkTheme = false;
+          headerService.theme = 'light-theme';
           headerService.sliderIsChecked = false
         "
         mat-raised-button

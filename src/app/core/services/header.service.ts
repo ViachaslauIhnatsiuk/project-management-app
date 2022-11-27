@@ -7,7 +7,7 @@ import { Themes } from '../models/core.models';
   providedIn: 'root',
 })
 export class HeaderService {
-  public isDarkTheme = false;
+  public theme = 'light-theme';
 
   public sliderIsChecked = false;
 
@@ -18,7 +18,7 @@ export class HeaderService {
   public switchTheme({ checked }: MatSlideToggleChange): void {
     const theme = checked ? Themes.Dark : Themes.Light;
     window.localStorage.setItem('theme', theme);
-    this.isDarkTheme = checked;
+    this.theme = theme;
     this.sliderIsChecked = checked;
   }
 
@@ -38,9 +38,11 @@ export class HeaderService {
   public getCurrentTheme(): void {
     const currentTheme = window.localStorage.getItem('theme');
     if (currentTheme && currentTheme === Themes.Dark) {
-      this.isDarkTheme = this.sliderIsChecked = true;
+      this.theme = 'dark-theme';
+      this.sliderIsChecked = true;
     } else {
-      this.isDarkTheme = this.sliderIsChecked = false;
+      this.theme = 'light-theme';
+      this.sliderIsChecked = false;
     }
   }
 }
