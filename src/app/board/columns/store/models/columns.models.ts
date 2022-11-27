@@ -31,15 +31,5 @@ type CreateColumnProps = {
   newColumn: IColumn;
 };
 
-type DeleteColumnProps = {
-  columnId: string;
-  boardId: string;
-};
-
-type UpdateColumnProps = {
-  column: IColumn;
-  boardId: string;
-};
-
-export type { CreateColumnProps, DeleteColumnProps, UpdateColumnProps, IColumnsState };
+export type { CreateColumnProps, IColumnsState };
 export { ColumnActions };

@@ -29,8 +29,8 @@ export class ColumnService {
       );
   }
 
-  public deleteColumn(columnId: string, boardId: string): Observable<Object> {
-    const params = new HttpParams().set('id', columnId);
+  public deleteColumn({ _id: columnId, boardId }: IColumn): Observable<Object> {
+    const params = new HttpParams().set('id', columnId as string);
 
     return this.http
       .delete(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}/${columnId}`, {
@@ -43,7 +43,7 @@ export class ColumnService {
       );
   }
 
-  public updateColumn({ title, _id, order }: IColumn, boardId: string): Observable<IColumn> {
+  public updateColumn({ title, _id, order, boardId }: IColumn): Observable<IColumn> {
     return this.http
       .put<IColumn>(`${BoardApiEndpoints.boards}/${boardId}/${BoardApiEndpoints.columns}/${_id}`, {
         title,
