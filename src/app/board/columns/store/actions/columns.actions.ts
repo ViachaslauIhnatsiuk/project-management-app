@@ -1,11 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { IColumn } from '../../models/columns.models';
-import {
-  ColumnActions,
-  CreateColumnProps,
-  DeleteColumnProps,
-  UpdateColumnProps,
-} from '../models/columns.models';
+import { ColumnActions, CreateColumnProps } from '../models/columns.models';
 
 const getColumns = createAction(ColumnActions.GET_COLUMNS, props<{ boardId: string }>());
 const getColumnsSuccess = createAction(
@@ -27,23 +22,17 @@ const createColumnError = createAction(
   props<{ error: string }>(),
 );
 
-const deleteColumn = createAction(
-  ColumnActions.DELETE_COLUMN,
-  props<{ props: DeleteColumnProps }>(),
-);
+const deleteColumn = createAction(ColumnActions.DELETE_COLUMN, props<{ deletedColumn: IColumn }>());
 const deleteColumnSuccess = createAction(
   ColumnActions.DELETE_COLUMN_SUCCESS,
-  props<{ columnId: string }>(),
+  props<{ deletedColumn: IColumn }>(),
 );
 const deleteColumnError = createAction(
   ColumnActions.DELETE_COLUMN_ERROR,
   props<{ error: string }>(),
 );
 
-const updateColumn = createAction(
-  ColumnActions.UPDATE_COLUMN,
-  props<{ props: UpdateColumnProps }>(),
-);
+const updateColumn = createAction(ColumnActions.UPDATE_COLUMN, props<{ updatedColumn: IColumn }>());
 const updateColumnSuccess = createAction(
   ColumnActions.UPDATE_COLUMN_SUCCESS,
   props<{ updatedColumn: IColumn }>(),

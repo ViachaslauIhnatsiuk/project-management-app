@@ -1,15 +1,10 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
-import {
-  DEFAULT_MODAL_SIZE,
-  INITIAL_EMPTY_STRING_VALUE,
-} from 'src/app/board/constants/board.constants';
+import { DEFAULT_MODAL_SIZE } from 'src/app/board/constants/board.constants';
 import { IColumn } from '../../models/columns.models';
 import { deleteColumn, updateColumn } from '../../store/actions/columns.actions';
 
@@ -18,44 +13,38 @@ import { deleteColumn, updateColumn } from '../../store/actions/columns.actions'
   templateUrl: './column-item.component.html',
   styleUrls: ['./column-item.component.scss'],
 })
-export class ColumnItemComponent implements OnDestroy, OnInit {
-  @Input() public column!: IColumn;
+export class ColumnItemComponent implements OnInit {
+  @Input() public set column(column: IColumn) {
+    this.currentColumn = { ...column };
+  }
+  public currentColumn!: IColumn;
 
   public form!: FormGroup;
-
-  private idBoardSubscription = new Subscription();
-
-  private boardId: string = INITIAL_EMPTY_STRING_VALUE;
-
   public isEditMode: boolean = false;
 
-  constructor(private store: Store, public dialog: MatDialog, private route: ActivatedRoute) {
-    this.idBoardSubscription = this.route.params.subscribe(
-      (params) => (this.boardId = params['id']),
-    );
-  }
+  constructor(private store: Store, public dialog: MatDialog) {}
 
   public ngOnInit(): void {
     this.initializeForm();
   }
 
-  public toggleEditMode(): void {
-    this.initializeForm();
-    this.isEditMode = !this.isEditMode;
-  }
-
   private initializeForm(): void {
     this.form = new FormGroup({
-      title: new FormControl(this.column.title, [Validators.required, Validators.maxLength(20)]),
+      title: new FormControl(this.currentColumn.title, [
+        Validators.required,
+        Validators.maxLength(20),
+      ]),
     });
   }
 
   public updateTitle(): void {
-    const isNewTitleEquelPrevValue = this.column.title === this.form.value.title;
+    const isNewTitleEquelPrevValue = this.currentColumn.title === this.form.value.title;
 
     if (this.form.valid && !isNewTitleEquelPrevValue) {
-      const column: IColumn = { ...this.column, ...this.form.value };
-      this.store.dispatch(updateColumn({ props: { column, boardId: this.boardId } }));
+      this.currentColumn.title = this.form.value.title;
+      const updatedColumn: IColumn = { ...this.currentColumn, ...this.form.value };
+
+      this.store.dispatch(updateColumn({ updatedColumn }));
     }
 
     if (this.form.valid) {
@@ -64,7 +53,7 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
   }
 
   public deleteColumn(): void {
-    const { _id: columnId } = this.column;
+    const { _id: columnId } = this.currentColumn;
 
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       minWidth: DEFAULT_MODAL_SIZE,
@@ -72,11 +61,12 @@ export class ColumnItemComponent implements OnDestroy, OnInit {
 
     dialogRef.afterClosed().subscribe((isConfirm) => {
       if (isConfirm && columnId)
-        this.store.dispatch(deleteColumn({ props: { columnId, boardId: this.boardId } }));
+        this.store.dispatch(deleteColumn({ deletedColumn: this.currentColumn }));
     });
   }
 
-  public ngOnDestroy(): void {
-    this.idBoardSubscription.unsubscribe();
+  public toggleEditMode(): void {
+    this.initializeForm();
+    this.isEditMode = !this.isEditMode;
   }
 }

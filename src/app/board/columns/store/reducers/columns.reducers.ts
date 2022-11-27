@@ -46,7 +46,7 @@ const columnsReducer = createReducer(
   on(deleteColumn, (state): IColumnsState => {
     return { ...state, isLoading: true };
   }),
-  on(deleteColumnSuccess, (state, { columnId }): IColumnsState => {
+  on(deleteColumnSuccess, (state, { deletedColumn: { _id: columnId } }): IColumnsState => {
     const resultedColumns = [...state.columns].filter(({ _id }) => _id !== columnId);
     return { ...state, isLoading: false, columns: resultedColumns };
   }),
@@ -56,16 +56,8 @@ const columnsReducer = createReducer(
   on(updateColumn, (state): IColumnsState => {
     return { ...state, isLoading: true };
   }),
-  on(updateColumnSuccess, (state, { updatedColumn }): IColumnsState => {
-    const resultedColumns = [...state.columns].map((column) => {
-      if (column._id === updatedColumn._id) {
-        return updatedColumn;
-      }
-
-      return column;
-    });
-
-    return { ...state, isLoading: false, columns: resultedColumns };
+  on(updateColumnSuccess, (state): IColumnsState => {
+    return { ...state, isLoading: false };
   }),
   on(updateColumnError, (state, { error }): IColumnsState => {
     return { ...state, isLoading: false, error };
@@ -84,35 +76,6 @@ const columnsReducer = createReducer(
   }),
   on(setColumns, (state, { columns }): IColumnsState => {
     return { ...state, isLoading: false, columns };
-  }),
-  on(createColumnError, (state, { error }): IColumnsState => {
-    return { ...state, isLoading: false, error };
-  }),
-  on(deleteColumn, (state): IColumnsState => {
-    return { ...state, isLoading: true };
-  }),
-  on(deleteColumnSuccess, (state, { columnId }): IColumnsState => {
-    const resultedColumns = [...state.columns].filter(({ _id }) => _id !== columnId);
-    return { ...state, isLoading: false, columns: resultedColumns };
-  }),
-  on(deleteColumnError, (state, { error }): IColumnsState => {
-    return { ...state, isLoading: false, error };
-  }),
-  on(updateColumn, (state): IColumnsState => {
-    return { ...state, isLoading: true };
-  }),
-  on(updateColumnSuccess, (state, { updatedColumn }): IColumnsState => {
-    const resultedColumns = [...state.columns].map((column) => {
-      if (column._id === updatedColumn._id) {
-        return updatedColumn;
-      }
-
-      return column;
-    });
-    return { ...state, isLoading: false, columns: resultedColumns };
-  }),
-  on(updateColumnError, (state, { error }): IColumnsState => {
-    return { ...state, isLoading: false, error };
   }),
 );
 

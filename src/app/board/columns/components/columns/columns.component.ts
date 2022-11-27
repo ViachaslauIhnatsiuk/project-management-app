@@ -16,13 +16,10 @@ import { selectColumns } from '../../store/selectors/columns.selectors';
 })
 export class ColumnsComponent implements OnInit, OnDestroy {
   private columns$ = this.store.select(selectColumns);
-
+  private columnsSubscription = new Subscription();
   public columns: IColumn[] = [];
 
   private boardIdSubscription = new Subscription();
-
-  private columnsSubscription = new Subscription();
-
   private boardId: string = INITIAL_EMPTY_STRING_VALUE;
 
   constructor(private route: ActivatedRoute, private store: Store, private router: Router) {

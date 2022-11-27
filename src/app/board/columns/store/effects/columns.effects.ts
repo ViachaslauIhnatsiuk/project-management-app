@@ -14,12 +14,7 @@ import {
   updateColumnSuccess,
   updateOrderAllColumnsSuccess,
 } from '../actions/columns.actions';
-import {
-  ColumnActions,
-  CreateColumnProps,
-  DeleteColumnProps,
-  UpdateColumnProps,
-} from '../models/columns.models';
+import { ColumnActions, CreateColumnProps } from '../models/columns.models';
 
 @Injectable()
 export class ColumnEffects {
@@ -50,9 +45,9 @@ export class ColumnEffects {
   deleteColumn$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.DELETE_COLUMN),
-      mergeMap(({ props: { boardId, columnId } }: { props: DeleteColumnProps }) => {
-        return this.columnService.deleteColumn(columnId, boardId).pipe(
-          map(() => deleteColumnSuccess({ columnId })),
+      mergeMap(({ deletedColumn }: { deletedColumn: IColumn }) => {
+        return this.columnService.deleteColumn(deletedColumn).pipe(
+          map(() => deleteColumnSuccess({ deletedColumn })),
           catchError(({ message }: Error) => of(deleteColumnError({ error: message }))),
         );
       }),
@@ -62,8 +57,8 @@ export class ColumnEffects {
   updateColumn$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ColumnActions.UPDATE_COLUMN),
-      mergeMap(({ props: { column: updatedColumn, boardId } }: { props: UpdateColumnProps }) => {
-        return this.columnService.updateColumn(updatedColumn, boardId).pipe(
+      mergeMap(({ updatedColumn }: { updatedColumn: IColumn }) => {
+        return this.columnService.updateColumn(updatedColumn).pipe(
           map(() => updateColumnSuccess({ updatedColumn })),
           catchError(({ message }: Error) => of(updateColumnError({ error: message }))),
         );
