@@ -65,6 +65,13 @@ export class HeaderComponent implements OnInit, AfterContentChecked, OnDestroy {
     this.taskService.searchTerm.next((event.target as HTMLInputElement).value);
   }
 
+  public onBlur(): void {
+    const inputValue = this.searchForm.controls.searchInput.value;
+    if (!inputValue?.length) {
+      this.tasksByQuery$ = of();
+    }
+  }
+
   public openFoundBoard(event: MatAutocompleteSelectedEvent): void {
     const boardId = event.option.value.boardId;
     this.router.navigate([`boards/${boardId}`]);
